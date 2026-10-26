@@ -1,6 +1,6 @@
 # 小说写作工坊 · Novel Workshop
 
-![小说写作工坊原创概念插画](docs/images/novel-workshop-hero.png)
+![小说写作工坊原创概念插画](docs/images/novel-workshop-hero-v2.png)
 
 <div align="center">
 <p><strong>让灵感有处落笔，让故事从容生长。</strong></p>
