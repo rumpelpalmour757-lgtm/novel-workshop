@@ -9,11 +9,11 @@
 | 你想怎么用 | 下载文件 | 使用方式 |
 | --- | --- | --- |
 | 上传到 AI 对话中使用 | [便携单文件版](portable-novel-workshop.md) | 下载 Markdown 文件，与本轮任务、原稿或设定一起提供给 AI |
-| 导入支持文件夹式 Skills 的环境 | [完整安装包](novel-workshop-install-2026-09-23.zip) | 下载 ZIP 并解压，按目标环境的方式导入其中完整的 `novel-workshop` 文件夹 |
+| 导入支持文件夹式 Skills 的环境 | [完整安装包](novel-workshop-commercial-r5.45.zip) | 下载 ZIP 并解压，按目标环境的方式导入其中完整的 `novel-workshop` 文件夹 |
 
-点击文件进入 GitHub 文件页面后，可使用下载按钮保存。安装包中的文件夹包含技能入口、参考方法、模板、脚本和显示配置；请保留内部目录与相对位置。
+点击文件进入 GitHub 文件页面后，可使用下载按钮保存。商业交付包包含技能入口、参考方法、模板、脚本、显示配置、安装器、使用说明、许可记录与测试；请保留内部目录与相对位置。
 
-本仓库根目录提供下载文件。文件夹式技能位于安装包内部，具体安装入口由目标产品决定。
+本仓库根目录提供下载文件。商业交付包的写作技能位于 `skills/novel-workshop/`，维护技能位于 `skills/darwin-novel-workshop/`；解压后可阅读包内 `QUICKSTART.md`，或使用包内 `install.py`。升级已有技能前先完整备份。
 
 ## 第一次使用
 
@@ -67,8 +67,10 @@
 
 ## 版本与来源
 
-当前安装包版本：**2026-09-23**。本次 GitHub 发布整理了下载入口和项目介绍，技能方法与原安装包保持一致。
+当前商业交付包版本：**2026-10-26-r5.45-candidate**，202 个文件。安装 ZIP 为作者提供的商业版原包，字节保持不变；便携单文件取自同一商业版。保留候选版标记，安装与程序测试不代表文学效果已验证。包内 `VERIFICATION.md` 保留其验证范围与限制。
+
+商业版原包 SHA-256：`d208ed8a3027de3d2637b14edb3a4db2b4d1c7b0f5d8df5c5b5039b31bbcfe96`。
 
 原技能注明参考 BJM v2.7（2026-09-13）和用户提供的 Oh Story 快照（2026-09-18），并按中文小说任务整理为轻量方法。
 
-Oh Story 的第三方 MIT 许可原文保留在安装包的 `novel-workshop/assets/third-party/oh-story-LICENSE.txt`，便携单文件也保留该许可。本项目整体尚未指定开源许可证；第三方 MIT 许可不代表整个项目采用 MIT。
+Oh Story 的第三方 MIT 许可原文保留在安装包的 `skills/novel-workshop/assets/third-party/oh-story-LICENSE.txt`，便携单文件也保留该许可。本项目整体尚未指定开源许可证；第三方 MIT 许可不代表整个项目采用 MIT。
