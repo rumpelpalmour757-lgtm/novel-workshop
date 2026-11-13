@@ -1,0 +1,9 @@
+{
+  "event_id": "demo-06-present-outline",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "outline",
+  "content": "【合成演示】一场四拍。一，老郝教丁穗撕票；二，冯姐带一只活鸡买票，老郝报两块；三，丁穗翻价目表，说表上是一块；四，老郝不接话，冯姐付一块，票推出去。谁在乎什么：丁穗在乎头几天别出错，老郝在乎在新人面前的面子。事后一拍：无。章尾：停在票推出去、鸡扑腾一下。",
+  "source_ref": "demo/04-chapter-gate（合成的章纲）"
+}

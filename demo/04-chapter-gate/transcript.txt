@@ -1,0 +1,381 @@
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" status learning-record.md
+{
+  "status": "disabled",
+  "enabled": false,
+  "loop_enabled": false,
+  "project_id": "demo-ferry-booth",
+  "version": "sha256:9d60085fc857a836d4a3282b79fcfc319381718e7f6a705b7a43741a3704507a",
+  "case_count": 0,
+  "run_count": 0,
+  "active_runs": [],
+  "next_action": "resume_original_workflow"
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/01-configure.json --project-id demo-ferry-booth --if-version 'sha256:9d60085fc857a836d4a3282b79fcfc319381718e7f6a705b7a43741a3704507a'
+{
+  "project_id": "demo-ferry-booth",
+  "chapter_workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "event_id": "demo-01-configure",
+    "author_quote": "（合成演示）新章一关一关给我看，我点头了再往下；初稿我自己交给教师，结果由我带回来。",
+    "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+    "actor_role": "author",
+    "mode": "human"
+  },
+  "next_action": "present",
+  "status": "saved",
+  "version": "sha256:929531d498094afd7fc4a2ef943086551934152073a317b58feb416a5e05c6dd",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B -c 'import sys,runpy; d=sys.argv[1]; sys.path.insert(0,d); sys.argv=[d+"/chapter_gate.py"]+sys.argv[2:]; runpy.run_path(sys.argv[0],run_name="__main__")' "$NW_SCRIPTS" status learning-record.md --chapter-id ch01
+{
+  "status": "not_started",
+  "chapter_status": "not_started",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "scope",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": null,
+  "next_action": "present",
+  "store_version": "sha256:929531d498094afd7fc4a2ef943086551934152073a317b58feb416a5e05c6dd"
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/03-present-scope.json --project-id demo-ferry-booth --if-version 'sha256:929531d498094afd7fc4a2ef943086551934152073a317b58feb416a5e05c6dd'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "scope",
+  "presentation_id": "demo-03-present-scope",
+  "presentation_version": "b02f2160d20e5f81ffc408e7d4f5b9138f2740aa48fc3659e65083098dfa32e6",
+  "artifact_sha256": null,
+  "last_valid_confirmation": null,
+  "next_action": "confirm",
+  "version": "sha256:a15289f570675f121bcea6f8039894b42b5b8a706039a61fb6dc058236b27281",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/04-skip-to-draft-rejected.json --project-id demo-ferry-booth --if-version 'sha256:a15289f570675f121bcea6f8039894b42b5b8a706039a61fb6dc058236b27281'
+{"status": "error", "code": "invalid_transition", "message": "Only the current stage may be presented or confirmed"}
+[退出码 2]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/05-confirm-scope.json --project-id demo-ferry-booth --if-version 'sha256:a15289f570675f121bcea6f8039894b42b5b8a706039a61fb6dc058236b27281'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "outline",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "scope",
+    "presentation_id": "demo-03-present-scope",
+    "presentation_version": "b02f2160d20e5f81ffc408e7d4f5b9138f2740aa48fc3659e65083098dfa32e6",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "demo-05-confirm-scope",
+      "author_quote": "（合成演示）范围可以。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "version": "sha256:0fabad19fc032a293c499401e6e8dadbc7ea3c766ced3274ecc49c0499cb68da",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/06-present-outline.json --project-id demo-ferry-booth --if-version 'sha256:0fabad19fc032a293c499401e6e8dadbc7ea3c766ced3274ecc49c0499cb68da'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "outline",
+  "presentation_id": "demo-06-present-outline",
+  "presentation_version": "a57d14d8262d4c402507a508a0b5173bb52c57b9c26e139f280a400bf8c95dff",
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "scope",
+    "presentation_id": "demo-03-present-scope",
+    "presentation_version": "b02f2160d20e5f81ffc408e7d4f5b9138f2740aa48fc3659e65083098dfa32e6",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）范围可以。",
+      "event_id": "demo-05-confirm-scope",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "version": "sha256:c5bdd554d9fbd94cb147fbd6a6ae2ce0e7cd5cbf9fe18024373f087b56945976",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/07-confirm-outline.json --project-id demo-ferry-booth --if-version 'sha256:c5bdd554d9fbd94cb147fbd6a6ae2ce0e7cd5cbf9fe18024373f087b56945976'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "preparation",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "demo-06-present-outline",
+    "presentation_version": "a57d14d8262d4c402507a508a0b5173bb52c57b9c26e139f280a400bf8c95dff",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "demo-07-confirm-outline",
+      "author_quote": "（合成演示）章纲可以，照这个准备。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "version": "sha256:a8b9bfedadbc3f09a344a0ffe46ee14c798fa30fe0ad9c155b3ddb7435658d74",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/08-present-preparation.json --project-id demo-ferry-booth --if-version 'sha256:a8b9bfedadbc3f09a344a0ffe46ee14c798fa30fe0ad9c155b3ddb7435658d74'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "preparation",
+  "presentation_id": "demo-08-present-preparation",
+  "presentation_version": "5a58bbc72082dfbc1fa9a9375b5f6502be7645ae25e8f1e868eb0a641a433ba3",
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "demo-06-present-outline",
+    "presentation_version": "a57d14d8262d4c402507a508a0b5173bb52c57b9c26e139f280a400bf8c95dff",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）章纲可以，照这个准备。",
+      "event_id": "demo-07-confirm-outline",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "version": "sha256:f77dc8c3f61e8077abef47241498a3884402d65bc4378f5cb6e0d677f998f8e1",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/09-confirm-preparation.json --project-id demo-ferry-booth --if-version 'sha256:f77dc8c3f61e8077abef47241498a3884402d65bc4378f5cb6e0d677f998f8e1'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "draft",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "preparation",
+    "presentation_id": "demo-08-present-preparation",
+    "presentation_version": "5a58bbc72082dfbc1fa9a9375b5f6502be7645ae25e8f1e868eb0a641a433ba3",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "demo-09-confirm-preparation",
+      "author_quote": "（合成演示）准备可以，写初稿。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "version": "sha256:2d0a7ade21f942759315f11b9ab9a41ee6954fb14db80f89e254bd2e173084fd",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/10-present-draft.json --project-id demo-ferry-booth --if-version 'sha256:2d0a7ade21f942759315f11b9ab9a41ee6954fb14db80f89e254bd2e173084fd'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "draft",
+  "presentation_id": "demo-10-present-draft",
+  "presentation_version": "9f14a75e994338415061b2952c01556ff3c5b23e690f2d5928dad1d0c520ce7c",
+  "artifact_sha256": "b3cc483cce584b037dd242a5562ff6427f46baf5dd72fb9e261d2bf9b9c4dcf0",
+  "last_valid_confirmation": {
+    "stage": "preparation",
+    "presentation_id": "demo-08-present-preparation",
+    "presentation_version": "5a58bbc72082dfbc1fa9a9375b5f6502be7645ae25e8f1e868eb0a641a433ba3",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）准备可以，写初稿。",
+      "event_id": "demo-09-confirm-preparation",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "version": "sha256:b69a4cec8d4286142c91743792652e28aff792c8a415d9d4d449d9bc6dfd9ee9",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B -c 'import sys,runpy; d=sys.argv[1]; sys.path.insert(0,d); sys.argv=[d+"/chapter_gate.py"]+sys.argv[2:]; runpy.run_path(sys.argv[0],run_name="__main__")' "$NW_SCRIPTS" status learning-record.md --chapter-id ch01
+{
+  "status": "awaiting_confirmation",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "draft",
+  "presentation_id": "demo-10-present-draft",
+  "presentation_version": "9f14a75e994338415061b2952c01556ff3c5b23e690f2d5928dad1d0c520ce7c",
+  "artifact_sha256": "b3cc483cce584b037dd242a5562ff6427f46baf5dd72fb9e261d2bf9b9c4dcf0",
+  "last_valid_confirmation": {
+    "stage": "preparation",
+    "presentation_id": "demo-08-present-preparation",
+    "presentation_version": "5a58bbc72082dfbc1fa9a9375b5f6502be7645ae25e8f1e868eb0a641a433ba3",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）准备可以，写初稿。",
+      "event_id": "demo-09-confirm-preparation",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "store_version": "sha256:b69a4cec8d4286142c91743792652e28aff792c8a415d9d4d449d9bc6dfd9ee9"
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/12-confirm-draft.json --project-id demo-ferry-booth --if-version 'sha256:b69a4cec8d4286142c91743792652e28aff792c8a415d9d4d449d9bc6dfd9ee9'
+{
+  "status": "saved",
+  "chapter_status": "await_teacher_return",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "review",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "draft",
+    "presentation_id": "demo-10-present-draft",
+    "presentation_version": "9f14a75e994338415061b2952c01556ff3c5b23e690f2d5928dad1d0c520ce7c",
+    "artifact_sha256": "b3cc483cce584b037dd242a5562ff6427f46baf5dd72fb9e261d2bf9b9c4dcf0",
+    "confirmation": {
+      "event_id": "demo-12-confirm-draft",
+      "author_quote": "（合成演示）初稿我拿去给教师看。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "teacher_return",
+  "version": "sha256:2c92ecff78dd6fc35050abc0f99405483cab9b75166b1cc87053636f9b47f8e7",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/13-teacher-return-wrong-hash-rejected.json --project-id demo-ferry-booth --if-version 'sha256:2c92ecff78dd6fc35050abc0f99405483cab9b75166b1cc87053636f9b47f8e7'
+{"status": "error", "code": "invalid_transition", "message": "Teacher return must bind this chapter's current confirmed draft instance, version and hash"}
+[退出码 2]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/14-teacher-return.json --project-id demo-ferry-booth --if-version 'sha256:2c92ecff78dd6fc35050abc0f99405483cab9b75166b1cc87053636f9b47f8e7'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "review",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "draft",
+    "presentation_id": "demo-10-present-draft",
+    "presentation_version": "9f14a75e994338415061b2952c01556ff3c5b23e690f2d5928dad1d0c520ce7c",
+    "artifact_sha256": "b3cc483cce584b037dd242a5562ff6427f46baf5dd72fb9e261d2bf9b9c4dcf0",
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）初稿我拿去给教师看。",
+      "event_id": "demo-12-confirm-draft",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "present",
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "demo-14-teacher-return",
+      "returned_sha256": "64120d6b0317604b01ed58a951e257630d30f43d04c9beb97708f41740a9b2c3",
+      "draft_presentation_id": "demo-10-present-draft",
+      "draft_presentation_version": "9f14a75e994338415061b2952c01556ff3c5b23e690f2d5928dad1d0c520ce7c",
+      "draft_sha256": "b3cc483cce584b037dd242a5562ff6427f46baf5dd72fb9e261d2bf9b9c4dcf0"
+    }
+  ],
+  "teacher_return_id": "demo-14-teacher-return",
+  "returned_sha256": "64120d6b0317604b01ed58a951e257630d30f43d04c9beb97708f41740a9b2c3",
+  "version": "sha256:7e2b449044fff10330259924c7c8be1470345b894016357548a6b29231b900f9",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B -c 'import sys,runpy; d=sys.argv[1]; sys.path.insert(0,d); sys.argv=[d+"/chapter_gate.py"]+sys.argv[2:]; runpy.run_path(sys.argv[0],run_name="__main__")' "$NW_SCRIPTS" status learning-record.md --chapter-id ch01
+{
+  "status": "awaiting_presentation",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "review",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "draft",
+    "presentation_id": "demo-10-present-draft",
+    "presentation_version": "9f14a75e994338415061b2952c01556ff3c5b23e690f2d5928dad1d0c520ce7c",
+    "artifact_sha256": "b3cc483cce584b037dd242a5562ff6427f46baf5dd72fb9e261d2bf9b9c4dcf0",
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）初稿我拿去给教师看。",
+      "event_id": "demo-12-confirm-draft",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "present",
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "demo-14-teacher-return",
+      "returned_sha256": "64120d6b0317604b01ed58a951e257630d30f43d04c9beb97708f41740a9b2c3",
+      "draft_presentation_id": "demo-10-present-draft",
+      "draft_presentation_version": "9f14a75e994338415061b2952c01556ff3c5b23e690f2d5928dad1d0c520ce7c",
+      "draft_sha256": "b3cc483cce584b037dd242a5562ff6427f46baf5dd72fb9e261d2bf9b9c4dcf0"
+    }
+  ],
+  "store_version": "sha256:7e2b449044fff10330259924c7c8be1470345b894016357548a6b29231b900f9"
+}
+[退出码 0]

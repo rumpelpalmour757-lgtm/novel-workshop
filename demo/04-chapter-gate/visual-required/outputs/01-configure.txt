@@ -1,0 +1,16 @@
+{
+  "project_id": "demo-visual-required",
+  "chapter_workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "event_id": "demo-01-configure",
+    "author_quote": "（合成演示）每章写前都要有视觉材料；初稿我自己交给教师。",
+    "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+    "actor_role": "author",
+    "mode": "human"
+  },
+  "next_action": "present",
+  "status": "saved",
+  "version": "sha256:23d1f5902f8e036383f18c6be51dc7fca6b571fd1910dc1bf2d171c94e7eb8f4",
+  "warnings": []
+}

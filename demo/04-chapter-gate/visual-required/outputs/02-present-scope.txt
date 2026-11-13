@@ -1,0 +1,14 @@
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-visual-required",
+  "current_stage": "scope",
+  "presentation_id": "demo-02-present-scope",
+  "presentation_version": "231c74d4f46fc392b1fc2f040a2fcbda58276c31eb2c58f00872c311e33afd3d",
+  "artifact_sha256": null,
+  "last_valid_confirmation": null,
+  "next_action": "confirm",
+  "version": "sha256:8e088a2f3edb9d13b56990a080a330e85e86cf47ede4c45402b50cec4a4ca3f9",
+  "warnings": []
+}

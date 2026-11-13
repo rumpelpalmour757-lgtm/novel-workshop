@@ -1,0 +1,25 @@
+{
+  "status": "awaiting_presentation",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-visual-required",
+  "current_stage": "preparation",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "demo-04-present-outline",
+    "presentation_version": "9149fe31ac1baccadcc62d9c748e1b51add1fefc4412be4af98214728dfa2490",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）章纲可以，照这个准备。",
+      "event_id": "demo-05-confirm-outline",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "present",
+  "store_version": "sha256:a103ef955a6f1c15f830ac41b73b127892791d372dc653724fe5e18daf51200f"
+}

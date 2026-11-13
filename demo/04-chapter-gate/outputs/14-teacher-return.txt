@@ -1,0 +1,37 @@
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "review",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "draft",
+    "presentation_id": "demo-10-present-draft",
+    "presentation_version": "9f14a75e994338415061b2952c01556ff3c5b23e690f2d5928dad1d0c520ce7c",
+    "artifact_sha256": "b3cc483cce584b037dd242a5562ff6427f46baf5dd72fb9e261d2bf9b9c4dcf0",
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）初稿我拿去给教师看。",
+      "event_id": "demo-12-confirm-draft",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "present",
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "demo-14-teacher-return",
+      "returned_sha256": "64120d6b0317604b01ed58a951e257630d30f43d04c9beb97708f41740a9b2c3",
+      "draft_presentation_id": "demo-10-present-draft",
+      "draft_presentation_version": "9f14a75e994338415061b2952c01556ff3c5b23e690f2d5928dad1d0c520ce7c",
+      "draft_sha256": "b3cc483cce584b037dd242a5562ff6427f46baf5dd72fb9e261d2bf9b9c4dcf0"
+    }
+  ],
+  "teacher_return_id": "demo-14-teacher-return",
+  "returned_sha256": "64120d6b0317604b01ed58a951e257630d30f43d04c9beb97708f41740a9b2c3",
+  "version": "sha256:7e2b449044fff10330259924c7c8be1470345b894016357548a6b29231b900f9",
+  "warnings": []
+}

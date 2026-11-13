@@ -1,0 +1,11 @@
+{
+  "status": "disabled",
+  "enabled": false,
+  "loop_enabled": false,
+  "project_id": "demo-visual-required",
+  "version": "sha256:2ecb1c4d3beaef3586a78be797893cbc1c2c523eec780a8e62c55861f432bac0",
+  "case_count": 0,
+  "run_count": 0,
+  "active_runs": [],
+  "next_action": "resume_original_workflow"
+}

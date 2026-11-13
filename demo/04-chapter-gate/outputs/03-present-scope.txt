@@ -1,0 +1,14 @@
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "scope",
+  "presentation_id": "demo-03-present-scope",
+  "presentation_version": "b02f2160d20e5f81ffc408e7d4f5b9138f2740aa48fc3659e65083098dfa32e6",
+  "artifact_sha256": null,
+  "last_valid_confirmation": null,
+  "next_action": "confirm",
+  "version": "sha256:a15289f570675f121bcea6f8039894b42b5b8a706039a61fb6dc058236b27281",
+  "warnings": []
+}

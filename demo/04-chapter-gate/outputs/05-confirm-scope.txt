@@ -1,0 +1,26 @@
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "outline",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "scope",
+    "presentation_id": "demo-03-present-scope",
+    "presentation_version": "b02f2160d20e5f81ffc408e7d4f5b9138f2740aa48fc3659e65083098dfa32e6",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "demo-05-confirm-scope",
+      "author_quote": "（合成演示）范围可以。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "version": "sha256:0fabad19fc032a293c499401e6e8dadbc7ea3c766ced3274ecc49c0499cb68da",
+  "warnings": []
+}

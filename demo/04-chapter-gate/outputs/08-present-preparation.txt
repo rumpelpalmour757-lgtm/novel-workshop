@@ -1,0 +1,26 @@
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "preparation",
+  "presentation_id": "demo-08-present-preparation",
+  "presentation_version": "5a58bbc72082dfbc1fa9a9375b5f6502be7645ae25e8f1e868eb0a641a433ba3",
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "demo-06-present-outline",
+    "presentation_version": "a57d14d8262d4c402507a508a0b5173bb52c57b9c26e139f280a400bf8c95dff",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）章纲可以，照这个准备。",
+      "event_id": "demo-07-confirm-outline",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "version": "sha256:f77dc8c3f61e8077abef47241498a3884402d65bc4378f5cb6e0d677f998f8e1",
+  "warnings": []
+}

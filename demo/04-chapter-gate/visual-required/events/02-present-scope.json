@@ -1,0 +1,9 @@
+{
+  "event_id": "demo-02-present-scope",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "scope",
+  "content": "【合成演示】本章范围：一场，渡口售票窗，末班船开前十分钟。人物：老郝（售票员）、丁穗（新来第三天的售票员）、冯姐（常坐船的乘客）。篇幅：三百字以内。不改的事实：价目表上活禽按行李算，一只一块。前章：无（演示项目只有这一章）。材料缺口：没有口吻表，没有作者样本，没有设定档。",
+  "source_ref": "demo/04-chapter-gate（合成的本章范围）"
+}
