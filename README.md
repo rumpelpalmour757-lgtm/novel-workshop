@@ -34,7 +34,7 @@
   <a href="novel-workshop-commercial-r5.54-merged.zip"><img alt="下载完整包" src="https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%95%B4%E5%8C%85-1F2A44?style=for-the-badge"></a>
 </p>
 
-![小说写作工坊题图（概念插画）：灯下的书桌上摊开一本书，远处是黄昏里的河边小城](docs/images/novel-workshop-hero-v2.png)
+![小说写作工坊题图（AI 生成的概念插画）：灯下的书桌上摊开一本书，远处是黄昏里的河边小城](docs/images/novel-workshop-hero-v2.png)
 
 ## 这是什么
 

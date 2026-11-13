@@ -5,7 +5,7 @@
 ## 许可范围
 
 - 从 2026-11-13 起，根目录的 `LICENSE` 适用于本仓库里版权人自己的全部内容，包括各个版本的压缩包、便携单文件和单独放的风格卡文件。
-- 各压缩包里的 `LICENSE-NOTICES.md`、`SOURCE-NOTES.md`，单文件末尾的来源记录，以及旧风格卡文件里的 `SOURCE-NOTICE.md`，都写在这个日期以前。里面“整体尚未指定许可”“不将整包统一声明为 MIT”“使用条件还没有确认”这类话说的是当时的情况，现在以根目录 `LICENSE` 和本文件为准。这些文件留在包里没有改，下一个版本的包会更新。
+- 各压缩包里的 `LICENSE-NOTICES.md`、`SOURCE-NOTES.md`，单文件末尾的来源记录，以及旧风格卡文件里的 `SOURCE-NOTICE.md`，都是在定许可以前打包的（合并候选版的版本号里写着 2026-11-14，它同样打包在定许可以前）。里面“整体尚未指定许可”“不将整包统一声明为 MIT”“使用条件还没有确认”这类话说的是当时的情况，现在以根目录 `LICENSE` 和本文件为准。这些文件留在包里没有改，下一个版本的包会更新。
 - 版权人在 2026-11-13 确认：83 张风格卡、两套风格包、分场模块和节拍卡里照录的规范文字、`prose_lint.py` 里照录的词表，以及依据课程和教程材料改写的方法，由版权人本人所写或有权公开，按 MIT 一并发布。
 - 下面列出的第三方组件不算进版权人的版权声明，各按自己的许可，版权归各自的权利人。
 
@@ -19,7 +19,7 @@
 | [darwin-skill](https://github.com/alchaincyf/darwin-skill) | Copyright (c) 2026 alchaincyf (花叔) | `skills/darwin-novel-workshop/`：用了它候选迭代和配对比较的思路，目录里的文件是面向小说工坊重写的 | `skills/darwin-novel-workshop/LICENSE` |
 | TypeSafe AI | Copyright (c) 2026 TypeSafe AI | `optional/typesafe-ai/SKILL.md`：可选的开发技能，正文保持原样，默认不安装 | `optional/typesafe-ai/LICENSE` |
 
-`tokens.css` 文件头里的 ZenStory 是上游文件自带的说明，本项目不使用这个名字和它的标记。
+`tokens.css` 文件头里的 ZenStory 是上游文件自带的说明，本项目不使用这个名字。工作台页面左上角的方块标记沿用了上游文件的样式，换了底色。
 
 `skills/novel-workshop/scripts/oh-story/` 目录里其余的文件（启动器、`workbench.mjs`、`gemini-*.mjs`、`acp-*.mjs`）是本项目自己写的，按根目录的 `LICENSE`。
 
@@ -60,5 +60,6 @@ SOFTWARE.
 ## 名字和引用
 
 - 风格卡的卡名和说明里提到的作家、作品和品牌，只用来描述腔调。MIT 许可不涉及这些名字和作品本身的任何权利；卡里当作反例引用的口头禅、书名和流行语也一样。
+- `docs/images/` 下的三张 PNG 插画是 AI 生成的图，随仓库一并公开。
 - 本地工作台的界面布局参考过 InkOS（AGPL-3.0）的写作台思路；按包内记录，没有使用它的代码、标志或图片。
 - AI 平台、模型和外部服务不随本仓库提供，它们的账户、费用和使用条款由各自的提供方决定。
