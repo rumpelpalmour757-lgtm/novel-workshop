@@ -1,0 +1,13 @@
+{
+  "event_id": "demo-09-confirm-preparation",
+  "op": "chapter_gate",
+  "action": "confirm",
+  "chapter_id": "ch01",
+  "stage": "preparation",
+  "presentation_id": "demo-08-present-preparation",
+  "presentation_version": "5a58bbc72082dfbc1fa9a9375b5f6502be7645ae25e8f1e868eb0a641a433ba3",
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）准备可以，写初稿。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

@@ -1,0 +1,1 @@
+{"status": "error", "code": "invalid_event", "message": "visual_evidence must be an object"}

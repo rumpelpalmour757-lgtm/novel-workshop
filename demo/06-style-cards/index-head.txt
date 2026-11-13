@@ -1,0 +1,6 @@
+风格卡索引（83 张）。识别由写的人做：对照这一场要读者经历什么、这本书的题材和口吻，每一层挑一张或者不挑（最多 base 1 张、voice 1 张、device 1 张、scene 2 张），对不上就不加载。办法见 references/style-cards.md。
+
+## base · 世界观底色（21）
+- classical-wuxia-chivalry｜新派冷冽武侠与快意江湖风｜风雨客栈对饮；古道孤客夜行；江湖规矩与恩怨了结；刀剑写意交锋｜不和这几张同用：jinyong-orthodox-wuxia
+- cosmic-scifi-sublime｜硬核科幻与深空物理崇高风｜深空航行与天体异象；物理法则打击；高维或巨构建筑观察；极限工程自救
+- cyber-wasteland-industrial｜重工废土与赛博机械风｜旧件拆解与义体土法维修；重工业废墟探索；机械故障与过载；高低科技贫富反差

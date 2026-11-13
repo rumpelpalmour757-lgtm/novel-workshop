@@ -1,0 +1,13 @@
+{
+  "event_id": "demo-07-confirm-outline",
+  "op": "chapter_gate",
+  "action": "confirm",
+  "chapter_id": "ch01",
+  "stage": "outline",
+  "presentation_id": "demo-06-present-outline",
+  "presentation_version": "a57d14d8262d4c402507a508a0b5173bb52c57b9c26e139f280a400bf8c95dff",
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）章纲可以，照这个准备。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

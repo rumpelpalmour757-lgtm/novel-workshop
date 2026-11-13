@@ -1,0 +1,11 @@
+{
+  "event_id": "demo-01-configure",
+  "op": "chapter_gate",
+  "action": "configure",
+  "visual_required": true,
+  "teacher_handoff": "user_return",
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）每章写前都要有视觉材料；初稿我自己交给教师。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

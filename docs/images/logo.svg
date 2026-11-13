@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="小说写作工坊">
+  <rect x="4" y="4" width="88" height="88" rx="20" fill="#1F2A44"/>
+  <path d="M48 36c-7-5-16-6-25-4v34c9-2 18-1 25 4 7-5 16-6 25-4V32c-9-2-18-1-25 4z" fill="#F6EBD4"/>
+  <path d="M48 36v34" stroke="#1F2A44" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M29 42c4.500-.7 9-.2 13 1.500M29 49c4.500-.7 9-.2 13 1.500M29 56c4.500-.7 9-.2 13 1.500" stroke="#B8894A" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M71 20l7 7-18 22-9 3.500 2.500-9.500z" fill="#E0703A"/>
+  <path d="M53.500 43l7 7" stroke="#1F2A44" stroke-width="1.600"/>
+</svg>

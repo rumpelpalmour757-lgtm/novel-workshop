@@ -1,0 +1,26 @@
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "preparation",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "demo-06-present-outline",
+    "presentation_version": "a57d14d8262d4c402507a508a0b5173bb52c57b9c26e139f280a400bf8c95dff",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "demo-07-confirm-outline",
+      "author_quote": "（合成演示）章纲可以，照这个准备。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "version": "sha256:a8b9bfedadbc3f09a344a0ffe46ee14c798fa30fe0ad9c155b3ddb7435658d74",
+  "warnings": []
+}

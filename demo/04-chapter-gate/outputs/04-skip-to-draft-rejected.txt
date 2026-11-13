@@ -1,0 +1,1 @@
+{"status": "error", "code": "invalid_transition", "message": "Only the current stage may be presented or confirmed"}

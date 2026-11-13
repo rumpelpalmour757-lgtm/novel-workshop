@@ -1,0 +1,13 @@
+{
+  "status": "not_started",
+  "chapter_status": "not_started",
+  "chapter_id": "ch01",
+  "project_id": "demo-ferry-booth",
+  "current_stage": "scope",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": null,
+  "next_action": "present",
+  "store_version": "sha256:929531d498094afd7fc4a2ef943086551934152073a317b58feb416a5e05c6dd"
+}

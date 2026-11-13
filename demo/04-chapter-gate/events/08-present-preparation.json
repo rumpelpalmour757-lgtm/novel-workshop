@@ -1,0 +1,9 @@
+{
+  "event_id": "demo-08-present-preparation",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "preparation",
+  "content": "【合成演示】节拍卡：上面四拍。声音：老郝惜字，丁穗照章说话，冯姐嘴快。风格卡：不加载。本轮必查：谁在说（台词分栏）、标点。不适用：口吻表（没有）。",
+  "source_ref": "demo/04-chapter-gate（合成的写前准备）"
+}

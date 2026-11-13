@@ -1,0 +1,168 @@
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" status learning-record.md
+{
+  "status": "disabled",
+  "enabled": false,
+  "loop_enabled": false,
+  "project_id": "demo-visual-required",
+  "version": "sha256:2ecb1c4d3beaef3586a78be797893cbc1c2c523eec780a8e62c55861f432bac0",
+  "case_count": 0,
+  "run_count": 0,
+  "active_runs": [],
+  "next_action": "resume_original_workflow"
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/01-configure.json --project-id demo-visual-required --if-version 'sha256:2ecb1c4d3beaef3586a78be797893cbc1c2c523eec780a8e62c55861f432bac0'
+{
+  "project_id": "demo-visual-required",
+  "chapter_workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "event_id": "demo-01-configure",
+    "author_quote": "（合成演示）每章写前都要有视觉材料；初稿我自己交给教师。",
+    "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+    "actor_role": "author",
+    "mode": "human"
+  },
+  "next_action": "present",
+  "status": "saved",
+  "version": "sha256:23d1f5902f8e036383f18c6be51dc7fca6b571fd1910dc1bf2d171c94e7eb8f4",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/02-present-scope.json --project-id demo-visual-required --if-version 'sha256:23d1f5902f8e036383f18c6be51dc7fca6b571fd1910dc1bf2d171c94e7eb8f4'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-visual-required",
+  "current_stage": "scope",
+  "presentation_id": "demo-02-present-scope",
+  "presentation_version": "231c74d4f46fc392b1fc2f040a2fcbda58276c31eb2c58f00872c311e33afd3d",
+  "artifact_sha256": null,
+  "last_valid_confirmation": null,
+  "next_action": "confirm",
+  "version": "sha256:8e088a2f3edb9d13b56990a080a330e85e86cf47ede4c45402b50cec4a4ca3f9",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/03-confirm-scope.json --project-id demo-visual-required --if-version 'sha256:8e088a2f3edb9d13b56990a080a330e85e86cf47ede4c45402b50cec4a4ca3f9'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-visual-required",
+  "current_stage": "outline",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "scope",
+    "presentation_id": "demo-02-present-scope",
+    "presentation_version": "231c74d4f46fc392b1fc2f040a2fcbda58276c31eb2c58f00872c311e33afd3d",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "demo-03-confirm-scope",
+      "author_quote": "（合成演示）范围可以。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "version": "sha256:45bd4963a678b0d90dead1a6717e0be9e2abc06863bad4777a7347a7d49657c3",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/04-present-outline.json --project-id demo-visual-required --if-version 'sha256:45bd4963a678b0d90dead1a6717e0be9e2abc06863bad4777a7347a7d49657c3'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-visual-required",
+  "current_stage": "outline",
+  "presentation_id": "demo-04-present-outline",
+  "presentation_version": "9149fe31ac1baccadcc62d9c748e1b51add1fefc4412be4af98214728dfa2490",
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "scope",
+    "presentation_id": "demo-02-present-scope",
+    "presentation_version": "231c74d4f46fc392b1fc2f040a2fcbda58276c31eb2c58f00872c311e33afd3d",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）范围可以。",
+      "event_id": "demo-03-confirm-scope",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "version": "sha256:30c2fbd349f283259946f62c508c2213cecb7dd46fda09afba691ceeace1162b",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/05-confirm-outline.json --project-id demo-visual-required --if-version 'sha256:30c2fbd349f283259946f62c508c2213cecb7dd46fda09afba691ceeace1162b'
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-visual-required",
+  "current_stage": "preparation",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "demo-04-present-outline",
+    "presentation_version": "9149fe31ac1baccadcc62d9c748e1b51add1fefc4412be4af98214728dfa2490",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "demo-05-confirm-outline",
+      "author_quote": "（合成演示）章纲可以，照这个准备。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "version": "sha256:a103ef955a6f1c15f830ac41b73b127892791d372dc653724fe5e18daf51200f",
+  "warnings": []
+}
+[退出码 0]
+
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/06-present-preparation-without-visual-rejected.json --project-id demo-visual-required --if-version 'sha256:a103ef955a6f1c15f830ac41b73b127892791d372dc653724fe5e18daf51200f'
+{"status": "error", "code": "invalid_event", "message": "visual_evidence must be an object"}
+[退出码 2]
+
+$ python3 -I -B -c 'import sys,runpy; d=sys.argv[1]; sys.path.insert(0,d); sys.argv=[d+"/chapter_gate.py"]+sys.argv[2:]; runpy.run_path(sys.argv[0],run_name="__main__")' "$NW_SCRIPTS" status learning-record.md --chapter-id ch01
+{
+  "status": "awaiting_presentation",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-visual-required",
+  "current_stage": "preparation",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "demo-04-present-outline",
+    "presentation_version": "9149fe31ac1baccadcc62d9c748e1b51add1fefc4412be4af98214728dfa2490",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）章纲可以，照这个准备。",
+      "event_id": "demo-05-confirm-outline",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "present",
+  "store_version": "sha256:a103ef955a6f1c15f830ac41b73b127892791d372dc653724fe5e18daf51200f"
+}
+[退出码 0]

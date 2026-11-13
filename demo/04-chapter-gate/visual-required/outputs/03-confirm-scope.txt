@@ -1,0 +1,26 @@
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-visual-required",
+  "current_stage": "outline",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "scope",
+    "presentation_id": "demo-02-present-scope",
+    "presentation_version": "231c74d4f46fc392b1fc2f040a2fcbda58276c31eb2c58f00872c311e33afd3d",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "demo-03-confirm-scope",
+      "author_quote": "（合成演示）范围可以。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "version": "sha256:45bd4963a678b0d90dead1a6717e0be9e2abc06863bad4777a7347a7d49657c3",
+  "warnings": []
+}

@@ -1,0 +1,16 @@
+{
+  "project_id": "demo-ferry-booth",
+  "chapter_workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "event_id": "demo-01-configure",
+    "author_quote": "（合成演示）新章一关一关给我看，我点头了再往下；初稿我自己交给教师，结果由我带回来。",
+    "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+    "actor_role": "author",
+    "mode": "human"
+  },
+  "next_action": "present",
+  "status": "saved",
+  "version": "sha256:929531d498094afd7fc4a2ef943086551934152073a317b58feb416a5e05c6dd",
+  "warnings": []
+}

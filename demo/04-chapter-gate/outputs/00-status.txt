@@ -1,0 +1,11 @@
+{
+  "status": "disabled",
+  "enabled": false,
+  "loop_enabled": false,
+  "project_id": "demo-ferry-booth",
+  "version": "sha256:9d60085fc857a836d4a3282b79fcfc319381718e7f6a705b7a43741a3704507a",
+  "case_count": 0,
+  "run_count": 0,
+  "active_runs": [],
+  "next_action": "resume_original_workflow"
+}

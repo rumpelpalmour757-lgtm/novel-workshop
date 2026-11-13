@@ -1,0 +1,7 @@
+文字检查：draft.md（sha256 b3cc483cce58…，非空白字符 299，分段：空行）
+结果：没有命中（只说明这几条字面规则没命中，不说明文字没问题）
+默认检查（9 项）：placeholder、repeated-paragraph、floating-dialogue、tension-telling、weak-scene-ending、frequent-words、negation-ending、parallel-run、list-of-three
+另开的可选提示（6 项）：stock-reaction、inner-declaration、contrast-moral、abstract-surge、stock-simile、soft-adverbs
+没开的可选提示（7 项）：short-beats、emotion-statement、reaction-wide、simile-extra、theme-phrase、xian-crutch、xian-density。这几项没有查，没命中不说明没有；要查就加 --hint 和名字，或 deai、deai-extra、all
+
+仅为字面复核线索，不判断文笔、完整性、原创性或AI来源；不修改文件。命中不等于写错，要回到上下文判断；没有命中也不说明写得好或没有 AI 腔，只说明这些字面规则没碰上。
