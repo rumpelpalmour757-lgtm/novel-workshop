@@ -1,6 +1,6 @@
 # 本地工作台与检查工具
 
-[← 返回首页](../README.md) · 适用版本 `2026-11-14-r5.56`
+[← 返回首页](../README.md) · 适用版本 `2026-11-15-r5.57`
 
 这些都是可选的。只在聊天里写作用不到它们；除维护用的 `darwin_eval.py`（在 `skills/darwin-novel-workshop/scripts/`）外，都在完整包的 `skills/novel-workshop/` 里；便携单文件里没有可运行的脚本。完整命令见包内 `USAGE.md` 第五节和 `skills/novel-workshop/references/local-workbench.md`。
 
@@ -91,10 +91,10 @@ node scripts/oh-story/dashboard-server.mjs --root "D:/小说/我的作品" --ope
 | `punctuation_lint.py` | 标点与断句，给出行列、规则编号和等级，只读；可带作品的标点规则文件；`--baseline` 对照原稿，只列修改后新出现的问题 |
 | `prose_lint.py` | 语感扫描和分场检测（重复词、段尾否定、等长短句连排、三连排比等）；`--hint deai` 加去 AI 味的复核提示（r5.48），`--hint deai-extra` 再加四项（r5.49）；r5.54-merged 多一个 `--hint xian`：叙述里“先”字的复核，只定位和计数，默认不开，不随 `deai` 开 |
 | `dialogue_lines.py` | 台词按说话人分栏，标出书面词、叙述专用的词；`--exchanges` 按来回再列一遍（r5.53）；加 `--long-lines` 才列一口气很长的句子（r5.54）；r5.54-merged 修了跨段认说话人的一处：上一段以“没有说：”“本想说：”这类没说出口的话收尾，下一段的引语不再算成这个人说的 |
-| `detail_check.py` | `compare`：原稿里有、修订稿里没了的说法和动态补语；`changes`：逐句列出删了、加了、改了哪几句，`--keep` 核对指定要留的句子（r5.49）；`anchors`：维护时用的写作对照例 |
+| `detail_check.py` | `compare`：原稿里有、修订稿里没了的说法和动态补语；`changes`：逐句列出删了、加了、改了哪几句，`--keep` 核对指定要留的句子（r5.49）；`anchors`：维护时用的写作对照例；只换格式、不动字句时怎样用 `changes` 加 `--keep` 对照、它核不到什么，见表下那一段（r5.57） |
 | `fact_guard.py` | 跨章事实主张比对、列出要回查的章节；按故事时间核人物知情（r5.51）；只核对已登记的主张 |
 | `rule_register.py` | 几份规则文件互相打架时，核对冲突登记表、列出待定项、查新叫法在各章的已有用法 |
-| `workflow_guard.py` | 交付门：冻结输入、审稿绑定具体版本、输出四项状态、记录你的采纳（也能照实记录跳过审稿）；核对交出去的文件是不是检查过的那一版 |
+| `workflow_guard.py` | 交付门：冻结输入、审稿绑定具体版本、输出四项状态、记录你的采纳（也能照实记录跳过审稿）；核对交出去的文件是不是检查过的那一版（`status --deliverable`），跳过审稿采纳的那一版这样核对不上，“说定本”是 BLOCK；还没有收回采纳的命令：你收回采纳以后，同一版仍显示 `AUTHOR=ACCEPTED`，不能照它说已定稿（r5.57 照实写明，脚本没有改，见[详细用法](usage.md#交付状态)） |
 | `delivery_manifest.py` | 多章交付：核对约定章数、实际文件、漏章、空稿和旧审稿 |
 | `state_precheck.py` | 项目状态保存以前，列出候选要删、要改、要加的字段，只读（r5.49） |
 | `project_state.py` | 多人、多代理共用的项目状态文件，条件保存 |
@@ -112,6 +112,8 @@ node scripts/oh-story/dashboard-server.mjs --root "D:/小说/我的作品" --ope
 | `oh-story/render_relation_chart.py` | 从已有的人物关系表生成 Mermaid 关系图，可选 PNG；不自行推断人物关系 |
 | `oh-story/inspect_existing_assets.py` | 只读检查已有拆文资料的覆盖情况 |
 | `darwin_eval.py`（维护技能里） | 维护用：保存与汇总方法对照记录，不调用模型、不生成正文、不评分 |
+
+**只换格式、不动字句时怎样对照（保真转换，r5.57）。** 用 `detail_check.py changes 原稿 转换稿` 逐句对照，再加 `--keep`（把原稿每个非空行照原样写成一行锁句）核一遍，每一行都要是“原样在”。包里用合成短文实际跑过，核不到的照 `references/editing.md`“先定范围”里的“保真转换”写：`changes` 对硬换行接起来的几句多半只报“几句并成了一句”、不逐字比，汉字之间多出来的空格不报，两段并成一段只在段数上看得出，两章换了先后只列一章；`--keep` 对接头处多出来的字、汉字之间的空格、两段并成一段、章节换了先后，照样报“原样在”，很短的一行在别处出现过也算原样在。再跑 `punctuation_lint.py 转换稿 --baseline 原稿`，它列出转换带进来的半角标点和多出来的空格，删掉一个标点、换成另一个全角标点它不报；`workflow_guard.py status --deliverable` 只认同一版、只差末尾换行、只差换行符或 BOM。这几样都只读 UTF-8 文本，Word、PDF 先取出文字再比。没有一样能单独证明逐字相同：`changes` 里除了标题行和硬换行接起来的那几处，没有删、加、改的句子；`--keep` 每一行都是“原样在”；“对不上”里列的和硬换行接起来的那几处逐字读过；段数和章节顺序核过；`punctuation_lint.py --baseline` 没有新出现的空格和半角标点。这几样都做到了，才写“去掉格式以后正文逐字相同”。交付门里没有专门核这一项的检查，MECHANICAL 是 GREEN 不说明保真核过。怎样交付见[详细用法](usage.md#只换格式不动字句保真转换)。
 
 Node 一侧另有两个接通检查：`gemini-check.mjs` 和 `acp-check.mjs`，见上文。
 
@@ -133,7 +135,7 @@ python3 scripts/dialogue_lint/run_lint.py scan 正文/第05章.txt --config 本�
 
 后四条属于默认不开的四个模块；事件文件怎么写、实际跑出来是什么样，见[四个可选模块](modules.md)。
 
-整包测试在交付包目录运行 `python tests/run_tests.py`。r5.56 一共 1,657 项，照包内 `VERIFICATION.md` 本版一节：在 Linux、Python 3.13 上跳过 5 项，其余 1,652 项全部通过；在 Linux、Python 3.9.25 上跳过 74 项（多跳的是没装 Pillow、PyYAML 的几项和 Crawl4AI 要 3.10 以上的几项），其余 1,583 项全部通过。其中章节门的测试 45 项，学习循环 69 项，示范记忆 16 项，对白声纹的测试目录 120 项，这几组和 r5.55 相同；r5.56 新加三个测试文件：安装器和导出器 40 项（`tests/test_r556_author_records.py`），页面说法 21 项（`tests/test_r556_rules.py`），版本号和本版说明 7 项（`tests/test_r556_package.py`）。这一页没有重跑全套。测试检查脚本行为，比如标点定位、事实比对、审稿版本绑定、回传绑错版拒收、升级带上记录、对不上时停下，不评价文学质量。
+整包测试在交付包目录运行 `python tests/run_tests.py`。r5.57 一共 1,694 项，照包内 `VERIFICATION.md` 本版一节：在 Linux、Python 3.13 上跳过 5 项，其余 1,689 项全部通过；在 Linux、Python 3.9.25 上跳过 74 项（多跳的是没装 Pillow、PyYAML 的几项和 Crawl4AI 要 3.10 以上的几项），其余 1,620 项全部通过。其中章节门的测试 45 项，学习循环 69 项，示范记忆 16 项，对白声纹的测试目录 120 项，这几组和 r5.55、r5.56 相同；r5.56 新加三个测试文件：安装器和导出器 40 项（`tests/test_r556_author_records.py`），页面说法 21 项（`tests/test_r556_rules.py`），版本号和本版说明 7 项（`tests/test_r556_package.py`）；r5.57 没有改脚本，新加两个测试文件：页面说法和脚本行为 27 项（`tests/test_r557_rules.py`，拿合成材料重跑页里写的那部分脚本行为），版本号和本版说明 10 项（`tests/test_r557_package.py`）。这一页没有重跑全套。测试检查脚本行为，比如标点定位、事实比对、审稿版本绑定、回传绑错版拒收、升级带上记录、对不上时停下，不评价文学质量。
 
 ## 可选视觉链路
 

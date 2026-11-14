@@ -22,7 +22,7 @@
 
 <p align="center">
   <a href="https://github.com/rumpelpalmour757-lgtm/novel-workshop/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/rumpelpalmour757-lgtm/novel-workshop?style=flat-square&color=E0703A&logo=github&logoColor=white&label=Stars"></a>
-  <a href="docs/versions.md"><img alt="版本 r5.56" src="https://img.shields.io/badge/%E7%89%88%E6%9C%AC-r5.56-1F2A44?style=flat-square"></a>
+  <a href="docs/versions.md"><img alt="版本 r5.57" src="https://img.shields.io/badge/%E7%89%88%E6%9C%AC-r5.57-1F2A44?style=flat-square"></a>
   <img alt="方法参考 48 篇" src="https://img.shields.io/badge/%E6%96%B9%E6%B3%95%E5%8F%82%E8%80%83-48%20%E7%AF%87-1F2A44?style=flat-square">
   <a href="docs/style-cards.md"><img alt="风格卡 83 张" src="https://img.shields.io/badge/%E9%A3%8E%E6%A0%BC%E5%8D%A1-83%20%E5%BC%A0-1F2A44?style=flat-square"></a>
   <img alt="脚本需要 Python 3.9+" src="https://img.shields.io/badge/Python-3.9%2B-1F2A44?style=flat-square">
@@ -31,7 +31,7 @@
 
 <p align="center">
   <a href="portable-novel-workshop.md"><img alt="便携单文件" src="https://img.shields.io/badge/%E4%BE%BF%E6%90%BA%E5%8D%95%E6%96%87%E4%BB%B6-E0703A?style=for-the-badge"></a>
-  <a href="novel-workshop-commercial-r5.56.zip"><img alt="下载完整包" src="https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%95%B4%E5%8C%85-1F2A44?style=for-the-badge"></a>
+  <a href="novel-workshop-commercial-r5.57.zip"><img alt="下载完整包" src="https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%95%B4%E5%8C%85-1F2A44?style=for-the-badge"></a>
 </p>
 
 ![小说写作工坊题图（AI 生成的概念插画）：灯下的书桌上摊开一本书，远处是黄昏里的河边小城](docs/images/novel-workshop-hero-v2.png)
@@ -67,7 +67,7 @@ python install.py --dry-run --dest "~/.claude/skills"
 python install.py --dest "~/.claude/skills"
 ```
 
-两块二选一，每块第一条只预览、不写文件。先下载[完整包](novel-workshop-commercial-r5.56.zip)（约 3.5 MB）并解压，在解压出来的目录里运行；要 Python 3.9 或更新，找不到 `python` 就换成 `python3`。点下载链接会打开 GitHub 的文件页，再点页面右上角的下载按钮保存。
+两块二选一，每块第一条只预览、不写文件。先下载[完整包](novel-workshop-commercial-r5.57.zip)（约 3.6 MB）并解压，在解压出来的目录里运行；要 Python 3.9 或更新，找不到 `python` 就换成 `python3`。点下载链接会打开 GitHub 的文件页，再点页面右上角的下载按钮保存。
 
 **升级用 `python install.py --upgrade`。** 装的时候带了 `--dest` 的，升级也带同一个 `--dest`；先加 `--dry-run` 看输出，技能后面写 `upgrade` 或 `unchanged` 才对，写 `install` 说明目录指错了。装在 Claude Code 里的，就是 `python install.py --dest "~/.claude/skills" --upgrade`。r5.56 起，升级会把装着的 `assets/project-packs/`（作者改法累计 `_author/` 和你放进去的作品资料）带进新版；新包在那里也带了对不上的同名文件时，安装器先停下，要你用 `--keep installed` 或 `--keep package` 选一边。
 
@@ -83,11 +83,11 @@ python install.py --dest "~/.claude/skills"
 
 > 各环境怎么导入、不想跑脚本时怎么手动导入、怎样确认它真的读了，见 **[详细用法](docs/usage.md)**。
 >
-> 校验值、历史版本和回到旧版的办法见[版本、下载与来源](docs/versions.md)；从 r5.55、r5.54-merged 升上来，交付记录照旧；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查，见[版本](#版本)。
+> 校验值、历史版本和回到旧版的办法见[版本、下载与来源](docs/versions.md)；从 r5.56、r5.55、r5.54-merged 升上来，交付记录照旧；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查，见[版本](#版本)。
 
 ## 看看实际效果
 
-下面的脚本输出是拿新写的合成稿跑包里的脚本得到的，原样摘录；它们说明脚本和流程会做什么，不说明在你的稿子上效果怎样，完整文件在 **[demo/](demo/README.md)**。章节门一节和教师改稿一节里的章节门输出，是用 r5.55 的脚本跑的；台词分栏、去 AI 味提示、修订前后对照三节，和教师改稿一节附的 `tool-outputs/`，是在 r5.54-merged 上跑的，工作台截图也是在 r5.54-merged 上拍的。r5.56 在脚本上只改了安装脚本 `install.py` 和导出脚本 `export_portable.py`（另改了几页说明和测试），这些用到的脚本和工作台都和跑的那一版逐字节相同，所以输出在 r5.56 下照样成立，没有重跑。要有这些输出，得用完整包，还要 AI 能运行 Python 或者你自己在电脑上跑；只用便携单文件聊天时没有，由 AI 照同样的读法人工做，程序检查一项写「没跑」。
+下面的脚本输出是拿新写的合成稿跑包里的脚本得到的，原样摘录；它们说明脚本和流程会做什么，不说明在你的稿子上效果怎样，完整文件在 **[demo/](demo/README.md)**。章节门一节和教师改稿一节里的章节门输出，是用 r5.55 的脚本跑的；台词分栏、去 AI 味提示、修订前后对照三节，和教师改稿一节附的 `tool-outputs/`，是在 r5.54-merged 上跑的，工作台截图也是在 r5.54-merged 上拍的。r5.56 在脚本上只改了安装脚本 `install.py` 和导出脚本 `export_portable.py`，r5.57 没有改任何脚本（只改了说明页和测试）；这些用到的脚本和工作台在 r5.57 里都和跑的那一版逐字节相同（拿几个包逐个文件核过），所以输出在 r5.57 下照样成立，没有重跑。要有这些输出，得用完整包，还要 AI 能运行 Python 或者你自己在电脑上跑；只用便携单文件聊天时没有，由 AI 照同样的读法人工做，程序检查一项写「没跑」。
 
 ### 台词分栏：一个人一栏，没写明的不猜
 
@@ -333,6 +333,7 @@ flowchart LR
 - 「分不清谁在说」→ `dialogue_lines.py` 的「谁在说」一栏（补一句「某某说」就够，不编动作）
 - 「这章读着平」→ 张力与代价（`stakes.md`，每章五问）
 - 「改了几遍还是一股 AI 味」→ 编辑与模板腔复核（`editing.md` · `prose-audit.md`）
+- 「只加个章标题、转成 Markdown，字别动」→ 保真转换：字句和标点都不动，看到的错字只列给你，交付写清核了什么（`editing.md`“先定范围”）
 - 「前后对不上」→ 连续性（`continuity.md`）
 - 「评估一下工坊」→ `darwin-novel-workshop`
 
@@ -376,7 +377,7 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 
 ### 单文件传不上，或者 AI 只读到一部分怎么办？
 
-单文件约 1.3 MB、56 万字符，平台多半只按需检索其中片段。做整章以上的任务，把只有一页的交付门卡另外贴进项目指令或第一条消息，常改稿的连同改稿卡一起贴，全文在[聊天用的两张卡](docs/chat-cards.md)。传不上就换一个能收这么大附件的平台，或者改用完整包。
+单文件约 1.3 MB、57 万字符，平台多半只按需检索其中片段。做整章以上的任务，把只有一页的交付门卡另外贴进项目指令或第一条消息，常改稿的连同改稿卡一起贴，全文在[聊天用的两张卡](docs/chat-cards.md)。传不上就换一个能收这么大附件的平台，或者改用完整包。
 
 ### 怎么确认 AI 真的读了工坊？
 
@@ -400,7 +401,7 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 
 ### 从旧版升级要做什么，能退回去吗？
 
-单文件：换上新的，新开对话重新上传。完整包：运行 `python install.py --upgrade`，装的时候带了 `--dest` 的，升级也带同一个 `--dest`；先加 `--dry-run` 看输出，技能后面写 `upgrade` 或 `unchanged` 才对，写 `install` 说明目录指错了。从 r5.55、r5.54-merged 升上来，交付记录照旧；从 r5.54-merged 升上来，章节门新开的章默认变了（写前看图、初稿由你交教师两项默认开着）；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查。让工坊记过“作者改法累计”（你认可过的改法，要你授权才开）的：r5.56 起这份记录放在技能目录的 `assets/project-packs/_author/`，跟着技能包走，`--upgrade` 把它带进新版；新包在那里也带了对不上的同名文件时，安装器先停下，要你用 `--keep installed`（留装着的）或 `--keep package`（用新包的）选一边。照 r5.55 的说法放在作者档案那里的，升级以后工坊先问你一句，你同意了才挪回技能目录。从 r5.54-merged 升到 r5.55 时被移进备份、一直没取回的，在装技能的目录下的 `.novel-workshop-backups/<时间>/novel-workshop/assets/project-packs/_author/` 里。退回 r5.55 或更早的包时，那时的安装器不带这份记录，它留在这次退回的备份 `.novel-workshop-backups/<时间>/novel-workshop/assets/project-packs/` 里，取回办法见[版本、下载与来源](docs/versions.md#回到旧版)。没开过的不用管。
+单文件：换上新的，新开对话重新上传。完整包：运行 `python install.py --upgrade`，装的时候带了 `--dest` 的，升级也带同一个 `--dest`；先加 `--dry-run` 看输出，技能后面写 `upgrade` 或 `unchanged` 才对，写 `install` 说明目录指错了。从 r5.56、r5.55、r5.54-merged 升上来，交付记录照旧；从 r5.54-merged 升上来，章节门新开的章默认变了（写前看图、初稿由你交教师两项默认开着）；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查。让工坊记过“作者改法累计”（你认可过的改法，要你授权才开）的：r5.56 起这份记录放在技能目录的 `assets/project-packs/_author/`，跟着技能包走，`--upgrade` 把它带进新版；新包在那里也带了对不上的同名文件时，安装器先停下，要你用 `--keep installed`（留装着的）或 `--keep package`（用新包的）选一边。照 r5.55 的说法放在作者档案那里的，升级以后工坊先问你一句，你同意了才挪回技能目录。从 r5.54-merged 升到 r5.55 时被移进备份、一直没取回的，在装技能的目录下的 `.novel-workshop-backups/<时间>/novel-workshop/assets/project-packs/_author/` 里。退回 r5.55 或更早的包时，那时的安装器不带这份记录，它留在这次退回的备份 `.novel-workshop-backups/<时间>/novel-workshop/assets/project-packs/` 里，取回办法见[版本、下载与来源](docs/versions.md#回到旧版)。没开过的不用管。
 
 ### 用了工坊就能写得更好吗？
 
@@ -423,9 +424,9 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 
 ## 版本
 
-当前版本 `2026-11-14-r5.56`：在上一版 r5.55（版本号 `2026-11-14-r5.55`，文件 `novel-workshop-commercial-r5.55.zip`）上做的新版本，只做维护者 2026-11-14 定下的两件事：作者改法累计放回技能目录的 `assets/project-packs/_author/`、跟着技能包走，`install.py --upgrade` 把它带进新版，对不上时停下、要你用 `--keep` 选一边；写明默认的教师设置：章节门里初稿由你交教师的，默认交给 gemini-4-argon、思考等级选“高”（High），可以改。交付门和四个模块的脚本、写作台的代码都和 r5.55 逐字节相同。这一版没有做文笔对照，不说明写得更好，也不说明默认的教师设置审得更好。新来的直接用它，想用 r5.55 或更早的见版本页。
+当前版本 `2026-11-15-r5.57`：在上一版 r5.56（版本号 `2026-11-14-r5.56`，文件 `novel-workshop-commercial-r5.56.zip`）上做的新版本，没有改任何脚本，只改说明页和测试：只换格式、不动字句的（加章标题、转 Markdown、调换行这类）算单独一类任务，叫保真转换，字句和标点都不动，交付写“格式检查通过，文学质量未审”，再写核了什么、用什么核的；补上你收回采纳时怎么办，照实写明交付门脚本 `workflow_guard.py` 还没有收回采纳的命令，同一版仍显示你已采纳，不能照它说已定稿；写明你跳过审稿采纳的文件，交付时照实说是你跳过审稿采纳的版本，不说成检查过的定本；包内使用示例的标题改成“三十个”。这一版没有做文笔对照，不说明写得更好，也不说明工坊办这两类任务办得好。新来的直接用它，想用 r5.56 或更早的见版本页。
 
-从 r5.55、r5.54-merged 升上来，交付记录照旧（交付记录绑定的五个脚本 `workflow_guard.py`、`punctuation_lint.py`、`prose_lint.py`、`fact_guard.py`、`project_state.py` 和这两版逐字节相同；这是按哈希推的，没有在这一版上另跑）。从 r5.54-merged 升上来，章节门新开的章，写前看图和初稿由你交教师两项默认开着（r5.55 起这样，r5.54-merged 默认关着）。从 r5.54、r5.53 的包（文件名不带 merged，仓库里的是 `novel-workshop-commercial-r5.54.zip`）升上来，以前记的整章交付记录要重跑一次检查：交付记录绑定着检查脚本本身，而当前版本的文字检查脚本 `prose_lint.py` 和那两版不同，新旧两边记下的记录互相读成 `STALE`。退回 r5.55 时作者改法累计在哪、怎样取回，见版本页的[回到旧版](docs/versions.md#回到旧版)。
+从 r5.56、r5.55、r5.54-merged 升上来，交付记录照旧（交付记录绑定的五个脚本 `workflow_guard.py`、`punctuation_lint.py`、`prose_lint.py`、`fact_guard.py`、`project_state.py` 和这三版逐字节相同；这是按哈希推的，没有在这一版上另跑）。从 r5.54-merged 升上来，章节门新开的章，写前看图和初稿由你交教师两项默认开着（r5.55 起这样，r5.54-merged 默认关着）。从 r5.54、r5.53 的包（文件名不带 merged，仓库里的是 `novel-workshop-commercial-r5.54.zip`）升上来，以前记的整章交付记录要重跑一次检查：交付记录绑定着检查脚本本身，而当前版本的文字检查脚本 `prose_lint.py` 和那两版不同，新旧两边记下的记录互相读成 `STALE`。退回 r5.56 时记录照样带回去；退回 r5.55 或更早时作者改法累计在哪、怎样取回，见版本页的[回到旧版](docs/versions.md#回到旧版)。
 
 下载文件、校验值、验证到哪一步和历史版本，见 **[版本、下载与来源](docs/versions.md)**。
 
