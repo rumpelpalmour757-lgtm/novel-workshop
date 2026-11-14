@@ -83,6 +83,8 @@ r5.54 那一轮的验证：当时的包内测试全部通过；新旧规则在�
 
 ## 仓库里的下载文件
 
+从合并候选版起，每个版本也发在 [Releases](https://github.com/rumpelpalmour757-lgtm/novel-workshop/releases) 页，附完整包、便携单文件、许可文件和这一版的说明。
+
 | 文件 | 格式、大小（字节） | 是什么 |
 | --- | --- | --- |
 | [portable-novel-workshop.md](../portable-novel-workshop.md) | MD，1,146,995 | **当前**便携单文件（合并候选版），含当前风格卡库、交付门卡、改稿卡和四个模块的说明，不带脚本 |
