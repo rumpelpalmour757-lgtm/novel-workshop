@@ -1,6 +1,6 @@
 # 本地工作台与检查工具
 
-[← 返回首页](../README.md) · 适用版本 `2026-11-14-r5.55-candidate`
+[← 返回首页](../README.md) · 适用版本 `2026-11-14-r5.55`
 
 这些都是可选的。只在聊天里写作用不到它们；除维护用的 `darwin_eval.py`（在 `skills/darwin-novel-workshop/scripts/`）外，都在完整包的 `skills/novel-workshop/` 里；便携单文件里没有可运行的脚本。完整命令见包内 `USAGE.md` 第五节和 `skills/novel-workshop/references/local-workbench.md`。
 
@@ -82,13 +82,13 @@ node scripts/oh-story/dashboard-server.mjs --root "D:/小说/我的作品" --ope
 
 ## 检查与辅助工具
 
-需要 Python 3.9 或更新版本，在 `skills/novel-workshop` 目录运行。`scripts/` 顶层有 19 个脚本（合并候选版多了 `chapter_gate.py`、`learning_loop.py`、`demonstration_memory.py` 三个），另有 `scripts/dialogue_lint/` 目录（入口 `run_lint.py`，也是合并候选版多的）和 `scripts/oh-story/` 下的几个拆文工具。脚本只给要回去读的位置，不打分，也不判断文字是不是 AI 写的；命中不等于必须改，没命中也不说明写得好。
+需要 Python 3.9 或更新版本，在 `skills/novel-workshop` 目录运行。`scripts/` 顶层有 19 个脚本（r5.54-merged 多了 `chapter_gate.py`、`learning_loop.py`、`demonstration_memory.py` 三个），另有 `scripts/dialogue_lint/` 目录（入口 `run_lint.py`，也是 r5.54-merged 多的）和 `scripts/oh-story/` 下的几个拆文工具。脚本只给要回去读的位置，不打分，也不判断文字是不是 AI 写的；命中不等于必须改，没命中也不说明写得好。
 
 | 脚本 | 作用 |
 | --- | --- |
 | `punctuation_lint.py` | 标点与断句，给出行列、规则编号和等级，只读；可带作品的标点规则文件；`--baseline` 对照原稿，只列修改后新出现的问题 |
-| `prose_lint.py` | 语感扫描和分场检测（重复词、段尾否定、等长短句连排、三连排比等）；`--hint deai` 加去 AI 味的复核提示（r5.48），`--hint deai-extra` 再加四项（r5.49）；合并候选版多一个 `--hint xian`：叙述里“先”字的复核，只定位和计数，默认不开，不随 `deai` 开 |
-| `dialogue_lines.py` | 台词按说话人分栏，标出书面词、叙述专用的词；`--exchanges` 按来回再列一遍（r5.53）；加 `--long-lines` 才列一口气很长的句子（r5.54）；合并候选版修了跨段认说话人的一处：上一段以“没有说：”“本想说：”这类没说出口的话收尾，下一段的引语不再算成这个人说的 |
+| `prose_lint.py` | 语感扫描和分场检测（重复词、段尾否定、等长短句连排、三连排比等）；`--hint deai` 加去 AI 味的复核提示（r5.48），`--hint deai-extra` 再加四项（r5.49）；r5.54-merged 多一个 `--hint xian`：叙述里“先”字的复核，只定位和计数，默认不开，不随 `deai` 开 |
+| `dialogue_lines.py` | 台词按说话人分栏，标出书面词、叙述专用的词；`--exchanges` 按来回再列一遍（r5.53）；加 `--long-lines` 才列一口气很长的句子（r5.54）；r5.54-merged 修了跨段认说话人的一处：上一段以“没有说：”“本想说：”这类没说出口的话收尾，下一段的引语不再算成这个人说的 |
 | `detail_check.py` | `compare`：原稿里有、修订稿里没了的说法和动态补语；`changes`：逐句列出删了、加了、改了哪几句，`--keep` 核对指定要留的句子（r5.49）；`anchors`：维护时用的写作对照例 |
 | `fact_guard.py` | 跨章事实主张比对、列出要回查的章节；按故事时间核人物知情（r5.51）；只核对已登记的主张 |
 | `rule_register.py` | 几份规则文件互相打架时，核对冲突登记表、列出待定项、查新叫法在各章的已有用法 |
@@ -147,7 +147,7 @@ python3 scripts/dialogue_lint/run_lint.py scan 正文/第05章.txt --config 本�
 - Windows 上命令写 `python` 或 `py`。交付门、标点、文字检查、台词分栏、灵感库、视觉素材、事实比对、批量清单、冲突登记表、风格卡这几个脚本按设计可以在 Windows 上运行，输出都是 UTF-8。
 - `project_state.py` 使用 POSIX 文件锁，只支持 Linux、macOS 等系统，原生 Windows 不支持；依赖它的三章演练在 Windows 上会说明原因后退出。
 - 四个模块的脚本只用 Python 标准库。`learning_loop.py`（读和写）和 `chapter_gate.py status` 用的是和 `project_state.py` 同一种文件锁，原生 Windows 同样不支持；每次读写会在记录旁边留一个 `.记录文件名.lock` 的空文件。`demonstration_memory.py` 和 `dialogue_lint/run_lint.py` 不用文件锁，按写法不挑系统。四个模块都没有在 Windows 上跑过。
-- r5.55 起，`chapter_gate.py status` 和 `dialogue_lint/run_lint.py` 加 Python 隔离模式（`python3 -I`）也能启动（合并候选版下会报 `ModuleNotFoundError`）；按普通写法 `python3 scripts/…` 运行也行。包里写明 `chapter_gate.py`、`learning_loop.py` 照普通写法跑也不在技能目录里留 `__pycache__`；`run_lint.py` 的代码里也设了不写缓存。
-- `dialogue_lint/` 这一组：合并候选版在 Python 3.9 上一导入就报错，r5.55 修了；包内验证记录写着这一组的测试在 Python 3.9.25 上也过。这一页没有在 3.9 上重跑。
+- r5.55 起，`chapter_gate.py status` 和 `dialogue_lint/run_lint.py` 加 Python 隔离模式（`python3 -I`）也能启动（r5.54-merged 下会报 `ModuleNotFoundError`）；按普通写法 `python3 scripts/…` 运行也行。包里写明 `chapter_gate.py`、`learning_loop.py` 照普通写法跑也不在技能目录里留 `__pycache__`；`run_lint.py` 的代码里也设了不写缓存。
+- `dialogue_lint/` 这一组：r5.54-merged 在 Python 3.9 上一导入就报错，r5.55 修了；包内验证记录写着这一组的测试在 Python 3.9.25 上也过。这一页没有在 3.9 上重跑。
 - 一组 Windows 上的测试问题在 r5.25 修过，只在 Linux 上模拟 Windows 的换行和缺少 fcntl 重跑过，还没有在 Windows 上重跑。遇到问题，保留命令和完整输出，到仓库的 [Issues](https://github.com/rumpelpalmour757-lgtm/novel-workshop/issues) 提；包内说明里请你“发给维护者”的地方，也发到那里。
 - 工作台的 Google AI 侧栏在 Windows 上的启动、结束进程、中文和空格路径等都还没有实测。

@@ -3,7 +3,7 @@
 #   <标签>.md      第一行是标题（# 开头），其余是发布说明
 #   <标签>.assets  要附上的文件，一行一个，路径相对仓库根目录
 # 然后在 Actions 页手动运行这个工作流，填上标签（例如 r5.55）。
-# 已经有同名发布版本的，不覆盖，直接报错停下。
+# 已经有同名发布版本的，默认不覆盖，直接报错停下；要改标题、说明或换附件，运行时把 replace 选成 true。
 name: 发布版本
 
 on:
@@ -12,6 +12,10 @@ on:
       tag:
         description: "版本标签，例如 r5.55（docs/releases/ 下要有同名的 .md 和 .assets）"
         required: true
+      replace:
+        description: "已经有这个发布版本时，用 docs/releases/ 里的说明改标题和说明，并替换同名附件"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -38,16 +42,22 @@ jobs:
             sha256sum "$f"
           done < "docs/releases/$TAG.assets"
 
-      - name: 建立发布版本
+      - name: 建立或更新发布版本
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ inputs.tag }}
+          REPLACE: ${{ inputs.replace }}
         run: |
           set -euo pipefail
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "已经有 $TAG 这个发布版本，不覆盖"; exit 1
-          fi
           title="$(head -n 1 "docs/releases/$TAG.md" | sed 's/^#[[:space:]]*//')"
           tail -n +2 "docs/releases/$TAG.md" > "$RUNNER_TEMP/notes.md"
           mapfile -t files < <(grep -v '^[[:space:]]*$' "docs/releases/$TAG.assets")
-          gh release create "$TAG" "${files[@]}" --target "$GITHUB_SHA" --title "$title" --notes-file "$RUNNER_TEMP/notes.md"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            if [ "$REPLACE" != "true" ]; then
+              echo "已经有 $TAG 这个发布版本，不覆盖（要更新请把 replace 选成 true）"; exit 1
+            fi
+            gh release edit "$TAG" --title "$title" --notes-file "$RUNNER_TEMP/notes.md"
+            gh release upload "$TAG" "${files[@]}" --clobber
+          else
+            gh release create "$TAG" "${files[@]}" --target "$GITHUB_SHA" --title "$title" --notes-file "$RUNNER_TEMP/notes.md"
+          fi

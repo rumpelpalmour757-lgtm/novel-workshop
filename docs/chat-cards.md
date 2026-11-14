@@ -1,6 +1,6 @@
 # 聊天用的两张卡
 
-[← 返回首页](../README.md) · 取自 `2026-11-14-r5.55-candidate`
+[← 返回首页](../README.md) · 取自 `2026-11-14-r5.55`
 
 在聊天产品里用[便携单文件](../portable-novel-workshop.md)时，把下面两张卡贴进项目指令（只有对话框就贴在第一条消息里），再上传单文件。
 
@@ -15,7 +15,7 @@
 
 两张卡里没有章节门、学习循环、示范记忆和对白声纹检查的规则。开了每章七个阶段逐步确认、或者要把教师的改稿带回来对照的，还要另贴包里对应的那一页，见[四个可选模块](modules.md#只能聊天时)。
 
-**这两张卡从哪里来。** 原件在完整包的 `skills/novel-workshop/assets/delivery-gate-card.md` 和 `skills/novel-workshop/assets/revision-card.md`。便携单文件里也嵌着它们：搜 `内嵌内容：assets/delivery-gate-card.md` 和 `内嵌内容：assets/revision-card.md`，各自从标题下一行起，到下一行 `-----` 为止。本页照合并候选版单文件里的文字转录；r5.55 单文件里的这两段和合并候选版的逐字相同（核过），两张卡和 r5.54 的也一字不差；原件里的链接，在单文件里写成了文件名，除此以外和包里的两个原件逐字相同。以后单文件更新了，以单文件为准，也可以拿它来核对这一页有没有过时。
+**这两张卡从哪里来。** 原件在完整包的 `skills/novel-workshop/assets/delivery-gate-card.md` 和 `skills/novel-workshop/assets/revision-card.md`。便携单文件里也嵌着它们：搜 `内嵌内容：assets/delivery-gate-card.md` 和 `内嵌内容：assets/revision-card.md`，各自从标题下一行起，到下一行 `-----` 为止。本页照 r5.54-merged 单文件里的文字转录；r5.55 单文件里的这两段和 r5.54-merged 的逐字相同（核过），两张卡和 r5.54 的也一字不差；原件里的链接，在单文件里写成了文件名，除此以外和包里的两个原件逐字相同。以后单文件更新了，以单文件为准，也可以拿它来核对这一页有没有过时。
 
 ## 交付门卡
 
