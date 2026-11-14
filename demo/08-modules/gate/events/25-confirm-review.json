@@ -1,0 +1,13 @@
+{
+  "event_id": "ch01-15-confirm-review",
+  "op": "chapter_gate",
+  "action": "confirm",
+  "chapter_id": "ch01",
+  "stage": "review",
+  "presentation_id": "ch01-14-present-review",
+  "presentation_version": "5e38172b15e844068bef575ea261e37b89c75e479d616692624032d68b173a9d",
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）方案照这个改。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

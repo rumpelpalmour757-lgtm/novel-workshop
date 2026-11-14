@@ -1,0 +1,53 @@
+### 01 scan
+$ run_lint.py scan 正文/ch01.txt --config 本书配置.json --output 对白复核.json
+[exit 0]
+
+### 02 scan-old-config
+$ run_lint.py scan (old config with min_avg_len)
+[exit 0]
+
+### 03 scan-hints
+$ run_lint.py scan 正文/ch01.txt --config 本书配置.json --style-hints --output 对白复核-全部提示.json --request-output 请求.json --prompt-output 请求提示.txt
+[exit 0]
+
+### 04 apply-without-same-options
+$ run_lint.py apply ... --config 本书配置.json (no --style-hints)
+错误：请求和这次的 --config、--style-hints、--genre 对不上：apply 要带和 scan 相同的配置和选项
+[exit 2]
+
+### 05 apply
+$ run_lint.py apply 正文/ch01.txt 请求.json 候选.json --output 正文/ch01.候选稿.txt --config 本书配置.json --style-hints
+已生成：正文/ch01.候选稿.txt（重新扫描核对过的可改引语 1 条，本次替换 1 条：p9:q2）
+[exit 0]
+
+### 06 scan-no-config
+$ run_lint.py scan 正文/ch01.txt --output 无配置.json
+[exit 0]
+
+### 07 scan-output-exists
+$ run_lint.py scan ... --output 对白复核.json (exists)
+错误：输出必须使用各自不同的新文件名
+[exit 2]
+
+### 08 apply-outside-quote
+$ run_lint.py apply (replacement adds quotes)
+错误：replacement brings in quotation marks or brackets the line did not have: “”
+[exit 2]
+
+### 09 apply-unknown-quote
+$ run_lint.py apply (quote not in request)
+错误：duplicate or unknown quotation ID
+[exit 2]
+
+### 10 apply-source-changed
+$ run_lint.py apply (source changed)
+错误：原稿在扫描之后改过，旧请求作废，请重新扫描
+[exit 2]
+
+### 11 scan-override-genre
+$ run_lint.py scan ... --config 本书配置-指定.json --genre modern_gritty
+[exit 0]
+
+### 12 scan-corner-quotes
+$ run_lint.py scan (「」 quotes)
+[exit 0]

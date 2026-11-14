@@ -1,6 +1,6 @@
 # 本地工作台与检查工具
 
-[← 返回首页](../README.md) · 适用版本 `2026-11-14-r5.54-merged-candidate`
+[← 返回首页](../README.md) · 适用版本 `2026-11-14-r5.55-candidate`
 
 这些都是可选的。只在聊天里写作用不到它们；除维护用的 `darwin_eval.py`（在 `skills/darwin-novel-workshop/scripts/`）外，都在完整包的 `skills/novel-workshop/` 里；便携单文件里没有可运行的脚本。完整命令见包内 `USAGE.md` 第五节和 `skills/novel-workshop/references/local-workbench.md`。
 
@@ -102,10 +102,10 @@ node scripts/oh-story/dashboard-server.mjs --root "D:/小说/我的作品" --ope
 | `visual_materials_cli.py` | 可选的联网选图链路，见下文 |
 | `export_portable.py` | 导出核心文件夹、单文件或安装包（`--mode personal\|sale`、`--format portable\|install`），不自动发布 |
 | `workflow_demo.py` | 虚构三章演练，审稿与采纳都是模拟的，只用来熟悉流程 |
-| `chapter_gate.py` | 章节门读进度（只有 `status` 一个子命令，只读）：这一章停在七个阶段的哪一步，等你确认还是等教师回传；写入走 `learning_loop.py apply`。默认不开，见[四个可选模块](modules.md#章节门) |
+| `chapter_gate.py` | 章节门读进度（只有 `status` 一个子命令，只读）：这一章停在七个阶段的哪一步，等你确认还是等教师回传，按什么策略走（`workflow_policy`），记录里缺了什么（`record_problems`）；写入走 `learning_loop.py apply`。默认不开，见[四个可选模块](modules.md#章节门) |
 | `learning_loop.py` | 学习循环和章节门的记录入口：`status`、`context`、`show` 只读，`apply` 一次交一个事件（带版本的条件保存，同一事件重发不重记）；不调用模型，不写小说。见[四个可选模块](modules.md#学习循环) |
-| `demonstration_memory.py` | 示范记忆的只读选择器：`check` 核结构和哈希，`index` 列编号和状态，`select` 取最多三条认可过的示范。见[四个可选模块](modules.md#示范记忆) |
-| `dialogue_lint/run_lint.py` | 对白声纹与反模式检查（可选试用）：`scan` 只读扫描出报告，命中只标“复核”；`apply` 校验候选改句以后写到新文件，不覆盖原稿。见[四个可选模块](modules.md#对白声纹与反模式检查) |
+| `demonstration_memory.py` | 示范记忆的只读选择器：`check` 核结构、哈希和认可绑的文字，`index` 列出全部符合筛选的案例（只给编号、状态、适用条件和例外这类元数据），`select` 取最多三条认可过的示范。见[四个可选模块](modules.md#示范记忆) |
+| `dialogue_lint/run_lint.py` | 对白声纹与反模式检查（可选试用，r5.55 为 1.2.0）：`scan` 只读扫描出报告，认“”「」『』，角色一栏只给数字，命中只标“复核”；`apply` 要带和 `scan` 相同的选项，重扫核对、校验候选改句以后写到新文件，不覆盖原稿。见[四个可选模块](modules.md#对白声纹与反模式检查) |
 | `oh-story/build_chapter_index.py` | 章节位置索引：章节范围、原文行号、字符数与内容哈希，不做文学分析 |
 | `oh-story/render_relation_chart.py` | 从已有的人物关系表生成 Mermaid 关系图，可选 PNG；不自行推断人物关系 |
 | `oh-story/inspect_existing_assets.py` | 只读检查已有拆文资料的覆盖情况 |
@@ -129,7 +129,7 @@ python3 scripts/dialogue_lint/run_lint.py scan 正文/第05章.txt --config 本�
 
 后四条属于默认不开的四个模块；事件文件怎么写、实际跑出来是什么样，见[四个可选模块](modules.md)。
 
-整包测试在交付包目录运行 `python tests/run_tests.py`。合并候选版一共 1,429 项，1,424 项通过，5 项按既有条件跳过；其中 141 项在合并新带来的 12 个测试文件里：四个模块 124 项（章节门 23、学习循环 27、示范记忆 9、对白声纹 65），台词分栏跨段认说话人的修复 5 项，`prose_lint.py --hint xian` 12 项（这 12 项放在对白声纹的测试目录里，所以那个目录一共 77 项）。包内 `MERGE-VERIFICATION.md` 记的是 Linux、Python 3.12、Node.js 24 上的结果；在 Linux、Python 3.13 上重跑过一次，数目相同。测试检查脚本行为，比如标点定位、事实比对、审稿版本绑定、回传绑错版拒收，不评价文学质量。
+整包测试在交付包目录运行 `python tests/run_tests.py`。r5.55 一共 1,589 项，照包内 `VERIFICATION.md` 本版一节：在 Linux、Python 3.13 上跳过 5 项，其余全部通过；在 Linux、Python 3.9.25 上跳过 74 项（多跳的是没装 Pillow、PyYAML 的几项和 Crawl4AI 要 3.10 以上的几项），其余全部通过。其中章节门的测试 45 项，学习循环 69 项，示范记忆 16 项，对白声纹的测试目录 120 项。这一页没有重跑全套。测试检查脚本行为，比如标点定位、事实比对、审稿版本绑定、回传绑错版拒收，不评价文学质量。
 
 ## 可选视觉链路
 
@@ -146,8 +146,8 @@ python3 scripts/dialogue_lint/run_lint.py scan 正文/第05章.txt --config 本�
 - 检查脚本和安装脚本要 Python 3.9 或更新版本；工作台和两个接通检查要 Node.js 18 或更新版本；Crawl4AI 要 Python 3.10 以上。
 - Windows 上命令写 `python` 或 `py`。交付门、标点、文字检查、台词分栏、灵感库、视觉素材、事实比对、批量清单、冲突登记表、风格卡这几个脚本按设计可以在 Windows 上运行，输出都是 UTF-8。
 - `project_state.py` 使用 POSIX 文件锁，只支持 Linux、macOS 等系统，原生 Windows 不支持；依赖它的三章演练在 Windows 上会说明原因后退出。
-- 四个新模块的脚本只用 Python 标准库。`learning_loop.py`（读和写）和 `chapter_gate.py status` 用的是和 `project_state.py` 同一种文件锁，原生 Windows 同样不支持；每次读写会在记录旁边留一个 `.记录文件名.lock` 的空文件。`demonstration_memory.py` 和 `dialogue_lint/run_lint.py` 不用文件锁，按写法不挑系统。四个模块都没有在 Windows 上跑过。
-- `chapter_gate.py status` 和 `dialogue_lint/run_lint.py` 要按普通写法 `python3 scripts/…` 运行；加了 Python 隔离模式（`python -I`）会报 `ModuleNotFoundError`。
-- `dialogue_lint/` 这一组：其中 `dialogue_core.py` 有一处类型写法要 Python 3.10 才支持，按代码推断在 3.9 上一导入就报错，没有在 3.9 上实测。用这一组脚本，稳妥起见用 Python 3.10 或更新。
-- 一组 Windows 上的测试问题在 r5.25 修过，只在 Linux 上模拟 Windows 的换行和缺少 fcntl 重跑过，还没有在 Windows 上重跑。遇到问题，保留命令和完整输出，方便排查。目前没有公开的反馈渠道；包内说明里请你“发给维护者”的地方，眼下没有对外的联系方式。
+- 四个模块的脚本只用 Python 标准库。`learning_loop.py`（读和写）和 `chapter_gate.py status` 用的是和 `project_state.py` 同一种文件锁，原生 Windows 同样不支持；每次读写会在记录旁边留一个 `.记录文件名.lock` 的空文件。`demonstration_memory.py` 和 `dialogue_lint/run_lint.py` 不用文件锁，按写法不挑系统。四个模块都没有在 Windows 上跑过。
+- r5.55 起，`chapter_gate.py status` 和 `dialogue_lint/run_lint.py` 加 Python 隔离模式（`python3 -I`）也能启动（合并候选版下会报 `ModuleNotFoundError`）；按普通写法 `python3 scripts/…` 运行也行。包里写明 `chapter_gate.py`、`learning_loop.py` 照普通写法跑也不在技能目录里留 `__pycache__`；`run_lint.py` 的代码里也设了不写缓存。
+- `dialogue_lint/` 这一组：合并候选版在 Python 3.9 上一导入就报错，r5.55 修了；包内验证记录写着这一组的测试在 Python 3.9.25 上也过。这一页没有在 3.9 上重跑。
+- 一组 Windows 上的测试问题在 r5.25 修过，只在 Linux 上模拟 Windows 的换行和缺少 fcntl 重跑过，还没有在 Windows 上重跑。遇到问题，保留命令和完整输出，到仓库的 [Issues](https://github.com/rumpelpalmour757-lgtm/novel-workshop/issues) 提；包内说明里请你“发给维护者”的地方，也发到那里。
 - 工作台的 Google AI 侧栏在 Windows 上的启动、结束进程、中文和空格路径等都还没有实测。

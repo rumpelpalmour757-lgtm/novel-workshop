@@ -1,0 +1,8 @@
+### 01 final-words
+$ python3 -I -B -c <call chapter_gate._final_decision on each sentence> SCRIPTS_DIR '["继续。", "先不采纳，我再看看。", "还没到定稿的时候。", "定稿。", "采纳当前稿。"]'
+pending  继续。 | GateError Final stays pending. It needs decision:accept_final_version and author words that are, as a whole, a plain acceptance of the current version. Postponed, conditional, questioning or negated wording, wording about another version or part of this one, and anything this small check does not recognize are not recorded as acceptance. Do not reword the author; ask. Either reply is enough: “定稿。” or “采纳当前稿。”
+pending  先不采纳，我再看看。 | GateError Final stays pending. It needs decision:accept_final_version and author words that are, as a whole, a plain acceptance of the current version. Postponed, conditional, questioning or negated wording, wording about another version or part of this one, and anything this small check does not recognize are not recorded as acceptance. Do not reword the author; ask. Either reply is enough: “定稿。” or “采纳当前稿。”
+pending  还没到定稿的时候。 | GateError Final stays pending. It needs decision:accept_final_version and author words that are, as a whole, a plain acceptance of the current version. Postponed, conditional, questioning or negated wording, wording about another version or part of this one, and anything this small check does not recognize are not recorded as acceptance. Do not reword the author; ask. Either reply is enough: “定稿。” or “采纳当前稿。”
+recorded 定稿。
+recorded 采纳当前稿。
+[exit 0]

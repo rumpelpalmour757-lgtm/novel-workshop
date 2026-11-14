@@ -1,0 +1,10 @@
+{
+  "event_id": "ch01-14-present-review",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "review",
+  "content": "【合成演示】审稿方案：教师把“三块”改成“三块钱”，拟拒绝，老秦惜字。",
+  "source_ref": "合成演示：审稿方案",
+  "teacher_return_id": "ch01-13-teacher-return-v2"
+}

@@ -1,0 +1,12 @@
+{
+  "event_id": "ch01-13-teacher-return-v2",
+  "op": "chapter_gate",
+  "action": "teacher_return",
+  "chapter_id": "ch01",
+  "draft_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee",
+  "draft_presentation_id": "ch01-11-present-draft-v2",
+  "draft_presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+  "returned_text": "（合成教师改稿，对第二版）阿梨推车来补胎。老秦看了一眼，说：“两处破了，三块钱。”\n",
+  "source_ref": "合成演示：教师改稿（不是真人回传）",
+  "teacher_name": "合成教师（演示用）"
+}

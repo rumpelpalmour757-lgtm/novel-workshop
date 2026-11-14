@@ -21,5 +21,14 @@
     }
   },
   "next_action": "present",
-  "store_version": "sha256:a103ef955a6f1c15f830ac41b73b127892791d372dc653724fe5e18daf51200f"
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "project",
+    "frozen": true,
+    "event_id": "demo-01-configure",
+    "author_quote": "（合成演示）每章写前都要有视觉材料；初稿我自己交给教师。",
+    "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+  },
+  "store_version": "sha256:a0008ee7a69af4d6ded2de54ac8fff2605271263815e99ac2a59b98fa825c964"
 }

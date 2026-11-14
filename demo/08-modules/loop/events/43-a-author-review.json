@@ -1,0 +1,23 @@
+{
+  "event_id": "no-04-review",
+  "op": "review",
+  "run_id": "run-author-no",
+  "review_id": "r1-author",
+  "draft_sha256": "d7031311025100dbf4e93d6838de46b14a7ebc911bb29058579c9dfdad8a3ade",
+  "reviewer": {
+    "name": "作者（合成）",
+    "role": "author",
+    "mode": "human",
+    "context_id": "author-1"
+  },
+  "verdict": "revise",
+  "findings": [
+    {
+      "id": "f1",
+      "issue": "（合成演示）阿梨这句不像她",
+      "evidence": "我注意到后胎也有点瘪。",
+      "scope": "第 9 行"
+    }
+  ],
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

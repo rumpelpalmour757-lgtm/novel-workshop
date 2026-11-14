@@ -1,0 +1,14 @@
+{
+  "event_id": "run-self-only-09",
+  "op": "learn",
+  "run_id": "run-self-only",
+  "case_id": "case-run-self-only",
+  "why": "合成演示",
+  "when": [
+    "合成演示"
+  ],
+  "except": [],
+  "decisions": [
+    "合成演示"
+  ]
+}

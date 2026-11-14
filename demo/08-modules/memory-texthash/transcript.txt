@@ -1,0 +1,4 @@
+### 01 check-texthash
+$ demonstration_memory.py check (text changed)
+{"status": "invalid", "errors": ["case t1: hashes.after does not match the text"]}
+[exit 2]

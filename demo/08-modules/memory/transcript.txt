@@ -1,0 +1,294 @@
+### 01 select
+$ demonstration_memory.py select 记录.md --project-id demo-bike-stall --task dialogue_revision
+{
+  "status": "selected",
+  "cases": [
+    {
+      "id": "a1",
+      "project_id": "demo-bike-stall",
+      "group_id": "grp-a1",
+      "task": "dialogue_revision",
+      "tags": [
+        "对白"
+      ],
+      "status": "author_accepted",
+      "split": "development",
+      "before": "合成原稿：a1",
+      "after": "合成改稿：a1",
+      "decisions": [
+        "合成演示"
+      ],
+      "why": "合成演示",
+      "when": [
+        "双方正在对话"
+      ],
+      "except": [
+        "正式汇报"
+      ],
+      "source": {
+        "ref": "合成演示：a1",
+        "version": "1",
+        "reviewer": "合成",
+        "evidence": "合成演示"
+      },
+      "author_acceptance": {
+        "quote": "采纳当前稿。",
+        "ref": "合成演示：a1"
+      },
+      "hashes": {
+        "before": "e814087e33208bff64fc7e9c08052611dc80963b45c63f7f3e7b2328f799fcdf",
+        "after": "a7c5f725fc9cc566912b61976f88cb64f4a45fb10a349cccef45ff6201479f70"
+      }
+    },
+    {
+      "id": "a2",
+      "project_id": "demo-bike-stall",
+      "group_id": "grp-a2",
+      "task": "dialogue_revision",
+      "tags": [
+        "对白"
+      ],
+      "status": "author_accepted",
+      "split": "development",
+      "before": "合成原稿：a2",
+      "after": "合成改稿：a2",
+      "decisions": [
+        "合成演示"
+      ],
+      "why": "合成演示",
+      "when": [
+        "双方正在对话"
+      ],
+      "except": [
+        "正式汇报"
+      ],
+      "source": {
+        "ref": "合成演示：a2",
+        "version": "1",
+        "reviewer": "合成",
+        "evidence": "合成演示"
+      },
+      "author_acceptance": {
+        "quote": "采纳当前稿。",
+        "ref": "合成演示：a2"
+      },
+      "hashes": {
+        "before": "892e4c66f305771fb0c8ba015b27ee8b31a3b233cb0ab041f8598ae83b0ec298",
+        "after": "56c812b41e226d6987550dbf473c259b2c0396353fab5723a280da02854e12cd"
+      }
+    },
+    {
+      "id": "t1",
+      "project_id": "demo-bike-stall",
+      "group_id": "grp-t1",
+      "task": "dialogue_revision",
+      "tags": [
+        "对白"
+      ],
+      "status": "teacher_approved",
+      "split": "development",
+      "before": "合成原稿：t1",
+      "after": "合成改稿：t1",
+      "decisions": [
+        "合成演示"
+      ],
+      "why": "合成演示",
+      "when": [
+        "双方正在对话"
+      ],
+      "except": [
+        "正式汇报"
+      ],
+      "source": {
+        "ref": "合成演示：t1",
+        "version": "1",
+        "reviewer": "合成",
+        "evidence": "合成演示"
+      },
+      "author_acceptance": null,
+      "hashes": {
+        "before": "6c4a0e2a7f65ab9a3e89d77e606e6a74c25c6c02685e9e8c1b3c77fc73894062",
+        "after": "c410862967390a4e913b9292f80f3b1d505542ebea3903e1e2c8195f4ea81936"
+      }
+    }
+  ],
+  "count": 3,
+  "not_selected": [
+    "t2"
+  ],
+  "eligible_count": 4,
+  "matched_by": [
+    "project",
+    "task"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "examples_for_context_not_story_facts"
+}
+[exit 0]
+
+### 02 select-limit4
+$ demonstration_memory.py select 记录.md --project-id demo-bike-stall --task dialogue_revision --limit 4
+usage: demonstration_memory.py select [-h] --project-id PROJECT_ID --task TASK
+                                      [--tag TAG]
+                                      [--exclude-group EXCLUDE_GROUP]
+                                      [--evaluation] [--limit {1,2,3}]
+                                      [--case-id CASE_ID]
+                                      store
+demonstration_memory.py select: error: argument --limit: invalid choice: '4' (choose from '1', '2', '3')
+[exit 2]
+
+### 03 index
+$ demonstration_memory.py index 记录.md --project-id demo-bike-stall --task dialogue_revision
+{
+  "status": "selected",
+  "cases": [
+    {
+      "id": "a1",
+      "project_id": "demo-bike-stall",
+      "group_id": "grp-a1",
+      "task": "dialogue_revision",
+      "tags": [
+        "对白"
+      ],
+      "status": "author_accepted",
+      "split": "development",
+      "when": [
+        "双方正在对话"
+      ],
+      "except": [
+        "正式汇报"
+      ],
+      "reviewer_role": null,
+      "reviewer_mode": null
+    },
+    {
+      "id": "a2",
+      "project_id": "demo-bike-stall",
+      "group_id": "grp-a2",
+      "task": "dialogue_revision",
+      "tags": [
+        "对白"
+      ],
+      "status": "author_accepted",
+      "split": "development",
+      "when": [
+        "双方正在对话"
+      ],
+      "except": [
+        "正式汇报"
+      ],
+      "reviewer_role": null,
+      "reviewer_mode": null
+    },
+    {
+      "id": "t1",
+      "project_id": "demo-bike-stall",
+      "group_id": "grp-t1",
+      "task": "dialogue_revision",
+      "tags": [
+        "对白"
+      ],
+      "status": "teacher_approved",
+      "split": "development",
+      "when": [
+        "双方正在对话"
+      ],
+      "except": [
+        "正式汇报"
+      ],
+      "reviewer_role": null,
+      "reviewer_mode": null
+    },
+    {
+      "id": "t2",
+      "project_id": "demo-bike-stall",
+      "group_id": "grp-t2",
+      "task": "dialogue_revision",
+      "tags": [
+        "对白"
+      ],
+      "status": "teacher_approved",
+      "split": "development",
+      "when": [
+        "双方正在对话"
+      ],
+      "except": [
+        "正式汇报"
+      ],
+      "reviewer_role": null,
+      "reviewer_mode": null
+    }
+  ],
+  "count": 4,
+  "not_selected": [],
+  "eligible_count": 4,
+  "matched_by": [
+    "project",
+    "task"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "metadata_only"
+}
+[exit 0]
+
+### 04 index-limit
+$ demonstration_memory.py index 记录.md --project-id demo-bike-stall --task dialogue_revision --limit 2
+{"status": "error", "error": "index lists every eligible case; --limit and --case-id belong to select"}
+[exit 2]
+
+### 05 select-other-task
+$ demonstration_memory.py select 记录.md --project-id demo-bike-stall --task scene_revision
+{
+  "status": "selected",
+  "cases": [],
+  "count": 0,
+  "not_selected": [],
+  "eligible_count": 0,
+  "matched_by": [
+    "project",
+    "task"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "examples_for_context_not_story_facts"
+}
+[exit 0]
+
+### 06 select-tag-mismatch
+$ demonstration_memory.py select 记录.md --project-id demo-bike-stall --task dialogue_revision --tag 动作
+{
+  "status": "selected",
+  "cases": [],
+  "count": 0,
+  "not_selected": [],
+  "eligible_count": 0,
+  "matched_by": [
+    "project",
+    "task",
+    "tags"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "examples_for_context_not_story_facts"
+}
+[exit 0]
+
+### 07 select-exclude-group
+$ demonstration_memory.py select 记录.md --project-id demo-bike-stall --task dialogue_revision --exclude-group grp-a1 --exclude-group grp-a2 --exclude-group grp-t1 --exclude-group grp-t2
+{
+  "status": "selected",
+  "cases": [],
+  "count": 0,
+  "not_selected": [],
+  "eligible_count": 0,
+  "matched_by": [
+    "project",
+    "task"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "examples_for_context_not_story_facts"
+}
+[exit 0]
+
+### 08 select-other-project
+$ demonstration_memory.py select 记录.md --project-id another-book --task dialogue_revision
+{"status": "error", "error": "Requested project_id differs from the authoritative store"}
+[exit 2]

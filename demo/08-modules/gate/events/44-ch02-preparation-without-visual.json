@@ -1,0 +1,9 @@
+{
+  "event_id": "ch02-06-present-preparation",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch02",
+  "stage": "preparation",
+  "content": "【合成演示】第二章写前准备，不看图。",
+  "source_ref": "合成演示"
+}

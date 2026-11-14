@@ -1,0 +1,9 @@
+{
+  "event_id": "ch01-t4-prep",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "preparation",
+  "content": "【合成演示】节拍卡三拍；声音：老秦话少，报数不解释；阿梨说话直。",
+  "source_ref": "合成演示：写前准备"
+}

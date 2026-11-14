@@ -1,0 +1,10 @@
+{
+  "event_id": "ch01-16-present-revision",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "revision",
+  "content": "（合成修订稿）阿梨推车来补胎。老秦看了一眼，说：“两处，三块。”阿梨把钱放在工具箱上。\n",
+  "source_ref": "合成演示：修订稿",
+  "artifact_sha256": "3e8d58fcaebeaed2b8aad87d452b6869e8533ac3e2ce65d41941de7b8404cbbc"
+}

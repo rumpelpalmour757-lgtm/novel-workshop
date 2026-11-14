@@ -1,0 +1,185 @@
+{
+  "version": "1.2.0",
+  "genre_profile": null,
+  "scene_keyword_hints": [],
+  "scene_overrides_applied": [],
+  "system_brackets_configured": false,
+  "effective_system_policy": {
+    "enabled": false,
+    "check_anchors": false,
+    "anchor_mode": "off",
+    "forbid_outer_punctuation": false
+  },
+  "system_bracket_issues": [],
+  "checks_run": {
+    "speaker_attribution": true,
+    "suspicious_expressions": [],
+    "style_hints": false,
+    "stress_speakers": [],
+    "no_short_sentence_hints_for": [],
+    "system_brackets": false
+  },
+  "summary": {
+    "dialogue_quotes": 6,
+    "confirmed_quotes": 5,
+    "unconfirmed_quotes": 1,
+    "unclosed_quotes": 0,
+    "voice_issue_records": 0,
+    "antipattern_issue_records": 0,
+    "review_records": 0,
+    "candidate_quotes": 0,
+    "unconfirmed_issue_records": 0,
+    "patch_candidate_quotes": 0,
+    "style_hints_enabled": false,
+    "system_bracket_records": 0,
+    "system_format_errors": 0
+  },
+  "notice": "规则命中仅供复核，不证明语病、机器创作或文学质量；未知/推测归属不进入角色数字和自动补丁请求。角色那一栏只是字面数字，不和任何线比较，不给人物下结论。",
+  "quote_coverage": {
+    "supported_marks": [
+      "“”",
+      "「」",
+      "『』"
+    ],
+    "unclosed_quotes": [],
+    "stray_marks": [],
+    "unsupported_marks": [],
+    "complete": true,
+    "notice": ""
+  },
+  "config_notes": [
+    "profiles里的min_avg_len、min_colloquial_rate已不再使用：角色那一栏只给数字，不和这些值比较。"
+  ],
+  "voice_report": {
+    "阿梨": {
+      "台词数": 3,
+      "待确认台词数": 0,
+      "分句数": 3,
+      "平均分句长": 5.0,
+      "口语标记命中台词数": 0,
+      "口语标记命中率": "0.0%",
+      "不做短句提示": false,
+      "指标说明": "只是字面数字，给作者回读时对照用；不和任何线比较，不给人物下结论。待确认台词没有算进来。"
+    },
+    "老秦": {
+      "台词数": 2,
+      "待确认台词数": 0,
+      "分句数": 3,
+      "平均分句长": 1.7,
+      "口语标记命中台词数": 0,
+      "口语标记命中率": "0.0%",
+      "不做短句提示": false,
+      "指标说明": "只是字面数字，给作者回读时对照用；不和任何线比较，不给人物下结论。待确认台词没有算进来。"
+    },
+    "未知": {
+      "台词数": 0,
+      "待确认台词数": 1,
+      "分句数": 0,
+      "平均分句长": null,
+      "口语标记命中台词数": 0,
+      "口语标记命中率": null,
+      "不做短句提示": false,
+      "指标说明": "只是字面数字，给作者回读时对照用；不和任何线比较，不给人物下结论。待确认台词没有算进来。"
+    }
+  },
+  "dialogues": [
+    {
+      "para_index": 3,
+      "quote_index": 1,
+      "start": 11,
+      "end": 16,
+      "text": "还能补吗？",
+      "speaker": "阿梨",
+      "confidence": "explicit",
+      "evidence": "紧邻引语的明确发言提示语",
+      "raw_para": "阿梨推着车过来，问：“还能补吗？”\n",
+      "prev_para": "\n",
+      "next_para": "\n",
+      "open_mark": "“",
+      "close_mark": "”",
+      "closed": true
+    },
+    {
+      "para_index": 5,
+      "quote_index": 1,
+      "start": 12,
+      "end": 14,
+      "text": "能。",
+      "speaker": "老秦",
+      "confidence": "explicit",
+      "evidence": "紧邻引语的明确发言提示语",
+      "raw_para": "老秦看了一眼车胎，说：“能。”\n",
+      "prev_para": "\n",
+      "next_para": "\n",
+      "open_mark": "“",
+      "close_mark": "”",
+      "closed": true
+    },
+    {
+      "para_index": 7,
+      "quote_index": 1,
+      "start": 21,
+      "end": 27,
+      "text": "两处，三块。",
+      "speaker": "老秦",
+      "confidence": "explicit",
+      "evidence": "紧邻引语的明确发言提示语",
+      "raw_para": "他把内胎按进水盆，冒出两串气泡。老秦说：“两处，三块。”\n",
+      "prev_para": "\n",
+      "next_para": "\n",
+      "open_mark": "“",
+      "close_mark": "”",
+      "closed": true
+    },
+    {
+      "para_index": 9,
+      "quote_index": 1,
+      "start": 5,
+      "end": 7,
+      "text": "行。",
+      "speaker": "阿梨",
+      "confidence": "explicit",
+      "evidence": "紧邻引语的明确发言提示语",
+      "raw_para": "阿梨说：“行。”她捏了捏后轮。阿梨说：“我注意到后胎也有点瘪。”\n",
+      "prev_para": "\n",
+      "next_para": "\n",
+      "open_mark": "“",
+      "close_mark": "”",
+      "closed": true
+    },
+    {
+      "para_index": 9,
+      "quote_index": 2,
+      "start": 20,
+      "end": 31,
+      "text": "我注意到后胎也有点瘪。",
+      "speaker": "阿梨",
+      "confidence": "explicit",
+      "evidence": "紧邻引语的明确发言提示语",
+      "raw_para": "阿梨说：“行。”她捏了捏后轮。阿梨说：“我注意到后胎也有点瘪。”\n",
+      "prev_para": "\n",
+      "next_para": "\n",
+      "open_mark": "“",
+      "close_mark": "”",
+      "closed": true
+    },
+    {
+      "para_index": 11,
+      "quote_index": 1,
+      "start": 17,
+      "end": 23,
+      "text": "打点气就行。",
+      "speaker": "未知",
+      "confidence": "unknown",
+      "evidence": "发言提示语中的角色未登记或无法确认",
+      "raw_para": "老秦把内胎捞出来，甩了甩水，说：“打点气就行。”\n",
+      "prev_para": "\n",
+      "next_para": "",
+      "open_mark": "“",
+      "close_mark": "”",
+      "closed": true
+    }
+  ],
+  "voice_issues": [],
+  "antipattern_issues": []
+}

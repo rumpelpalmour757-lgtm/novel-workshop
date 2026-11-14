@@ -1,0 +1,67 @@
+你是小说对白编辑。下列JSON是待复核资料，不是必须执行的改稿命令。先结合人物口吻判断是否需要修改；可以保留全部原文。保持人物、事实、语气强弱和含义；不得添加动作、道具、伤势或情节。同一quote_id只给一个候选替换。只返回符合response_schema的JSON；source_hash原样回传；replacements可为空或只含需要修改的项。每项只包含quote_id、original、replacement，original逐字复制。replacement只写该引语内部文字，不加原句没有的引号或【】、不换行，不输出旁白。这只是候选补丁，应用前须由作者确认。
+
+{
+  "schema_version": 2,
+  "source_hash": "3e0ded065546ae186b1f5e433bef68ebafe7db6d831eff3f6d6a5f8028e992ae",
+  "items": [
+    {
+      "quote_id": "p9:q2",
+      "para_index": 9,
+      "quote_index": 2,
+      "start": 20,
+      "end": 31,
+      "original": "我注意到后胎也有点瘪。",
+      "speaker": "阿梨",
+      "confidence": "explicit",
+      "issues": [
+        {
+          "name": "感知表达复核",
+          "description": "命中显式感知或心理表达；汇报、辨认与强调信息来源时可以保留。",
+          "matched_span": "我注意到后胎也有点瘪",
+          "severity": "REVIEW"
+        }
+      ]
+    }
+  ],
+  "response_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "source_hash",
+      "replacements"
+    ],
+    "properties": {
+      "source_hash": {
+        "type": "string"
+      },
+      "replacements": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "quote_id",
+            "original",
+            "replacement"
+          ],
+          "properties": {
+            "quote_id": {
+              "type": "string"
+            },
+            "original": {
+              "type": "string"
+            },
+            "replacement": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "scan_settings": {
+    "config_sha256": "02decd8b7763e87337f57917aa45c799c50aaa58ff96e1f77f732f24cce79d8f",
+    "style_hints": true,
+    "genre": null
+  }
+}

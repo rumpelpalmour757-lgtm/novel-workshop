@@ -1,0 +1,10 @@
+{
+  "event_id": "loop-04-plan",
+  "op": "plan",
+  "run_id": "run-ch01-dialogue",
+  "applications": [],
+  "checks": [
+    "台词像不像这个人",
+    "价钱不变"
+  ]
+}

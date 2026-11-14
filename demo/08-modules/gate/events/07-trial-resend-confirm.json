@@ -1,0 +1,13 @@
+{
+  "event_id": "ch01-02-confirm-scope",
+  "op": "chapter_gate",
+  "action": "confirm",
+  "chapter_id": "ch01",
+  "stage": "scope",
+  "presentation_id": "ch01-01-present-scope",
+  "presentation_version": "cff9d4e8dc0c403584e1c3f2bd966646fcb218c17776ee75bb3f4b67304c32c4",
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）继续。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

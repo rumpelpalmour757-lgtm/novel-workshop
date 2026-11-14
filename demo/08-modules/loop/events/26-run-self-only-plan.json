@@ -1,0 +1,9 @@
+{
+  "event_id": "run-self-only-02",
+  "op": "plan",
+  "run_id": "run-self-only",
+  "applications": [],
+  "checks": [
+    "口气"
+  ]
+}

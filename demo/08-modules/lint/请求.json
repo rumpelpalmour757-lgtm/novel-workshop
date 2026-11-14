@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "source_hash": "3e0ded065546ae186b1f5e433bef68ebafe7db6d831eff3f6d6a5f8028e992ae",
+  "items": [
+    {
+      "quote_id": "p9:q2",
+      "para_index": 9,
+      "quote_index": 2,
+      "start": 20,
+      "end": 31,
+      "original": "我注意到后胎也有点瘪。",
+      "speaker": "阿梨",
+      "confidence": "explicit",
+      "issues": [
+        {
+          "name": "感知表达复核",
+          "description": "命中显式感知或心理表达；汇报、辨认与强调信息来源时可以保留。",
+          "matched_span": "我注意到后胎也有点瘪",
+          "severity": "REVIEW"
+        }
+      ]
+    }
+  ],
+  "response_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "source_hash",
+      "replacements"
+    ],
+    "properties": {
+      "source_hash": {
+        "type": "string"
+      },
+      "replacements": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "quote_id",
+            "original",
+            "replacement"
+          ],
+          "properties": {
+            "quote_id": {
+              "type": "string"
+            },
+            "original": {
+              "type": "string"
+            },
+            "replacement": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "scan_settings": {
+    "config_sha256": "02decd8b7763e87337f57917aa45c799c50aaa58ff96e1f77f732f24cce79d8f",
+    "style_hints": true,
+    "genre": null
+  }
+}

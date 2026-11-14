@@ -9,5 +9,14 @@
   "artifact_sha256": null,
   "last_valid_confirmation": null,
   "next_action": "present",
+  "workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "basis": "project",
+    "frozen": false,
+    "event_id": "demo-01-configure",
+    "author_quote": "（合成演示）新章一关一关给我看，我点头了再往下；初稿我自己交给教师，结果由我带回来。",
+    "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+  },
   "store_version": "sha256:929531d498094afd7fc4a2ef943086551934152073a317b58feb416a5e05c6dd"
 }

@@ -1,0 +1,14 @@
+{
+  "event_id": "run-teacher-pass-09",
+  "op": "learn",
+  "run_id": "run-teacher-pass",
+  "case_id": "case-run-teacher-pass",
+  "why": "合成演示",
+  "when": [
+    "合成演示"
+  ],
+  "except": [],
+  "decisions": [
+    "合成演示"
+  ]
+}

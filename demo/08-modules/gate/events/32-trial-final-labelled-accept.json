@@ -1,0 +1,14 @@
+{
+  "op": "chapter_gate",
+  "action": "confirm",
+  "chapter_id": "ch01",
+  "stage": "final",
+  "presentation_id": "ch01-18-present-final",
+  "presentation_version": "37f147a068f51dac4a19fc7907184fdab2bac307ac4bac1ef2c20ab1f4ccb31a",
+  "actor_role": "author",
+  "mode": "human",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+  "event_id": "ch01-t9-2",
+  "author_quote": "（合成演示）采纳这一版。",
+  "decision": "accept_final_version"
+}

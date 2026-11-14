@@ -1,0 +1,12 @@
+{
+  "event_id": "cfg-t-chapter",
+  "op": "chapter_gate",
+  "action": "configure",
+  "chapter_id": "ch02",
+  "visual_required": false,
+  "teacher_handoff": "user_return",
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）这一章不看图。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

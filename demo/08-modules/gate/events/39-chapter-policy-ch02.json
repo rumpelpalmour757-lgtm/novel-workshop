@@ -1,0 +1,11 @@
+{
+  "event_id": "ch02-01-policy",
+  "op": "chapter_gate",
+  "action": "chapter_policy",
+  "chapter_id": "ch02",
+  "visual_required": false,
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）第二章不用看图。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

@@ -1,0 +1,10 @@
+{
+  "event_id": "no-06-accept",
+  "op": "author_accept",
+  "run_id": "run-author-no",
+  "draft_sha256": "d7031311025100dbf4e93d6838de46b14a7ebc911bb29058579c9dfdad8a3ade",
+  "quote": "采纳当前稿。",
+  "actor_role": "author",
+  "mode": "human",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

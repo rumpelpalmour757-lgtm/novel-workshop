@@ -15,10 +15,8 @@ import sys
 
 SCRIPTS, WORK, DRAFT, TEACHER = (Path(p).resolve() for p in sys.argv[1:5])
 PY = [sys.executable, "-I", "-B"]
-# Under -I the script's own folder is not on the import path, and chapter_gate.py's status command imports its
-# sibling learning_loop. This one-liner puts the folder back and runs the unchanged script.
-STATUS_SHIM = ('import sys,runpy; d=sys.argv[1]; sys.path.insert(0,d); '
-               'sys.argv=[d+"/chapter_gate.py"]+sys.argv[2:]; runpy.run_path(sys.argv[0],run_name="__main__")')
+# From r5.55 on, chapter_gate.py status starts under -I by itself, so it is run directly like learning_loop.py.
+# (The r5.54 merged candidate needed a one-line wrapper that put the script folder back on the import path.)
 SYNTHETIC = "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
 STORE_TEMPLATE = """# 学习与章节确认记录（合成演示项目）
 
@@ -64,9 +62,9 @@ class Walk:
         return result
 
     def gate_status(self, chapter, label="gate-status"):
-        return self.run(label, "python3 -I -B -c '%s' \"$NW_SCRIPTS\" status learning-record.md --chapter-id %s"
-                        % (STATUS_SHIM, chapter),
-                        PY + ["-c", STATUS_SHIM, str(SCRIPTS), "status", "learning-record.md", "--chapter-id", chapter])[1]
+        return self.run(label, 'python3 -I -B "$NW_SCRIPTS/chapter_gate.py" status learning-record.md --chapter-id %s'
+                        % chapter,
+                        PY + [str(SCRIPTS / "chapter_gate.py"), "status", "learning-record.md", "--chapter-id", chapter])[1]
 
     def apply(self, name, event):
         path = "events/%02d-%s.json" % (self.step, name)

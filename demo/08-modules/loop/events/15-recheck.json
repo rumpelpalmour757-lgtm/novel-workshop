@@ -1,0 +1,19 @@
+{
+  "event_id": "loop-13-review",
+  "op": "review",
+  "run_id": "run-ch01-dialogue",
+  "review_id": "r2-self",
+  "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+  "reviewer": {
+    "name": "合成写作者",
+    "role": "writer",
+    "mode": "self_check",
+    "context_id": "writer-1"
+  },
+  "verdict": "pass",
+  "findings": [],
+  "source_ref": "合成演示：工坊自查",
+  "rechecks": [
+    "r1-teacher"
+  ]
+}

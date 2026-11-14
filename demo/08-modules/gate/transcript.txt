@@ -1,0 +1,1213 @@
+### 01 loop-status
+$ learning_loop.py status 项目/learning-record.md
+{
+  "status": "disabled",
+  "enabled": false,
+  "loop_enabled": false,
+  "project_id": "demo-bike-stall",
+  "version": "sha256:278a93d182211a35210d88d6505799add0f90100f744f3f61b2c869e48b2f8bf",
+  "case_count": 0,
+  "run_count": 0,
+  "active_runs": [],
+  "next_action": "resume_original_workflow",
+  "missing_switches": [
+    "enabled",
+    "loop_enabled"
+  ]
+}
+[exit 0]
+
+### 02 present-scope
+$ learning_loop.py apply 项目/learning-record.md events/02-present-scope.json --project-id demo-bike-stall --if-version sha256:278a93d182211a35210d88d6505799add0f90100f744f3f61b2c869e48b2f8bf
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "scope",
+  "presentation_id": "ch01-01-present-scope",
+  "presentation_version": "cff9d4e8dc0c403584e1c3f2bd966646fcb218c17776ee75bb3f4b67304c32c4",
+  "artifact_sha256": null,
+  "last_valid_confirmation": null,
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:a9f7c6db848b150114fffa98687268518a256beb1d3f1daa035349642e488467",
+  "warnings": []
+}
+[exit 0]
+
+### 03 gate-status
+$ chapter_gate.py status 项目/learning-record.md --chapter-id ch01
+{
+  "status": "awaiting_confirmation",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "scope",
+  "presentation_id": "ch01-01-present-scope",
+  "presentation_version": "cff9d4e8dc0c403584e1c3f2bd966646fcb218c17776ee75bb3f4b67304c32c4",
+  "artifact_sha256": null,
+  "last_valid_confirmation": null,
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "store_version": "sha256:a9f7c6db848b150114fffa98687268518a256beb1d3f1daa035349642e488467"
+}
+[exit 0]
+
+### 04 confirm-scope
+$ learning_loop.py apply 项目/learning-record.md events/04-confirm-scope.json --project-id demo-bike-stall --if-version sha256:a9f7c6db848b150114fffa98687268518a256beb1d3f1daa035349642e488467
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "outline",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "scope",
+    "presentation_id": "ch01-01-present-scope",
+    "presentation_version": "cff9d4e8dc0c403584e1c3f2bd966646fcb218c17776ee75bb3f4b67304c32c4",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "ch01-02-confirm-scope",
+      "author_quote": "（合成演示）继续。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:8ffea119fac540821bfa892033a1167abb2ac6f3a0b437f783d836383e47a97d",
+  "warnings": []
+}
+[exit 0]
+
+### 05 trial-skip-to-draft
+$ learning_loop.py apply 项目/learning-record.md events/05-trial-skip-to-draft.json --project-id demo-bike-stall --if-version sha256:8ffea119fac540821bfa892033a1167abb2ac6f3a0b437f783d836383e47a97d
+{"status": "error", "code": "invalid_transition", "message": "Only the current stage may be presented or confirmed"}
+[exit 2]
+
+### 06 trial-stale-version
+$ learning_loop.py apply 项目/learning-record.md events/06-trial-stale-version.json --project-id demo-bike-stall --if-version sha256:a9f7c6db848b150114fffa98687268518a256beb1d3f1daa035349642e488467
+{"status": "error", "code": "stale_version", "message": "Store changed since your read; no write performed"}
+[exit 3]
+
+### 07 trial-resend-confirm
+$ learning_loop.py apply 项目/learning-record.md events/07-trial-resend-confirm.json --project-id demo-bike-stall --if-version sha256:8ffea119fac540821bfa892033a1167abb2ac6f3a0b437f783d836383e47a97d
+{
+  "artifact_sha256": null,
+  "chapter_id": "ch01",
+  "chapter_status": "awaiting_presentation",
+  "current_stage": "outline",
+  "last_valid_confirmation": {
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）继续。",
+      "event_id": "ch01-02-confirm-scope",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    },
+    "presentation_id": "ch01-01-present-scope",
+    "presentation_version": "cff9d4e8dc0c403584e1c3f2bd966646fcb218c17776ee75bb3f4b67304c32c4",
+    "stage": "scope"
+  },
+  "next_action": "present",
+  "presentation_id": null,
+  "presentation_version": null,
+  "project_id": "demo-bike-stall",
+  "status": "unchanged",
+  "workflow_policy": {
+    "basis": "default",
+    "frozen": true,
+    "teacher_handoff": "user_return",
+    "visual_required": true
+  },
+  "version": "sha256:8ffea119fac540821bfa892033a1167abb2ac6f3a0b437f783d836383e47a97d"
+}
+[exit 0]
+
+### 08 present-outline
+$ learning_loop.py apply 项目/learning-record.md events/08-present-outline.json --project-id demo-bike-stall --if-version sha256:8ffea119fac540821bfa892033a1167abb2ac6f3a0b437f783d836383e47a97d
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "outline",
+  "presentation_id": "ch01-03-present-outline",
+  "presentation_version": "4853e64414489ee979fafdcff28a1a867f6c01668264b8d9adccc6018794f180",
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "scope",
+    "presentation_id": "ch01-01-present-scope",
+    "presentation_version": "cff9d4e8dc0c403584e1c3f2bd966646fcb218c17776ee75bb3f4b67304c32c4",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）继续。",
+      "event_id": "ch01-02-confirm-scope",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:979e110ee2851cb9c4b70499cd36733ec95f4c8ab38c35e0966947bca11104d5",
+  "warnings": []
+}
+[exit 0]
+
+### 09 confirm-outline
+$ learning_loop.py apply 项目/learning-record.md events/09-confirm-outline.json --project-id demo-bike-stall --if-version sha256:979e110ee2851cb9c4b70499cd36733ec95f4c8ab38c35e0966947bca11104d5
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "preparation",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "ch01-03-present-outline",
+    "presentation_version": "4853e64414489ee979fafdcff28a1a867f6c01668264b8d9adccc6018794f180",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "ch01-04-confirm-outline",
+      "author_quote": "（合成演示）方案可以。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:e6984d0e34ad90edcc685d85e6afd1f40cca5d44240a04f66e640aeec8ce0f46",
+  "warnings": []
+}
+[exit 0]
+
+### 10 trial-preparation-without-visual
+$ learning_loop.py apply 项目/learning-record.md events/10-trial-preparation-without-visual.json --project-id demo-bike-stall --if-version sha256:e6984d0e34ad90edcc685d85e6afd1f40cca5d44240a04f66e640aeec8ce0f46
+{"status": "error", "code": "invalid_event", "message": "This chapter follows visual_required:true: preparation must carry visual_evidence for images actually looked at (mode, source_refs, observation_ref, selection_ref), never placeholders. If the author said otherwise for this chapter, first record the author's words with action:chapter_policy (chapter_id, actor_role:author, mode:human, author_quote, source_ref) and visual_required:false"}
+[exit 2]
+
+### 11 present-preparation
+$ learning_loop.py apply 项目/learning-record.md events/11-present-preparation.json --project-id demo-bike-stall --if-version sha256:e6984d0e34ad90edcc685d85e6afd1f40cca5d44240a04f66e640aeec8ce0f46
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "preparation",
+  "presentation_id": "ch01-05-present-preparation",
+  "presentation_version": "8784ce4275a574554e4aea09221c0c357acdf7ed65bc6c8942ff93662bf353c6",
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "ch01-03-present-outline",
+    "presentation_version": "4853e64414489ee979fafdcff28a1a867f6c01668264b8d9adccc6018794f180",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）方案可以。",
+      "event_id": "ch01-04-confirm-outline",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:1f7587d9ee70a0791a28b41d047247e7185aa688a3637845b22dc6ca6b933260",
+  "warnings": []
+}
+[exit 0]
+
+### 12 confirm-preparation
+$ learning_loop.py apply 项目/learning-record.md events/12-confirm-preparation.json --project-id demo-bike-stall --if-version sha256:1f7587d9ee70a0791a28b41d047247e7185aa688a3637845b22dc6ca6b933260
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "draft",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "preparation",
+    "presentation_id": "ch01-05-present-preparation",
+    "presentation_version": "8784ce4275a574554e4aea09221c0c357acdf7ed65bc6c8942ff93662bf353c6",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "ch01-06-confirm-preparation",
+      "author_quote": "（合成演示）准备可以，写吧。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:969f17f79f2cf9bdf06e20efc76aa04ee3870e030700040019b7be9cacefd050",
+  "warnings": []
+}
+[exit 0]
+
+### 13 present-draft
+$ learning_loop.py apply 项目/learning-record.md events/13-present-draft.json --project-id demo-bike-stall --if-version sha256:969f17f79f2cf9bdf06e20efc76aa04ee3870e030700040019b7be9cacefd050
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "draft",
+  "presentation_id": "ch01-07-present-draft",
+  "presentation_version": "f2dfa24527b1f58a2b94033ef1c94f059263f086a67aab0275f8bfd9819fce23",
+  "artifact_sha256": "e4e58671ec8e0e5ce3c0b72297cc2522a69f48e5fb25f0f6110666d1f7d77e59",
+  "last_valid_confirmation": {
+    "stage": "preparation",
+    "presentation_id": "ch01-05-present-preparation",
+    "presentation_version": "8784ce4275a574554e4aea09221c0c357acdf7ed65bc6c8942ff93662bf353c6",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）准备可以，写吧。",
+      "event_id": "ch01-06-confirm-preparation",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:34e89f02b0da1e65d24805be8b737f2fe0cc0aeda13abc035356c6fe21fb0baa",
+  "warnings": []
+}
+[exit 0]
+
+### 14 confirm-draft
+$ learning_loop.py apply 项目/learning-record.md events/14-confirm-draft.json --project-id demo-bike-stall --if-version sha256:34e89f02b0da1e65d24805be8b737f2fe0cc0aeda13abc035356c6fe21fb0baa
+{
+  "status": "saved",
+  "chapter_status": "await_teacher_return",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "review",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "draft",
+    "presentation_id": "ch01-07-present-draft",
+    "presentation_version": "f2dfa24527b1f58a2b94033ef1c94f059263f086a67aab0275f8bfd9819fce23",
+    "artifact_sha256": "e4e58671ec8e0e5ce3c0b72297cc2522a69f48e5fb25f0f6110666d1f7d77e59",
+    "confirmation": {
+      "event_id": "ch01-08-confirm-draft",
+      "author_quote": "（合成演示）初稿我拿去给教师。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "teacher_return",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:2eb9d714454d560b2a02a4c58cf8d431c04e6ea83fb633a52cc486186e623188",
+  "warnings": []
+}
+[exit 0]
+
+### 15 gate-status
+$ chapter_gate.py status 项目/learning-record.md --chapter-id ch01
+{
+  "status": "await_teacher_return",
+  "chapter_status": "await_teacher_return",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "review",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "draft",
+    "presentation_id": "ch01-07-present-draft",
+    "presentation_version": "f2dfa24527b1f58a2b94033ef1c94f059263f086a67aab0275f8bfd9819fce23",
+    "artifact_sha256": "e4e58671ec8e0e5ce3c0b72297cc2522a69f48e5fb25f0f6110666d1f7d77e59",
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）初稿我拿去给教师。",
+      "event_id": "ch01-08-confirm-draft",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "teacher_return",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "store_version": "sha256:2eb9d714454d560b2a02a4c58cf8d431c04e6ea83fb633a52cc486186e623188"
+}
+[exit 0]
+
+### 16 trial-review-without-return
+$ learning_loop.py apply 项目/learning-record.md events/16-trial-review-without-return.json --project-id demo-bike-stall --if-version sha256:2eb9d714454d560b2a02a4c58cf8d431c04e6ea83fb633a52cc486186e623188
+{"status": "error", "code": "invalid_transition", "message": "Review must name a teacher_return_id bound to the current confirmed draft. This chapter follows teacher_handoff:user_return: record what the author brought back with action:teacher_return first; the workshop does not stand in for the teacher. If the author said otherwise for this chapter, first record the author's words with action:chapter_policy (chapter_id, actor_role:author, mode:human, author_quote, source_ref) and teacher_handoff:host"}
+[exit 2]
+
+### 17 trial-return-wrong-hash
+$ learning_loop.py apply 项目/learning-record.md events/17-trial-return-wrong-hash.json --project-id demo-bike-stall --if-version sha256:2eb9d714454d560b2a02a4c58cf8d431c04e6ea83fb633a52cc486186e623188
+{"status": "error", "code": "invalid_transition", "message": "Teacher return must bind this chapter's current confirmed draft instance, version and hash"}
+[exit 2]
+
+### 18 teacher-return
+$ learning_loop.py apply 项目/learning-record.md events/18-teacher-return.json --project-id demo-bike-stall --if-version sha256:2eb9d714454d560b2a02a4c58cf8d431c04e6ea83fb633a52cc486186e623188
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "review",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "draft",
+    "presentation_id": "ch01-07-present-draft",
+    "presentation_version": "f2dfa24527b1f58a2b94033ef1c94f059263f086a67aab0275f8bfd9819fce23",
+    "artifact_sha256": "e4e58671ec8e0e5ce3c0b72297cc2522a69f48e5fb25f0f6110666d1f7d77e59",
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）初稿我拿去给教师。",
+      "event_id": "ch01-08-confirm-draft",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "ch01-09-teacher-return",
+      "returned_sha256": "12c4108c3a6f3591c449af877df1d37d217607b7bb12ffa0281118a10bfba609",
+      "draft_presentation_id": "ch01-07-present-draft",
+      "draft_presentation_version": "f2dfa24527b1f58a2b94033ef1c94f059263f086a67aab0275f8bfd9819fce23",
+      "draft_sha256": "e4e58671ec8e0e5ce3c0b72297cc2522a69f48e5fb25f0f6110666d1f7d77e59"
+    }
+  ],
+  "teacher_return_id": "ch01-09-teacher-return",
+  "returned_sha256": "12c4108c3a6f3591c449af877df1d37d217607b7bb12ffa0281118a10bfba609",
+  "version": "sha256:4f87c7f626cabb1d9ca5dcd7beec3379a6d5aaadbadf576ac58aafe74b6bbf3f",
+  "warnings": []
+}
+[exit 0]
+
+### 19 reopen-draft
+$ learning_loop.py apply 项目/learning-record.md events/19-reopen-draft.json --project-id demo-bike-stall --if-version sha256:4f87c7f626cabb1d9ca5dcd7beec3379a6d5aaadbadf576ac58aafe74b6bbf3f
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "draft",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "preparation",
+    "presentation_id": "ch01-05-present-preparation",
+    "presentation_version": "8784ce4275a574554e4aea09221c0c357acdf7ed65bc6c8942ff93662bf353c6",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）准备可以，写吧。",
+      "event_id": "ch01-06-confirm-preparation",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:7e370bc88180f7f135c936dde0220eca4fd56df8a10d336ca1afd7124f52f212",
+  "warnings": []
+}
+[exit 0]
+
+### 20 present-draft-v2
+$ learning_loop.py apply 项目/learning-record.md events/20-present-draft-v2.json --project-id demo-bike-stall --if-version sha256:7e370bc88180f7f135c936dde0220eca4fd56df8a10d336ca1afd7124f52f212
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "draft",
+  "presentation_id": "ch01-11-present-draft-v2",
+  "presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+  "artifact_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee",
+  "last_valid_confirmation": {
+    "stage": "preparation",
+    "presentation_id": "ch01-05-present-preparation",
+    "presentation_version": "8784ce4275a574554e4aea09221c0c357acdf7ed65bc6c8942ff93662bf353c6",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）准备可以，写吧。",
+      "event_id": "ch01-06-confirm-preparation",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:a02cc0a59f73114d7fbbc8eb15852ab8fa54ebf6fdd2c81ee8a9ca47fc21fc68",
+  "warnings": []
+}
+[exit 0]
+
+### 21 confirm-draft-v2
+$ learning_loop.py apply 项目/learning-record.md events/21-confirm-draft-v2.json --project-id demo-bike-stall --if-version sha256:a02cc0a59f73114d7fbbc8eb15852ab8fa54ebf6fdd2c81ee8a9ca47fc21fc68
+{
+  "status": "saved",
+  "chapter_status": "await_teacher_return",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "review",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "draft",
+    "presentation_id": "ch01-11-present-draft-v2",
+    "presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+    "artifact_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee",
+    "confirmation": {
+      "event_id": "ch01-12-confirm-draft-v2",
+      "author_quote": "（合成演示）这一版拿去给教师。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "teacher_return",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "version": "sha256:c9368c0381c196ca48ca799767db6da3865a16a621a524e7e031bbdc06bac31d",
+  "warnings": []
+}
+[exit 0]
+
+### 22 trial-review-with-old-return
+$ learning_loop.py apply 项目/learning-record.md events/22-trial-review-with-old-return.json --project-id demo-bike-stall --if-version sha256:c9368c0381c196ca48ca799767db6da3865a16a621a524e7e031bbdc06bac31d
+{"status": "error", "code": "invalid_transition", "message": "Review must name a teacher_return_id bound to the current confirmed draft. This chapter follows teacher_handoff:user_return: record what the author brought back with action:teacher_return first; the workshop does not stand in for the teacher. If the author said otherwise for this chapter, first record the author's words with action:chapter_policy (chapter_id, actor_role:author, mode:human, author_quote, source_ref) and teacher_handoff:host"}
+[exit 2]
+
+### 23 teacher-return-v2
+$ learning_loop.py apply 项目/learning-record.md events/23-teacher-return-v2.json --project-id demo-bike-stall --if-version sha256:c9368c0381c196ca48ca799767db6da3865a16a621a524e7e031bbdc06bac31d
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "review",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "draft",
+    "presentation_id": "ch01-11-present-draft-v2",
+    "presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+    "artifact_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee",
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）这一版拿去给教师。",
+      "event_id": "ch01-12-confirm-draft-v2",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "ch01-13-teacher-return-v2",
+      "returned_sha256": "07a151208146dc3e2ee7efc96cc1dfeb95db259cd3fd5a31eb9ab335353d70de",
+      "draft_presentation_id": "ch01-11-present-draft-v2",
+      "draft_presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+      "draft_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee"
+    }
+  ],
+  "teacher_return_id": "ch01-13-teacher-return-v2",
+  "returned_sha256": "07a151208146dc3e2ee7efc96cc1dfeb95db259cd3fd5a31eb9ab335353d70de",
+  "version": "sha256:14438143e09f0ab97962c793a572c6b67a9644557bb3257f9cc1408b30905e7d",
+  "warnings": []
+}
+[exit 0]
+
+### 24 present-review
+$ learning_loop.py apply 项目/learning-record.md events/24-present-review.json --project-id demo-bike-stall --if-version sha256:14438143e09f0ab97962c793a572c6b67a9644557bb3257f9cc1408b30905e7d
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "review",
+  "presentation_id": "ch01-14-present-review",
+  "presentation_version": "5e38172b15e844068bef575ea261e37b89c75e479d616692624032d68b173a9d",
+  "artifact_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee",
+  "last_valid_confirmation": {
+    "stage": "draft",
+    "presentation_id": "ch01-11-present-draft-v2",
+    "presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+    "artifact_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee",
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）这一版拿去给教师。",
+      "event_id": "ch01-12-confirm-draft-v2",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "ch01-13-teacher-return-v2",
+      "returned_sha256": "07a151208146dc3e2ee7efc96cc1dfeb95db259cd3fd5a31eb9ab335353d70de",
+      "draft_presentation_id": "ch01-11-present-draft-v2",
+      "draft_presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+      "draft_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee"
+    }
+  ],
+  "teacher_return_id": "ch01-13-teacher-return-v2",
+  "returned_sha256": "07a151208146dc3e2ee7efc96cc1dfeb95db259cd3fd5a31eb9ab335353d70de",
+  "version": "sha256:eb3becfa7c9d3e3d67a18f1196e908e5a932011b9d2075d80dac7e19c5b1482b",
+  "warnings": []
+}
+[exit 0]
+
+### 25 confirm-review
+$ learning_loop.py apply 项目/learning-record.md events/25-confirm-review.json --project-id demo-bike-stall --if-version sha256:eb3becfa7c9d3e3d67a18f1196e908e5a932011b9d2075d80dac7e19c5b1482b
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "revision",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "review",
+    "presentation_id": "ch01-14-present-review",
+    "presentation_version": "5e38172b15e844068bef575ea261e37b89c75e479d616692624032d68b173a9d",
+    "artifact_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee",
+    "confirmation": {
+      "event_id": "ch01-15-confirm-review",
+      "author_quote": "（合成演示）方案照这个改。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "ch01-13-teacher-return-v2",
+      "returned_sha256": "07a151208146dc3e2ee7efc96cc1dfeb95db259cd3fd5a31eb9ab335353d70de",
+      "draft_presentation_id": "ch01-11-present-draft-v2",
+      "draft_presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+      "draft_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee"
+    }
+  ],
+  "version": "sha256:d771cd367c3181fbdc7940a6ed660949d4973fb03729b76671782ff4570fd127",
+  "warnings": []
+}
+[exit 0]
+
+### 26 present-revision
+$ learning_loop.py apply 项目/learning-record.md events/26-present-revision.json --project-id demo-bike-stall --if-version sha256:d771cd367c3181fbdc7940a6ed660949d4973fb03729b76671782ff4570fd127
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "revision",
+  "presentation_id": "ch01-16-present-revision",
+  "presentation_version": "b8304d933cdf6709cf2b0ebd2067dae7ed02fd142904558ccf116e63f63d5105",
+  "artifact_sha256": "3e8d58fcaebeaed2b8aad87d452b6869e8533ac3e2ce65d41941de7b8404cbbc",
+  "last_valid_confirmation": {
+    "stage": "review",
+    "presentation_id": "ch01-14-present-review",
+    "presentation_version": "5e38172b15e844068bef575ea261e37b89c75e479d616692624032d68b173a9d",
+    "artifact_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee",
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）方案照这个改。",
+      "event_id": "ch01-15-confirm-review",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "ch01-13-teacher-return-v2",
+      "returned_sha256": "07a151208146dc3e2ee7efc96cc1dfeb95db259cd3fd5a31eb9ab335353d70de",
+      "draft_presentation_id": "ch01-11-present-draft-v2",
+      "draft_presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+      "draft_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee"
+    }
+  ],
+  "version": "sha256:c83930413d5ac568641deba8daec13536d1b4f1fd4818911eae768944e8ee167",
+  "warnings": []
+}
+[exit 0]
+
+### 27 confirm-revision
+$ learning_loop.py apply 项目/learning-record.md events/27-confirm-revision.json --project-id demo-bike-stall --if-version sha256:c83930413d5ac568641deba8daec13536d1b4f1fd4818911eae768944e8ee167
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "final",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "revision",
+    "presentation_id": "ch01-16-present-revision",
+    "presentation_version": "b8304d933cdf6709cf2b0ebd2067dae7ed02fd142904558ccf116e63f63d5105",
+    "artifact_sha256": "3e8d58fcaebeaed2b8aad87d452b6869e8533ac3e2ce65d41941de7b8404cbbc",
+    "confirmation": {
+      "event_id": "ch01-17-confirm-revision",
+      "author_quote": "（合成演示）修订稿可以，交定稿。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "ch01-13-teacher-return-v2",
+      "returned_sha256": "07a151208146dc3e2ee7efc96cc1dfeb95db259cd3fd5a31eb9ab335353d70de",
+      "draft_presentation_id": "ch01-11-present-draft-v2",
+      "draft_presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+      "draft_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee"
+    }
+  ],
+  "version": "sha256:0df4d4aed073b4982302b12e823435864a3a30c1b8835c4fee3591c43560b9b1",
+  "warnings": []
+}
+[exit 0]
+
+### 28 trial-final-wrong-artifact
+$ learning_loop.py apply 项目/learning-record.md events/28-trial-final-wrong-artifact.json --project-id demo-bike-stall --if-version sha256:0df4d4aed073b4982302b12e823435864a3a30c1b8835c4fee3591c43560b9b1
+{"status": "error", "code": "invalid_transition", "message": "Final must bind the confirmed revision artifact; reopen revision to change it"}
+[exit 2]
+
+### 29 present-final
+$ learning_loop.py apply 项目/learning-record.md events/29-present-final.json --project-id demo-bike-stall --if-version sha256:0df4d4aed073b4982302b12e823435864a3a30c1b8835c4fee3591c43560b9b1
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": "final",
+  "presentation_id": "ch01-18-present-final",
+  "presentation_version": "37f147a068f51dac4a19fc7907184fdab2bac307ac4bac1ef2c20ab1f4ccb31a",
+  "artifact_sha256": "3e8d58fcaebeaed2b8aad87d452b6869e8533ac3e2ce65d41941de7b8404cbbc",
+  "last_valid_confirmation": {
+    "stage": "revision",
+    "presentation_id": "ch01-16-present-revision",
+    "presentation_version": "b8304d933cdf6709cf2b0ebd2067dae7ed02fd142904558ccf116e63f63d5105",
+    "artifact_sha256": "3e8d58fcaebeaed2b8aad87d452b6869e8533ac3e2ce65d41941de7b8404cbbc",
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）修订稿可以，交定稿。",
+      "event_id": "ch01-17-confirm-revision",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "ch01-13-teacher-return-v2",
+      "returned_sha256": "07a151208146dc3e2ee7efc96cc1dfeb95db259cd3fd5a31eb9ab335353d70de",
+      "draft_presentation_id": "ch01-11-present-draft-v2",
+      "draft_presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+      "draft_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee"
+    }
+  ],
+  "version": "sha256:02c806eca97426b72dda639a851a33ec8dc8846b056f3c667d465d0e44c88e9b",
+  "warnings": []
+}
+[exit 0]
+
+### 30 trial-final-continue
+$ learning_loop.py apply 项目/learning-record.md events/30-trial-final-continue.json --project-id demo-bike-stall --if-version sha256:02c806eca97426b72dda639a851a33ec8dc8846b056f3c667d465d0e44c88e9b
+{"status": "error", "code": "invalid_event", "message": "Final stays pending. It needs decision:accept_final_version and author words that are, as a whole, a plain acceptance of the current version. Postponed, conditional, questioning or negated wording, wording about another version or part of this one, and anything this small check does not recognize are not recorded as acceptance. Do not reword the author; ask. Either reply is enough: “定稿。” or “采纳当前稿。”"}
+[exit 2]
+
+### 31 trial-final-not-yet
+$ learning_loop.py apply 项目/learning-record.md events/31-trial-final-not-yet.json --project-id demo-bike-stall --if-version sha256:02c806eca97426b72dda639a851a33ec8dc8846b056f3c667d465d0e44c88e9b
+{"status": "error", "code": "invalid_event", "message": "Final stays pending. It needs decision:accept_final_version and author words that are, as a whole, a plain acceptance of the current version. Postponed, conditional, questioning or negated wording, wording about another version or part of this one, and anything this small check does not recognize are not recorded as acceptance. Do not reword the author; ask. Either reply is enough: “定稿。” or “采纳当前稿。”"}
+[exit 2]
+
+### 32 trial-final-labelled-accept
+$ learning_loop.py apply 项目/learning-record.md events/32-trial-final-labelled-accept.json --project-id demo-bike-stall --if-version sha256:02c806eca97426b72dda639a851a33ec8dc8846b056f3c667d465d0e44c88e9b
+{"status": "error", "code": "invalid_event", "message": "Final stays pending. It needs decision:accept_final_version and author words that are, as a whole, a plain acceptance of the current version. Postponed, conditional, questioning or negated wording, wording about another version or part of this one, and anything this small check does not recognize are not recorded as acceptance. Do not reword the author; ask. Either reply is enough: “定稿。” or “采纳当前稿。”"}
+[exit 2]
+
+### 33 trial-final-jiu-zhe-ban
+$ learning_loop.py apply 项目/learning-record.md events/33-trial-final-jiu-zhe-ban.json --project-id demo-bike-stall --if-version sha256:02c806eca97426b72dda639a851a33ec8dc8846b056f3c667d465d0e44c88e9b
+{"status": "error", "code": "invalid_event", "message": "Final stays pending. It needs decision:accept_final_version and author words that are, as a whole, a plain acceptance of the current version. Postponed, conditional, questioning or negated wording, wording about another version or part of this one, and anything this small check does not recognize are not recorded as acceptance. Do not reword the author; ask. Either reply is enough: “定稿。” or “采纳当前稿。”"}
+[exit 2]
+
+### 34 trial-final-later
+$ learning_loop.py apply 项目/learning-record.md events/34-trial-final-later.json --project-id demo-bike-stall --if-version sha256:02c806eca97426b72dda639a851a33ec8dc8846b056f3c667d465d0e44c88e9b
+{"status": "error", "code": "invalid_event", "message": "Final stays pending. It needs decision:accept_final_version and author words that are, as a whole, a plain acceptance of the current version. Postponed, conditional, questioning or negated wording, wording about another version or part of this one, and anything this small check does not recognize are not recorded as acceptance. Do not reword the author; ask. Either reply is enough: “定稿。” or “采纳当前稿。”"}
+[exit 2]
+
+### 35 trial-final-no-decision
+$ learning_loop.py apply 项目/learning-record.md events/35-trial-final-no-decision.json --project-id demo-bike-stall --if-version sha256:02c806eca97426b72dda639a851a33ec8dc8846b056f3c667d465d0e44c88e9b
+{"status": "error", "code": "invalid_event", "message": "Final stays pending. It needs decision:accept_final_version and author words that are, as a whole, a plain acceptance of the current version. Postponed, conditional, questioning or negated wording, wording about another version or part of this one, and anything this small check does not recognize are not recorded as acceptance. Do not reword the author; ask. Either reply is enough: “定稿。” or “采纳当前稿。”"}
+[exit 2]
+
+### 36 confirm-final
+$ learning_loop.py apply 项目/learning-record.md events/36-confirm-final.json --project-id demo-bike-stall --if-version sha256:02c806eca97426b72dda639a851a33ec8dc8846b056f3c667d465d0e44c88e9b
+{
+  "status": "saved",
+  "chapter_status": "final_confirmation_recorded",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": null,
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "final",
+    "presentation_id": "ch01-18-present-final",
+    "presentation_version": "37f147a068f51dac4a19fc7907184fdab2bac307ac4bac1ef2c20ab1f4ccb31a",
+    "artifact_sha256": "3e8d58fcaebeaed2b8aad87d452b6869e8533ac3e2ce65d41941de7b8404cbbc",
+    "confirmation": {
+      "event_id": "ch01-19-confirm-final",
+      "author_quote": "采纳这一版。",
+      "source_ref": "合成演示：这句不是真人作者说的；最后一关的原话带了“（合成演示）”字样脚本就不认，所以只在出处一栏标明",
+      "actor_role": "author",
+      "mode": "human",
+      "decision": "accept_final_version"
+    }
+  },
+  "next_action": "record_existing_author_gate",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "ch01-13-teacher-return-v2",
+      "returned_sha256": "07a151208146dc3e2ee7efc96cc1dfeb95db259cd3fd5a31eb9ab335353d70de",
+      "draft_presentation_id": "ch01-11-present-draft-v2",
+      "draft_presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+      "draft_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee"
+    }
+  ],
+  "version": "sha256:4c33c6b17bdfdbce42ffbfda704cfb76876e4c8ef91180004aac6b4d840c95f2",
+  "warnings": []
+}
+[exit 0]
+
+### 37 gate-status
+$ chapter_gate.py status 项目/learning-record.md --chapter-id ch01
+{
+  "status": "final_confirmation_recorded",
+  "chapter_status": "final_confirmation_recorded",
+  "chapter_id": "ch01",
+  "project_id": "demo-bike-stall",
+  "current_stage": null,
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "final",
+    "presentation_id": "ch01-18-present-final",
+    "presentation_version": "37f147a068f51dac4a19fc7907184fdab2bac307ac4bac1ef2c20ab1f4ccb31a",
+    "artifact_sha256": "3e8d58fcaebeaed2b8aad87d452b6869e8533ac3e2ce65d41941de7b8404cbbc",
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "采纳这一版。",
+      "decision": "accept_final_version",
+      "event_id": "ch01-19-confirm-final",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的；最后一关的原话带了“（合成演示）”字样脚本就不认，所以只在出处一栏标明"
+    }
+  },
+  "next_action": "record_existing_author_gate",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "default",
+    "frozen": true
+  },
+  "valid_teacher_returns": [
+    {
+      "teacher_return_id": "ch01-13-teacher-return-v2",
+      "returned_sha256": "07a151208146dc3e2ee7efc96cc1dfeb95db259cd3fd5a31eb9ab335353d70de",
+      "draft_presentation_id": "ch01-11-present-draft-v2",
+      "draft_presentation_version": "5b3b77addaa19f5a6ec20dc8235c0e29a0bcc702741ccf36e2fb930fae0b9ace",
+      "draft_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee"
+    }
+  ],
+  "store_version": "sha256:4c33c6b17bdfdbce42ffbfda704cfb76876e4c8ef91180004aac6b4d840c95f2"
+}
+[exit 0]
+
+### 38 trial-configure-with-chapter
+$ learning_loop.py apply 项目/learning-record.md events/38-trial-configure-with-chapter.json --project-id demo-bike-stall --if-version sha256:4c33c6b17bdfdbce42ffbfda704cfb76876e4c8ef91180004aac6b4d840c95f2
+{"status": "error", "code": "invalid_event", "message": "configure sets the policy for every chapter that starts later and takes no chapter_id. For the author's word on one chapter use action:chapter_policy"}
+[exit 2]
+
+### 39 chapter-policy-ch02
+$ learning_loop.py apply 项目/learning-record.md events/39-chapter-policy-ch02.json --project-id demo-bike-stall --if-version sha256:4c33c6b17bdfdbce42ffbfda704cfb76876e4c8ef91180004aac6b4d840c95f2
+{
+  "status": "saved",
+  "chapter_status": "not_started",
+  "chapter_id": "ch02",
+  "project_id": "demo-bike-stall",
+  "current_stage": "scope",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": null,
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "basis": "chapter",
+    "frozen": true,
+    "event_id": "ch02-01-policy"
+  },
+  "version": "sha256:c5f21cc44d833c96531082e37772bb1be82c4970568122e08e729736557f1bb7",
+  "warnings": []
+}
+[exit 0]
+
+### 40 ch02-present-scope
+$ learning_loop.py apply 项目/learning-record.md events/40-ch02-present-scope.json --project-id demo-bike-stall --if-version sha256:c5f21cc44d833c96531082e37772bb1be82c4970568122e08e729736557f1bb7
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch02",
+  "project_id": "demo-bike-stall",
+  "current_stage": "scope",
+  "presentation_id": "ch02-02-present-scope",
+  "presentation_version": "27338474a9186d4facb4ca0be7a035ea2b7fcfc8216d2277f4f9e9b99fbf2abe",
+  "artifact_sha256": null,
+  "last_valid_confirmation": null,
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "basis": "chapter",
+    "frozen": true,
+    "event_id": "ch02-01-policy"
+  },
+  "version": "sha256:fdb85b3422228555f672e8b9d1a5b9851fcee46ecc4707d942519d0828360f81",
+  "warnings": []
+}
+[exit 0]
+
+### 41 ch02-confirm-scope
+$ learning_loop.py apply 项目/learning-record.md events/41-ch02-confirm-scope.json --project-id demo-bike-stall --if-version sha256:fdb85b3422228555f672e8b9d1a5b9851fcee46ecc4707d942519d0828360f81
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch02",
+  "project_id": "demo-bike-stall",
+  "current_stage": "outline",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "scope",
+    "presentation_id": "ch02-02-present-scope",
+    "presentation_version": "27338474a9186d4facb4ca0be7a035ea2b7fcfc8216d2277f4f9e9b99fbf2abe",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "ch02-03-confirm-scope",
+      "author_quote": "（合成演示）第二章范围可以。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "basis": "chapter",
+    "frozen": true,
+    "event_id": "ch02-01-policy"
+  },
+  "version": "sha256:bec008e543aa434e535b3872603fb01e8203c418a8fa463455387cd9961d1dc2",
+  "warnings": []
+}
+[exit 0]
+
+### 42 ch02-present-outline
+$ learning_loop.py apply 项目/learning-record.md events/42-ch02-present-outline.json --project-id demo-bike-stall --if-version sha256:bec008e543aa434e535b3872603fb01e8203c418a8fa463455387cd9961d1dc2
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch02",
+  "project_id": "demo-bike-stall",
+  "current_stage": "outline",
+  "presentation_id": "ch02-04-present-outline",
+  "presentation_version": "3ab5cf5c494b1d9e8b36d5838675c1492c0571b4b79e64a8513437df5f7fa512",
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "scope",
+    "presentation_id": "ch02-02-present-scope",
+    "presentation_version": "27338474a9186d4facb4ca0be7a035ea2b7fcfc8216d2277f4f9e9b99fbf2abe",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）第二章范围可以。",
+      "event_id": "ch02-03-confirm-scope",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "basis": "chapter",
+    "frozen": true,
+    "event_id": "ch02-01-policy"
+  },
+  "version": "sha256:47543f995addabdbd7355c7f2d140350f1b8c3d2fbe21f6fd9ddece48c968ea4",
+  "warnings": []
+}
+[exit 0]
+
+### 43 ch02-confirm-outline
+$ learning_loop.py apply 项目/learning-record.md events/43-ch02-confirm-outline.json --project-id demo-bike-stall --if-version sha256:47543f995addabdbd7355c7f2d140350f1b8c3d2fbe21f6fd9ddece48c968ea4
+{
+  "status": "saved",
+  "chapter_status": "awaiting_presentation",
+  "chapter_id": "ch02",
+  "project_id": "demo-bike-stall",
+  "current_stage": "preparation",
+  "presentation_id": null,
+  "presentation_version": null,
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "ch02-04-present-outline",
+    "presentation_version": "3ab5cf5c494b1d9e8b36d5838675c1492c0571b4b79e64a8513437df5f7fa512",
+    "artifact_sha256": null,
+    "confirmation": {
+      "event_id": "ch02-05-confirm-outline",
+      "author_quote": "（合成演示）第二章方案可以。",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+      "actor_role": "author",
+      "mode": "human"
+    }
+  },
+  "next_action": "present",
+  "workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "basis": "chapter",
+    "frozen": true,
+    "event_id": "ch02-01-policy"
+  },
+  "version": "sha256:ed2576c0fcab359383642ad802181d45b6deab0c9ff9a9afcab36492085e0675",
+  "warnings": []
+}
+[exit 0]
+
+### 44 ch02-preparation-without-visual
+$ learning_loop.py apply 项目/learning-record.md events/44-ch02-preparation-without-visual.json --project-id demo-bike-stall --if-version sha256:ed2576c0fcab359383642ad802181d45b6deab0c9ff9a9afcab36492085e0675
+{
+  "status": "saved",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch02",
+  "project_id": "demo-bike-stall",
+  "current_stage": "preparation",
+  "presentation_id": "ch02-06-present-preparation",
+  "presentation_version": "e4ef92a54fa00f537fd2f2018b7c512f21907c7e1e92f83b16d8af6c2f82efb6",
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "ch02-04-present-outline",
+    "presentation_version": "3ab5cf5c494b1d9e8b36d5838675c1492c0571b4b79e64a8513437df5f7fa512",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）第二章方案可以。",
+      "event_id": "ch02-05-confirm-outline",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "basis": "chapter",
+    "frozen": true,
+    "event_id": "ch02-01-policy"
+  },
+  "version": "sha256:cf204764a2d20b8aae5a8d148c5e84ab2c5b0ff764d6c6af6a7325ff72eeffad",
+  "warnings": []
+}
+[exit 0]
+
+### 45 gate-status
+$ chapter_gate.py status 项目/learning-record.md --chapter-id ch02
+{
+  "status": "awaiting_confirmation",
+  "chapter_status": "awaiting_confirmation",
+  "chapter_id": "ch02",
+  "project_id": "demo-bike-stall",
+  "current_stage": "preparation",
+  "presentation_id": "ch02-06-present-preparation",
+  "presentation_version": "e4ef92a54fa00f537fd2f2018b7c512f21907c7e1e92f83b16d8af6c2f82efb6",
+  "artifact_sha256": null,
+  "last_valid_confirmation": {
+    "stage": "outline",
+    "presentation_id": "ch02-04-present-outline",
+    "presentation_version": "3ab5cf5c494b1d9e8b36d5838675c1492c0571b4b79e64a8513437df5f7fa512",
+    "artifact_sha256": null,
+    "confirmation": {
+      "actor_role": "author",
+      "author_quote": "（合成演示）第二章方案可以。",
+      "event_id": "ch02-05-confirm-outline",
+      "mode": "human",
+      "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+    }
+  },
+  "next_action": "confirm",
+  "workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "basis": "chapter",
+    "frozen": true,
+    "event_id": "ch02-01-policy",
+    "author_quote": "（合成演示）第二章不用看图。",
+    "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+  },
+  "store_version": "sha256:cf204764a2d20b8aae5a8d148c5e84ab2c5b0ff764d6c6af6a7325ff72eeffad"
+}
+[exit 0]

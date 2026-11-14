@@ -1,0 +1,10 @@
+{
+  "event_id": "ch01-11-present-draft-v2",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "draft",
+  "content": "（合成初稿第二版）阿梨推车来补胎。老秦看了一眼，说：“两处，三块。”\n",
+  "source_ref": "合成演示：初稿第二版",
+  "artifact_sha256": "d5644e93b39e5434cc0786328ccd97166d14de7b25c70ac3e2403992ea8884ee"
+}

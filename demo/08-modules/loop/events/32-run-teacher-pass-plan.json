@@ -1,0 +1,9 @@
+{
+  "event_id": "run-teacher-pass-02",
+  "op": "plan",
+  "run_id": "run-teacher-pass",
+  "applications": [],
+  "checks": [
+    "口气"
+  ]
+}
