@@ -1,6 +1,6 @@
 # 本地工作台与检查工具
 
-[← 返回首页](../README.md) · 适用版本 `2026-11-14-r5.55`
+[← 返回首页](../README.md) · 适用版本 `2026-11-14-r5.56`
 
 这些都是可选的。只在聊天里写作用不到它们；除维护用的 `darwin_eval.py`（在 `skills/darwin-novel-workshop/scripts/`）外，都在完整包的 `skills/novel-workshop/` 里；便携单文件里没有可运行的脚本。完整命令见包内 `USAGE.md` 第五节和 `skills/novel-workshop/references/local-workbench.md`。
 
@@ -68,6 +68,7 @@ node scripts/oh-story/dashboard-server.mjs --root "D:/小说/我的作品" --ope
 - 回来的是候选稿，侧栏标出删去和加入的地方；整段采纳、删改后采纳或放弃由你定。Gemini 不直接写任何文件。
 - “已配置”只说明填了密钥，不等于能用；向 Google 的请求真的拿回候选稿，才显示“已真实接通”。
 - 第一次先用合成示例试：写作台里的“用合成示例试一次”，或双击 `check-gemini.cmd`（Windows）、`check-gemini.command`（macOS），或运行 `node scripts/oh-story/gemini-check.mjs`。
+- 章节门里初稿交教师的默认设置是 gemini-4-argon、思考等级选“高”（见[四个可选模块](modules.md#章节门)）。这个侧栏的请求不指定思考等级，用的是模型自己的默认，工坊没有核对过那是不是“高”；一次最多发 6000 字，整章初稿发不全。要照默认设置交整章的，在你自己用的 Gemini 界面里选“高”交（r5.56 补的说明，写作台的代码没有改）。
 
 ### 可选：Google AI 侧栏（r5.49，只用模拟程序测过）
 
@@ -77,6 +78,7 @@ node scripts/oh-story/dashboard-server.mjs --root "D:/小说/我的作品" --ope
 - 它和上面的 Gemini API 是两条独立的路，额度不够时不会自动换到 API。
 - 不开写作台也能检查：`node scripts/oh-story/acp-check.mjs --runtime "官方程序的路径"` 只查程序和握手，加 `--login --try` 才登录并发一段工坊自带的合成文字；Windows 上也可以双击 `scripts/oh-story/check-acp.cmd`。
 - **目前只用工坊自己写的模拟程序测过**：和官方程序握手、真实的 Google 登录、真实调用、Windows 实机都还没有验证；订阅能不能用来写小说也没有确认。
+- 照默认的教师设置交教师的，模型选 gemini-4-argon，思考强度选 High；官方程序给的清单里名字可能不一样，以清单为准，清单里没有的，带回教师结果时照实说用的是哪一个（r5.56 补的说明）。一次同样最多发 6000 字。
 
 安装、核对程序校验值、连接和登录的详细步骤，见包内 `skills/novel-workshop/references/local-workbench.md`。
 
@@ -100,18 +102,20 @@ node scripts/oh-story/dashboard-server.mjs --root "D:/小说/我的作品" --ope
 | `inspiration_library.py` | 本书灵感库：核对记录、按章或按人物地方列出、出素材卡的素材块 |
 | `inspiration_write.py` | 写灵感库的唯一入口：迁移旧版、记下选择、回退、看历史，写前核修订号 |
 | `visual_materials_cli.py` | 可选的联网选图链路，见下文 |
-| `export_portable.py` | 导出核心文件夹、单文件或安装包（`--mode personal\|sale`、`--format portable\|install`），不自动发布 |
+| `export_portable.py` | 导出核心文件夹、单文件或安装包（`--mode personal\|sale`、`--format portable\|install`），不自动发布；个人导出默认不带 `assets/project-packs/`，命令行说有几份没带，加 `--include-projects` 才带上整个文件夹，连同作者改法累计 `_author/`，只有 `_author/` 的也能用（r5.56）；`--mode sale` 一律不带，便携单文件不展开它；出错时打印 “Export stopped: …”、退出码 1 |
 | `workflow_demo.py` | 虚构三章演练，审稿与采纳都是模拟的，只用来熟悉流程 |
 | `chapter_gate.py` | 章节门读进度（只有 `status` 一个子命令，只读）：这一章停在七个阶段的哪一步，等你确认还是等教师回传，按什么策略走（`workflow_policy`），记录里缺了什么（`record_problems`）；写入走 `learning_loop.py apply`。默认不开，见[四个可选模块](modules.md#章节门) |
 | `learning_loop.py` | 学习循环和章节门的记录入口：`status`、`context`、`show` 只读，`apply` 一次交一个事件（带版本的条件保存，同一事件重发不重记）；不调用模型，不写小说。见[四个可选模块](modules.md#学习循环) |
 | `demonstration_memory.py` | 示范记忆的只读选择器：`check` 核结构、哈希和认可绑的文字，`index` 列出全部符合筛选的案例（只给编号、状态、适用条件和例外这类元数据），`select` 取最多三条认可过的示范。见[四个可选模块](modules.md#示范记忆) |
-| `dialogue_lint/run_lint.py` | 对白声纹与反模式检查（可选试用，r5.55 为 1.2.0）：`scan` 只读扫描出报告，认“”「」『』，角色一栏只给数字，命中只标“复核”；`apply` 要带和 `scan` 相同的选项，重扫核对、校验候选改句以后写到新文件，不覆盖原稿。见[四个可选模块](modules.md#对白声纹与反模式检查) |
+| `dialogue_lint/run_lint.py` | 对白声纹与反模式检查（可选试用，r5.55 起为 1.2.0）：`scan` 只读扫描出报告，认“”「」『』，角色一栏只给数字，命中只标“复核”；`apply` 要带和 `scan` 相同的选项，重扫核对、校验候选改句以后写到新文件，不覆盖原稿。见[四个可选模块](modules.md#对白声纹与反模式检查) |
 | `oh-story/build_chapter_index.py` | 章节位置索引：章节范围、原文行号、字符数与内容哈希，不做文学分析 |
 | `oh-story/render_relation_chart.py` | 从已有的人物关系表生成 Mermaid 关系图，可选 PNG；不自行推断人物关系 |
 | `oh-story/inspect_existing_assets.py` | 只读检查已有拆文资料的覆盖情况 |
 | `darwin_eval.py`（维护技能里） | 维护用：保存与汇总方法对照记录，不调用模型、不生成正文、不评分 |
 
 Node 一侧另有两个接通检查：`gemini-check.mjs` 和 `acp-check.mjs`，见上文。
+
+安装脚本 `install.py` 在完整包的根目录，不在 `scripts/` 里（r5.56 改过）：`--upgrade` 先把装着的 `novel-workshop/assets/project-packs/`（作者改法累计 `_author/` 和你放进去的作品资料）复制进新版，每个文件核一次 SHA-256，再换上新版；`--dry-run` 的报告里，`carried` 列出要带过去的文件，`conflicts` 列出对不上的。新包在那里也带了同名而内容不同的文件的，它在写任何东西以前停下，退出码 1，要你加 `--keep installed`（留装着的）或 `--keep package`（用新包的，装着的那一份只留在备份里）再运行，一次对所有对不上的文件选同一边。符号链接和目录联接（junction）都拒绝。r5.55 和更早的安装器不带这个文件夹，用它们退回时记录留在备份里。用法见[详细用法](usage.md#升级与回退)。
 
 几条常用命令（路径换成自己的）：
 
@@ -129,7 +133,7 @@ python3 scripts/dialogue_lint/run_lint.py scan 正文/第05章.txt --config 本�
 
 后四条属于默认不开的四个模块；事件文件怎么写、实际跑出来是什么样，见[四个可选模块](modules.md)。
 
-整包测试在交付包目录运行 `python tests/run_tests.py`。r5.55 一共 1,589 项，照包内 `VERIFICATION.md` 本版一节：在 Linux、Python 3.13 上跳过 5 项，其余全部通过；在 Linux、Python 3.9.25 上跳过 74 项（多跳的是没装 Pillow、PyYAML 的几项和 Crawl4AI 要 3.10 以上的几项），其余全部通过。其中章节门的测试 45 项，学习循环 69 项，示范记忆 16 项，对白声纹的测试目录 120 项。这一页没有重跑全套。测试检查脚本行为，比如标点定位、事实比对、审稿版本绑定、回传绑错版拒收，不评价文学质量。
+整包测试在交付包目录运行 `python tests/run_tests.py`。r5.56 一共 1,657 项，照包内 `VERIFICATION.md` 本版一节：在 Linux、Python 3.13 上跳过 5 项，其余 1,652 项全部通过；在 Linux、Python 3.9.25 上跳过 74 项（多跳的是没装 Pillow、PyYAML 的几项和 Crawl4AI 要 3.10 以上的几项），其余 1,583 项全部通过。其中章节门的测试 45 项，学习循环 69 项，示范记忆 16 项，对白声纹的测试目录 120 项，这几组和 r5.55 相同；r5.56 新加三个测试文件：安装器和导出器 40 项（`tests/test_r556_author_records.py`），页面说法 21 项（`tests/test_r556_rules.py`），版本号和本版说明 7 项（`tests/test_r556_package.py`）。这一页没有重跑全套。测试检查脚本行为，比如标点定位、事实比对、审稿版本绑定、回传绑错版拒收、升级带上记录、对不上时停下，不评价文学质量。
 
 ## 可选视觉链路
 
@@ -151,3 +155,4 @@ python3 scripts/dialogue_lint/run_lint.py scan 正文/第05章.txt --config 本�
 - `dialogue_lint/` 这一组：r5.54-merged 在 Python 3.9 上一导入就报错，r5.55 修了；包内验证记录写着这一组的测试在 Python 3.9.25 上也过。这一页没有在 3.9 上重跑。
 - 一组 Windows 上的测试问题在 r5.25 修过，只在 Linux 上模拟 Windows 的换行和缺少 fcntl 重跑过，还没有在 Windows 上重跑。遇到问题，保留命令和完整输出，到仓库的 [Issues](https://github.com/rumpelpalmour757-lgtm/novel-workshop/issues) 提；包内说明里请你“发给维护者”的地方，也发到那里。
 - 工作台的 Google AI 侧栏在 Windows 上的启动、结束进程、中文和空格路径等都还没有实测。
+- `install.py` 拒绝 Windows 的目录联接，删文件遇到只读文件时清掉只读位再试一次：这两样只在 Linux 上模拟过，没有在原生 Windows 上跑；macOS 和不分大小写的文件系统也没有跑过（r5.56）。
