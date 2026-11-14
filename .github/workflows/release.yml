@@ -1,7 +1,8 @@
 # 建立 GitHub 发布版本（Releases）。
 # 用法：先在 docs/releases/ 下放两份文件并合进 main：
 #   <标签>.md      第一行是标题（# 开头），其余是发布说明
-#   <标签>.assets  要附上的文件，一行一个，路径相对仓库根目录
+#   <标签>.assets  要附上的文件，一行一个，路径相对仓库根目录；写成 路径@提交号 时，取那次提交里的文件
+#                  （旧版本的附件用这个固定下来，免得根目录换了新文件以后被换掉）
 # 然后在 Actions 页手动运行这个工作流，填上标签（例如 r5.55）。
 # 已经有同名发布版本的，默认不覆盖，直接报错停下；要改标题、说明或换附件，运行时把 replace 选成 true。
 name: 发布版本
@@ -25,6 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: 核对发布说明和附件
         env:
@@ -36,10 +39,24 @@ jobs:
           esac
           test -f "docs/releases/$TAG.md" || { echo "缺发布说明 docs/releases/$TAG.md"; exit 1; }
           test -f "docs/releases/$TAG.assets" || { echo "缺附件清单 docs/releases/$TAG.assets"; exit 1; }
-          while IFS= read -r f; do
-            [ -z "$f" ] && continue
-            test -f "$f" || { echo "附件不存在：$f"; exit 1; }
-            sha256sum "$f"
+          mkdir -p "$RUNNER_TEMP/assets"
+          : > "$RUNNER_TEMP/files.txt"
+          while IFS= read -r line; do
+            [ -z "$line" ] && continue
+            case "$line" in
+              *@*)
+                path="${line%@*}"; ref="${line##*@}"
+                case "$ref" in ''|*[!0-9a-f]*) echo "提交号只能是十六进制：$line"; exit 1 ;; esac
+                out="$RUNNER_TEMP/assets/$(basename "$path")"
+                git show "$ref:$path" > "$out" || { echo "取不到：$line"; exit 1; }
+                ;;
+              *)
+                test -f "$line" || { echo "附件不存在：$line"; exit 1; }
+                out="$line"
+                ;;
+            esac
+            sha256sum "$out"
+            printf '%s\n' "$out" >> "$RUNNER_TEMP/files.txt"
           done < "docs/releases/$TAG.assets"
 
       - name: 建立或更新发布版本
@@ -51,7 +68,7 @@ jobs:
           set -euo pipefail
           title="$(head -n 1 "docs/releases/$TAG.md" | sed 's/^#[[:space:]]*//')"
           tail -n +2 "docs/releases/$TAG.md" > "$RUNNER_TEMP/notes.md"
-          mapfile -t files < <(grep -v '^[[:space:]]*$' "docs/releases/$TAG.assets")
+          mapfile -t files < "$RUNNER_TEMP/files.txt"
           if gh release view "$TAG" >/dev/null 2>&1; then
             if [ "$REPLACE" != "true" ]; then
               echo "已经有 $TAG 这个发布版本，不覆盖（要更新请把 replace 选成 true）"; exit 1
