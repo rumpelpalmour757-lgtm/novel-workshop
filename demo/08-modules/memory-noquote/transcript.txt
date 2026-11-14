@@ -1,0 +1,4 @@
+### 01 check-noquote
+$ demonstration_memory.py check (no quote)
+{"status": "invalid", "errors": ["case a1: author_accepted requires an author quote and source ref"]}
+[exit 2]

@@ -9,6 +9,13 @@
   "artifact_sha256": null,
   "last_valid_confirmation": null,
   "next_action": "confirm",
-  "version": "sha256:8e088a2f3edb9d13b56990a080a330e85e86cf47ede4c45402b50cec4a4ca3f9",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "project",
+    "frozen": true,
+    "event_id": "demo-01-configure"
+  },
+  "version": "sha256:85311b2750d0021288ff6ab6d818a3ebb0a27c6f301ec4ac51281243e97f4c25",
   "warnings": []
 }

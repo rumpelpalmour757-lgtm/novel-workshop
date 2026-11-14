@@ -1,0 +1,982 @@
+### 01 loop-status
+$ learning_loop.py status 项目/learning-record.md
+{
+  "status": "disabled",
+  "enabled": true,
+  "loop_enabled": false,
+  "project_id": "demo-bike-stall",
+  "version": "sha256:820caa60b035813620baabac1d67ee4436d4789022b8e39a98fe93b564d53aed",
+  "case_count": 0,
+  "run_count": 0,
+  "active_runs": [],
+  "next_action": "resume_original_workflow",
+  "missing_switches": [
+    "loop_enabled"
+  ]
+}
+[exit 0]
+
+### 02 trial-start-while-disabled
+$ learning_loop.py apply 项目/learning-record.md events/02-trial-start-while-disabled.json --project-id demo-bike-stall --if-version sha256:820caa60b035813620baabac1d67ee4436d4789022b8e39a98fe93b564d53aed
+{"status": "error", "code": "disabled", "message": "Learning loop is disabled (data.demonstration_learning.loop_enabled is false); continue the original workflow"}
+[exit 2]
+
+### 03 configure
+$ learning_loop.py apply 项目/learning-record.md events/03-configure.json --project-id demo-bike-stall --if-version sha256:820caa60b035813620baabac1d67ee4436d4789022b8e39a98fe93b564d53aed
+{
+  "next_action": "context",
+  "status": "saved",
+  "version": "sha256:f5fb1b07ee4e0454922e6a4caf4e2c84323ded57584b5fc97defd45bf0c4a786",
+  "warnings": []
+}
+[exit 0]
+
+### 04 context
+$ learning_loop.py context 项目/learning-record.md --project-id demo-bike-stall --task dialogue_revision --exclude-group ch01-修车摊
+{
+  "status": "selected",
+  "cases": [],
+  "count": 0,
+  "not_selected": [],
+  "eligible_count": 0,
+  "matched_by": [
+    "project",
+    "task"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "examples_for_context_not_story_facts",
+  "version": "sha256:f5fb1b07ee4e0454922e6a4caf4e2c84323ded57584b5fc97defd45bf0c4a786"
+}
+[exit 0]
+
+### 05 start
+$ learning_loop.py apply 项目/learning-record.md events/05-start.json --project-id demo-bike-stall --if-version sha256:f5fb1b07ee4e0454922e6a4caf4e2c84323ded57584b5fc97defd45bf0c4a786
+{
+  "run_id": "run-ch01-dialogue",
+  "next_action": "plan",
+  "run_status": "started",
+  "chapter_link": "not_linked",
+  "status": "saved",
+  "version": "sha256:d84deab2a2b6b172599194eac91bad300942c5469b6f6dec007a6668e61bd38d",
+  "warnings": []
+}
+[exit 0]
+
+### 06 plan
+$ learning_loop.py apply 项目/learning-record.md events/06-plan.json --project-id demo-bike-stall --if-version sha256:d84deab2a2b6b172599194eac91bad300942c5469b6f6dec007a6668e61bd38d
+{
+  "run_id": "run-ch01-dialogue",
+  "next_action": "draft",
+  "run_status": "planned",
+  "status": "saved",
+  "version": "sha256:a96b8a036c7dd2e6b606045b76d21651042a82510ab73369d9826db1acae0660",
+  "warnings": []
+}
+[exit 0]
+
+### 07 draft
+$ learning_loop.py apply 项目/learning-record.md events/07-draft.json --project-id demo-bike-stall --if-version sha256:a96b8a036c7dd2e6b606045b76d21651042a82510ab73369d9826db1acae0660
+{
+  "run_id": "run-ch01-dialogue",
+  "next_action": "review",
+  "run_status": "drafted",
+  "draft_sha256": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac",
+  "status": "saved",
+  "version": "sha256:240b6a3c791364038c3e6d6bc4c8977ac09e9fe55fced2f39c9881a74532f405",
+  "warnings": []
+}
+[exit 0]
+
+### 08 trial-review-wrong-hash
+$ learning_loop.py apply 项目/learning-record.md events/08-trial-review-wrong-hash.json --project-id demo-bike-stall --if-version sha256:240b6a3c791364038c3e6d6bc4c8977ac09e9fe55fced2f39c9881a74532f405
+{"status": "error", "code": "invalid_event", "message": "Review must bind the current draft"}
+[exit 2]
+
+### 09 review
+$ learning_loop.py apply 项目/learning-record.md events/09-review.json --project-id demo-bike-stall --if-version sha256:240b6a3c791364038c3e6d6bc4c8977ac09e9fe55fced2f39c9881a74532f405
+{
+  "run_id": "run-ch01-dialogue",
+  "next_action": "decide",
+  "run_status": "reviewed",
+  "draft_sha256": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac",
+  "status": "saved",
+  "version": "sha256:93088973a9cd941506706ca6e65929724d212d5b550dec8565d99a184b0b50fa",
+  "warnings": []
+}
+[exit 0]
+
+### 10 trial-revise-before-decide
+$ learning_loop.py apply 项目/learning-record.md events/10-trial-revise-before-decide.json --project-id demo-bike-stall --if-version sha256:93088973a9cd941506706ca6e65929724d212d5b550dec8565d99a184b0b50fa
+{"status": "error", "code": "invalid_event", "message": "Revision requires at least one explicitly adopted finding"}
+[exit 2]
+
+### 11 decide
+$ learning_loop.py apply 项目/learning-record.md events/11-decide.json --project-id demo-bike-stall --if-version sha256:93088973a9cd941506706ca6e65929724d212d5b550dec8565d99a184b0b50fa
+{
+  "run_id": "run-ch01-dialogue",
+  "next_action": "revise_or_stop",
+  "run_status": "decided",
+  "draft_sha256": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac",
+  "status": "saved",
+  "version": "sha256:61f14dd43b4111dc3d8114a5f3e9b48f8c19c3a12d1d8ddece5aec082c8e586e",
+  "warnings": []
+}
+[exit 0]
+
+### 12 revise
+$ learning_loop.py apply 项目/learning-record.md events/12-revise.json --project-id demo-bike-stall --if-version sha256:61f14dd43b4111dc3d8114a5f3e9b48f8c19c3a12d1d8ddece5aec082c8e586e
+{
+  "run_id": "run-ch01-dialogue",
+  "next_action": "review",
+  "run_status": "drafted",
+  "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+  "status": "saved",
+  "version": "sha256:d40be5f1fd6ad2783b7e79c68ab5eed2227341ebb47b06197b4543022d2615ac",
+  "warnings": []
+}
+[exit 0]
+
+### 13 trial-finish-before-recheck
+$ learning_loop.py apply 项目/learning-record.md events/13-trial-finish-before-recheck.json --project-id demo-bike-stall --if-version sha256:d40be5f1fd6ad2783b7e79c68ab5eed2227341ebb47b06197b4543022d2615ac
+{"status": "error", "code": "invalid_transition", "message": "Current draft needs a passing review and all required rechecks"}
+[exit 2]
+
+### 14 trial-selfcheck-as-teacher
+$ learning_loop.py apply 项目/learning-record.md events/14-trial-selfcheck-as-teacher.json --project-id demo-bike-stall --if-version sha256:d40be5f1fd6ad2783b7e79c68ab5eed2227341ebb47b06197b4543022d2615ac
+{"status": "error", "code": "invalid_event", "message": "self_check can only have writer role"}
+[exit 2]
+
+### 15 recheck
+$ learning_loop.py apply 项目/learning-record.md events/15-recheck.json --project-id demo-bike-stall --if-version sha256:d40be5f1fd6ad2783b7e79c68ab5eed2227341ebb47b06197b4543022d2615ac
+{
+  "run_id": "run-ch01-dialogue",
+  "next_action": "finish",
+  "run_status": "reviewed",
+  "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+  "status": "saved",
+  "version": "sha256:b7c6be777ee32b7d449d88958af6b546194bb8fe8977af4665bc5d0215586d73",
+  "warnings": []
+}
+[exit 0]
+
+### 16 finish
+$ learning_loop.py apply 项目/learning-record.md events/16-finish.json --project-id demo-bike-stall --if-version sha256:b7c6be777ee32b7d449d88958af6b546194bb8fe8977af4665bc5d0215586d73
+{
+  "run_id": "run-ch01-dialogue",
+  "next_action": "learn",
+  "run_status": "finished",
+  "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+  "status": "saved",
+  "version": "sha256:f4ff5c15a1f49d605dfc8c845df78ea4a16b2232e335245bb7c5c353a6a7d7b7",
+  "warnings": []
+}
+[exit 0]
+
+### 17 trial-accept-labelled
+$ learning_loop.py apply 项目/learning-record.md events/17-trial-accept-labelled.json --project-id demo-bike-stall --if-version sha256:f4ff5c15a1f49d605dfc8c845df78ea4a16b2232e335245bb7c5c353a6a7d7b7
+{"status": "error", "code": "not_an_acceptance", "message": "Author acceptance needs the author's unqualified, explicit acceptance of this text; words that only move on, refuse or stay vague are not recorded. Ask the author."}
+[exit 2]
+
+### 18 trial-accept-continue
+$ learning_loop.py apply 项目/learning-record.md events/18-trial-accept-continue.json --project-id demo-bike-stall --if-version sha256:f4ff5c15a1f49d605dfc8c845df78ea4a16b2232e335245bb7c5c353a6a7d7b7
+{"status": "error", "code": "not_an_acceptance", "message": "Author acceptance needs the author's unqualified, explicit acceptance of this text; words that only move on, refuse or stay vague are not recorded. Ask the author."}
+[exit 2]
+
+### 19 author-accept
+$ learning_loop.py apply 项目/learning-record.md events/19-author-accept.json --project-id demo-bike-stall --if-version sha256:f4ff5c15a1f49d605dfc8c845df78ea4a16b2232e335245bb7c5c353a6a7d7b7
+{
+  "run_id": "run-ch01-dialogue",
+  "next_action": "learn",
+  "run_status": "finished",
+  "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+  "status": "saved",
+  "version": "sha256:c66aa2b5aa4604ebc0b7d45d16fed8b88ec7c020d7aef5e201d03a3eb029f313",
+  "warnings": []
+}
+[exit 0]
+
+### 20 learn
+$ learning_loop.py apply 项目/learning-record.md events/20-learn.json --project-id demo-bike-stall --if-version sha256:c66aa2b5aa4604ebc0b7d45d16fed8b88ec7c020d7aef5e201d03a3eb029f313
+{
+  "run_id": "run-ch01-dialogue",
+  "next_action": "complete",
+  "run_status": "finished",
+  "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+  "status": "saved",
+  "version": "sha256:362f6f4cb0581d0797be38a0051e539ed744d7f0b4937f7454650bd944dbd455",
+  "warnings": []
+}
+[exit 0]
+
+### 21 mem-check-first
+$ demonstration_memory.py check 项目/learning-record.md
+{
+  "status": "valid",
+  "case_count": 1,
+  "enabled": true,
+  "scope": "structure_hashes_and_approval_bindings"
+}
+[exit 0]
+
+### 22 mem-index-first
+$ demonstration_memory.py index 项目/learning-record.md --project-id demo-bike-stall --task dialogue_revision
+{
+  "status": "selected",
+  "cases": [
+    {
+      "id": "case-书面腔-01",
+      "project_id": "demo-bike-stall",
+      "group_id": "ch01-修车摊",
+      "task": "dialogue_revision",
+      "tags": [
+        "对白",
+        "书面腔"
+      ],
+      "status": "author_accepted",
+      "split": "development",
+      "when": [
+        "台词里出现“我注意到”“我意识到”这类汇报式开头",
+        "说话人是随口说话的普通人"
+      ],
+      "except": [
+        "人物在做正式汇报或读记录"
+      ],
+      "reviewer_role": "writer",
+      "reviewer_mode": "self_check"
+    }
+  ],
+  "count": 1,
+  "not_selected": [],
+  "eligible_count": 1,
+  "matched_by": [
+    "project",
+    "task"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "metadata_only"
+}
+[exit 0]
+
+### 23 mem-select-first
+$ demonstration_memory.py select 项目/learning-record.md --project-id demo-bike-stall --task dialogue_revision --limit 3
+{
+  "status": "selected",
+  "cases": [
+    {
+      "after": "巷口的修车摊快收了，老秦把打气筒靠到墙根。\n\n阿梨推着车过来，问：“还能补吗？”\n\n老秦看了一眼车胎，说：“能。”\n\n他把内胎按进水盆，冒出两串气泡。老秦说：“两处，三块。”\n\n阿梨说：“行。”她捏了捏后轮。阿梨说：“后胎好像也有点瘪。”\n\n老秦把内胎捞出来，甩了甩水，说：“打点气就行。”\n",
+      "author_acceptance": {
+        "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+        "quote": "采纳当前稿。",
+        "ref": "合成演示：这句不是真人作者说的；原话带了“（合成演示）”字样脚本就不认，所以只在出处一栏标明"
+      },
+      "before": "巷口的修车摊快收了，老秦把打气筒靠到墙根。\n\n阿梨推着车过来，问：“还能补吗？”\n\n老秦看了一眼车胎，说：“能。”\n\n他把内胎按进水盆，冒出两串气泡。老秦说：“两处，三块。”\n\n阿梨说：“行。”她捏了捏后轮。阿梨说：“我注意到后胎也有点瘪。”\n\n老秦把内胎捞出来，甩了甩水，说：“打点气就行。”\n",
+      "decisions": [
+        "只换这一句的措辞",
+        "补原因的建议不采纳：会带出原稿没有的判断"
+      ],
+      "except": [
+        "人物在做正式汇报或读记录"
+      ],
+      "group_id": "ch01-修车摊",
+      "hashes": {
+        "after": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+        "before": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac"
+      },
+      "id": "case-书面腔-01",
+      "project_id": "demo-bike-stall",
+      "source": {
+        "draft_ref": "合成演示：第二版",
+        "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+        "evidence": "合成演示：工坊自查",
+        "input_ref": "合成演示：为这一页新写的修车摊初稿",
+        "ref": "合成演示：第二版",
+        "review_ids": [
+          "r2-self"
+        ],
+        "reviewer": "合成写作者",
+        "reviewer_mode": "self_check",
+        "reviewer_role": "writer",
+        "run_id": "run-ch01-dialogue",
+        "run_review_ids": [
+          "r1-teacher",
+          "r2-self"
+        ],
+        "supporting_review_id": "r2-self",
+        "version": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b"
+      },
+      "split": "development",
+      "status": "author_accepted",
+      "tags": [
+        "对白",
+        "书面腔"
+      ],
+      "task": "dialogue_revision",
+      "when": [
+        "台词里出现“我注意到”“我意识到”这类汇报式开头",
+        "说话人是随口说话的普通人"
+      ],
+      "why": "台词里的“我注意到……”是汇报口气；换成说话人会用的说法，办的事和给的信息不变。"
+    }
+  ],
+  "count": 1,
+  "not_selected": [],
+  "eligible_count": 1,
+  "matched_by": [
+    "project",
+    "task"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "examples_for_context_not_story_facts"
+}
+[exit 0]
+
+### 24 show-brief
+$ learning_loop.py show 项目/learning-record.md --run-id run-ch01-dialogue --brief
+{
+  "status": "found",
+  "version": "sha256:362f6f4cb0581d0797be38a0051e539ed744d7f0b4937f7454650bd944dbd455",
+  "run": {
+    "applications": [],
+    "author_acceptance": {
+      "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+      "quote": "采纳当前稿。",
+      "ref": "合成演示：这句不是真人作者说的；原话带了“（合成演示）”字样脚本就不认，所以只在出处一栏标明"
+    },
+    "checks": [
+      "台词像不像这个人",
+      "价钱不变"
+    ],
+    "completion": "self_checked",
+    "constraints": [
+      "不改补胎的价钱",
+      "老秦话少"
+    ],
+    "current_draft": {
+      "actor": {
+        "context_id": "writer-1",
+        "name": "合成写作者"
+      },
+      "adopted_findings": [
+        "f1"
+      ],
+      "parent_sha256": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac",
+      "review_id": "r1-teacher",
+      "sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+      "source_ref": "合成演示：第二版"
+    },
+    "decisions": {
+      "r1-teacher": [
+        {
+          "decision": "adopt",
+          "finding_id": "f1",
+          "reason": "问题成立：“我注意到”是书面说法。改法不照抄，换成她会说的话，信息不增不减。"
+        },
+        {
+          "decision": "decline",
+          "finding_id": "f2",
+          "reason": "老秦话少是这一场定下的口气；补原因会带出初稿里没有的判断。"
+        }
+      ]
+    },
+    "drafts": [
+      {
+        "actor": {
+          "context_id": "writer-1",
+          "name": "合成写作者"
+        },
+        "sha256": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac",
+        "source_ref": "合成演示：初稿原样登记",
+        "text": {
+          "sha256": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac",
+          "chars": 148
+        }
+      },
+      {
+        "actor": {
+          "context_id": "writer-1",
+          "name": "合成写作者"
+        },
+        "adopted_findings": [
+          "f1"
+        ],
+        "parent_sha256": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac",
+        "review_id": "r1-teacher",
+        "sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+        "source_ref": "合成演示：第二版",
+        "text": {
+          "sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+          "chars": 146
+        }
+      }
+    ],
+    "final_review_id": "r2-self",
+    "final_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+    "group_id": "ch01-修车摊",
+    "input_text": {
+      "sha256": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac",
+      "chars": 148
+    },
+    "learned_case_ids": [
+      "case-书面腔-01"
+    ],
+    "max_revisions": 3,
+    "pending_rechecks": [
+      "r1-teacher"
+    ],
+    "project_id": "demo-bike-stall",
+    "review_order": [
+      "r1-teacher",
+      "r2-self"
+    ],
+    "reviews": {
+      "r1-teacher": {
+        "draft_index": 0,
+        "draft_sha256": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac",
+        "findings": [
+          {
+            "evidence": "我注意到后胎也有点瘪。",
+            "id": "f1",
+            "issue": "“我注意到”是书面说法，不像学生随口说的",
+            "scope": "第 9 行"
+          },
+          {
+            "evidence": "打点气就行。",
+            "id": "f2",
+            "issue": "老秦该说一句为什么打气就行",
+            "scope": "第 11 行"
+          }
+        ],
+        "rechecks": [],
+        "review_id": "r1-teacher",
+        "reviewer": {
+          "context_id": "teacher-1",
+          "mode": "author_return",
+          "name": "合成教师",
+          "role": "teacher"
+        },
+        "source_ref": "合成演示：教师意见（不是真人回传）",
+        "verdict": "revise"
+      },
+      "r2-self": {
+        "draft_index": 1,
+        "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+        "findings": [],
+        "rechecks": [
+          "r1-teacher"
+        ],
+        "review_id": "r2-self",
+        "reviewer": {
+          "context_id": "writer-1",
+          "mode": "self_check",
+          "name": "合成写作者",
+          "role": "writer"
+        },
+        "source_ref": "合成演示：工坊自查",
+        "verdict": "pass"
+      }
+    },
+    "revision_count": 1,
+    "run_id": "run-ch01-dialogue",
+    "selected_cases": [],
+    "source_ref": "合成演示：为这一页新写的修车摊初稿",
+    "status": "finished",
+    "tags": [
+      "对白",
+      "书面腔"
+    ],
+    "task": "dialogue_revision"
+  },
+  "next_action": "complete"
+}
+[exit 0]
+
+### 25 run-self-only-start
+$ learning_loop.py apply 项目/learning-record.md events/25-run-self-only-start.json --project-id demo-bike-stall --if-version sha256:362f6f4cb0581d0797be38a0051e539ed744d7f0b4937f7454650bd944dbd455
+{
+  "run_id": "run-self-only",
+  "next_action": "plan",
+  "run_status": "started",
+  "chapter_link": "not_linked",
+  "status": "saved",
+  "version": "sha256:a4c03aefc63a2b0b691bdb6696b3faec25e3f8754a2d61c509a70c458a110b28",
+  "warnings": []
+}
+[exit 0]
+
+### 26 run-self-only-plan
+$ learning_loop.py apply 项目/learning-record.md events/26-run-self-only-plan.json --project-id demo-bike-stall --if-version sha256:a4c03aefc63a2b0b691bdb6696b3faec25e3f8754a2d61c509a70c458a110b28
+{
+  "run_id": "run-self-only",
+  "next_action": "draft",
+  "run_status": "planned",
+  "status": "saved",
+  "version": "sha256:a27c659f857e7d7aa98e00659ca8e03960830a2e6ac9b8be91f8becf2a68a0f4",
+  "warnings": []
+}
+[exit 0]
+
+### 27 run-self-only-draft
+$ learning_loop.py apply 项目/learning-record.md events/27-run-self-only-draft.json --project-id demo-bike-stall --if-version sha256:a27c659f857e7d7aa98e00659ca8e03960830a2e6ac9b8be91f8becf2a68a0f4
+{
+  "run_id": "run-self-only",
+  "next_action": "review",
+  "run_status": "drafted",
+  "draft_sha256": "d2ae86ae86ee6a0d034033923b2c0a09c71a67758723a2b7ed4bd6b25fdc822f",
+  "status": "saved",
+  "version": "sha256:c5a83473fe716d7489296088d3a4ae555cebed439d3103db2b84d277ef72c4e2",
+  "warnings": []
+}
+[exit 0]
+
+### 28 run-self-only-review
+$ learning_loop.py apply 项目/learning-record.md events/28-run-self-only-review.json --project-id demo-bike-stall --if-version sha256:c5a83473fe716d7489296088d3a4ae555cebed439d3103db2b84d277ef72c4e2
+{
+  "run_id": "run-self-only",
+  "next_action": "finish",
+  "run_status": "reviewed",
+  "draft_sha256": "d2ae86ae86ee6a0d034033923b2c0a09c71a67758723a2b7ed4bd6b25fdc822f",
+  "status": "saved",
+  "version": "sha256:c57d0fb7c7f8551cfd8955b261d45a08fa7f926194a08d1808056936f6d2e58e",
+  "warnings": []
+}
+[exit 0]
+
+### 29 run-self-only-finish
+$ learning_loop.py apply 项目/learning-record.md events/29-run-self-only-finish.json --project-id demo-bike-stall --if-version sha256:c57d0fb7c7f8551cfd8955b261d45a08fa7f926194a08d1808056936f6d2e58e
+{
+  "run_id": "run-self-only",
+  "next_action": "learn",
+  "run_status": "finished",
+  "draft_sha256": "d2ae86ae86ee6a0d034033923b2c0a09c71a67758723a2b7ed4bd6b25fdc822f",
+  "status": "saved",
+  "version": "sha256:e9d359a45fd28bfa3e734dd6e19583dcc16b138b19cc3cb043285cbc668f0634",
+  "warnings": []
+}
+[exit 0]
+
+### 30 run-self-only-learn
+$ learning_loop.py apply 项目/learning-record.md events/30-run-self-only-learn.json --project-id demo-bike-stall --if-version sha256:e9d359a45fd28bfa3e734dd6e19583dcc16b138b19cc3cb043285cbc668f0634
+{
+  "run_id": "run-self-only",
+  "next_action": "await_author_acceptance",
+  "run_status": "finished",
+  "draft_sha256": "d2ae86ae86ee6a0d034033923b2c0a09c71a67758723a2b7ed4bd6b25fdc822f",
+  "status": "saved",
+  "version": "sha256:acf1b6c06a07f5418cf8e8796221541f07fa43eb8f8e0235fc9d7bd6291dab7c",
+  "warnings": []
+}
+[exit 0]
+
+### 31 run-teacher-pass-start
+$ learning_loop.py apply 项目/learning-record.md events/31-run-teacher-pass-start.json --project-id demo-bike-stall --if-version sha256:acf1b6c06a07f5418cf8e8796221541f07fa43eb8f8e0235fc9d7bd6291dab7c
+{
+  "run_id": "run-teacher-pass",
+  "next_action": "plan",
+  "run_status": "started",
+  "chapter_link": "not_linked",
+  "status": "saved",
+  "version": "sha256:4c6f6ec025072db2674444ce9383818f3d271e6096bf56aade8ab114176a3f2a",
+  "warnings": []
+}
+[exit 0]
+
+### 32 run-teacher-pass-plan
+$ learning_loop.py apply 项目/learning-record.md events/32-run-teacher-pass-plan.json --project-id demo-bike-stall --if-version sha256:4c6f6ec025072db2674444ce9383818f3d271e6096bf56aade8ab114176a3f2a
+{
+  "run_id": "run-teacher-pass",
+  "next_action": "draft",
+  "run_status": "planned",
+  "status": "saved",
+  "version": "sha256:9e173bec713e2f8d99be8d90cfee46d2f1fdbce17f02c3dfee1b9cc05a137139",
+  "warnings": []
+}
+[exit 0]
+
+### 33 run-teacher-pass-draft
+$ learning_loop.py apply 项目/learning-record.md events/33-run-teacher-pass-draft.json --project-id demo-bike-stall --if-version sha256:9e173bec713e2f8d99be8d90cfee46d2f1fdbce17f02c3dfee1b9cc05a137139
+{
+  "run_id": "run-teacher-pass",
+  "next_action": "review",
+  "run_status": "drafted",
+  "draft_sha256": "1ff6bef3542c1a176669874f2938528fee9113ddc126ac4ad6d13531afc112f5",
+  "status": "saved",
+  "version": "sha256:6c4fdd2d8ba86ff36303e0950fd1f88f0186e8925c41b7067890d446d772b19e",
+  "warnings": []
+}
+[exit 0]
+
+### 34 run-teacher-pass-review
+$ learning_loop.py apply 项目/learning-record.md events/34-run-teacher-pass-review.json --project-id demo-bike-stall --if-version sha256:6c4fdd2d8ba86ff36303e0950fd1f88f0186e8925c41b7067890d446d772b19e
+{
+  "run_id": "run-teacher-pass",
+  "next_action": "decide",
+  "run_status": "reviewed",
+  "draft_sha256": "1ff6bef3542c1a176669874f2938528fee9113ddc126ac4ad6d13531afc112f5",
+  "status": "saved",
+  "version": "sha256:3eca3350cdecd55ada669226d07024e33fbcd9463af812ff0ca16735865d8550",
+  "warnings": []
+}
+[exit 0]
+
+### 35 run-teacher-pass-decide
+$ learning_loop.py apply 项目/learning-record.md events/35-run-teacher-pass-decide.json --project-id demo-bike-stall --if-version sha256:3eca3350cdecd55ada669226d07024e33fbcd9463af812ff0ca16735865d8550
+{
+  "run_id": "run-teacher-pass",
+  "next_action": "revise_or_stop",
+  "run_status": "decided",
+  "draft_sha256": "1ff6bef3542c1a176669874f2938528fee9113ddc126ac4ad6d13531afc112f5",
+  "status": "saved",
+  "version": "sha256:4462a2257a360c3296740004de3bb60f838139ba9db9f86223d624e3fb1ae095",
+  "warnings": []
+}
+[exit 0]
+
+### 36 run-teacher-pass-revise
+$ learning_loop.py apply 项目/learning-record.md events/36-run-teacher-pass-revise.json --project-id demo-bike-stall --if-version sha256:4462a2257a360c3296740004de3bb60f838139ba9db9f86223d624e3fb1ae095
+{
+  "run_id": "run-teacher-pass",
+  "next_action": "review",
+  "run_status": "drafted",
+  "draft_sha256": "111d99172ea59a7811b9a26cd4918dd4b0878c79bb818fea055750b19ba7a6d6",
+  "status": "saved",
+  "version": "sha256:24aae98bfc73da0cb5c525a1406174ee8f253c7eeca2c232f7bca169091b6416",
+  "warnings": []
+}
+[exit 0]
+
+### 37 run-teacher-pass-recheck
+$ learning_loop.py apply 项目/learning-record.md events/37-run-teacher-pass-recheck.json --project-id demo-bike-stall --if-version sha256:24aae98bfc73da0cb5c525a1406174ee8f253c7eeca2c232f7bca169091b6416
+{
+  "run_id": "run-teacher-pass",
+  "next_action": "finish",
+  "run_status": "reviewed",
+  "draft_sha256": "111d99172ea59a7811b9a26cd4918dd4b0878c79bb818fea055750b19ba7a6d6",
+  "status": "saved",
+  "version": "sha256:65a526221d478c0ca0889b1e55b81013dcd137505166632dde5e07a83b647581",
+  "warnings": []
+}
+[exit 0]
+
+### 38 run-teacher-pass-finish
+$ learning_loop.py apply 项目/learning-record.md events/38-run-teacher-pass-finish.json --project-id demo-bike-stall --if-version sha256:65a526221d478c0ca0889b1e55b81013dcd137505166632dde5e07a83b647581
+{
+  "run_id": "run-teacher-pass",
+  "next_action": "learn",
+  "run_status": "finished",
+  "draft_sha256": "111d99172ea59a7811b9a26cd4918dd4b0878c79bb818fea055750b19ba7a6d6",
+  "status": "saved",
+  "version": "sha256:543897049d31e68692d846bda8c5e2d106d6af01399f744d296b738918cfdf69",
+  "warnings": []
+}
+[exit 0]
+
+### 39 run-teacher-pass-learn
+$ learning_loop.py apply 项目/learning-record.md events/39-run-teacher-pass-learn.json --project-id demo-bike-stall --if-version sha256:543897049d31e68692d846bda8c5e2d106d6af01399f744d296b738918cfdf69
+{
+  "run_id": "run-teacher-pass",
+  "next_action": "await_author_acceptance",
+  "run_status": "finished",
+  "draft_sha256": "111d99172ea59a7811b9a26cd4918dd4b0878c79bb818fea055750b19ba7a6d6",
+  "status": "saved",
+  "version": "sha256:fa7dc04d624176362a4831088b5c1e83a5665b7d18078d145e7a7cf8aa11ba36",
+  "warnings": []
+}
+[exit 0]
+
+### 40 a-start
+$ learning_loop.py apply 项目/learning-record.md events/40-a-start.json --project-id demo-bike-stall --if-version sha256:fa7dc04d624176362a4831088b5c1e83a5665b7d18078d145e7a7cf8aa11ba36
+{
+  "run_id": "run-author-no",
+  "next_action": "plan",
+  "run_status": "started",
+  "chapter_link": "not_linked",
+  "status": "saved",
+  "version": "sha256:9659cf851a8351d7cf6a34ea61e921a4bf85e7315692c2b5bd63c3d860dbe6ea",
+  "warnings": []
+}
+[exit 0]
+
+### 41 a-plan
+$ learning_loop.py apply 项目/learning-record.md events/41-a-plan.json --project-id demo-bike-stall --if-version sha256:9659cf851a8351d7cf6a34ea61e921a4bf85e7315692c2b5bd63c3d860dbe6ea
+{
+  "run_id": "run-author-no",
+  "next_action": "draft",
+  "run_status": "planned",
+  "status": "saved",
+  "version": "sha256:763d6c78acc6c4669432d04f98c0971a5e00caa527e20af7860af736237e0ae1",
+  "warnings": []
+}
+[exit 0]
+
+### 42 a-draft
+$ learning_loop.py apply 项目/learning-record.md events/42-a-draft.json --project-id demo-bike-stall --if-version sha256:763d6c78acc6c4669432d04f98c0971a5e00caa527e20af7860af736237e0ae1
+{
+  "run_id": "run-author-no",
+  "next_action": "review",
+  "run_status": "drafted",
+  "draft_sha256": "d7031311025100dbf4e93d6838de46b14a7ebc911bb29058579c9dfdad8a3ade",
+  "status": "saved",
+  "version": "sha256:8ce68ab2e441317887bccac75571344e03f49e74de48b184ca9d18b599fa4e83",
+  "warnings": []
+}
+[exit 0]
+
+### 43 a-author-review
+$ learning_loop.py apply 项目/learning-record.md events/43-a-author-review.json --project-id demo-bike-stall --if-version sha256:8ce68ab2e441317887bccac75571344e03f49e74de48b184ca9d18b599fa4e83
+{
+  "run_id": "run-author-no",
+  "next_action": "decide",
+  "run_status": "reviewed",
+  "draft_sha256": "d7031311025100dbf4e93d6838de46b14a7ebc911bb29058579c9dfdad8a3ade",
+  "open_author_objections": [
+    "r1-author"
+  ],
+  "status": "saved",
+  "version": "sha256:6ca297a735b2e181cda09f69e3536eeb247d05fb1baaa8a656e6196c1fca8954",
+  "warnings": []
+}
+[exit 0]
+
+### 44 trial-decline-author
+$ learning_loop.py apply 项目/learning-record.md events/44-trial-decline-author.json --project-id demo-bike-stall --if-version sha256:6ca297a735b2e181cda09f69e3536eeb247d05fb1baaa8a656e6196c1fca8954
+{"status": "error", "code": "author_objection", "message": "The author's own objection can only be adopted, or taken back in the author's later words: withdrawal:{actor_role:author,mode:human,quote,source_ref}"}
+[exit 2]
+
+### 45 trial-accept-over-objection
+$ learning_loop.py apply 项目/learning-record.md events/45-trial-accept-over-objection.json --project-id demo-bike-stall --if-version sha256:6ca297a735b2e181cda09f69e3536eeb247d05fb1baaa8a656e6196c1fca8954
+{"status": "error", "code": "author_objection", "message": "The author's objection to this text is still open (r1-author): change the text, or record the author's own later words with decide and withdrawal"}
+[exit 2]
+
+### 46 a-stop
+$ learning_loop.py apply 项目/learning-record.md events/46-a-stop.json --project-id demo-bike-stall --if-version sha256:6ca297a735b2e181cda09f69e3536eeb247d05fb1baaa8a656e6196c1fca8954
+{
+  "run_id": "run-author-no",
+  "next_action": "resume_original_workflow",
+  "run_status": "stopped",
+  "draft_sha256": "d7031311025100dbf4e93d6838de46b14a7ebc911bb29058579c9dfdad8a3ade",
+  "open_author_objections": [
+    "r1-author"
+  ],
+  "status": "saved",
+  "version": "sha256:8f90ab6fc4a5f4a8efbd0981c5f307d70de18cdd9cf5dfadd0f23b805cae9d1e",
+  "warnings": []
+}
+[exit 0]
+
+### 47 mem-check
+$ demonstration_memory.py check 项目/learning-record.md
+{
+  "status": "valid",
+  "case_count": 3,
+  "enabled": true,
+  "scope": "structure_hashes_and_approval_bindings"
+}
+[exit 0]
+
+### 48 mem-index
+$ demonstration_memory.py index ... --task dialogue_revision
+{
+  "status": "selected",
+  "cases": [
+    {
+      "id": "case-书面腔-01",
+      "project_id": "demo-bike-stall",
+      "group_id": "ch01-修车摊",
+      "task": "dialogue_revision",
+      "tags": [
+        "对白",
+        "书面腔"
+      ],
+      "status": "author_accepted",
+      "split": "development",
+      "when": [
+        "台词里出现“我注意到”“我意识到”这类汇报式开头",
+        "说话人是随口说话的普通人"
+      ],
+      "except": [
+        "人物在做正式汇报或读记录"
+      ],
+      "reviewer_role": "writer",
+      "reviewer_mode": "self_check"
+    },
+    {
+      "id": "case-run-teacher-pass",
+      "project_id": "demo-bike-stall",
+      "group_id": "grp-run-teacher-pass",
+      "task": "dialogue_revision",
+      "tags": [
+        "对白"
+      ],
+      "status": "teacher_approved",
+      "split": "development",
+      "when": [
+        "合成演示"
+      ],
+      "except": [],
+      "reviewer_role": "teacher",
+      "reviewer_mode": "independent_agent"
+    }
+  ],
+  "count": 2,
+  "not_selected": [],
+  "eligible_count": 2,
+  "matched_by": [
+    "project",
+    "task"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "metadata_only"
+}
+[exit 0]
+
+### 49 mem-select
+$ demonstration_memory.py select ... --task dialogue_revision --limit 3
+{
+  "status": "selected",
+  "cases": [
+    {
+      "after": "巷口的修车摊快收了，老秦把打气筒靠到墙根。\n\n阿梨推着车过来，问：“还能补吗？”\n\n老秦看了一眼车胎，说：“能。”\n\n他把内胎按进水盆，冒出两串气泡。老秦说：“两处，三块。”\n\n阿梨说：“行。”她捏了捏后轮。阿梨说：“后胎好像也有点瘪。”\n\n老秦把内胎捞出来，甩了甩水，说：“打点气就行。”\n",
+      "author_acceptance": {
+        "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+        "quote": "采纳当前稿。",
+        "ref": "合成演示：这句不是真人作者说的；原话带了“（合成演示）”字样脚本就不认，所以只在出处一栏标明"
+      },
+      "before": "巷口的修车摊快收了，老秦把打气筒靠到墙根。\n\n阿梨推着车过来，问：“还能补吗？”\n\n老秦看了一眼车胎，说：“能。”\n\n他把内胎按进水盆，冒出两串气泡。老秦说：“两处，三块。”\n\n阿梨说：“行。”她捏了捏后轮。阿梨说：“我注意到后胎也有点瘪。”\n\n老秦把内胎捞出来，甩了甩水，说：“打点气就行。”\n",
+      "decisions": [
+        "只换这一句的措辞",
+        "补原因的建议不采纳：会带出原稿没有的判断"
+      ],
+      "except": [
+        "人物在做正式汇报或读记录"
+      ],
+      "group_id": "ch01-修车摊",
+      "hashes": {
+        "after": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+        "before": "fbfc82fd0ae73ba03f1b94bcdb3acd5370dbdaeabc91a923e4238c33713a3cac"
+      },
+      "id": "case-书面腔-01",
+      "project_id": "demo-bike-stall",
+      "source": {
+        "draft_ref": "合成演示：第二版",
+        "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+        "evidence": "合成演示：工坊自查",
+        "input_ref": "合成演示：为这一页新写的修车摊初稿",
+        "ref": "合成演示：第二版",
+        "review_ids": [
+          "r2-self"
+        ],
+        "reviewer": "合成写作者",
+        "reviewer_mode": "self_check",
+        "reviewer_role": "writer",
+        "run_id": "run-ch01-dialogue",
+        "run_review_ids": [
+          "r1-teacher",
+          "r2-self"
+        ],
+        "supporting_review_id": "r2-self",
+        "version": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b"
+      },
+      "split": "development",
+      "status": "author_accepted",
+      "tags": [
+        "对白",
+        "书面腔"
+      ],
+      "task": "dialogue_revision",
+      "when": [
+        "台词里出现“我注意到”“我意识到”这类汇报式开头",
+        "说话人是随口说话的普通人"
+      ],
+      "why": "台词里的“我注意到……”是汇报口气；换成说话人会用的说法，办的事和给的信息不变。"
+    },
+    {
+      "after": "巷口的修车摊还没收，老秦把打气筒靠到墙根。\n\n阿梨推着车过来，问：“还能补吗？”\n\n老秦看了一眼车胎，说：“能。”\n\n他把内胎按进水盆，冒出两串气泡。老秦说：“两处，三块。”\n\n阿梨说：“行。”她捏了捏后轮。阿梨说：“后胎好像也有点瘪。”\n\n老秦把内胎捞出来，甩了甩水，说：“打点气就行。”\n",
+      "author_acceptance": null,
+      "before": "巷口的修车摊还没收，老秦把打气筒靠到墙根。\n\n阿梨推着车过来，问：“还能补吗？”\n\n老秦看了一眼车胎，说：“能。”\n\n他把内胎按进水盆，冒出两串气泡。老秦说：“两处，三块。”\n\n阿梨说：“行。”她捏了捏后轮。阿梨说：“我注意到后胎也有点瘪。”\n\n老秦把内胎捞出来，甩了甩水，说：“打点气就行。”\n",
+      "decisions": [
+        "合成演示"
+      ],
+      "except": [],
+      "group_id": "grp-run-teacher-pass",
+      "hashes": {
+        "after": "111d99172ea59a7811b9a26cd4918dd4b0878c79bb818fea055750b19ba7a6d6",
+        "before": "1ff6bef3542c1a176669874f2938528fee9113ddc126ac4ad6d13531afc112f5"
+      },
+      "id": "case-run-teacher-pass",
+      "project_id": "demo-bike-stall",
+      "source": {
+        "draft_ref": "合成演示",
+        "draft_sha256": "111d99172ea59a7811b9a26cd4918dd4b0878c79bb818fea055750b19ba7a6d6",
+        "evidence": "合成演示",
+        "input_ref": "合成演示：为这一页新写的修车摊初稿",
+        "ref": "合成演示",
+        "review_ids": [
+          "t2"
+        ],
+        "reviewer": "合成教师",
+        "reviewer_mode": "independent_agent",
+        "reviewer_role": "teacher",
+        "run_id": "run-teacher-pass",
+        "run_review_ids": [
+          "t1",
+          "t2"
+        ],
+        "supporting_review_id": "t2",
+        "version": "111d99172ea59a7811b9a26cd4918dd4b0878c79bb818fea055750b19ba7a6d6"
+      },
+      "split": "development",
+      "status": "teacher_approved",
+      "tags": [
+        "对白"
+      ],
+      "task": "dialogue_revision",
+      "when": [
+        "合成演示"
+      ],
+      "why": "合成演示"
+    }
+  ],
+  "count": 2,
+  "not_selected": [],
+  "eligible_count": 2,
+  "matched_by": [
+    "project",
+    "task"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "examples_for_context_not_story_facts"
+}
+[exit 0]
+
+### 50 configure-off
+$ learning_loop.py apply 项目/learning-record.md events/50-configure-off.json --project-id demo-bike-stall --if-version sha256:8f90ab6fc4a5f4a8efbd0981c5f307d70de18cdd9cf5dfadd0f23b805cae9d1e
+{
+  "next_action": "resume_original_workflow",
+  "status": "saved",
+  "version": "sha256:7d7ef87da9ea4ee1949aa33ac13958431c373dd7e57da02c7c7b8aedab117053",
+  "warnings": []
+}
+[exit 0]
+
+### 51 trial-start-after-off
+$ learning_loop.py apply 项目/learning-record.md events/51-trial-start-after-off.json --project-id demo-bike-stall --if-version sha256:7d7ef87da9ea4ee1949aa33ac13958431c373dd7e57da02c7c7b8aedab117053
+{"status": "error", "code": "disabled", "message": "Learning loop is disabled (data.demonstration_learning.loop_enabled is false); continue the original workflow"}
+[exit 2]
+
+### 52 loop-status
+$ learning_loop.py status 项目/learning-record.md
+{
+  "status": "disabled",
+  "enabled": true,
+  "loop_enabled": false,
+  "project_id": "demo-bike-stall",
+  "version": "sha256:7d7ef87da9ea4ee1949aa33ac13958431c373dd7e57da02c7c7b8aedab117053",
+  "case_count": 3,
+  "run_count": 4,
+  "active_runs": [],
+  "next_action": "resume_original_workflow",
+  "missing_switches": [
+    "loop_enabled"
+  ]
+}
+[exit 0]

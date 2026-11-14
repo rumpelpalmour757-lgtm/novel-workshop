@@ -1,0 +1,10 @@
+{
+  "op": "author_accept",
+  "run_id": "run-ch01-dialogue",
+  "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+  "actor_role": "author",
+  "mode": "human",
+  "source_ref": "合成演示：这句不是真人作者说的；原话带了“（合成演示）”字样脚本就不认，所以只在出处一栏标明",
+  "event_id": "loop-15-author_accept",
+  "quote": "采纳当前稿。"
+}

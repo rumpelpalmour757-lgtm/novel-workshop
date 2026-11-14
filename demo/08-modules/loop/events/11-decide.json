@@ -1,0 +1,18 @@
+{
+  "event_id": "loop-09-decide",
+  "op": "decide",
+  "run_id": "run-ch01-dialogue",
+  "review_id": "r1-teacher",
+  "decisions": [
+    {
+      "finding_id": "f1",
+      "decision": "adopt",
+      "reason": "问题成立：“我注意到”是书面说法。改法不照抄，换成她会说的话，信息不增不减。"
+    },
+    {
+      "finding_id": "f2",
+      "decision": "decline",
+      "reason": "老秦话少是这一场定下的口气；补原因会带出初稿里没有的判断。"
+    }
+  ]
+}

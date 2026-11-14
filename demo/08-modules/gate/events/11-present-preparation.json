@@ -1,0 +1,17 @@
+{
+  "event_id": "ch01-05-present-preparation",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "preparation",
+  "content": "【合成演示】节拍卡三拍；声音：老秦话少，报数不解释；阿梨说话直。",
+  "source_ref": "合成演示：写前准备",
+  "visual_evidence": {
+    "mode": "author_images",
+    "source_refs": [
+      "合成演示：没有真的图，只是字段"
+    ],
+    "observation_ref": "合成演示：看图记录（没有真的看图）",
+    "selection_ref": "合成演示：作者的选择（合成）"
+  }
+}

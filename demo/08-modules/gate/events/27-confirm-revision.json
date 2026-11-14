@@ -1,0 +1,13 @@
+{
+  "event_id": "ch01-17-confirm-revision",
+  "op": "chapter_gate",
+  "action": "confirm",
+  "chapter_id": "ch01",
+  "stage": "revision",
+  "presentation_id": "ch01-16-present-revision",
+  "presentation_version": "b8304d933cdf6709cf2b0ebd2067dae7ed02fd142904558ccf116e63f63d5105",
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）修订稿可以，交定稿。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

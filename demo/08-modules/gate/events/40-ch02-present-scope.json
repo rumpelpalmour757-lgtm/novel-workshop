@@ -1,0 +1,9 @@
+{
+  "event_id": "ch02-02-present-scope",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch02",
+  "stage": "scope",
+  "content": "【合成演示】第二章范围。",
+  "source_ref": "合成演示"
+}

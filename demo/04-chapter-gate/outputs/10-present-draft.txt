@@ -21,6 +21,13 @@
     }
   },
   "next_action": "confirm",
-  "version": "sha256:b69a4cec8d4286142c91743792652e28aff792c8a415d9d4d449d9bc6dfd9ee9",
+  "workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "basis": "project",
+    "frozen": true,
+    "event_id": "demo-01-configure"
+  },
+  "version": "sha256:119ebe19fe7a30f752690ceae4a47ea404e0cd4605b8f1d2aac19a2d1686aaea",
   "warnings": []
 }

@@ -1,0 +1,9 @@
+{
+  "event_id": "ch01-t5-review",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "review",
+  "content": "没有回传的审稿方案",
+  "source_ref": "合成演示"
+}

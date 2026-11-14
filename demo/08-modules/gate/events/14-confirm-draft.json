@@ -1,0 +1,13 @@
+{
+  "event_id": "ch01-08-confirm-draft",
+  "op": "chapter_gate",
+  "action": "confirm",
+  "chapter_id": "ch01",
+  "stage": "draft",
+  "presentation_id": "ch01-07-present-draft",
+  "presentation_version": "f2dfa24527b1f58a2b94033ef1c94f059263f086a67aab0275f8bfd9819fce23",
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）初稿我拿去给教师。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

@@ -1,0 +1,9 @@
+{
+  "event_id": "ch02-04-present-outline",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch02",
+  "stage": "outline",
+  "content": "【合成演示】第二章方案。",
+  "source_ref": "合成演示"
+}

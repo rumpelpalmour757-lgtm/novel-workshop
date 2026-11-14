@@ -1,0 +1,24 @@
+{
+  "profiles": {
+    "老秦": {
+      "archetype": "taciturn",
+      "voice_prompt": "话少，报数不解释。"
+    },
+    "阿梨": {
+      "archetype": "plain_student",
+      "voice_prompt": "说话直，带一点学生气。"
+    }
+  },
+  "cold_protagonist_names": [],
+  "aliases": {},
+  "speaker_overrides": [],
+  "stress_speakers": [],
+  "suspicious_expressions": [],
+  "min_profile_quotes": 3,
+  "genre_id": null,
+  "genre_overrides": {},
+  "scene_overrides": [],
+  "system_brackets": {
+    "enabled": false
+  }
+}

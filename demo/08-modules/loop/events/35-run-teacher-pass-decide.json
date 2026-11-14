@@ -1,0 +1,13 @@
+{
+  "event_id": "run-teacher-pass-05",
+  "op": "decide",
+  "run_id": "run-teacher-pass",
+  "review_id": "t1",
+  "decisions": [
+    {
+      "finding_id": "f1",
+      "decision": "adopt",
+      "reason": "成立"
+    }
+  ]
+}

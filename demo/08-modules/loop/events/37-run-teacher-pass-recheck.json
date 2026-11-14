@@ -1,0 +1,19 @@
+{
+  "event_id": "run-teacher-pass-07",
+  "op": "review",
+  "run_id": "run-teacher-pass",
+  "review_id": "t2",
+  "draft_sha256": "111d99172ea59a7811b9a26cd4918dd4b0878c79bb818fea055750b19ba7a6d6",
+  "reviewer": {
+    "name": "合成教师",
+    "role": "teacher",
+    "mode": "independent_agent",
+    "context_id": "teacher-2"
+  },
+  "verdict": "pass",
+  "findings": [],
+  "source_ref": "合成演示",
+  "rechecks": [
+    "t1"
+  ]
+}

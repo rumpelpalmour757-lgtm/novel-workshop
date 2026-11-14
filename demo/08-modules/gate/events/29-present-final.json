@@ -1,0 +1,10 @@
+{
+  "event_id": "ch01-18-present-final",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "final",
+  "content": "【合成演示】定稿记录：当前候选稿是修订稿。",
+  "source_ref": "合成演示：定稿记录",
+  "artifact_sha256": "3e8d58fcaebeaed2b8aad87d452b6869e8533ac3e2ce65d41941de7b8404cbbc"
+}

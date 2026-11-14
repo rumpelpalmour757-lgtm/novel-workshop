@@ -1,0 +1,16 @@
+### 01 select-disabled
+$ demonstration_memory.py select (disabled)
+{
+  "status": "disabled",
+  "cases": [],
+  "count": 0,
+  "not_selected": [],
+  "eligible_count": 0,
+  "matched_by": [
+    "project",
+    "task"
+  ],
+  "applicability": "not_checked_by_script; the reader checks each when/except against the new scene",
+  "scope": "examples_for_context_not_story_facts"
+}
+[exit 0]

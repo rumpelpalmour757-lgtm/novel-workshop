@@ -1,0 +1,10 @@
+{
+  "event_id": "ch01-10-reopen-draft",
+  "op": "chapter_gate",
+  "action": "reopen",
+  "chapter_id": "ch01",
+  "stage": "draft",
+  "reason": "合成演示：作者要换一版初稿",
+  "author_quote": "（合成演示）初稿我自己改了一句，换这一版。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

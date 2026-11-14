@@ -1,0 +1,23 @@
+{
+  "event_id": "run-teacher-pass-04",
+  "op": "review",
+  "run_id": "run-teacher-pass",
+  "review_id": "t1",
+  "draft_sha256": "1ff6bef3542c1a176669874f2938528fee9113ddc126ac4ad6d13531afc112f5",
+  "reviewer": {
+    "name": "合成教师",
+    "role": "teacher",
+    "mode": "independent_agent",
+    "context_id": "teacher-2"
+  },
+  "verdict": "revise",
+  "findings": [
+    {
+      "id": "f1",
+      "issue": "“我注意到”是书面说法，不像学生随口说的",
+      "evidence": "我注意到后胎也有点瘪。",
+      "scope": "第 9 行"
+    }
+  ],
+  "source_ref": "合成演示"
+}

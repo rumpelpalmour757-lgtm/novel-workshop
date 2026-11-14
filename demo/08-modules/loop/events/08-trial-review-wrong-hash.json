@@ -1,0 +1,29 @@
+{
+  "event_id": "loop-06-review",
+  "op": "review",
+  "run_id": "run-ch01-dialogue",
+  "review_id": "r1-teacher",
+  "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+  "reviewer": {
+    "name": "合成教师",
+    "role": "teacher",
+    "mode": "author_return",
+    "context_id": "teacher-1"
+  },
+  "verdict": "revise",
+  "findings": [
+    {
+      "id": "f1",
+      "issue": "“我注意到”是书面说法，不像学生随口说的",
+      "evidence": "我注意到后胎也有点瘪。",
+      "scope": "第 9 行"
+    },
+    {
+      "id": "f2",
+      "issue": "老秦该说一句为什么打气就行",
+      "evidence": "打点气就行。",
+      "scope": "第 11 行"
+    }
+  ],
+  "source_ref": "合成演示：教师意见（不是真人回传）"
+}

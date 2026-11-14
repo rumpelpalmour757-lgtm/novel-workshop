@@ -8,7 +8,11 @@ $ python3 -I -B "$NW_SCRIPTS/learning_loop.py" status learning-record.md
   "case_count": 0,
   "run_count": 0,
   "active_runs": [],
-  "next_action": "resume_original_workflow"
+  "next_action": "resume_original_workflow",
+  "missing_switches": [
+    "enabled",
+    "loop_enabled"
+  ]
 }
 [退出码 0]
 
@@ -43,12 +47,19 @@ $ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/0
   "artifact_sha256": null,
   "last_valid_confirmation": null,
   "next_action": "confirm",
-  "version": "sha256:8e088a2f3edb9d13b56990a080a330e85e86cf47ede4c45402b50cec4a4ca3f9",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "project",
+    "frozen": true,
+    "event_id": "demo-01-configure"
+  },
+  "version": "sha256:85311b2750d0021288ff6ab6d818a3ebb0a27c6f301ec4ac51281243e97f4c25",
   "warnings": []
 }
 [退出码 0]
 
-$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/03-confirm-scope.json --project-id demo-visual-required --if-version 'sha256:8e088a2f3edb9d13b56990a080a330e85e86cf47ede4c45402b50cec4a4ca3f9'
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/03-confirm-scope.json --project-id demo-visual-required --if-version 'sha256:85311b2750d0021288ff6ab6d818a3ebb0a27c6f301ec4ac51281243e97f4c25'
 {
   "status": "saved",
   "chapter_status": "awaiting_presentation",
@@ -72,12 +83,19 @@ $ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/0
     }
   },
   "next_action": "present",
-  "version": "sha256:45bd4963a678b0d90dead1a6717e0be9e2abc06863bad4777a7347a7d49657c3",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "project",
+    "frozen": true,
+    "event_id": "demo-01-configure"
+  },
+  "version": "sha256:70916a52208cc9edffe7ede10da41710e056c4afbcd6816febf4e00142855dbd",
   "warnings": []
 }
 [退出码 0]
 
-$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/04-present-outline.json --project-id demo-visual-required --if-version 'sha256:45bd4963a678b0d90dead1a6717e0be9e2abc06863bad4777a7347a7d49657c3'
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/04-present-outline.json --project-id demo-visual-required --if-version 'sha256:70916a52208cc9edffe7ede10da41710e056c4afbcd6816febf4e00142855dbd'
 {
   "status": "saved",
   "chapter_status": "awaiting_confirmation",
@@ -101,12 +119,19 @@ $ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/0
     }
   },
   "next_action": "confirm",
-  "version": "sha256:30c2fbd349f283259946f62c508c2213cecb7dd46fda09afba691ceeace1162b",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "project",
+    "frozen": true,
+    "event_id": "demo-01-configure"
+  },
+  "version": "sha256:9a9b8adca11b85e8d07c34e8124fd29a51cb87a1bd93d9233d4c66e20be726f4",
   "warnings": []
 }
 [退出码 0]
 
-$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/05-confirm-outline.json --project-id demo-visual-required --if-version 'sha256:30c2fbd349f283259946f62c508c2213cecb7dd46fda09afba691ceeace1162b'
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/05-confirm-outline.json --project-id demo-visual-required --if-version 'sha256:9a9b8adca11b85e8d07c34e8124fd29a51cb87a1bd93d9233d4c66e20be726f4'
 {
   "status": "saved",
   "chapter_status": "awaiting_presentation",
@@ -130,16 +155,23 @@ $ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/0
     }
   },
   "next_action": "present",
-  "version": "sha256:a103ef955a6f1c15f830ac41b73b127892791d372dc653724fe5e18daf51200f",
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "project",
+    "frozen": true,
+    "event_id": "demo-01-configure"
+  },
+  "version": "sha256:a0008ee7a69af4d6ded2de54ac8fff2605271263815e99ac2a59b98fa825c964",
   "warnings": []
 }
 [退出码 0]
 
-$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/06-present-preparation-without-visual-rejected.json --project-id demo-visual-required --if-version 'sha256:a103ef955a6f1c15f830ac41b73b127892791d372dc653724fe5e18daf51200f'
-{"status": "error", "code": "invalid_event", "message": "visual_evidence must be an object"}
+$ python3 -I -B "$NW_SCRIPTS/learning_loop.py" apply learning-record.md events/06-present-preparation-without-visual-rejected.json --project-id demo-visual-required --if-version 'sha256:a0008ee7a69af4d6ded2de54ac8fff2605271263815e99ac2a59b98fa825c964'
+{"status": "error", "code": "invalid_event", "message": "This chapter follows visual_required:true: preparation must carry visual_evidence for images actually looked at (mode, source_refs, observation_ref, selection_ref), never placeholders. If the author said otherwise for this chapter, first record the author's words with action:chapter_policy (chapter_id, actor_role:author, mode:human, author_quote, source_ref) and visual_required:false"}
 [退出码 2]
 
-$ python3 -I -B -c 'import sys,runpy; d=sys.argv[1]; sys.path.insert(0,d); sys.argv=[d+"/chapter_gate.py"]+sys.argv[2:]; runpy.run_path(sys.argv[0],run_name="__main__")' "$NW_SCRIPTS" status learning-record.md --chapter-id ch01
+$ python3 -I -B "$NW_SCRIPTS/chapter_gate.py" status learning-record.md --chapter-id ch01
 {
   "status": "awaiting_presentation",
   "chapter_status": "awaiting_presentation",
@@ -163,6 +195,15 @@ $ python3 -I -B -c 'import sys,runpy; d=sys.argv[1]; sys.path.insert(0,d); sys.a
     }
   },
   "next_action": "present",
-  "store_version": "sha256:a103ef955a6f1c15f830ac41b73b127892791d372dc653724fe5e18daf51200f"
+  "workflow_policy": {
+    "visual_required": true,
+    "teacher_handoff": "user_return",
+    "basis": "project",
+    "frozen": true,
+    "event_id": "demo-01-configure",
+    "author_quote": "（合成演示）每章写前都要有视觉材料；初稿我自己交给教师。",
+    "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+  },
+  "store_version": "sha256:a0008ee7a69af4d6ded2de54ac8fff2605271263815e99ac2a59b98fa825c964"
 }
 [退出码 0]

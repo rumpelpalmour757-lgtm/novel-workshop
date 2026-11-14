@@ -1,0 +1,10 @@
+{
+  "event_id": "ch01-t7-review",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "review",
+  "content": "拿旧回传做的方案",
+  "source_ref": "合成演示",
+  "teacher_return_id": "ch01-09-teacher-return"
+}

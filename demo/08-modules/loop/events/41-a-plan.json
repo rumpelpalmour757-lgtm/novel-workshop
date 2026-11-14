@@ -1,0 +1,9 @@
+{
+  "event_id": "no-02-plan",
+  "op": "plan",
+  "run_id": "run-author-no",
+  "applications": [],
+  "checks": [
+    "口气"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "event_id": "run-self-only-04",
+  "op": "review",
+  "run_id": "run-self-only",
+  "review_id": "s1",
+  "draft_sha256": "d2ae86ae86ee6a0d034033923b2c0a09c71a67758723a2b7ed4bd6b25fdc822f",
+  "reviewer": {
+    "name": "合成写作者",
+    "role": "writer",
+    "mode": "self_check",
+    "context_id": "writer-1"
+  },
+  "verdict": "pass",
+  "findings": [],
+  "source_ref": "合成演示"
+}

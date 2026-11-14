@@ -1,0 +1,10 @@
+{
+  "event_id": "ch01-t1-draft",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "draft",
+  "content": "跳过的初稿",
+  "source_ref": "合成演示",
+  "artifact_sha256": "55b289f322109eec350a195f2e3b4e7d775136fc4a5f40346559e991e91949bc"
+}

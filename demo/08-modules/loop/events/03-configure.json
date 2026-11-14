@@ -1,0 +1,6 @@
+{
+  "event_id": "loop-02-configure",
+  "op": "configure",
+  "loop_enabled": true,
+  "max_revisions": 3
+}

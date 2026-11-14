@@ -21,6 +21,15 @@
     }
   },
   "next_action": "present",
+  "workflow_policy": {
+    "visual_required": false,
+    "teacher_handoff": "user_return",
+    "basis": "project",
+    "frozen": true,
+    "event_id": "demo-01-configure",
+    "author_quote": "（合成演示）新章一关一关给我看，我点头了再往下；初稿我自己交给教师，结果由我带回来。",
+    "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+  },
   "valid_teacher_returns": [
     {
       "teacher_return_id": "demo-14-teacher-return",
@@ -30,5 +39,5 @@
       "draft_sha256": "b3cc483cce584b037dd242a5562ff6427f46baf5dd72fb9e261d2bf9b9c4dcf0"
     }
   ],
-  "store_version": "sha256:7e2b449044fff10330259924c7c8be1470345b894016357548a6b29231b900f9"
+  "store_version": "sha256:0700a95aa6c4470e38fc95b69e72080af139250d01a20c508a01fc43def65bfa"
 }

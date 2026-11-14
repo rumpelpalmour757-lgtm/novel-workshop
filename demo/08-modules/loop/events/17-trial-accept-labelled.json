@@ -1,0 +1,10 @@
+{
+  "op": "author_accept",
+  "run_id": "run-ch01-dialogue",
+  "draft_sha256": "b8dae5726a16a0f338ea90f92e4f6cd314531df3e70f917648f178c4dfa0622b",
+  "actor_role": "author",
+  "mode": "human",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步",
+  "event_id": "loop-15a-author_accept",
+  "quote": "（合成演示）这一处改法我认，记下来。"
+}

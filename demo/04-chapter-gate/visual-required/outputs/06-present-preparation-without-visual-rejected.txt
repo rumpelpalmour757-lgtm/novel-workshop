@@ -1,1 +1,1 @@
-{"status": "error", "code": "invalid_event", "message": "visual_evidence must be an object"}
+{"status": "error", "code": "invalid_event", "message": "This chapter follows visual_required:true: preparation must carry visual_evidence for images actually looked at (mode, source_refs, observation_ref, selection_ref), never placeholders. If the author said otherwise for this chapter, first record the author's words with action:chapter_policy (chapter_id, actor_role:author, mode:human, author_quote, source_ref) and visual_required:false"}

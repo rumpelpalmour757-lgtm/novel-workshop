@@ -1,0 +1,13 @@
+{
+  "event_id": "ch02-05-confirm-outline",
+  "op": "chapter_gate",
+  "action": "confirm",
+  "chapter_id": "ch02",
+  "stage": "outline",
+  "presentation_id": "ch02-04-present-outline",
+  "presentation_version": "3ab5cf5c494b1d9e8b36d5838675c1492c0571b4b79e64a8513437df5f7fa512",
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）第二章方案可以。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

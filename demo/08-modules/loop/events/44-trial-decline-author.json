@@ -1,0 +1,13 @@
+{
+  "event_id": "no-05-decide",
+  "op": "decide",
+  "run_id": "run-author-no",
+  "review_id": "r1-author",
+  "decisions": [
+    {
+      "finding_id": "f1",
+      "decision": "decline",
+      "reason": "工坊觉得这句可以留"
+    }
+  ]
+}

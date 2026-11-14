@@ -1,0 +1,13 @@
+{
+  "event_id": "ch02-03-confirm-scope",
+  "op": "chapter_gate",
+  "action": "confirm",
+  "chapter_id": "ch02",
+  "stage": "scope",
+  "presentation_id": "ch02-02-present-scope",
+  "presentation_version": "27338474a9186d4facb4ca0be7a035ea2b7fcfc8216d2277f4f9e9b99fbf2abe",
+  "actor_role": "author",
+  "mode": "human",
+  "author_quote": "（合成演示）第二章范围可以。",
+  "source_ref": "合成演示：这句不是真人作者说的，只用来让脚本走到下一步"
+}

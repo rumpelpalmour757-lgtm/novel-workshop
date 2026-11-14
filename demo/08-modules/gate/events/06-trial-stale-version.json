@@ -1,0 +1,9 @@
+{
+  "event_id": "ch01-t2-outline",
+  "op": "chapter_gate",
+  "action": "present",
+  "chapter_id": "ch01",
+  "stage": "outline",
+  "content": "旧版本上的章纲",
+  "source_ref": "合成演示"
+}
