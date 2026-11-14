@@ -6,7 +6,7 @@
 
 这里演示的是脚本和流程会做什么，是让 AI 照着做的方法，不是效果保证。工坊只和不用工坊的 AI 比过一次（r5.46，规模小，执行和评审都是同一类模型）：改 AI 腔重的稿子，排第一的都是不用工坊的；从头起草，工坊多数在前。之后没有再比过。对白是不是更像人、更有感情，没有验证；好不好由你读了定。
 
-- 工坊版本：当前是 `2026-11-14-r5.56`（商业交付版），这里的输出都没有在 r5.56 上重跑。第 4 节（章节门）和第 8 节（四个可选模块）是拿 r5.55（`2026-11-14-r5.55`）的脚本跑的；这两节用到的 `chapter_gate.py`、`learning_loop.py`、`demonstration_memory.py` 和整个 `scripts/dialogue_lint/` 目录，在 r5.56 里和 r5.55 逐字节相同。第 1、2、3、5、6 节用到的脚本（`dialogue_lines.py`、`prose_lint.py`、`detail_check.py`、`punctuation_lint.py`、`style_cards.py` 和卡库）在 r5.55、r5.56 里都和 r5.54-merged `2026-11-14-r5.54-merged-candidate` 逐字节相同，输出是在 r5.54-merged 上跑的；第 7 节的工作台在 r5.55、r5.56 里都没有改，截图是在 r5.54-merged 上拍的。r5.56 在脚本上只改了安装脚本 `install.py` 和导出脚本 `export_portable.py`（另改了几页说明和测试），这里的演示都没有用到这两个脚本，所以这些输出在 r5.56 下照样成立。以上几处“逐字节相同”是拿仓库里的 r5.54-merged、r5.55 完整包和 r5.56 的包逐个文件核过的。第 5 节的短表不是脚本输出，是照 r5.54-merged 的 `references/teacher-review.md` 写的；r5.55 改了这一页（放回 r5.54 的几句，短表的“一句话”要写明看的是哪一版初稿，工坊的看法要标明是看法），r5.56 又在这一页的“登记回传”里加了默认的教师设置和教师一栏的填法，这张表没有照新页重写。
+- 工坊版本：当前是 `2026-11-15-r5.57`（商业交付版），这里的输出都没有在 r5.56、r5.57 上重跑。第 4 节（章节门）和第 8 节（四个可选模块）是拿 r5.55（`2026-11-14-r5.55`）的脚本跑的；这两节用到的 `chapter_gate.py`、`learning_loop.py`、`demonstration_memory.py` 和整个 `scripts/dialogue_lint/` 目录，在 r5.56、r5.57 里都和 r5.55 逐字节相同。第 1、2、3、5、6 节用到的脚本（`dialogue_lines.py`、`prose_lint.py`、`detail_check.py`、`punctuation_lint.py`、`style_cards.py` 和卡库）在 r5.55、r5.56、r5.57 里都和 r5.54-merged `2026-11-14-r5.54-merged-candidate` 逐字节相同，输出是在 r5.54-merged 上跑的；第 7 节的工作台在 r5.55、r5.56、r5.57 里都没有改，截图是在 r5.54-merged 上拍的。r5.56 在脚本上只改了安装脚本 `install.py` 和导出脚本 `export_portable.py`（另改了几页说明和测试），这里的演示都没有用到这两个脚本；r5.57 没有改任何脚本，只改了说明页、测试和重新生成的清单、单文件。所以这些输出在 r5.57 下照样成立。以上几处“逐字节相同”是拿仓库里的 r5.54-merged、r5.55 完整包和 r5.56、r5.57 的包逐个文件核过的。第 5 节的短表不是脚本输出，是照 r5.54-merged 的 `references/teacher-review.md` 写的；r5.55 改了这一页（放回 r5.54 的几句，短表的“一句话”要写明看的是哪一版初稿，工坊的看法要标明是看法），r5.56 又在这一页的“登记回传”里加了默认的教师设置和教师一栏的填法，r5.57 没有改这一页；这张表没有照新页重写。
 - 环境：Linux，Python 3.13.17。第 4、8 节 2026-11-14 跑；其余各节 2026-11-13 运行，那一次另有 Node.js 22.22.0。
 - 这些脚本输出要完整包加能运行 Python 的环境才有（AI 有执行权限，或者你自己在电脑上跑）。只用便携单文件聊天时没有脚本输出，由 AI 照同样的读法人工做，程序检查一项写“没跑”。
 - 命令都在本目录下运行；第 4、8 节除外，那两节的命令在一个工作目录里跑，见那两节。`$NW_SCRIPTS` 指解包以后的 `skills/novel-workshop/scripts`。
@@ -235,7 +235,7 @@ node 07-workbench/shot-workbench.js http://127.0.0.1:43110 07-workbench/workbenc
 
 ![本地工作台，只读模式，打开合成示例的第一章](workbench.png)
 
-截图是在 r5.54-merged 上拍的；r5.55、r5.56 都没有改工作台（`scripts/oh-story/` 和 `assets/dashboard/` 三版逐字节相同），所以没有重拍。r5.56 只在说明页 `references/local-workbench.md` 里补了两个侧栏怎样照默认的教师设置交。作品目录是 [07-workbench/workspace/](07-workbench/workspace/) 的一份拷贝，里面只有这五个合成文件。`NOVEL_WORKSHOP_CONFIG_DIR` 把工作台的本机配置目录指到一个空目录，免得读到或写到别处。截图用 Playwright 的 Chromium，窗口 1280×800；截完以后服务停掉了。
+截图是在 r5.54-merged 上拍的；r5.55、r5.56、r5.57 都没有改工作台（`scripts/oh-story/` 和 `assets/dashboard/` 四版逐字节相同），所以没有重拍。r5.56 只在说明页 `references/local-workbench.md` 里补了两个侧栏怎样照默认的教师设置交。作品目录是 [07-workbench/workspace/](07-workbench/workspace/) 的一份拷贝，里面只有这五个合成文件。`NOVEL_WORKSHOP_CONFIG_DIR` 把工作台的本机配置目录指到一个空目录，免得读到或写到别处。截图用 Playwright 的 Chromium，窗口 1280×800；截完以后服务停掉了。
 
 **这说明什么。** 工作台以只读方式启动以后，可以在浏览器里按“正文、大纲、设定”翻一个作品目录，看原文或者 Markdown 预览。截图过程中，页面没有向这台机器以外的地址发过请求（截图脚本记到的是 0 个）。
 
@@ -269,7 +269,7 @@ python3 -I -B 08-modules/run-demo.py "$NW_SCRIPTS" <工作目录>
 
 - 记录里的“作者原话”和教师意见都是合成的，标着“合成演示”；最后一关和“你的采纳”那两句带了这几个字脚本就不认，所以合成的字样写在出处一栏。脚本认证不了是谁说的。
 - 看图记录是合成字段，没有真的看图；教师回传不是真人的，对白检查的候选改句是手写的，没有让 AI 生成过。
-- 只在 Linux、Python 3.13.17 上跑过，用的是 r5.55 的脚本；这几个脚本在 r5.56 里没有变，没有重跑。
+- 只在 Linux、Python 3.13.17 上跑过，用的是 r5.55 的脚本；这几个脚本在 r5.56、r5.57 里都没有变，没有重跑。
 - 它说明脚本照说明工作，不判断稿子好坏。
 
 ## 没做的

@@ -8,10 +8,10 @@
 
 ## 当前版本
 
-- 版本号：`2026-11-14-r5.56`
-- 完整包：[novel-workshop-commercial-r5.56.zip](../novel-workshop-commercial-r5.56.zip)，3,520,499 字节，解压后 603 个文件，SHA-256 `7726f3cef2ee3243458bfa092e2872e496adc4c5a5af4f27785231d6cfef68fb`。解压以后还可以用包内的 `PACKAGE-MANIFEST.json` 逐个核对，它登记了其余 602 个文件各自的 SHA-256。
-- 便携单文件：[portable-novel-workshop.md](../portable-novel-workshop.md)，1,258,014 字节，和 r5.56 完整包里的同名文件相同，SHA-256 `af8a265940e2f89641ce67957416cf31e38a97ba8b64f44bddc7eed338f06c6f`。
-- 风格卡库：完整包里的 `skills/novel-workshop/assets/style-cards/cards.json`，83 张，SHA-256 `b0ef657a0962501a0f1c5d9a3be526157881bbaced1d68e54a3052b64db3beae`，和 r5.55、r5.54-merged、r5.54 的卡库是同一个文件。便携单文件里“内嵌内容：assets/style-cards/cards.json”一节的内容与它相同；这个校验值只能对包里的那个文件算。
+- 版本号：`2026-11-15-r5.57`
+- 完整包：[novel-workshop-commercial-r5.57.zip](../novel-workshop-commercial-r5.57.zip)，3,558,991 字节，解压后 605 个文件，SHA-256 `68865c436c41097aa0d893cce4213311c3d834394ca4d924001b9148f607e569`。解压以后还可以用包内的 `PACKAGE-MANIFEST.json` 逐个核对，它登记了其余 604 个文件各自的 SHA-256。
+- 便携单文件：[portable-novel-workshop.md](../portable-novel-workshop.md)，1,273,053 字节，和 r5.57 完整包里的同名文件相同，SHA-256 `f15629592eaff5021c29ba5010913afae4125bea7faf5689105d827411f0111d`。
+- 风格卡库：完整包里的 `skills/novel-workshop/assets/style-cards/cards.json`，83 张，SHA-256 `b0ef657a0962501a0f1c5d9a3be526157881bbaced1d68e54a3052b64db3beae`，和 r5.56、r5.55、r5.54-merged、r5.54 的卡库是同一个文件。便携单文件里“内嵌内容：assets/style-cards/cards.json”一节的内容与它相同；这个校验值只能对包里的那个文件算。
 
 文件名里的 commercial（包里叫“商业交付版”）只是版本名，指对外发布、不含维护者私人材料的那一版；许可见下文[来源与许可](#来源与许可)。
 
@@ -19,7 +19,7 @@
 
 ### 版本名怎么读
 
-旧版本号（比如 r5.54-merged 的 `2026-11-14-r5.54-merged-candidate`）里的 candidate，表示那一版当时还在复核、没有最终定下来；从 r5.55 起版本号不带它。r5.56 是在上一版 r5.55 上做的，只做维护者 2026-11-14 定下的两件事：作者改法累计放回技能目录、升级时带进新版，写明默认的教师设置（见[下面](#r556-改了什么)）。r5.55 是在 r5.54-merged 上做的：维护者看过对 r5.54-merged 的复核结论以后，同意照建议做几件事：新章全流程和教师回传的几处说法恢复成 r5.54 的，对白声纹检查不按人物下结论，作者改法累计挪出技能目录，许可文件放进包里；复核查出的问题也照着修了。新来的直接用 r5.56，想用 r5.55 或更早的，[下面](#仓库里的下载文件)有。r5.54-merged 是把 r5.54 在对白、分场和审别人改稿这三处的改动，和章节门、学习循环、示范记忆、对白声纹检查四个模块合在一起的一版。包里的版本说明（`README.md`、`CHANGELOG.md`、`VERIFICATION.md`）把维护者（做这套工坊的人）叫“作者”；写作规则和两张卡里的“作者”指写小说的你。
+旧版本号（比如 r5.54-merged 的 `2026-11-14-r5.54-merged-candidate`）里的 candidate，表示那一版当时还在复核、没有最终定下来；从 r5.55 起版本号不带它。r5.57 是在上一版 r5.56 上做的，没有改任何脚本，只改说明页和测试：只换格式、不动字句的算单独一类任务（保真转换），补上你收回采纳时怎么办，写明跳过审稿采纳的文件交付时怎样说（见[下面](#r557-改了什么)）。r5.56 是在 r5.55 上做的，只做维护者 2026-11-14 定下的两件事：作者改法累计放回技能目录、升级时带进新版，写明默认的教师设置（见[r5.56 改了什么](#r556-改了什么)）。r5.55 是在 r5.54-merged 上做的：维护者看过对 r5.54-merged 的复核结论以后，同意照建议做几件事：新章全流程和教师回传的几处说法恢复成 r5.54 的，对白声纹检查不按人物下结论，作者改法累计挪出技能目录，许可文件放进包里；复核查出的问题也照着修了。新来的直接用 r5.57，想用 r5.56 或更早的，[下面](#仓库里的下载文件)有。r5.54-merged 是把 r5.54 在对白、分场和审别人改稿这三处的改动，和章节门、学习循环、示范记忆、对白声纹检查四个模块合在一起的一版。包里的版本说明（`README.md`、`CHANGELOG.md`、`VERIFICATION.md`）把维护者（做这套工坊的人）叫“作者”；写作规则和两张卡里的“作者”指写小说的你。
 
 - 首页和各页写“工坊怎么做”的地方，写的是工坊让 AI 照着做的方法，不是效果保证。做出来是不是比不用工坊好，没有对照证明，好不好由你读了定。能找到的对照是这样：
   - 包里的对照都是新旧版之间比。
@@ -28,8 +28,37 @@
   - 对白是不是更像人、更有感情，没有验证：包内 `MERGE-VERIFICATION.md` 写明对白自然度仍待单独验证。
 - 交付门、修订对照这类程序修复都有测试；写作、审稿方法的改动大多没有经过对照评测（几次新旧规则的对照都是单次观察，包里不把它们算作评测）。包内测试只说明规则写进去了、脚本照说明工作，不评价文学质量。
 - r5 和 r4.3 做过一次同题对照，结论是不能说 r5 比 r4.3 好（按事先定的门槛算不利，包里记作保留基线 KEEP_BASELINE）；此后各版都没有和 r4.3 重做完整的文学对照，不能说哪一版写得比 r4.3 好。仍然发 r5 系列，是因为它补回了 r4.3 缺的几项交付门保护、修了程序问题，比如 r4.3 的交付门在 Windows 上起不来（这一项只在 Linux 上模拟测过；见包内 `README.md`“r5”一节）；文笔上没有证明更好。仓库没有提供 r4.3 的下载。
-- r5.54 那一轮的分析、方案、评审、实现和审查，都由同一个模型（Claude）的新实例来做，不是独立评审。合并这一步由谁来做、有没有独立复核，包里没有写。r5.55 的改动、复核和测试，r5.56 的改代码、改文字、复核、修正和打包，也都是同一个模型（Claude）的新实例做的，不是独立评审；这两版都没有做文笔对照。
-- 实际跑过什么、没测什么，写在包内 `VERIFICATION.md`（r5.56 一节在最前面，后面是此前各版）和 `MERGE-VERIFICATION.md`（合并这一步，r5.55 复核以后补了几处说明）。要不要用，由你读了稿子自己判断。
+- r5.54 那一轮的分析、方案、评审、实现和审查，都由同一个模型（Claude）的新实例来做，不是独立评审。合并这一步由谁来做、有没有独立复核，包里没有写。r5.55 的改动、复核和测试，r5.56 的改代码、改文字、复核、修正和打包，r5.57 的改文字、复核、成对测试、修正和打包，也都是同一个模型（Claude）的新实例做的，不是独立评审；这三版都没有做文笔对照。
+- 实际跑过什么、没测什么，写在包内 `VERIFICATION.md`（r5.57 一节在最前面，后面是此前各版）和 `MERGE-VERIFICATION.md`（合并这一步，r5.55 复核以后补了几处说明）。要不要用，由你读了稿子自己判断。
+
+### r5.57 改了什么
+
+这一版没有改任何脚本，只改说明页和测试。
+
+- **保真转换：只换格式、不动字句**（`references/editing.md`“先定范围”，定义只写在这里，别的页都指这一段）：加章标题，转成 Markdown 或纯文本，调换行和段首缩进，换文件格式（比如导出成 Word、PDF），算单独一类任务。字句和标点都不动，整篇按逐字锁定的原句对待；和严格保义润色分开，严格保义润色可以动措辞。章标题照你给的或原稿里已有的写，要工坊拟的，拟的标题列给你定。全角半角、标点用法不算在内，照中文标点那一页按“只改标点”交。看到的错字、标点问题列给你，不在转换稿里改；开着章节门的，不算写新的一章，不补走七个阶段。交付写“格式检查通过，文学质量未审”，再写实际核了什么、用什么核的，没核的写没核。交付门里没有专门核“去掉格式以后字句没变”的检查，MECHANICAL 是 GREEN 不说明保真核过；现有几样脚本各核得到什么、核不到什么，见[本地工作台与检查工具](tools.md#检查与辅助工具)和[详细用法](usage.md#只换格式不动字句保真转换)。
+- **已经采纳的章换了格式**：字节变了，你的采纳对不上新的这一版。转换稿另存的，交付时写明你采纳的是原文件那一版，转换稿本身没有经过交付门检查；转换稿要取代原文件的，工坊请你对新文件重新确认，不替你认。
+- **你收回采纳**（`references/quality-loop.md`“交付状态”）：照你的原话记下，原来的采纳记录照留；开着章节门的，带你的原话重开定稿那一步；事实账里这一章改回候选，再回读以它为基线写的后文。`workflow_guard.py` 还没有收回采纳的命令：同一版仍显示 `AUTHOR=ACCEPTED`，工坊要告诉你，不能照这个状态说“已定稿”“定本”。这一版没有改这个脚本。
+- **跳过审稿采纳的文件**：交付前带 `--deliverable` 核，“说定本”是 BLOCK（脚本拿要交的文件和最后一次 `record` 过的那一版比，跳审采纳的这一版没有检查记录）；交付时写明这是你跳过审稿采纳的版本，不说成检查过的定本，你的采纳照记。
+- **改稿卡**：第 1 条“先定范围”补一句保真转换（全文见[聊天用的两张卡](chat-cards.md#改稿卡)）。交付门卡没有改。`SKILL.md`、`author-preferences.md`、`file-delivery.md` 和 `chapter-confirmation.md` 的“不扩大”各补一句或改一处说法，说到保真转换的都指到编辑页那一段；`chapter-confirmation.md` 的“重开”另补一句收回采纳，指到质量闭环“交付状态”里的“作者收回采纳”。
+- **使用示例的标题**：包内 `EXAMPLES.md` 的标题改成“三十个可复制的使用示例”，和正文的条数对上。
+- **数目**：完整包 603 个文件变 605 个，多的是两个测试文件；方法参考仍是 48 篇。
+- **没有动的**：所有脚本（安装器、导出器、交付门绑定的五个检查脚本，章节门、学习循环、示范记忆、对白检查的脚本）和写作台的代码，工坊宪法、交付门卡和 83 张风格卡的卡库，都和 r5.56 逐字节相同。
+
+**升级要知道的。**
+
+- 从 r5.56 升上来：用 `python install.py --upgrade`，先加 `--dry-run` 看 `carried` 里列了哪些要带过去的文件。装着的 `assets/project-packs/` 照旧带进新版；完整包不带那里的任何文件，所以不会有对不上的。交付记录照旧。没有不兼容的变化。
+- 从 r5.55 或更早升上来：命令一样，照下一节和更早各节的“升级要知道的”。
+- 退回 r5.56：用 r5.56 的包运行 `python install.py --upgrade`，记录照样带进 r5.56。退回 r5.55 或更早，见下文[回到旧版](#回到旧版)。
+
+验证（照包内 `VERIFICATION.md` 本版一节）：
+
+- 全套回归测试 1,694 项，都在 Linux 上跑：Python 3.13 上跳过 5 项，其余 1,689 项全部通过；Python 3.9.25 上跳过 74 项（多跳的是没装 Pillow、PyYAML 的几项和 Crawl4AI 要 Python 3.10 以上的几项），其余 1,620 项全部通过。跑完以后查过，包里没有 `__pycache__`、`.pyc`、`.pyo`。新加的两个测试文件 37 项：页面说法和脚本行为 27 项，版本号和本版说明 10 项。
+- 页里写的脚本行为（`detail_check.py`、`punctuation_lint.py`、`workflow_guard.py`、`delivery_manifest.py`、`fact_guard.py` 等几样核得到什么、核不到什么）用合成短文、合成材料实际跑过。
+- 成对测试只作维护记录：代理是同一个模型（Claude）的新实例，材料是新写的中性短文，合计 30 次，该不该按保真转换办，分类 30/30 对；按保真转换办的 18 次，去掉格式以后正文逐字相同 18/18。这不说明在真实宿主里会照这些页办，也不说明办得好。
+- 用 r5.56 的发布包和这一版的包，在临时目录里实际走过升级和退回：维护用的演练 11 步、带记录的演练 9 步，都过了。
+- r5.56、r5.55 和 r5.54-merged 记下的交付记录在这一版照旧，是按五个绑定脚本的哈希推的，没有在这一版上另跑。
+- 测试只说明规则写进去了、脚本照页里写的那样工作；这一版没有做文笔对照，不说明写得更好。
+- **没有验证的**：真实宿主里会不会照这些页办；Word、PDF 的文字提取（保真转换的核对只在 UTF-8 文本上跑过）；原生 Windows、macOS；工坊办保真转换、收回采纳这两类任务办得好不好（收回采纳的几步只在合成记录上走过）；文笔有没有变好；从这一版退回 r5.55 或更早；在你电脑上的安装。
 
 ### r5.56 改了什么
 
@@ -136,8 +165,9 @@ r5.54 那一轮的验证：当时的包内测试全部通过；新旧规则在�
 
 | 文件 | 格式、大小（字节） | 是什么 |
 | --- | --- | --- |
-| [portable-novel-workshop.md](../portable-novel-workshop.md) | MD，1,258,014 | **当前**便携单文件（r5.56），含当前风格卡库、交付门卡、改稿卡、四个模块和编辑判断的说明，不带脚本 |
-| [novel-workshop-commercial-r5.56.zip](../novel-workshop-commercial-r5.56.zip) | ZIP，3,520,499 | **当前**完整包（r5.56），603 个文件，带 `LICENSE` 和 `THIRD-PARTY-NOTICES.md` |
+| [portable-novel-workshop.md](../portable-novel-workshop.md) | MD，1,273,053 | **当前**便携单文件（r5.57），含当前风格卡库、交付门卡、改稿卡、四个模块和编辑判断的说明，不带脚本 |
+| [novel-workshop-commercial-r5.57.zip](../novel-workshop-commercial-r5.57.zip) | ZIP，3,558,991 | **当前**完整包（r5.57），605 个文件，带 `LICENSE` 和 `THIRD-PARTY-NOTICES.md` |
+| [novel-workshop-commercial-r5.56.zip](../novel-workshop-commercial-r5.56.zip) | ZIP，3,520,499 | 旧版：r5.56 完整包，603 个文件；脚本和 r5.57 相同，说明页没有保真转换、收回采纳这两段 |
 | [novel-workshop-commercial-r5.55.zip](../novel-workshop-commercial-r5.55.zip) | ZIP，3,470,575 | 旧版：r5.55 完整包，600 个文件；它的安装器升级时不带 `assets/project-packs/` |
 | [novel-workshop-commercial-r5.54-merged.zip](../novel-workshop-commercial-r5.54-merged.zip) | ZIP，3,305,465 | 旧版：r5.54-merged 完整包，588 个文件；包里的许可说明写在定许可以前 |
 | [novel-workshop-commercial-r5.54.zip](../novel-workshop-commercial-r5.54.zip) | ZIP，3,182,125 | 旧版：r5.54 完整包，560 个文件；没有四个模块的脚本 |
@@ -149,7 +179,8 @@ r5.54 那一轮的验证：当时的包内测试全部通过；新旧规则在�
 
 各文件的 SHA-256：
 
-- `portable-novel-workshop.md`：`af8a265940e2f89641ce67957416cf31e38a97ba8b64f44bddc7eed338f06c6f`
+- `portable-novel-workshop.md`：`f15629592eaff5021c29ba5010913afae4125bea7faf5689105d827411f0111d`
+- `novel-workshop-commercial-r5.57.zip`：`68865c436c41097aa0d893cce4213311c3d834394ca4d924001b9148f607e569`
 - `novel-workshop-commercial-r5.56.zip`：`7726f3cef2ee3243458bfa092e2872e496adc4c5a5af4f27785231d6cfef68fb`
 - `novel-workshop-commercial-r5.55.zip`：`8862a67b0a6cb0db5d215dc2adc7ceced7bba5e54916b12d9f8cd7bdeccb032e`
 - `novel-workshop-commercial-r5.54-merged.zip`：`637cd100cee4c96c72714d6dad29a59d8ebe46eb5510c6cba704db1c76c63b5b`
@@ -160,18 +191,18 @@ r5.54 那一轮的验证：当时的包内测试全部通过；新旧规则在�
 - `novel-workshop-commercial-r5.10-1.zip`：`fbf8def200d5104790fa631756ad3ac315f45ec98325cdfb62cb0d999f9a2e4f`
 - `novel-workshop-install-2026-09-23.zip`：`e980c161ae95b743eca48ca0a7d090989fad0ef566d557213124a3f8ab6808dc`
 - 独立风格技能 ZIP 里的卡库 `novel-style-cards/references/cards.json`（r5.45 的卡片文字）：`6356c822049fea287a72ef924f2ac2463b8a4bd4e6e209eb2a3823e305f27107`
-- 当前完整包里的卡库 `skills/novel-workshop/assets/style-cards/cards.json`（r5.55、r5.54-merged、r5.54 完整包里的是同一个文件）：`b0ef657a0962501a0f1c5d9a3be526157881bbaced1d68e54a3052b64db3beae`（只能对包里的那个文件算，见上文[当前版本](#当前版本)）
+- 当前完整包里的卡库 `skills/novel-workshop/assets/style-cards/cards.json`（r5.56、r5.55、r5.54-merged、r5.54 完整包里的是同一个文件）：`b0ef657a0962501a0f1c5d9a3be526157881bbaced1d68e54a3052b64db3beae`（只能对包里的那个文件算，见上文[当前版本](#当前版本)）
 
-旧版文件保留作历史，新用户下载前两个即可。上一版（r5.55）的单文件（1,244,414 字节，SHA-256 `0a580c4263ca5f9f3f6196ecc9ea9a8d2effbb44fc9d1e4092fefef3682c3a01`）不再单独放在仓库根目录，它在 r5.55 完整包里，也附在 Releases 页的 [r5.55](https://github.com/rumpelpalmour757-lgtm/novel-workshop/releases/tag/r5.55) 里；r5.54-merged 的单文件（1,146,995 字节，SHA-256 `96b416de4edf93444484c7925471dc286825d7f3cd54325dbe1ea616324a5c55`）在 r5.54-merged 完整包里，也附在 Releases 页的 [r5.54-merged](https://github.com/rumpelpalmour757-lgtm/novel-workshop/releases/tag/r5.54-merged) 里；r5.54 的单文件（1,107,051 字节，SHA-256 `eae281a63f981aed94192b29f81749d68bcae5f81f9fe5a4c37bd5837b86cdd9`）在 r5.54 完整包里。风格卡粘贴版和独立 ZIP 与当前卡库的区别，见[风格卡](style-cards.md#卡库的版本)。
+旧版文件保留作历史，新用户下载前两个即可。上一版（r5.56）的单文件（1,258,014 字节，SHA-256 `af8a265940e2f89641ce67957416cf31e38a97ba8b64f44bddc7eed338f06c6f`）不再单独放在仓库根目录，它在 r5.56 完整包里，也附在 Releases 页的 [r5.56](https://github.com/rumpelpalmour757-lgtm/novel-workshop/releases/tag/r5.56) 里；r5.55 的单文件（1,244,414 字节，SHA-256 `0a580c4263ca5f9f3f6196ecc9ea9a8d2effbb44fc9d1e4092fefef3682c3a01`）在 r5.55 完整包里，也附在 Releases 页的 [r5.55](https://github.com/rumpelpalmour757-lgtm/novel-workshop/releases/tag/r5.55) 里；r5.54-merged 的单文件（1,146,995 字节，SHA-256 `96b416de4edf93444484c7925471dc286825d7f3cd54325dbe1ea616324a5c55`）在 r5.54-merged 完整包里，也附在 Releases 页的 [r5.54-merged](https://github.com/rumpelpalmour757-lgtm/novel-workshop/releases/tag/r5.54-merged) 里；r5.54 的单文件（1,107,051 字节，SHA-256 `eae281a63f981aed94192b29f81749d68bcae5f81f9fe5a4c37bd5837b86cdd9`）在 r5.54 完整包里。风格卡粘贴版和独立 ZIP 与当前卡库的区别，见[风格卡](style-cards.md#卡库的版本)。
 
 ### 回到旧版
 
 - 旧包是 r5 或更新的版本时，最稳妥的是运行旧包的 `python install.py --upgrade`：它只替换内容不同的技能，替换前先把现装的版本备份。装的时候带了 `--dest` 的，回退也要指到同一个目录，先加 `--dry-run` 看输出里的 `destination` 对不对；各个旧包认不认 `--dest`，没有逐个核过，以旧包自己的 `python install.py --help` 为准。
-- 旧包是 r5.56 或以后的：运行旧包的 `python install.py --upgrade`，装着的 `assets/project-packs/`（作者改法累计 `_author/` 和你的作品资料）照样带进旧版，较新的一版整份留在备份里。
-- 从 r5.56 退回 r5.55：用 r5.55 的包运行 `python install.py --upgrade`（装的时候带了 `--dest` 的照样带）。交付门绑定的五个检查脚本、章节门和学习循环的脚本两边相同，所以交付记录、章节记录和学习记录两边照旧；这是按脚本哈希推的，没有另跑。r5.55 的安装器不带 `assets/project-packs/`，退回以后技能目录里没有这个文件夹；记录在这次退回新生成的备份里：`<安装位置>/.novel-workshop-backups/<时间>/novel-workshop/assets/project-packs/`，取最新的那个时间文件夹，那是退回那一刻的记录。r5.55 从作者档案读作者改法累计，不读技能目录里的；要在 r5.55 里接着用，照 r5.55 的说明页（`references/author-preferences.md`“作者改法累计”）把 `_author/` 里的两份放到作者档案那里。以后再升回 r5.56 或更新的版本，工坊看到了会先问你一句再挪回技能目录。
-- 从 r5.56 或 r5.55 退回 r5.54-merged：用 r5.54-merged 的包运行 `python install.py --upgrade`（装的时候带了 `--dest` 的照样带），或者照下面的手动回退，把这次升级的备份移回来。交付门绑定的五个检查脚本两边相同，交付记录两边照旧（按脚本哈希推的，没有另跑）。r5.55 起的脚本写下的章节记录和学习记录（比如 `chapter_policy`、`case_accept`、`author_return` 这些新写法），r5.54-merged 的脚本能不能读，没有验证；要退回的，先另存一份记录。r5.54-merged 的说明把作者改法累计放在技能目录的 `assets/project-packs/_author/`；从 r5.56 退回时，它的安装器不带这个文件夹，记录同样留在这次退回的备份里，把备份里的 `project-packs` 文件夹复制回 `<安装位置>/novel-workshop/assets/`；从 r5.55 退回的，这份记录在你的作者档案那里，照 r5.54-merged 的说明找这份记录。
+- 旧包是 r5.56 或以后的：运行旧包的 `python install.py --upgrade`，装着的 `assets/project-packs/`（作者改法累计 `_author/` 和你的作品资料）照样带进旧版，较新的一版整份留在备份里。从 r5.57 退回 r5.56 是这样，在临时目录里实际走过（包内 `VERIFICATION.md`）；两版的脚本逐字节相同，交付记录、章节记录和学习记录两边照旧（按脚本哈希推的，没有另跑）。
+- 从 r5.57 或 r5.56 退回 r5.55：用 r5.55 的包运行 `python install.py --upgrade`（装的时候带了 `--dest` 的照样带）。交付门绑定的五个检查脚本、章节门和学习循环的脚本两边相同，所以交付记录、章节记录和学习记录两边照旧；这是按脚本哈希推的，没有另跑。r5.55 的安装器不带 `assets/project-packs/`，退回以后技能目录里没有这个文件夹；记录在这次退回新生成的备份里：`<安装位置>/.novel-workshop-backups/<时间>/novel-workshop/assets/project-packs/`，取最新的那个时间文件夹，那是退回那一刻的记录。r5.55 从作者档案读作者改法累计，不读技能目录里的；要在 r5.55 里接着用，照 r5.55 的说明页（`references/author-preferences.md`“作者改法累计”）把 `_author/` 里的两份放到作者档案那里。以后再升回 r5.56 或更新的版本，工坊看到了会先问你一句再挪回技能目录。从 r5.57 退回 r5.55 没有实际走过；r5.57 和 r5.56 的安装器、脚本逐字节相同，照同样的做法。
+- 从 r5.57、r5.56 或 r5.55 退回 r5.54-merged：用 r5.54-merged 的包运行 `python install.py --upgrade`（装的时候带了 `--dest` 的照样带），或者照下面的手动回退，把这次升级的备份移回来。交付门绑定的五个检查脚本两边相同，交付记录两边照旧（按脚本哈希推的，没有另跑）。r5.55 起的脚本写下的章节记录和学习记录（比如 `chapter_policy`、`case_accept`、`author_return` 这些新写法），r5.54-merged 的脚本能不能读，没有验证；要退回的，先另存一份记录。r5.54-merged 的说明把作者改法累计放在技能目录的 `assets/project-packs/_author/`；从 r5.57、r5.56 退回时，它的安装器不带这个文件夹，记录同样留在这次退回的备份里，把备份里的 `project-packs` 文件夹复制回 `<安装位置>/novel-workshop/assets/`；从 r5.55 退回的，这份记录在你的作者档案那里，照 r5.54-merged 的说明找这份记录。
 - 复制回技能目录以后，旧包的 `install.py` 不加 `--upgrade` 再运行会报 “Existing skill differs”（r5.55 的安装器是这样，更早的没有逐个试过）。不要照它的提示加 `--upgrade` 再装同一个旧包：那样会把整个技能目录连同记录再移进备份。
-- 从 r5.56、r5.55 或 r5.54-merged 退回 r5.54（或你手上的 r5.53）：用这几版记下的整章交付记录，在旧版里同样显示 STALE，要重跑检查。这几版写下的章节确认记录和学习记录是你项目里的文件，退回不会删它们；旧版没有读写它们的脚本。作者改法累计照上面退回 r5.54-merged 那一条：从 r5.56 退回的，从这次退回的备份里把 `project-packs` 文件夹复制回 `<安装位置>/novel-workshop/assets/`；从 r5.55 退回的，这份记录在你的作者档案那里。
+- 从 r5.57、r5.56、r5.55 或 r5.54-merged 退回 r5.54（或你手上的 r5.53）：用这几版记下的整章交付记录，在旧版里同样显示 STALE，要重跑检查。这几版写下的章节确认记录和学习记录是你项目里的文件，退回不会删它们；旧版没有读写它们的脚本。作者改法累计照上面退回 r5.54-merged 那一条：从 r5.57、r5.56 退回的，从这次退回的备份里把 `project-packs` 文件夹复制回 `<安装位置>/novel-workshop/assets/`；从 r5.55 退回的，这份记录在你的作者档案那里。
 - 手动回退：看这次升级的备份目录 `.novel-workshop-backups/<时间>/` 里有哪几个技能目录，只把目标目录里与它们同名的移走，再把备份里的移回原处；备份里没有的技能升级时没动过，留在原处。备份里的 `assets/project-packs/` 是升级那一刻的，之后记下的只在现装的那一份里：移走现装的目录以前，先把它的 `assets/project-packs/` 另存一份，旧版放回原处以后再复制进去。
 - r4.3、r4.1 等更早的包没有 `--upgrade`，要先把已装的两个技能目录移到别处，再运行旧包的 `python install.py`。
 - 文件名标为 2026-09-23 的旧包没有安装脚本，只有一个 `novel-workshop/` 目录和单文件：先把已装的两个技能目录移走，再手动导入它的 `novel-workshop/`，或者改用它的单文件。
@@ -180,7 +211,7 @@ r5.54 那一轮的验证：当时的包内测试全部通过；新旧规则在�
 
 本仓库从 2026-11-13 起按 [MIT 许可](../LICENSE)开源，版权人 Celeste：可以用、改、再分发，也可以商用，条件是保留版权行和许可声明。仓库里各个版本的压缩包、便携单文件和单独放的风格卡文件都在内。包里带的三样第三方组件各按自己的 MIT 许可、署各自的版权人，逐项见[第三方组件与许可范围](../THIRD-PARTY-NOTICES.md)。
 
-r5.55 起，完整包里带了 `LICENSE` 和 `THIRD-PARTY-NOTICES.md`，包里的 `LICENSE-NOTICES.md`、`SOURCE-NOTES.md` 等说明已经改成整包按 MIT 许可（各版旧的 CHANGELOG 条目照当时写的留着）。更早的压缩包（r5.54-merged 及以前）里的 `LICENSE-NOTICES.md` 和 `SOURCE-NOTES.md` 写在定许可之前，里面“不将整包统一声明为 MIT”“商业使用条件待确认”这类话说的是当时的情况，现在以根目录的 `LICENSE` 和上面那份说明为准；那些旧包留着没有改。下表是 r5.56 包内 `LICENSE-NOTICES.md` 的摘要，这份文件和 r5.55 的相同。
+r5.55 起，完整包里带了 `LICENSE` 和 `THIRD-PARTY-NOTICES.md`，包里的 `LICENSE-NOTICES.md`、`SOURCE-NOTES.md` 等说明已经改成整包按 MIT 许可（各版旧的 CHANGELOG 条目照当时写的留着）。更早的压缩包（r5.54-merged 及以前）里的 `LICENSE-NOTICES.md` 和 `SOURCE-NOTES.md` 写在定许可之前，里面“不将整包统一声明为 MIT”“商业使用条件待确认”这类话说的是当时的情况，现在以根目录的 `LICENSE` 和上面那份说明为准；那些旧包留着没有改。下表是 r5.57 包内 `LICENSE-NOTICES.md` 的摘要，这份文件和 r5.56、r5.55 的相同。
 
 | 组件 | 来源 | 许可与记录 |
 | --- | --- | --- |
