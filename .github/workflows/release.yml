@@ -1,0 +1,53 @@
+# 建立 GitHub 发布版本（Releases）。
+# 用法：先在 docs/releases/ 下放两份文件并合进 main：
+#   <标签>.md      第一行是标题（# 开头），其余是发布说明
+#   <标签>.assets  要附上的文件，一行一个，路径相对仓库根目录
+# 然后在 Actions 页手动运行这个工作流，填上标签（例如 r5.55）。
+# 已经有同名发布版本的，不覆盖，直接报错停下。
+name: 发布版本
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "版本标签，例如 r5.55（docs/releases/ 下要有同名的 .md 和 .assets）"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 核对发布说明和附件
+        env:
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          case "$TAG" in
+            ''|*[!A-Za-z0-9._-]*) echo "标签只能用字母、数字、点、下划线和连字符：$TAG"; exit 1 ;;
+          esac
+          test -f "docs/releases/$TAG.md" || { echo "缺发布说明 docs/releases/$TAG.md"; exit 1; }
+          test -f "docs/releases/$TAG.assets" || { echo "缺附件清单 docs/releases/$TAG.assets"; exit 1; }
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            test -f "$f" || { echo "附件不存在：$f"; exit 1; }
+            sha256sum "$f"
+          done < "docs/releases/$TAG.assets"
+
+      - name: 建立发布版本
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "已经有 $TAG 这个发布版本，不覆盖"; exit 1
+          fi
+          title="$(head -n 1 "docs/releases/$TAG.md" | sed 's/^#[[:space:]]*//')"
+          tail -n +2 "docs/releases/$TAG.md" > "$RUNNER_TEMP/notes.md"
+          mapfile -t files < <(grep -v '^[[:space:]]*$' "docs/releases/$TAG.assets")
+          gh release create "$TAG" "${files[@]}" --target "$GITHUB_SHA" --title "$title" --notes-file "$RUNNER_TEMP/notes.md"
