@@ -22,7 +22,7 @@
 
 <p align="center">
   <a href="https://github.com/rumpelpalmour757-lgtm/novel-workshop/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/rumpelpalmour757-lgtm/novel-workshop?style=flat-square&color=E0703A&logo=github&logoColor=white&label=Stars"></a>
-  <a href="docs/versions.md"><img alt="版本 r5.55 修订候选" src="https://img.shields.io/badge/%E7%89%88%E6%9C%AC-r5.55%20%E4%BF%AE%E8%AE%A2%E5%80%99%E9%80%89-1F2A44?style=flat-square"></a>
+  <a href="docs/versions.md"><img alt="版本 r5.55" src="https://img.shields.io/badge/%E7%89%88%E6%9C%AC-r5.55-1F2A44?style=flat-square"></a>
   <img alt="方法参考 48 篇" src="https://img.shields.io/badge/%E6%96%B9%E6%B3%95%E5%8F%82%E8%80%83-48%20%E7%AF%87-1F2A44?style=flat-square">
   <a href="docs/style-cards.md"><img alt="风格卡 83 张" src="https://img.shields.io/badge/%E9%A3%8E%E6%A0%BC%E5%8D%A1-83%20%E5%BC%A0-1F2A44?style=flat-square"></a>
   <img alt="脚本需要 Python 3.9+" src="https://img.shields.io/badge/Python-3.9%2B-1F2A44?style=flat-square">
@@ -83,7 +83,7 @@ python install.py --dest "~/.claude/skills"
 
 > 各环境怎么导入、不想跑脚本时怎么手动导入、怎样确认它真的读了，见 **[详细用法](docs/usage.md)**。
 >
-> 校验值、历史版本和回到旧版的办法见[版本、下载与来源](docs/versions.md)；从合并候选版（文件名带 merged）升上来，交付记录照旧；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查，见[版本](#版本)。
+> 校验值、历史版本和回到旧版的办法见[版本、下载与来源](docs/versions.md)；从 r5.54-merged 升上来，交付记录照旧；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查，见[版本](#版本)。
 
 ## 看看实际效果
 
@@ -400,7 +400,7 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 
 ### 从旧版升级要做什么，能退回去吗？
 
-单文件：换上新的，新开对话重新上传。完整包：运行 `python install.py --upgrade`，装的时候带了 `--dest` 的，升级也带同一个 `--dest`；先加 `--dry-run` 看输出，技能后面写 `upgrade` 或 `unchanged` 才对，写 `install` 说明目录指错了。从合并候选版（文件名带 merged）升上来，交付记录照旧，但章节门新开的章默认变了（写前看图、初稿由你交教师两项默认开着）；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查。用合并候选版时让工坊记过“作者改法累计”（你认可过的改法，要你授权才开）的：这份记录现在放在技能目录以外、你自己的作者档案里，升级不动它；原来记在技能目录里的，升级前先移出来，已经升级的到装技能的目录下的 `.novel-workshop-backups/` 里取回。没开过的不用管。回退见[版本、下载与来源](docs/versions.md)。
+单文件：换上新的，新开对话重新上传。完整包：运行 `python install.py --upgrade`，装的时候带了 `--dest` 的，升级也带同一个 `--dest`；先加 `--dry-run` 看输出，技能后面写 `upgrade` 或 `unchanged` 才对，写 `install` 说明目录指错了。从 r5.54-merged 升上来，交付记录照旧，但章节门新开的章默认变了（写前看图、初稿由你交教师两项默认开着）；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查。用 r5.54-merged 时让工坊记过“作者改法累计”（你认可过的改法，要你授权才开）的：这份记录现在放在技能目录以外、你自己的作者档案里，升级不动它；原来记在技能目录里的，升级前先移出来，已经升级的到装技能的目录下的 `.novel-workshop-backups/` 里取回。没开过的不用管。回退见[版本、下载与来源](docs/versions.md)。
 
 ### 用了工坊就能写得更好吗？
 
@@ -423,9 +423,9 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 
 ## 版本
 
-当前版本 `2026-11-14-r5.55-candidate`：在上一版合并候选版（版本号 `2026-11-14-r5.54-merged-candidate`，文件 `novel-workshop-commercial-r5.54-merged.zip`；merged 表示它是把两路改动合在一起的一版）上做的修订候选，维护者还没有采纳。章节门和教师回传的规则改回 r5.54 的说法（只管写新的一章，开了以后看图、交教师两项默认开着，读感只由你定），修了上一版列出的四处已知问题（你的否定意见可能被驳回、「继续」可能被记成采纳等），许可文件放进了包里。版本号里的 candidate 表示还在复核、没有最终定下来；新来的直接用它，想用合并候选版或更早的见版本页。
+当前版本 `2026-11-14-r5.55`：在上一版 r5.54-merged（版本号 `2026-11-14-r5.54-merged-candidate`，文件 `novel-workshop-commercial-r5.54-merged.zip`；merged 表示它是把两路改动合在一起的一版）上做的新版本。章节门和教师回传的规则改回 r5.54 的说法（只管写新的一章，开了以后看图、交教师两项默认开着，读感只由你定），修了上一版列出的四处已知问题（你的否定意见可能被驳回、「继续」可能被记成采纳等），许可文件放进了包里。版本号里的 candidate 表示还在复核、没有最终定下来；新来的直接用它，想用 r5.54-merged 或更早的见版本页。
 
-从合并候选版升上来，交付记录照旧（交付记录绑定的五个脚本 `workflow_guard.py`、`punctuation_lint.py`、`prose_lint.py`、`fact_guard.py`、`project_state.py` 和合并候选版逐字节相同；这是按哈希推的，没有在这一版上另跑）；章节门新开的章，写前看图和初稿由你交教师两项默认开着（合并候选版默认关着）。从 r5.54、r5.53 的包（文件名不带 merged，仓库里的是 `novel-workshop-commercial-r5.54.zip`）升上来，以前记的整章交付记录要重跑一次检查：交付记录绑定着检查脚本本身，而当前版本的文字检查脚本 `prose_lint.py` 和那两版不同，新旧两边记下的记录互相读成 `STALE`。
+从 r5.54-merged 升上来，交付记录照旧（交付记录绑定的五个脚本 `workflow_guard.py`、`punctuation_lint.py`、`prose_lint.py`、`fact_guard.py`、`project_state.py` 和 r5.54-merged 逐字节相同；这是按哈希推的，没有在这一版上另跑）；章节门新开的章，写前看图和初稿由你交教师两项默认开着（r5.54-merged 默认关着）。从 r5.54、r5.53 的包（文件名不带 merged，仓库里的是 `novel-workshop-commercial-r5.54.zip`）升上来，以前记的整章交付记录要重跑一次检查：交付记录绑定着检查脚本本身，而当前版本的文字检查脚本 `prose_lint.py` 和那两版不同，新旧两边记下的记录互相读成 `STALE`。
 
 下载文件、校验值、验证到哪一步和历史版本，见 **[版本、下载与来源](docs/versions.md)**。
 
@@ -435,7 +435,7 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 
 包里带的 Oh Story、darwin-skill、TypeSafe AI 三样组件各按自己的 MIT 许可、署各自的版权人，见 **[第三方组件与许可范围](THIRD-PARTY-NOTICES.md)**。
 
-r5.55 的完整包里带了 `LICENSE` 和 `THIRD-PARTY-NOTICES.md`，包里的许可说明已经改成上面这样；来源记录里还有六行参考材料照原样写着“材料未附独立许可”一类的话，算不算在版权人 2026-11-13 的确认里，还要版权人说，见[版本、下载与来源](docs/versions.md#来源与许可)。更早的压缩包（合并候选版及以前）里的 `LICENSE-NOTICES.md` 写在定许可之前，里面“不将整包统一声明为 MIT”一类的话以这里为准。文件名里的 commercial 只是版本名。
+r5.55 的完整包里带了 `LICENSE` 和 `THIRD-PARTY-NOTICES.md`，包里的许可说明已经改成上面这样；来源记录里还有六行参考材料照原样写着“材料未附独立许可”一类的话，算不算在版权人 2026-11-13 的确认里，还要版权人说，见[版本、下载与来源](docs/versions.md#来源与许可)。更早的压缩包（r5.54-merged 及以前）里的 `LICENSE-NOTICES.md` 写在定许可之前，里面“不将整包统一声明为 MIT”一类的话以这里为准。文件名里的 commercial 只是版本名。
 
 ## 反馈
 

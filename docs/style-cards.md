@@ -18,7 +18,7 @@
 
 ## 卡库的版本
 
-- **当前卡库**在[当前完整包](../novel-workshop-commercial-r5.55.zip)（r5.55，`skills/novel-workshop/assets/style-cards/cards.json`）和[便携单文件](../portable-novel-workshop.md)里，用这两种下载就已经带着它。r5.55 和合并候选版都没有动卡库，它和 r5.54 的卡库是同一个文件，校验值见[版本、下载与来源](versions.md#当前版本)。本页的目录按这份卡库逐条核对过。
+- **当前卡库**在[当前完整包](../novel-workshop-commercial-r5.55.zip)（r5.55，`skills/novel-workshop/assets/style-cards/cards.json`）和[便携单文件](../portable-novel-workshop.md)里，用这两种下载就已经带着它。r5.55 和 r5.54-merged 都没有动卡库，它和 r5.54 的卡库是同一个文件，校验值见[版本、下载与来源](versions.md#当前版本)。本页的目录按这份卡库逐条核对过。
 - **仓库根目录的[粘贴版](../novel-style-cards-portable-r5.45.md)和[独立风格技能 ZIP](../novel-style-cards-r5.45.zip)** 是 r5.45 时导出的，卡片文字比当前版旧。之后卡库清理过：r5.48 改了 98 处（删掉 64 处套话示范和现成反应，把 34 处无条件的硬限制，比如句长上限、“必须”“严禁”“切成短句”这类，改写成有条件的方向），r5.49 又改写 8 处（两版合计改写 42 处），r5.50 改了卡库的全局组合规则。要用当前的卡，用完整包或单文件。
 
 > [!WARNING]
