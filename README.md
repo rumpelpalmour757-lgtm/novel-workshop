@@ -22,7 +22,7 @@
 
 <p align="center">
   <a href="https://github.com/rumpelpalmour757-lgtm/novel-workshop/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/rumpelpalmour757-lgtm/novel-workshop?style=flat-square&color=E0703A&logo=github&logoColor=white&label=Stars"></a>
-  <a href="docs/versions.md"><img alt="版本 r5.55" src="https://img.shields.io/badge/%E7%89%88%E6%9C%AC-r5.55-1F2A44?style=flat-square"></a>
+  <a href="docs/versions.md"><img alt="版本 r5.56" src="https://img.shields.io/badge/%E7%89%88%E6%9C%AC-r5.56-1F2A44?style=flat-square"></a>
   <img alt="方法参考 48 篇" src="https://img.shields.io/badge/%E6%96%B9%E6%B3%95%E5%8F%82%E8%80%83-48%20%E7%AF%87-1F2A44?style=flat-square">
   <a href="docs/style-cards.md"><img alt="风格卡 83 张" src="https://img.shields.io/badge/%E9%A3%8E%E6%A0%BC%E5%8D%A1-83%20%E5%BC%A0-1F2A44?style=flat-square"></a>
   <img alt="脚本需要 Python 3.9+" src="https://img.shields.io/badge/Python-3.9%2B-1F2A44?style=flat-square">
@@ -31,7 +31,7 @@
 
 <p align="center">
   <a href="portable-novel-workshop.md"><img alt="便携单文件" src="https://img.shields.io/badge/%E4%BE%BF%E6%90%BA%E5%8D%95%E6%96%87%E4%BB%B6-E0703A?style=for-the-badge"></a>
-  <a href="novel-workshop-commercial-r5.55.zip"><img alt="下载完整包" src="https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%95%B4%E5%8C%85-1F2A44?style=for-the-badge"></a>
+  <a href="novel-workshop-commercial-r5.56.zip"><img alt="下载完整包" src="https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%95%B4%E5%8C%85-1F2A44?style=for-the-badge"></a>
 </p>
 
 ![小说写作工坊题图（AI 生成的概念插画）：灯下的书桌上摊开一本书，远处是黄昏里的河边小城](docs/images/novel-workshop-hero-v2.png)
@@ -67,11 +67,11 @@ python install.py --dry-run --dest "~/.claude/skills"
 python install.py --dest "~/.claude/skills"
 ```
 
-两块二选一，每块第一条只预览、不写文件。先下载[完整包](novel-workshop-commercial-r5.55.zip)（约 3.5 MB）并解压，在解压出来的目录里运行；要 Python 3.9 或更新，找不到 `python` 就换成 `python3`。点下载链接会打开 GitHub 的文件页，再点页面右上角的下载按钮保存。
+两块二选一，每块第一条只预览、不写文件。先下载[完整包](novel-workshop-commercial-r5.56.zip)（约 3.5 MB）并解压，在解压出来的目录里运行；要 Python 3.9 或更新，找不到 `python` 就换成 `python3`。点下载链接会打开 GitHub 的文件页，再点页面右上角的下载按钮保存。
 
-**升级用 `python install.py --upgrade`。** 装的时候带了 `--dest` 的，升级也带同一个 `--dest`；先加 `--dry-run` 看输出，技能后面写 `upgrade` 或 `unchanged` 才对，写 `install` 说明目录指错了。装在 Claude Code 里的，就是 `python install.py --dest "~/.claude/skills" --upgrade`。
+**升级用 `python install.py --upgrade`。** 装的时候带了 `--dest` 的，升级也带同一个 `--dest`；先加 `--dry-run` 看输出，技能后面写 `upgrade` 或 `unchanged` 才对，写 `install` 说明目录指错了。装在 Claude Code 里的，就是 `python install.py --dest "~/.claude/skills" --upgrade`。r5.56 起，升级会把装着的 `assets/project-packs/`（作者改法累计 `_author/` 和你放进去的作品资料）带进新版；新包在那里也带了对不上的同名文件时，安装器先停下，要你用 `--keep installed` 或 `--keep package` 选一边。
 
-**只能聊天也能用，不用装 Python，也不用自己配 API**：下载[便携单文件](portable-novel-workshop.md)（约 1.2 MB），传给 AI，再发这一句：
+**只能聊天也能用，不用装 Python，也不用自己配 API**：下载[便携单文件](portable-novel-workshop.md)（约 1.3 MB），传给 AI，再发这一句：
 
 ```
 请读取附件中的小说写作工坊说明，
@@ -83,11 +83,11 @@ python install.py --dest "~/.claude/skills"
 
 > 各环境怎么导入、不想跑脚本时怎么手动导入、怎样确认它真的读了，见 **[详细用法](docs/usage.md)**。
 >
-> 校验值、历史版本和回到旧版的办法见[版本、下载与来源](docs/versions.md)；从 r5.54-merged 升上来，交付记录照旧；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查，见[版本](#版本)。
+> 校验值、历史版本和回到旧版的办法见[版本、下载与来源](docs/versions.md)；从 r5.55、r5.54-merged 升上来，交付记录照旧；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查，见[版本](#版本)。
 
 ## 看看实际效果
 
-下面的脚本输出是拿新写的合成稿跑当前版本的脚本得到的，原样摘录；它们说明脚本和流程会做什么，不说明在你的稿子上效果怎样，完整文件在 **[demo/](demo/README.md)**。要有这些输出，得用完整包，还要 AI 能运行 Python 或者你自己在电脑上跑；只用便携单文件聊天时没有，由 AI 照同样的读法人工做，程序检查一项写「没跑」。
+下面的脚本输出是拿新写的合成稿跑包里的脚本得到的，原样摘录；它们说明脚本和流程会做什么，不说明在你的稿子上效果怎样，完整文件在 **[demo/](demo/README.md)**。章节门一节和教师改稿一节里的章节门输出，是用 r5.55 的脚本跑的；台词分栏、去 AI 味提示、修订前后对照三节，和教师改稿一节附的 `tool-outputs/`，是在 r5.54-merged 上跑的，工作台截图也是在 r5.54-merged 上拍的。r5.56 在脚本上只改了安装脚本 `install.py` 和导出脚本 `export_portable.py`（另改了几页说明和测试），这些用到的脚本和工作台都和跑的那一版逐字节相同，所以输出在 r5.56 下照样成立，没有重跑。要有这些输出，得用完整包，还要 AI 能运行 Python 或者你自己在电脑上跑；只用便携单文件聊天时没有，由 AI 照同样的读法人工做，程序检查一项写「没跑」。
 
 ### 台词分栏：一个人一栏，没写明的不猜
 
@@ -186,7 +186,7 @@ python install.py --dest "~/.claude/skills"
 
 ### 教师改稿带回来：原句改句并排，逐处写多了什么、丢了什么
 
-教师指给你改稿的人：老师、编辑，或者另一个 AI。对照本身不用开任何模块，带回改稿说一声就做；下面演示的是开了章节门、初稿由你转交教师（r5.55 起开了章节门就默认这样）以后，脚本多做的那一步版本核对。
+教师指给你改稿的人：老师、编辑，或者另一个 AI。开了章节门、初稿由你交教师的，工坊交初稿时会说默认的教师设置：交给 gemini-4-argon，思考等级选“高”（High）。这只是默认，可以改：作者档案或作品档案里另写了别的教师的，照写的；你这一次另说的，照这一次（r5.56 起）。对照本身不用开任何模块，带回改稿说一声就做；下面演示的是开了章节门、初稿由你转交教师（r5.55 起开了章节门就默认这样）以后，脚本多做的那一步版本核对。
 
 接着上面的项目：初稿一确认，状态变成 `await_teacher_return`，等你把教师的意见或改稿带回来。有脚本的环境里，登记回传要对上这一版初稿的展示实例（哪一次交出来的）、版本和哈希（按文件内容算出来的一串指纹，改一个字就变）；演示里拿对不上的哈希来登记，脚本拒绝，答的是 `Teacher return must bind this chapter's current confirmed draft instance, version and hash`。
 
@@ -200,7 +200,7 @@ python install.py --dest "~/.claude/skills"
 
 > **谁来定**：错别字工坊核过，你只点例外；口气和查不到依据的事实由你定；台词的增删只有你能定。整份方案你确认了才动稿子，改完对新稿重新复查，最后采不采纳，由你看过这一版修订稿再明确说；这个演示没有走到这几步。
 
-它不说明的：两份稿子都是合成的，表里的判断是一种读法，不是结论；真实的教师回传还没有验证过。
+它不说明的：两份稿子都是合成的，表里的判断是一种读法，不是结论；真实的教师回传还没有验证过。演示里的教师也是合成的，回传登记的教师一栏写的是“合成教师（演示用，不是真人或真实模型的回传）”，没有照默认填 gemini-4-argon；默认的教师设置是 r5.56 加的说明，脚本只要求教师一栏有字，不核写的是谁；用 gemini-4-argon 审得好不好，没有验证。这张表照的是 r5.54-merged 的说明页（`references/teacher-review.md`）；r5.55、r5.56 都改过那一页（r5.56 改的是登记回传和记取舍两步，不是对照表的读法），表没有照新页重写。
 
 完整文件：[`demo/05-teacher-review/review-table.md`](demo/05-teacher-review/review-table.md)（四处都在） · [`draft.md`](demo/05-teacher-review/draft.md) · [`teacher-revision.md`](demo/05-teacher-review/teacher-revision.md) · [`tool-outputs/`](demo/05-teacher-review/tool-outputs/)
 
@@ -227,7 +227,7 @@ python install.py --dest "~/.claude/skills"
 3. **写新的一章，一关一关给我看（可选模块：章节门）**
    > 用小说写作工坊写〈作品名〉第〈N〉章，依据是〈上一章的定稿、本章大纲、相关设定〉。这本书以后每写新的一章都走完整流程：材料与目标、章节方案、写前准备、初稿、审稿与修订计划、修订稿、定稿记录，每一步交出来就停下，等我确认了再往下。先交第一步，先别写正文；我说「继续」只算放行当前这一步。
 
-   这一条开的是默认不开的章节门。开了以后，写前看图和初稿由你交教师两项默认开着：写前准备要有实际看过的图（你给的、灵感库里已有的，或者找图找来的），初稿你确认以后，要等你把教师的意见或改稿带回来才往下走。没有图、没有教师，或者不想这样，就说一声关掉；重写、续写算不算新的一章，它先问你。不想逐关确认就别发，直接说「写第〈N〉章」；开了想关，说一声。只能聊天时它不会跨对话记住，做法见[四个可选模块](docs/modules.md)一页的「只能聊天时」。
+   这一条开的是默认不开的章节门。开了以后，写前看图和初稿由你交教师两项默认开着：写前准备要有实际看过的图（你给的、灵感库里已有的，或者找图找来的），初稿你确认以后，要等你把教师的意见或改稿带回来才往下走。交初稿时它会说默认的教师设置（gemini-4-argon，思考等级“高”），这只是默认，可以改。没有图、没有教师，或者不想这样，就说一声关掉；重写、续写算不算新的一章，它先问你。不想逐关确认就别发，直接说「写第〈N〉章」；开了想关，说一声。只能聊天时它不会跨对话记住，做法见[四个可选模块](docs/modules.md)一页的「只能聊天时」。
 
 4. **把老师改过的稿子带回来对照（不用先开什么）**
    > 老师的改稿回来了，是对第〈N〉章初稿〈文件名或版本〉改的，原文附在后面。先别动我的稿子：并排列出原句和老师的改句，每一处讲明多了什么、丢了什么，你建议采纳、拒绝还是暂缓，理由是什么。结构、情节和台词的增删只由我定；整份方案我确认了再改，改完按新稿重新查一遍。
@@ -310,7 +310,7 @@ flowchart LR
 
 | 模块 | 怎么叫它 | 说明 |
 |:------|:-----|:-----|
-| 章节门 | 「以后每写新的一章都走完整流程，一步一步给我看」 | **默认不开** · 写新的一章分七个阶段，每关停下等你确认；开了以后写前看图、初稿由你交教师两项默认开着 · 最后一关只收明确的采纳 · 脚本不支持原生 Windows |
+| 章节门 | 「以后每写新的一章都走完整流程，一步一步给我看」 | **默认不开** · 写新的一章分七个阶段，每关停下等你确认；开了以后写前看图、初稿由你交教师两项默认开着 · 交教师默认是 gemini-4-argon、思考等级高，可以改 · 最后一关只收明确的采纳 · 脚本不支持原生 Windows |
 | 学习循环 | 「这本书开学习循环，意见、取舍、改稿、复查都记下来」 | **默认不开** · 逐条记取舍和理由，改完对新稿重新评审 · 你的否定意见工坊不能驳回，「继续」不算采纳 · 脚本不支持原生 Windows |
 | 示范记忆 | 「让这本书记住我认可的改法」 | **默认不开** · 同一本书里按任务最多取三条 · 只记录和检索，不是微调 |
 | 对白声纹与反模式 | 「用对白声纹检查扫一遍这一章，只扫不改」 | **你要求时才用** · 角色一栏只给数字，不按人物下结论 · 伪口语、压缩式短句、翻译腔的提示要另开，命中只标「复核」 · 认“”「」『』 |
@@ -376,7 +376,7 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 
 ### 单文件传不上，或者 AI 只读到一部分怎么办？
 
-单文件约 1.2 MB、56 万字符，平台多半只按需检索其中片段。做整章以上的任务，把只有一页的交付门卡另外贴进项目指令或第一条消息，常改稿的连同改稿卡一起贴，全文在[聊天用的两张卡](docs/chat-cards.md)。传不上就换一个能收这么大附件的平台，或者改用完整包。
+单文件约 1.3 MB、56 万字符，平台多半只按需检索其中片段。做整章以上的任务，把只有一页的交付门卡另外贴进项目指令或第一条消息，常改稿的连同改稿卡一起贴，全文在[聊天用的两张卡](docs/chat-cards.md)。传不上就换一个能收这么大附件的平台，或者改用完整包。
 
 ### 怎么确认 AI 真的读了工坊？
 
@@ -388,7 +388,7 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 
 ### 章节门、学习循环、示范记忆、对白声纹检查默认开着吗？
 
-都不开。章节门、学习循环和示范记忆要你明确开启；章节门开了以后，写前看图和初稿由你交教师两项默认开着：写前准备要有实际看过的图，初稿你确认以后要等你把教师的结果带回来才往下走，没有图或没有教师就说一声关掉。对白声纹检查你要求时才跑，不是交付检查的必过项。r5.55 新加的“从改稿记录里学编辑判断”也默认不开，你明确要求才用。装上这个包不会生成任何章节确认记录。各自怎么开、怎么关、有什么限制，见[四个可选模块](docs/modules.md)。
+都不开。章节门、学习循环和示范记忆要你明确开启；章节门开了以后，写前看图和初稿由你交教师两项默认开着：写前准备要有实际看过的图，初稿你确认以后要等你把教师的结果带回来才往下走，没有图或没有教师就说一声关掉；交初稿时默认的教师设置是 gemini-4-argon、思考等级选“高”，可以改。对白声纹检查你要求时才跑，不是交付检查的必过项。r5.55 新加的“从改稿记录里学编辑判断”也默认不开，你明确要求才用。装上这个包不会生成任何章节确认记录。各自怎么开、怎么关、有什么限制，见[四个可选模块](docs/modules.md)。
 
 ### 检查脚本会自动改我的稿子吗？
 
@@ -400,7 +400,7 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 
 ### 从旧版升级要做什么，能退回去吗？
 
-单文件：换上新的，新开对话重新上传。完整包：运行 `python install.py --upgrade`，装的时候带了 `--dest` 的，升级也带同一个 `--dest`；先加 `--dry-run` 看输出，技能后面写 `upgrade` 或 `unchanged` 才对，写 `install` 说明目录指错了。从 r5.54-merged 升上来，交付记录照旧，但章节门新开的章默认变了（写前看图、初稿由你交教师两项默认开着）；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查。用 r5.54-merged 时让工坊记过“作者改法累计”（你认可过的改法，要你授权才开）的：这份记录现在放在技能目录以外、你自己的作者档案里，升级不动它；原来记在技能目录里的，升级前先移出来，已经升级的到装技能的目录下的 `.novel-workshop-backups/` 里取回。没开过的不用管。回退见[版本、下载与来源](docs/versions.md)。
+单文件：换上新的，新开对话重新上传。完整包：运行 `python install.py --upgrade`，装的时候带了 `--dest` 的，升级也带同一个 `--dest`；先加 `--dry-run` 看输出，技能后面写 `upgrade` 或 `unchanged` 才对，写 `install` 说明目录指错了。从 r5.55、r5.54-merged 升上来，交付记录照旧；从 r5.54-merged 升上来，章节门新开的章默认变了（写前看图、初稿由你交教师两项默认开着）；从 r5.54、r5.53 的包（文件名不带 merged）升上来，以前记的整章交付记录要重跑一次检查。让工坊记过“作者改法累计”（你认可过的改法，要你授权才开）的：r5.56 起这份记录放在技能目录的 `assets/project-packs/_author/`，跟着技能包走，`--upgrade` 把它带进新版；新包在那里也带了对不上的同名文件时，安装器先停下，要你用 `--keep installed`（留装着的）或 `--keep package`（用新包的）选一边。照 r5.55 的说法放在作者档案那里的，升级以后工坊先问你一句，你同意了才挪回技能目录。从 r5.54-merged 升到 r5.55 时被移进备份、一直没取回的，在装技能的目录下的 `.novel-workshop-backups/<时间>/novel-workshop/assets/project-packs/_author/` 里。退回 r5.55 或更早的包时，那时的安装器不带这份记录，它留在这次退回的备份 `.novel-workshop-backups/<时间>/novel-workshop/assets/project-packs/` 里，取回办法见[版本、下载与来源](docs/versions.md#回到旧版)。没开过的不用管。
 
 ### 用了工坊就能写得更好吗？
 
@@ -419,13 +419,13 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 - [本地工作台与检查工具](docs/tools.md) — 工作台怎么打开、各检查脚本管什么、可选的找图链路、平台限制
 - [版本、下载与来源](docs/versions.md) — 下载文件与校验值、验证到哪一步、近几版改了什么、回到旧版、各组件的来源与许可
 - [实际效果样例](demo/README.md) — 八份样例的命令、输入和完整输出，每一份说明什么、不说明什么
-- 完整包里的文档（解压后看）：`QUICKSTART.md` · `USAGE.md` · `EXAMPLES.md`（29 条可复制的请求） · `CHANGELOG.md` · `VERIFICATION.md` · `MERGE-VERIFICATION.md` · `LICENSE` · `THIRD-PARTY-NOTICES.md` · `LICENSE-NOTICES.md`
+- 完整包里的文档（解压后看）：`QUICKSTART.md` · `USAGE.md` · `EXAMPLES.md`（30 条可复制的请求） · `CHANGELOG.md` · `VERIFICATION.md` · `MERGE-VERIFICATION.md` · `LICENSE` · `THIRD-PARTY-NOTICES.md` · `LICENSE-NOTICES.md`
 
 ## 版本
 
-当前版本 `2026-11-14-r5.55`：在上一版 r5.54-merged（版本号 `2026-11-14-r5.54-merged-candidate`，文件 `novel-workshop-commercial-r5.54-merged.zip`；merged 表示它是把两路改动合在一起的一版）上做的新版本。章节门和教师回传的规则改回 r5.54 的说法（只管写新的一章，开了以后看图、交教师两项默认开着，读感只由你定），修了上一版列出的四处已知问题（你的否定意见可能被驳回、「继续」可能被记成采纳等），许可文件放进了包里。版本号里的 candidate 表示还在复核、没有最终定下来；新来的直接用它，想用 r5.54-merged 或更早的见版本页。
+当前版本 `2026-11-14-r5.56`：在上一版 r5.55（版本号 `2026-11-14-r5.55`，文件 `novel-workshop-commercial-r5.55.zip`）上做的新版本，只做维护者 2026-11-14 定下的两件事：作者改法累计放回技能目录的 `assets/project-packs/_author/`、跟着技能包走，`install.py --upgrade` 把它带进新版，对不上时停下、要你用 `--keep` 选一边；写明默认的教师设置：章节门里初稿由你交教师的，默认交给 gemini-4-argon、思考等级选“高”（High），可以改。交付门和四个模块的脚本、写作台的代码都和 r5.55 逐字节相同。这一版没有做文笔对照，不说明写得更好，也不说明默认的教师设置审得更好。新来的直接用它，想用 r5.55 或更早的见版本页。
 
-从 r5.54-merged 升上来，交付记录照旧（交付记录绑定的五个脚本 `workflow_guard.py`、`punctuation_lint.py`、`prose_lint.py`、`fact_guard.py`、`project_state.py` 和 r5.54-merged 逐字节相同；这是按哈希推的，没有在这一版上另跑）；章节门新开的章，写前看图和初稿由你交教师两项默认开着（r5.54-merged 默认关着）。从 r5.54、r5.53 的包（文件名不带 merged，仓库里的是 `novel-workshop-commercial-r5.54.zip`）升上来，以前记的整章交付记录要重跑一次检查：交付记录绑定着检查脚本本身，而当前版本的文字检查脚本 `prose_lint.py` 和那两版不同，新旧两边记下的记录互相读成 `STALE`。
+从 r5.55、r5.54-merged 升上来，交付记录照旧（交付记录绑定的五个脚本 `workflow_guard.py`、`punctuation_lint.py`、`prose_lint.py`、`fact_guard.py`、`project_state.py` 和这两版逐字节相同；这是按哈希推的，没有在这一版上另跑）。从 r5.54-merged 升上来，章节门新开的章，写前看图和初稿由你交教师两项默认开着（r5.55 起这样，r5.54-merged 默认关着）。从 r5.54、r5.53 的包（文件名不带 merged，仓库里的是 `novel-workshop-commercial-r5.54.zip`）升上来，以前记的整章交付记录要重跑一次检查：交付记录绑定着检查脚本本身，而当前版本的文字检查脚本 `prose_lint.py` 和那两版不同，新旧两边记下的记录互相读成 `STALE`。退回 r5.55 时作者改法累计在哪、怎样取回，见版本页的[回到旧版](docs/versions.md#回到旧版)。
 
 下载文件、校验值、验证到哪一步和历史版本，见 **[版本、下载与来源](docs/versions.md)**。
 
@@ -435,7 +435,7 @@ AI 读没读、照没照做，取决于平台和模型本身；聊天产品这�
 
 包里带的 Oh Story、darwin-skill、TypeSafe AI 三样组件各按自己的 MIT 许可、署各自的版权人，见 **[第三方组件与许可范围](THIRD-PARTY-NOTICES.md)**。
 
-r5.55 的完整包里带了 `LICENSE` 和 `THIRD-PARTY-NOTICES.md`，包里的许可说明已经改成上面这样；来源记录里还有六行参考材料照原样写着“材料未附独立许可”一类的话，算不算在版权人 2026-11-13 的确认里，还要版权人说，见[版本、下载与来源](docs/versions.md#来源与许可)。更早的压缩包（r5.54-merged 及以前）里的 `LICENSE-NOTICES.md` 写在定许可之前，里面“不将整包统一声明为 MIT”一类的话以这里为准。文件名里的 commercial 只是版本名。
+r5.55 起，完整包里带了 `LICENSE` 和 `THIRD-PARTY-NOTICES.md`，包里的许可说明已经改成上面这样；来源记录里还有六行参考材料照原样写着“材料未附独立许可”一类的话，算不算在版权人 2026-11-13 的确认里，还要版权人说，见[版本、下载与来源](docs/versions.md#来源与许可)。更早的压缩包（r5.54-merged 及以前）里的 `LICENSE-NOTICES.md` 写在定许可之前，里面“不将整包统一声明为 MIT”一类的话以这里为准。文件名里的 commercial 只是版本名。
 
 ## 反馈
 
