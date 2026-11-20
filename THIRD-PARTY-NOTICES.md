@@ -21,7 +21,7 @@
 
 `tokens.css` 文件头里的 ZenStory 是上游文件自带的说明，本项目不使用这个名字。工作台页面左上角的方块标记沿用了上游文件的样式，换了底色。
 
-`skills/novel-workshop/scripts/oh-story/` 目录里其余的文件（启动器、`workbench.mjs`、`gemini-*.mjs`、`acp-*.mjs`）是本项目自己写的，按根目录的 `LICENSE`。
+`skills/novel-workshop/scripts/oh-story/` 目录里其余的文件（启动器和 `workbench.mjs`；仓库里 r5.54 到 r5.58 的包另有写作台两个 AI 侧栏的 `gemini-*.mjs`、`acp-*.mjs` 和它们的检查启动器，r5.59 删掉了）是本项目自己写的，按根目录的 `LICENSE`。
 
 这三样组件的许可声明原文如下，分别配上表里各自的版权行：
 
@@ -62,4 +62,7 @@ SOFTWARE.
 - 风格卡的卡名和说明里提到的作家、作品和品牌，只用来描述腔调。MIT 许可不涉及这些名字和作品本身的任何权利；卡里当作反例引用的口头禅、书名和流行语也一样。
 - `docs/images/` 下的三张 PNG 插画是 AI 生成的图，随仓库一并公开。
 - 本地工作台的界面布局参考过 InkOS（AGPL-3.0）的写作台思路；按包内记录，没有使用它的代码、标志或图片。
+- r5.59 起，拆文页和技法卡模板参考过仓颉 Skill 2.5.0（MIT）的拆书思路；按包内记录，没有使用它的文件、脚本或模板原文。它的许可里版权行只有年份，没有写权利人，包内来源记录（`skills/novel-workshop/assets/third-party/SOURCE-NOTES.md`）照原样记。
+- r5.59 起，改规则以前先问现有规则管不管得着、验收材料里该改和不该动的都要有、系统列出由作者定、被划掉的不再原样提这几样做法，参考过 claude-skills 合集（MIT；其中几个目录另带自己的 MIT 许可）的思路；按包内记录，没有使用它的代码、钩子或脚本，各份许可的版权行照原文记在包内来源记录里。
+- r5.59 起，找图链路判断 robots.txt 时用到的两种标准库读法（包内 `skills/novel-workshop/scripts/visual_materials/common.py`，Python 3.13 以前的一种、3.13 起的一种），是照 Python 标准库 `urllib.robotparser` 的判定逻辑写成的；Python 按 PSF 许可发布。
 - AI 平台、模型和外部服务不随本仓库提供，它们的账户、费用和使用条款由各自的提供方决定。
