@@ -6,7 +6,7 @@
 
 # 小说写作工坊
 
-小说写作工坊 r5.59（`2026-11-19-r5.59`）。在 r5.58 上做几件事：技法卡模板换成完整的一张卡；对白和场景的自我纠错（出了问题先归因、整理一次交作者定、作者划掉的不再提、作者在审稿阶段交回自己改过的稿子不重开初稿、作者改过的节拍卡留成示范）；维护时保护作者权限的几节原文上锁、加了对白和场景的写作对照例（标了不许加台词的，查得出新加台词）；视觉链路补上跳转、robots.txt、同站间隔几处漏洞，加了自带读页；写作台删掉两个 AI 侧栏。章节门和对白声纹检查照旧；学习循环、示范记忆多认几个字段，旧记录照读；学习循环凭作者本人的通过收尾的一轮记 `author_reviewed`（r5.58 记 `self_checked`）。下面几个模块默认都关着，谁来开、记在哪，见“可选模块：默认关着”。
+小说写作工坊 r5.60（`2026-11-26-r5.60`）。在 r5.59 上做几件事：技法卡分三个时候读（挑卡、起草、写完自查），可以先存成候选卡，改卡分轻重，一场最多用两张，交稿时在正文外说明用了哪张；风格卡加载默认只印方向，写过头的样子留到写完核对，卡片库照作者认过的清单改了 17 张卡；示范记忆、判断卡、作者改法累计、事实账四份记录的说明页和模板修正；作者交回改稿那一条补了一种少见情形（修订稿等确认时，把晚到的教师意见和改过的修订稿一起带回）怎样办、学习记录怎样记。交付门五个脚本、门卡、改稿卡、宪法正文和章节门、学习循环、示范记忆的脚本没有改；上锁的六节里，作者改法累计“从一次纠错提炼规则”第 2 步照作者认过的整句加了一句，别的五节没有动；`style_cards.py` 的 `load` 默认不再印示例和过量信号。下面几个模块默认都关着，谁来开、记在哪，见“可选模块：默认关着”。
 
 可选试用扩展：`dialogue-lint 1.2.0`（2026-11-14），入口见对白声纹与反模式（dialogue-lint.md）；实际文笔效果待作者测试。
 
@@ -62,7 +62,7 @@
 | L1 整章 | 写一整章，或整章重写、精修、去模板腔、审稿；作者重贴旧稿、复用已有修订稿再走一遍也属这一级 | 主模块；张力与代价“每章五问”；写或重写整章时读 分场戏剧张力与正文具象化（scene-dramaturgy.md） 全文，落笔前按 分场节拍卡（scene-beat-card.md） 对齐四步节拍与道具锚点（CON-011），再按 声音样本与现场素材卡 摘作者自己的原文、备每场的现场素材（参考图和本书的 灵感库（inspiration-library.md）），看着这三样起草（CON-012）；写完以后（改已有稿件从这里起）按 修改的五道工序（revision-passes.md） 查改，同时读 中文标点（chinese-punctuation.md）；句式专项（sentence-craft.md）“两种不同的拆法”“过度断句的还原”“段落：按焦点分段”“语感：搭配、照应与叫法”；模板腔复核（prose-audit.md）“三步处理”“去模板腔时引入的新模板”“整章任务的表达检查与记录”；质量循环（quality-loop.md）“文学质量的六个维度”“交付状态”；改已有稿件时加读 编辑（editing.md）“修订前后对照” | 记录四项状态，按本轮输出要求呈现；编辑审查按六个维度逐项给结论（达到／有问题／未看／不适用），另留表达检查记录（覆盖范围和逐处处理记录），复用、零修改、事实检查全过都不能免；表达检查要判重复说明、总结旁白、短句和小动作，动作、连续性和标点的修正不顶替它；编辑裁决里写五问的答案，答不上的照实写、记为复核项；写或重写整章时，检查清单声明 `scene_beats`（节拍卡），审稿记录写 `scenes`（每个核心博弈戏、动作危机戏翻没翻转、临场感几分），`prose_lint.py` 三项分场检测在叙述里的命中逐处改写或写明理由保留；检查清单另声明 `voice_material`（素材卡，CON-012）；五道工序的第一遍扫描命中逐处定留或改，第三遍按人物分栏读台词，第五遍朗读由作者做或照实写没做，表达检查记录写清每段过了哪几遍；运行交付门时用严格模式；没执行的检查写 UNTESTED，交付时照实说哪样没做 |
 | L2 多章或定本修订 | 两章以上、批量重修、修改已采纳章节、续写依赖多章事实 | L1 的全部模块；连续性（continuity.md）“动作状态与证据等级”“持续状态”“修订后的回归核对”；执行检查（execution.md） | 批量处理时先做一章试点，把差异交作者看；每章各有状态；改了旧章就列出要回归的后续章节；有一章未过，不得称整体完成；改已采纳章节先取得作者的修改决定 |
 
-- 用户只要正文时，只交正文；四项状态与审稿证据另存工作记录，不插进正文。不能保存时保留本轮已核查范围与未测项，用户询问检查情况时如实报告。用户要求检查报告时再按指定格式呈现；输出简洁不降低检查要求。
+- 用户只要正文时，只交正文；四项状态与审稿证据另存工作记录，不插进正文。不能保存时保留本轮已核查范围与未测项，用户询问检查情况时如实报告。用户要求检查报告时再按指定格式呈现；输出简洁不降低检查要求。例外有两样（r5.60）：本书有技法库的，这一轮有只收窄改过的技法卡，在正文外另说一句改了哪张卡的哪一句；用了作者还没看过、或者看过没定的技法卡，在正文外另说一句用了哪张（正文与场景“用技法卡”）。
 - 作者明确授权一次处理多章、跳过试点时照做，但每章仍是候选稿，各自有状态，不能因为交付规模降低检查。
 - 只换格式、不动字句的（比如加章标题、转 Markdown）单算一类，叫保真转换，不因为篇幅长就扩成整章精修、重写或审稿；哪些算在内、怎样核、交付怎样写、已经采纳的章换了格式怎样办，见 编辑（editing.md）“先定范围”里的“保真转换”（r5.57）。全角半角和标点不算在内，照 中文标点（chinese-punctuation.md）。
 - 作者点名改已采纳章节里的一处，算不算这一种、怎样走，照 编辑（editing.md）“先定范围”里的“作者点名的一处小改”；算的，不扩成 L2 的整套（r5.58）。
@@ -80,7 +80,7 @@
 | 人物设计、情绪反应、成长转变、人物关系、复杂交涉或出场 | characters.md | 将目标、欲望来源、退路与关系压力落实为有依据的选择 |
 | 第一章、场景、续写、战斗、悬疑或对白 | drafting.md | 完成可阅读的正文 |
 | 写新的一章，作者要求每次都走全流程：七个阶段逐个交成果、逐个确认，写前必须有视觉准备，完整初稿由作者交给教师再带回 | chapter-confirmation.md；教师回传照 teacher-review.md | 不跳、不并、不自己判断哪一步用不着；“继续”只确认当前阶段；核对当前阶段与初稿版本，收到教师回传后列出取舍，方案确认后实施；能跑脚本的记进项目记录，这一章按什么策略走看 `chapter_gate.py status` 的 `workflow_policy`（r5.53） |
-| 写一场或一章正文前，看这一场对不对得上工坊附带的风格卡（某类流派、某位作家式的腔调，分世界观底色、整体文风、视角装置、场景功能四层） | style-cards.md | 每层挑一张或者不挑（scene 最多两张），对不上不加载；只加载方向（叙述逻辑、句子节奏、取材的方向），示例不进正文，相反的写法不是禁词表；作者原文和口吻表优先；交稿时在正文外一句话说明加载了哪几张、为什么 |
+| 写一场或一章正文前，看这一场对不对得上工坊附带的风格卡（某类流派、某位作家式的腔调，分世界观底色、整体文风、视角装置、场景功能四层） | style-cards.md | 每层挑一张或者不挑（scene 最多两张，这一场挂了技法卡的最多一张），对不上不加载；有作者原文样本或本书文风卡的，底色和整体文风两层默认不挑；只加载方向（叙述逻辑、句子节奏、取材的方向），示例不进正文，相反的写法不是禁词表；卡上的人称、文白、排版不盖过本书已定的视角和语体；作者原文和口吻表优先，同一处做法上作者采纳过的本书技法卡在风格卡前面；交稿时在正文外一句话说明加载了哪几张、为什么 |
 | 作者点名用某个风格包（都市高武风格引擎库、小说实感与去 AI 味引擎），或者选定作品的档案写明启用了它 | style-packs.md | 两样都没有就不读，也不拿包里的禁词、句长、段长查稿子；照包入口 ENGINE.md 按需取用，不整包读；包里的规则排在作者原文、已采纳的事实和本书规则之后；硬指标在作者采纳以前只当复核线索，读下来确实有毛病才改；包里的脚本不自动运行；交稿时在正文外一句话说明用了哪个包的哪几样 |
 | 完整短篇、情感故事或短篇收尾 | short-fiction.md | 围绕核心变化完成闭环，不默认套用商业网文公式 |
 | 拆参考文本、提炼情节或写法、建立技法库 | reference-study.md | 从原文证据提炼可迁移机制，不复刻情节与表达 |
@@ -101,7 +101,7 @@
 | 要给一章自动找参考图：两路搜索、读来源页提图、近似图归组、按这一场的文字和作者的参考图排序，再看图、给作者挑整张或局部 | visual-materials.md | 先用 `doctor` 看 SearXNG、Openverse、Crawl4AI、ImageHash、OpenCLIP 五项装好没有；一次运行按预算取图，搜索只发几个词不发正文；看图的人写下看到的、绑定图片版本；作者挑的只记点名的那几样，写库核修订号；五项都在同一台机器上实际跑通才说接通；没装、没网照常写作（`visual_required` 按开着办的除外，什么时候算开着见 chapter-confirmation.md） |
 | 一场戏像精修过的流水账（环境细腻、一问一答、进场和出场处境一样），长段对白脱离物理空间，紧张和情绪靠“空气仿佛凝固”“五味杂陈”这类直述词；整章写作和重写默认都读 | scene-dramaturgy.md | 四个戏剧支点（入场欲望、在场阻力、筹码与代价、极性翻转）、情绪落点（2.1 的生理化是其中一类，按这一场选）、道具锚点、锁 POV、错位对白、场内四拍（对手戏；其他场靠变化立住）；落笔前填节拍卡 |
 | 整章精修、读着有机器味：“随即”“依次”扎堆，段尾总落在“没有……”，动作一句一个像分镜，台词不像这个人说的、叙述的词进了台词；整章写作和修改写完以后默认都走 | revision-passes.md | 五道工序先删后改：扫描、瘦身、按人物分栏读台词、动作段节奏、朗读；扫描用 `prose_lint.py --format text`，台词分栏用 `dialogue_lines.py` |
-| 去模板腔、去 AI 味、收紧、增强临场感（一段或一章） | editing.md“要求修改时”先定改稿范围、再分三样（逐字锁定的原句、要保住的事实、可以调整的表达）；prose-audit.md“现成身体反应”“情绪直述的改法”“点题式收尾”；有对白的，加读 dialogue-craft.md“只有 AI 才会这样说吗”（r5.54）；只能聊天时按 改稿卡（revision-card.md） | 改到作者点名的方向，保住有作用的细节、长句和口吻；作者要去 AI 味（去模板腔）、精修、收紧或增强临场感、能运行脚本时，原稿和修订稿各跑一次 `prose_lint.py --hint deai`，命中只是要回去读的位置；改完写交稿说明（范围、改了和保住了什么、新增和拿掉的事实、待判断的变化、没验证的） |
+| 去模板腔、去 AI 味、收紧、增强临场感（一段或一章） | editing.md“要求修改时”先定改稿范围、再分三样（逐字锁定的原句、要保住的事实、可以调整的表达）；prose-audit.md“现成身体反应”“情绪直述的改法”“点题式收尾”；有对白的，加读 dialogue-craft.md“只有 AI 才会这样说吗”（r5.54）；只能聊天时按 改稿卡（revision-card.md） | 改到作者点名的方向，保住有作用的细节、长句和口吻；作者要去 AI 味（去模板腔）、精修、收紧或增强临场感、能运行脚本时，原稿和修订稿各跑一次 `prose_lint.py --hint deai`，命中只是要回去读的位置；改完写交稿说明（范围、改了和保住了什么、新增和拿掉的事实、待判断的变化、用了哪张技法卡和这一轮改过的卡、没验证的） |
 | 重复句式排查或正文形式检查 | prose-audit.md | 将脚本线索交给语境判断，保留作者有意写法 |
 | 借鉴参考文风、建立作者风格、改稿后文风脱节或换模型保持写法 | voice.md | 提炼有依据的文风卡，连读修订段与邻段检查接缝 |
 | 作者主动要求练习对白、描写、情节等小说技法 | coaching.md | 一个小任务、针对性反馈与新情境练习；不作为代写的前置步骤 |
@@ -438,7 +438,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
   "version": "NWC-1.8",
   "date": "2026-11-16",
   "text": "novel-workshop/CONSTITUTION.md",
-  "note": "Paths are relative to the skills/ folder. kind=hard: at least one script or test enforces it; kind=soft: editorial judgment, tools only give hints. A package test checks that every reference below exists. protected_sections (r5.59, approved by the author on 2026-11-19): passages of module pages that hold the author's powers. darwin_eval.py compares each named section, from its heading to the next heading of the same or a higher level, between the two arms; a change there counts like a change to protected_files and needs the author's recorded approval. part names the text the author locked; r5.58_lines and sha256 record that text as it stood in r5.58 (sha256 of those lines of the r5.58 file, each with its line break, joined in order). r5.59 changed two of these sections itself, as the approved plan says (author-preferences.md, step 3 of the section; chapter-confirmation.md, the bullet on reopening, which gains the author's own revised text as an exception): the author locks them as they stand in r5.59, so those two entries give r5.59_lines and the sha256 of those lines of the r5.59 file instead. After the r5.59 paired scenario tests, the exception in the chapter-confirmation.md section was narrowed to two times only (stage 4 confirmed and stage 5 not yet confirmed, and for a chapter whose draft the author takes to the teacher, the teacher return already registered; stage 5 confirmed and stage 6 not yet confirmed); that entry's sha256 is of the narrowed lines, worked out as above (still lines 53-60). The author approved the narrowing; the whole narrowed sentence, as it stands after three rounds of wording fixes, was put to the author together with the r5.58 sentence after the second batch of paired scenario tests, and the author approved it on 2026-11-20.",
+  "note": "Paths are relative to the skills/ folder. kind=hard: at least one script or test enforces it; kind=soft: editorial judgment, tools only give hints. A package test checks that every reference below exists. protected_sections (r5.59, approved by the author on 2026-11-19): passages of module pages that hold the author's powers. darwin_eval.py compares each named section, from its heading to the next heading of the same or a higher level, between the two arms; a change there counts like a change to protected_files and needs the author's recorded approval. part names the text the author locked; r5.58_lines and sha256 record that text as it stood in r5.58 (sha256 of those lines of the r5.58 file, each with its line break, joined in order). r5.59 changed two of these sections itself, as the approved plan says (author-preferences.md, step 3 of the section; chapter-confirmation.md, the bullet on reopening, which gains the author's own revised text as an exception): the author locks them as they stand in r5.59, so those two entries give r5.59_lines and the sha256 of those lines of the r5.59 file instead. After the r5.59 paired scenario tests, the exception in the chapter-confirmation.md section was narrowed to two times only (stage 4 confirmed and stage 5 not yet confirmed, and for a chapter whose draft the author takes to the teacher, the teacher return already registered; stage 5 confirmed and stage 6 not yet confirmed); that entry's sha256 is of the narrowed lines, worked out as above (still lines 53-60). The author approved the narrowing; the whole narrowed sentence, as it stands after three rounds of wording fixes, was put to the author together with the r5.58 sentence after the second batch of paired scenario tests, and the author approved it on 2026-11-20. r5.60 added one sentence to step 2 of the author-preferences.md section (the registered steps 1 and 3 and their sha256 are unchanged); the author approved it on 2026-11-26.",
   "protected_files": [
     "novel-workshop/CONSTITUTION.md",
     "novel-workshop/assets/constitution-rules.json"
@@ -1105,7 +1105,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
   "id": "replace-case-id",
   "project_id": "replace-project-id",
   "group_id": "replace-scene-group",
-  "task": "dialogue_revision",
+  "task": "chapter_revision",
   "tags": [
     "replace-mechanism"
   ],
@@ -1166,9 +1166,10 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
 ```json
 {
   "schema": "editorial-judgment/1",
-  "note": "从改稿记录里学编辑判断的记录模板（references/editorial-judgment.md）。作者明确要求开启以后，复制到作品目录，在 PROJECT 里写明位置，按实际记录填写，占位文字全部替换，不能原样提交；这份模板本身不是案例，也不是规则。三段：revision 是一条改稿案例，管一处，可以挂在手工建档的示范案例上，学习循环 learn 生成的案例不带它，就放在这份文件里、用 links 指回去；judgment_card 是一张判断卡，命中账（ledger）每章一行；self_audit 是自审项和对账给学习循环 review 的 findings、decide 的 decisions 多带的键，四个必填键照学习循环的契约填。几处可以取的值列在 values 里；模板里列举值填的是最弱的取法（没标类别、保留依据和复查是不是最后那一版空着、只标出来的项不带候选改法），也要逐个照记录改，不原样留下。kind 至少标一种，keep_original 要写 keep.basis；拟处置是 list_alternatives 的，alternatives 写一到两条，每条带 text、gain、loss。文件里怎么摆几条案例、几张卡，见说明页“谁来开、记在哪”。每个 text 旁边的 ref 写原文出处，引文从原文逐字摘；记录里没写的，写进 gaps，不猜。不看什么（not_looked_at）里的四项不删。",
+  "note": "从改稿记录里学编辑判断的记录模板（references/editorial-judgment.md）。作者明确要求开启以后，复制到作品目录，在 PROJECT 里写明位置，按实际记录填写，占位文字全部替换，不能原样提交；这份模板本身不是案例，也不是规则。顶层就是判断卡文件存档的样子：schema 照留；cases 放改稿案例，cards 放判断卡，都按编号放，键就是那一条自己的 id，编号在这本书里稳定、不重用，这里各画了一条。note、values 和 self_audit 是给填的人看的，不是存档的内容，建档时可以删掉。cases 里每条是一条改稿案例，管一处，只放在这份文件里，用 links 指回学习循环那一轮和示范案例；示范案例那边只留编号，不嵌整段。status 写这条案例当不当示范用，取值和示范记忆的案例一样，没有作者针对这一处的原话的写 candidate；它和 final.status（落稿那一版是作者定稿、候选还是待定）是两回事。cards 里每张是一张判断卡，命中账（ledger）每章一行；versions 每改版一次加一条，留下被换下的那一版（第几版、哪天换的、改了什么、为什么、旧版里改过的几栏原样），还没改过版的新卡留空数组，这里画的一条是样例。self_audit 是自审项和对账给学习循环 review 的 findings、decide 的 decisions 多带的键，四个必填键照学习循环的契约填。几处可以取的值列在 values 里；模板里列举值填的是最弱的取法（没标类别、保留依据和复查是不是最后那一版空着、只标出来的项不带候选改法），也要逐个照记录改，不原样留下。kind 至少标一种，keep_original 要写 keep.basis；作者逐处表过态、又不属于前三种的，标 adopted_change、rejected_change 或 undecided（说明页“一条改稿案例记什么”）；拟处置是 list_alternatives 的，alternatives 写一到两条，每条带 text、gain、loss。每个 text 旁边的 ref 写原文出处，引文从原文逐字摘；记录里没写的，写进 gaps，不猜。不看什么（not_looked_at）里的四项不删。",
   "values": {
     "revision.kind": ["smooth_but_lossy", "keep_original", "wrong_then_corrected", "adopted_change", "rejected_change", "undecided"],
+    "revision.status": ["candidate", "teacher_approved", "author_accepted", "rejected", "retired"],
     "about": ["dialogue", "narration", "emotion", "action", "other"],
     "proposed_by": ["teacher", "outside_review", "other_assistant", "workshop", "author", "unknown"],
     "loss_said_by": ["author", "teacher", "outside_review", "model_judge", "model_reader", "workshop_self_check", "side_by_side_reading", "unknown"],
@@ -1188,116 +1189,124 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
     "decision.ledger": ["agreed", "disagreed", "untouched"],
     "not_looked_at.always": ["字数", "词频", "句数", "有没有某个词"]
   },
-  "revision": {
-    "schema": "revision-case/1",
-    "id": "替换为案例编号，在这本书里不重用",
-    "kind": [],
-    "about": "dialogue",
-    "scene": {
-      "chapter": "替换为哪一章",
-      "scene_type": "替换为什么场面",
-      "beat": "替换为这一拍在干什么",
-      "who_to_whom": "替换为谁对谁说"
-    },
-    "original": {
-      "text": "替换为原稿句，连同看懂它要用的前后一两句",
-      "ref": "替换为文件和行号",
-      "version": "替换为版本名或全文哈希"
-    },
-    "proposals": [
-      {
-        "id": "替换为改法编号",
-        "text": "替换为改句原文",
-        "ref": "替换为回传文件和行号",
-        "by": {"kind": "unknown", "note": "替换为记录里怎么写的；没写明的保持 unknown"},
-        "reason": {"text": "替换为提议人的原话；工坊推出来的把 is_inference 写成 true", "ref": "替换为出处", "is_inference": false},
-        "change_class": "纯表达",
-        "gain": "替换为改了以后多了什么",
-        "loss": "替换为改了以后丢了什么",
-        "loss_said_by": {"kind": "unknown", "text": "替换为说丢了东西的原话", "ref": "替换为出处"},
-        "fate": "undecided",
-        "adopted_scope": null
-      }
-    ],
-    "author": {
-      "level": "none",
-      "decision": "none",
-      "quotes": [{"text": "替换为作者的原话", "ref": "替换为出处和日期"}]
-    },
-    "keep": {
-      "basis": null,
-      "scope": "替换为管多大范围",
-      "still_present": {"version": "替换为此后哪一版", "ref": "替换为哪一行"}
-    },
-    "attempts": [
-      {
-        "order": 1,
-        "proposal_id": "替换为改错的那条改法的编号",
-        "text": "替换为那一次的句子",
-        "version": "替换为那一次的版本",
-        "what_went_wrong": "替换为错在哪",
-        "flagged_by": {"kind": "unknown", "text": "替换为指出来的原话", "ref": "替换为出处"}
-      }
-    ],
-    "final": {
-      "text": "替换为最后落在稿子里的句子",
-      "ref": "替换为行号",
-      "version": "替换为版本",
-      "status": "pending"
-    },
-    "rechecks": [
-      {
-        "by": {"role": "writer", "mode": "self_check"},
-        "what": "替换为回读了什么",
-        "result": {"text": "替换为结论", "ref": "替换为出处"},
-        "on_final_version": null
-      }
-    ],
-    "links": {
-      "run_id": null,
-      "review_ids": [],
-      "finding_ids": [],
-      "teacher_return_id": null,
-      "case_id": null
-    },
-    "gaps": ["替换为记录里没写的那几栏；都写了就留空数组"]
+  "cases": {
+    "替换为案例编号": {
+      "schema": "revision-case/1",
+      "id": "替换为案例编号",
+      "status": "candidate",
+      "kind": [],
+      "about": "dialogue",
+      "scene": {
+        "chapter": "替换为哪一章",
+        "scene_type": "替换为什么场面",
+        "beat": "替换为这一拍在干什么",
+        "who_to_whom": "替换为谁对谁说"
+      },
+      "original": {
+        "text": "替换为原稿句，连同看懂它要用的前后一两句",
+        "ref": "替换为文件和行号",
+        "version": "替换为版本名或全文哈希"
+      },
+      "proposals": [
+        {
+          "id": "替换为改法编号",
+          "text": "替换为改句原文",
+          "ref": "替换为回传文件和行号",
+          "by": {"kind": "unknown", "note": "替换为记录里怎么写的；没写明的保持 unknown"},
+          "reason": {"text": "替换为提议人的原话；工坊推出来的把 is_inference 写成 true", "ref": "替换为出处", "is_inference": false},
+          "change_class": "纯表达",
+          "gain": "替换为改了以后多了什么",
+          "loss": "替换为改了以后丢了什么",
+          "loss_said_by": {"kind": "unknown", "text": "替换为说丢了东西的原话", "ref": "替换为出处"},
+          "fate": "undecided",
+          "adopted_scope": null
+        }
+      ],
+      "author": {
+        "level": "none",
+        "decision": "none",
+        "quotes": [{"text": "替换为作者的原话", "ref": "替换为出处和日期"}]
+      },
+      "keep": {
+        "basis": null,
+        "scope": "替换为管多大范围",
+        "still_present": {"version": "替换为此后哪一版", "ref": "替换为哪一行"}
+      },
+      "attempts": [
+        {
+          "order": 1,
+          "proposal_id": "替换为改错的那条改法的编号",
+          "text": "替换为那一次的句子",
+          "version": "替换为那一次的版本",
+          "what_went_wrong": "替换为错在哪",
+          "flagged_by": {"kind": "unknown", "text": "替换为指出来的原话", "ref": "替换为出处"}
+        }
+      ],
+      "final": {
+        "text": "替换为最后落在稿子里的句子",
+        "ref": "替换为行号",
+        "version": "替换为版本",
+        "status": "pending"
+      },
+      "rechecks": [
+        {
+          "by": {"role": "writer", "mode": "self_check"},
+          "what": "替换为回读了什么",
+          "result": {"text": "替换为结论", "ref": "替换为出处"},
+          "on_final_version": null
+        }
+      ],
+      "links": {
+        "run_id": null,
+        "review_ids": [],
+        "finding_ids": [],
+        "teacher_return_id": null,
+        "case_id": null
+      },
+      "gaps": ["替换为记录里没写的那几栏；都写了就留空数组"]
+    }
   },
-  "judgment_card": {
-    "id": "替换为卡的编号，在这本书里稳定、不重用",
-    "title": "替换为一个看得懂的标题",
-    "version": 1,
-    "judgment": "替换为一句话：什么场面、起什么作用的句子、怎么处置，因为什么",
-    "grounds": [
-      {"text": "替换为一条依据：这句话在这一拍里干什么，改了以后丢的是什么", "case_id": "替换为案例编号", "quote": "替换为从原文逐字摘的短引", "ref": "替换为原文出处"}
-    ],
-    "cases": [
-      {"case_id": "替换为案例编号", "evidence_kind": "kept", "said_by": "替换为谁说的", "author_level": "none", "scene": "替换为哪一场戏"}
-    ],
-    "conditions": [
-      "替换为对着稿子能答是或否的一句：讲这句话的作用",
-      "替换为对着稿子能答是或否的一句：讲场面"
-    ],
-    "exceptions": [
-      {"text": "替换为命中就不用的情形", "case_id": "替换为挂的案例编号"}
-    ],
-    "counterexamples": {
-      "searched": ["替换为找过的案例编号"],
-      "found": [],
-      "note": "替换为没找到的写：找过，没找到"
-    },
-    "not_looked_at": ["字数", "词频", "句数", "有没有某个词", "替换为这张卡不许变成的规则"],
-    "default_disposition": "flag_only",
-    "status": "candidate",
-    "status_history": [
-      {"status": "candidate", "date": "替换为日期", "author_quote": null, "source_ref": null, "comparison_seen": null}
-    ],
-    "evidence": "thin",
-    "used_in_distillation": {"chapters": [], "scenes": []},
-    "ledger": [
-      {"chapter": "替换为哪一章", "used": 0, "agreed": 0, "disagreed": 0, "untouched": 0, "missed": 0, "comparison": false, "refs": []}
-    ],
-    "rule_location": null,
-    "versions": []
+  "cards": {
+    "替换为卡的编号": {
+      "id": "替换为卡的编号",
+      "title": "替换为一个看得懂的标题",
+      "version": 1,
+      "judgment": "替换为一句话：什么场面、起什么作用的句子、怎么处置，因为什么",
+      "grounds": [
+        {"text": "替换为一条依据：这句话在这一拍里干什么，改了以后丢的是什么", "case_id": "替换为案例编号", "quote": "替换为从原文逐字摘的短引", "ref": "替换为原文出处"}
+      ],
+      "cases": [
+        {"case_id": "替换为案例编号", "evidence_kind": "kept", "said_by": "替换为谁说的", "author_level": "none", "scene": "替换为哪一场戏"}
+      ],
+      "conditions": [
+        "替换为对着稿子能答是或否的一句：讲这句话的作用",
+        "替换为对着稿子能答是或否的一句：讲场面"
+      ],
+      "exceptions": [
+        {"text": "替换为命中就不用的情形", "case_id": "替换为挂的案例编号"}
+      ],
+      "counterexamples": {
+        "searched": ["替换为找过的案例编号"],
+        "found": [],
+        "note": "替换为没找到的写：找过，没找到"
+      },
+      "not_looked_at": ["字数", "词频", "句数", "有没有某个词", "替换为这张卡不许变成的规则"],
+      "default_disposition": "flag_only",
+      "status": "candidate",
+      "status_history": [
+        {"status": "candidate", "date": "替换为日期", "author_quote": null, "source_ref": null, "comparison_seen": null}
+      ],
+      "evidence": "thin",
+      "used_in_distillation": {"chapters": [], "scenes": []},
+      "ledger": [
+        {"chapter": "替换为哪一章", "used": 0, "agreed": 0, "disagreed": 0, "untouched": 0, "missed": 0, "comparison": false, "refs": []}
+      ],
+      "rule_location": null,
+      "versions": [
+        {"version": 1, "date": "替换为换下这一版的日期", "change": "替换为这一次改了什么：条件收窄、例外增加，或者拆成两张", "reason": "替换为为什么改", "source_ref": "替换为出处：案例编号，或者作者原话的位置",
+         "before": {"judgment": "替换为这一版的那一句判断", "conditions": ["替换为这一版的适用条件"], "exceptions": [{"text": "替换为这一版的例外", "case_id": "替换为挂的案例编号"}]}}
+      ]
+    }
   },
   "self_audit": {
     "finding": {
@@ -1384,7 +1393,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
 ```json
 {
   "schema": "fact-claims/1",
-  "note": "复制到作品目录后填写；candidate 相对本 claims 文件所在目录。candidate_sha256 必须是当前正文的实际 SHA-256 小写值。entity 使用事实账已登记的键；quote 从这一版正文逐字摘取，不用概述。此文件只声明本轮主张，不是已采纳事实账。（r5.51）涉及谁知道什么（known_by.人物）时，给主张写 time（\"09:20\"，跨天 \"D2 09:20\"），或在顶层写 story_time 给本章没写 time 的主张用（也可以写在账本里本章的章节项；账本里那一项是另一版稿子或已废弃的稿子时，不沿用，要写在这里）；章级 story_time 只在整章都在那段时间里时才写，没写 time 的主张一律按它算，章里有倒叙的，倒叙那一场的主张必须写自己的 time；D 是故事里的第几天，不是第几章（下面的示例是第 2 章，故事里还是第一天，写 D1）；倒叙、插叙的一场写它发生的那天和时刻，不写章节的先后；故事跨了几天，time 要写第几天（D2 09:20），只写钟点而本章写了第几天的，判待核；同一章的几场各写各的 time。只知道章节先后时，知情的主张判 KNOWLEDGE_PENDING（待核）。",
+  "note": "复制到作品目录后填写；candidate 相对本 claims 文件所在目录。candidate_sha256 必须是当前正文的实际 SHA-256 小写值。entity 使用事实账已登记的键；quote 从这一版正文逐字摘取，不用概述。此文件只声明本轮主张，不是已采纳事实账。涉及谁知道什么（known_by.人物）时，给主张写 time（\"09:20\"，跨天 \"D2 09:20\"），或在顶层写 story_time 给本章没写 time 的主张用（也可以写在账本里本章的章节项；账本里那一项是另一版稿子或已废弃的稿子时，不沿用，要写在这里）；章级 story_time 只在整章都在那段时间里时才写，没写 time 的主张一律按它算，章里有倒叙的，倒叙那一场的主张必须写自己的 time；D 是故事里的第几天，不是第几章（下面的示例是第 2 章，故事里还是第一天，下午一点到六点，写 from D1 13:00、to D1 18:00；只写 D1 是第一天一整天，会和账本里第一天上午的事实重叠，知情的主张排不出先后，判待核）；倒叙、插叙的一场写它发生的那天和时刻，不写章节的先后；故事跨了几天，time 要写第几天（D2 09:20），只写钟点而本章写了第几天的，判待核；同一章的几场各写各的 time。只知道章节先后时，知情的主张判 KNOWLEDGE_PENDING（待核）。倒叙部分里早于主线的持有、伤势、地点不提主张：程序按章节先后比这几样，写了 time 也不看，提了会报冲突；在账本里这一章的章节项记一句“倒叙，早于第几章，主线状态没变”，程序不核倒叙部分。",
   "chapter": 2,
   "candidate": "正文/第02章-候选.md",
   "candidate_sha256": "替换为当前候选稿字节的 SHA-256",
@@ -1400,7 +1409,10 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
       "change": true
     }
   ],
-  "story_time": "D1"
+  "story_time": {
+    "from": "D1 13:00",
+    "to": "D1 18:00"
+  }
 }
 ```
 
@@ -1411,7 +1423,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
 ```json
 {
   "schema": "fact-ledger/1",
-  "note": "复制到作品目录后只填本轮会用到的硬事实。layer：accepted 已采纳正文／author_confirmed 作者确认／candidate 候选稿／abandoned 已废弃／summary 摘要／plan 规划；只有前两层且来源有效的事实进入核对基线。accepted 事实的来源章须在 chapters 登记为 accepted 或 author_confirmed；来源章未登记、未采纳或已废弃会阻断。basis：witnessed_action 正文当场动作／text_statement 正文明确陈述／author_confirmed 作者确认／record 单据登记／record_absence 没有记录／testimony 转述／inference 推断／plan 规划／summary 摘要。单据和推断只能支撑 record. 或 belief.<人物>. 开头的属性，不能直接支撑实际状态。值写“未知”表示原文没有定论。状态变化有直接证据时用布尔值 change: true，不用字符串。persist: true 表示这个状态会一直起作用，直到正文写出它变了（伤势、窄路、积水、谁拿着东西、谁知道什么）；之后的章节一提到这个实体，check 就会列出它，要求审稿回应。人物知不知道某件事，记在那件事上，属性写 known_by.人物名。（r5.51）人物知情按故事时间核：事实可以写 time（\"09:20\"，跨天 \"D2 09:20\"）；一整章都在某段故事时间里的，在 chapters 里给这一章写 story_time（\"D2\"，或 {\"from\": \"D2 08:00\", \"to\": \"D2 12:00\"}），没写 time 的事实就按它。D 是故事里的第几天，不是第几章；倒叙的一场写它发生的那天。章级 story_time 只在整章都在那段时间里时才写，章里有倒叙的，倒叙那一场的事实写自己的 time。账本里登记的这一章是另一版稿子（哈希对不上）或已废弃的稿子时，它的 story_time 不给新稿用，新稿的时间写在 claims 里。故事跨了几天，time 本身就要写第几天（D2 09:20）：章节写了 story_time（D1）、time 却只写钟点的，程序不替它补第几天，判待核（KNOWLEDGE_PENDING）。得知的那一刻记 change: true（要有直接证据）；倒叙里更早的一场写他已经知道，账上记了得知的那一刻、或者记了那之前他还不知道（值 false，写 time），才会报冲突，否则只能判待核。只有读者知道的记 known_by.读者，人物的猜测和误信记 belief.人物.，都不算人物知道。",
+  "note": "复制到作品目录后只填本轮会用到的硬事实。layer：accepted 已采纳正文／author_confirmed 作者确认／candidate 候选稿／abandoned 已废弃／summary 摘要／plan 规划；只有前两层且来源有效的事实进入核对基线。accepted 事实的来源章须在 chapters 登记为 accepted 或 author_confirmed；来源章未登记、未采纳或已废弃会阻断。basis：witnessed_action 正文当场动作／text_statement 正文明确陈述／author_confirmed 作者确认／record 单据登记／record_absence 没有记录／testimony 转述／inference 推断／plan 规划／summary 摘要。单据和推断只能支撑 record. 或 belief.<人物>. 开头的属性，不能直接支撑实际状态。值写“未知”表示原文没有定论。状态变化有直接证据时用布尔值 change: true，不用字符串。persist: true 表示这个状态会一直起作用，直到正文写出它变了（伤势、窄路、积水、谁拿着东西、谁知道什么）；之后的章节一提到这个实体，check 就会列出它，要求审稿回应。下面的示例标在伤势上。“谁知道什么”标 persist 代价大：提示挂在那件事上，正文一提到它就弹，那个人物没出场也弹，标上以后再记不带 persist 的知情事实也不停；只在这个人不知情是后面几场戏成立的前提时才标（连续性模块“持续状态”）。人物知不知道某件事，记在那件事上，属性写 known_by.人物名。人物知情按故事时间核：事实可以写 time（\"09:20\"，跨天 \"D2 09:20\"）；一整章都在某段故事时间里的，在 chapters 里给这一章写 story_time（\"D2\"，或 {\"from\": \"D2 08:00\", \"to\": \"D2 12:00\"}），没写 time 的事实就按它。D 是故事里的第几天，不是第几章；倒叙的一场写它发生的那天。章级 story_time 只在整章都在那段时间里时才写，章里有倒叙的，倒叙那一场的事实写自己的 time。账本里登记的这一章是另一版稿子（哈希对不上）或已废弃的稿子时，它的 story_time 不给新稿用，新稿的时间写在 claims 里。故事跨了几天，time 本身就要写第几天（D2 09:20）：章节写了 story_time（D1）、time 却只写钟点的，程序不替它补第几天，判待核（KNOWLEDGE_PENDING）。得知的那一刻记 change: true（要有直接证据）；倒叙里更早的一场写他已经知道，账上记了得知的那一刻、或者记了那之前他还不知道（值 false，写 time），才会报冲突，否则只能判待核。只有读者知道的记 known_by.读者，人物的猜测和误信记 belief.人物.，都不算人物知道。持有、伤势、地点这类状态程序仍按章节先后比，写了 time 也不看：倒叙章里早于主线的这几样不入账，不标 change，在 chapters 里这一章加一栏 note，写一句“倒叙，早于第几章，主线状态没变”（程序不读 note）；程序不核倒叙部分，要人回前文对着读。",
   "author_confirmation_note": "作者独立确认的事实需要 layer=author_confirmed、basis=author_confirmed，source 写明真实作者决定的出处与内容；编辑核实该决定后才可不依赖来源章状态。普通正文引用不能冒充作者确认。",
   "entities": {
     "item:example": {
@@ -1420,6 +1432,13 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
         "示例物件"
       ],
       "kind": "item"
+    },
+    "person:example": {
+      "name": "示例人物",
+      "aliases": [
+        "示例人物"
+      ],
+      "kind": "person"
     }
   },
   "chapters": {
@@ -1454,9 +1473,19 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
       "chapter": 1,
       "layer": "accepted",
       "basis": "text_statement",
-      "persist": true,
       "source": "第01章 第20行：段首短引",
       "time": "D1 08:00"
+    },
+    {
+      "id": "F-01-03",
+      "entity": "person:example",
+      "attribute": "injury.左手",
+      "value": "骨裂",
+      "chapter": 1,
+      "layer": "accepted",
+      "basis": "text_statement",
+      "persist": true,
+      "source": "第01章 第25行：段首短引"
     }
   ]
 }
@@ -1897,7 +1926,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
 
 # Scene Beat Card (单场戏剧节拍卡)
 
-落笔前填（分场戏剧张力与正文具象化（scene-dramaturgy.md））。一章几场，就把下面从 `Scene ID` 起的一块复制几份，写在同一个文件里；过场（Transition）只填 Scene ID 和 Scene Type。其他场（Other：轻松的兑现、关系靠近、哀伤停留、探索奇观）填 Scene ID、Scene Type、POV 和 Change（这一场让关系、认知、行动准备或体验积累变了什么），不填四拍（宪法 CON-011，NWC-1.5）。核心博弈戏每一栏都要填，动作危机戏除道具一栏外都要填；Polarity Shift 写成“[开场处境] -> [收场处境]”，两边不能一样，也不能写“无变化”。检查清单里用 `scene_beats` 声明这个文件，交付门会核对填没填全；卡不交给作者，不附在正文后（作者开了新章全流程的，在写前准备阶段给作者看，仍不附在正文后，r5.53）。（r5.54）“这一场谁在乎什么”“场上的人声”“接上一场”三栏，过场以外各类场都可以填；交付门不核这三栏。卡在任务开始时冻结：起草时越过卡加的人声不改卡，记进新增设定清单。这张清单怎么记，见正文与场景“新增设定清单”。这三栏可以空着，上面说的“每一栏都要填”指原有各栏；照分场第 4 节第 1 句问过的，写上答案（只办事的写“无”）；“场上的人声”空着的，起草时谁出声照这一场的人和事定，节拍里没有的不办事来回照对白专项（dialogue-craft.md）“这一刻会出什么声”里闲场面那一条。
+落笔前填（分场戏剧张力与正文具象化（scene-dramaturgy.md））。一章几场，就把下面从 `Scene ID` 起的一块复制几份，写在同一个文件里；过场（Transition）只填 Scene ID 和 Scene Type。其他场（Other：轻松的兑现、关系靠近、哀伤停留、探索奇观）填 Scene ID、Scene Type、POV 和 Change（这一场让关系、认知、行动准备或体验积累变了什么），不填四拍（宪法 CON-011，NWC-1.5）。核心博弈戏每一栏都要填，动作危机戏除道具一栏外都要填；Polarity Shift 写成“[开场处境] -> [收场处境]”，两边不能一样，也不能写“无变化”。检查清单里用 `scene_beats` 声明这个文件，交付门会核对填没填全；卡不交给作者，不附在正文后（作者开了新章全流程的，在写前准备阶段给作者看，仍不附在正文后，r5.53）。（r5.54）“这一场谁在乎什么”“场上的人声”“接上一场”三栏，过场以外各类场都可以填；交付门不核这三栏。卡在任务开始时冻结：起草时越过卡加的人声不改卡，记进新增设定清单。这张清单怎么记，见正文与场景“新增设定清单”。这三栏可以空着，上面说的“每一栏都要填”指原有各栏；照分场第 4 节第 1 句问过的，写上答案（只办事的写“无”）；“场上的人声”空着的，起草时谁出声照这一场的人和事定，节拍里没有的不办事来回照对白专项（dialogue-craft.md）“这一刻会出什么声”里闲场面那一条。（r5.60）本书有技法库的，“这一场用的技法卡”一栏记落笔前挑定的卡，过场以外各类场都可以填，没有技法库的书空着；交付门不核这一栏。怎样挑、三个时候各读卡上哪几栏，见正文与场景“用技法卡”。这一栏记的是落笔前的打算：卡在任务开始时冻结，起草时停下没用的、写完自查作用链没走到的，都不回头改这一栏，交稿时照实说，另记在技法卡的“本书试用”里。
 
 - **Scene ID / Chapter**: 
 - **Scene Type**: `[Core Conflict (核心博弈戏) | Action/Crisis (动作危机戏) | Other (其他场：兑现/靠近/停留/探索) | Transition (过场桥段-限200字)]`
@@ -1908,6 +1937,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
 - **这一场谁在乎什么**: *(谁在乎什么、怕失去什么；读者会在哪一下有感觉。只办事的场写“无”，“无”是常态，不为这一栏凑一句重话；和下面“潜台词冰山”“情绪生理化映射”说的是同一件事的，写“见下”)*
 - **场上的人声**: *(谁在场，谁出声、谁不出声；这一场是紧的还是闲的：紧，不为这一栏加声，该喊的照喊；闲、家常，可以有不办事的来回。四拍里写的“某某说某事”是事，不是话，起草时重新出口；这一栏不写台词)*
 - **接上一场**: *(上一场停在读者会替人后怕、心疼的事上的：这一场开头谁对它有第一下反应，是什么；可以没有，没有写“无”；对手戏带过就进事)*
+- **这一场用的技法卡**: *(本书有技法库时填。落笔前挑定拿来写的，写编号、第几版、为什么，最多两张；其余命中的另写在后面，只记编号，不读进起草；没有对得上的写“无”。列给作者看不算作者采纳)*
 
 ## Four-Step Beat Map (四步博弈节拍)
 1. **入场动作与诉求 (Goal - Late In)**: 
@@ -2078,7 +2108,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
   "zip_sha256": "d82d340770b0c17a9ce8650592a7ed7853be415b57094776596250e77016e405",
   "cards_received": 83,
   "cards_in_library": 83,
-  "note": "随工坊提供的风格卡。收进卡片库时去掉了名作原句和某一部作品专属的名字、设定、套语，私人作品里的用语和情节，网络热梗，以及和私人词表撞上的普通词；整张建在一部作品专属设定上的卡不收。r5.48 起按作者的要求又去掉了换到哪本书都一样的套话示例和现成的身体反应。清理以删为主；另有 42 处说明里无条件的硬限制（句长上限、“必须”“严禁”“每个动作都要”这类）按作者的要求改写成了有条件的方向，改写前的原文记在清理记录里（只在自用版）。r5.50 起几张同用的规则里的一句改成了工坊的做法：推荐写法撞上另一张已启用的卡的相反写法，标待复核，看这一场的处境、人物和动作合不合，再定用不用；卡组的原话记在清理记录里（只在自用版）。"
+  "note": "随工坊提供的风格卡。收进卡片库时去掉了名作原句和某一部作品专属的名字、设定、套语，私人作品里的用语和情节，网络热梗，以及和私人词表撞上的普通词；整张建在一部作品专属设定上的卡不收。r5.48 起按作者的要求又去掉了换到哪本书都一样的套话示例和现成的身体反应。清理以删为主；r5.48、r5.49 另有 42 处说明里无条件的硬限制（句长上限、“必须”“严禁”“每个动作都要”这类）按作者的要求改写成了有条件的方向，改写前的原文记在清理记录里（只在自用版）。r5.50 起几张同用的规则里的一句改成了工坊的做法：推荐写法撞上另一张已启用的卡的相反写法，标待复核，看这一场的处境、人物和动作合不合，再定用不用；卡组的原话记在清理记录里（只在自用版）。r5.60 照作者认过的清单，收尾时补了几处句末标点、把停在冒号上的两句收完整、并了一处只剩一条的条目，又把 16 处说明里无条件的“永远”“绝不”“必须”改写成了有条件的方向；两张赛博卡的适用场景是工坊改写、作者认过的；补了一组不同用（conflicts_with）。"
  },
  "layers": {
   "base": "世界观底色",
@@ -2230,7 +2260,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "blacklist_patterns": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "- 以喜写悲、以静写痛：大悲到了极致绝不嚎啕大哭，而是写角色反常的平静、顺从与有条不紊地交代后事，同时插入当年最甜的一句承诺作对照。",
+    "subtext_logic": "- 以喜写悲、以静写痛：大悲到了极致，多半不写嚎啕大哭，而是写角色反常的平静、顺从与有条不紊地交代后事，同时插入当年最甜的一句承诺作对照。",
     "lexical_map": "- 名词多是承载回忆的旧物与信物：玉佩、旧信、发簪、伞、某棵树、某个季节的花；同一件信物前后呼应。\n- 季节和天气对照情绪：越悲伤的时刻，越写明媚的春光或寂静的雪。",
     "kinetic_verbs_text": "- 动作安静、有条不紊：整理遗物、烧掉书信、归还信物、替对方理好衣襟，越平静越痛。\n- 关键动作放慢写，写出它一步步怎样做完（这类动作本来就慢）；一两秒里连着的几下不拆。",
     "somatosensory": "- 指尖深入骨髓的冰凉、冬日灰白空旷的雪景、火盆里纸灰飞舞的死寂。",
@@ -2514,8 +2544,8 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "conflicts_with": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "- 一章的结尾先兑现本章开头的悬念，再立刻抛出新的、更紧迫的问题。\n- 钩子必须和主线相关，不为断章而制造与故事无关的假悬念。",
-    "lexical_map": "- 章首的钩子必须具体：一个反常的物件、一个时间点、一个违背常识的细节，而不是“命运即将改变”这类抽象预告。\n- 章尾的悬念来自信息差：读者知道发生了什么，却不知道接下来会怎样；或者角色知道了什么，读者还不知道。",
+    "subtext_logic": "- 一章的结尾先兑现本章开头的悬念，再立刻抛出新的、更紧迫的问题。\n- 钩子尽量和主线相关，不为断章而制造与故事无关的假悬念。",
+    "lexical_map": "- 章首的钩子尽量具体：一个反常的物件、一个时间点、一个违背常识的细节，而不是“命运即将改变”这类抽象预告。\n- 章尾的悬念来自信息差：读者知道发生了什么，却不知道接下来会怎样；或者角色知道了什么，读者还不知道。",
     "kinetic_verbs_text": "- 开头跳过铺垫，直接从一个动作或一句对白的中间开始，背景之后再补。\n- 结尾停在决定性动作的前一刻：门开到一半、刀举到半空、电话接通还没人说话。",
     "somatosensory": "- 开头用一个强烈的感官细节抓住读者：一声响动、一股气味、一种疼痛。\n- 结尾的感官细节往往是突然的变化：灯灭、声音停止、温度骤降。",
     "syntax_rhythm": "- 第一段短，第一句尤其短，信息密度高；最后一句常单独成段，字数少，落点重。\n- 章尾不写总结性语句和人物感想，停在事件上。",
@@ -2922,8 +2952,8 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "scene_triggers": [
     "旧件拆解与义体土法维修",
     "重工业废墟探索",
-    "机械故障与过载",
-    "高低科技贫富反差"
+    "重型机械超负荷出故障",
+    "废土拾荒与回收站翻找"
    ],
    "syntax_metrics": {
     "avg_clause_length": "7-14",
@@ -2974,9 +3004,9 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "layer": "base",
    "domain": "global-genre",
    "scene_triggers": [
-    "义体改造与黑诊所",
+    "黑诊所里的尖端义体改装",
     "黑客潜入矩阵空间",
-    "贫民窟酸雨街巷",
+    "企业大楼脚下的贫民窟与高低科技反差",
     "巨型企业特工追杀"
    ],
    "syntax_metrics": {
@@ -3061,8 +3091,8 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "conflicts_with": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "- 双轨制错位喜剧：必须严密写出『为什么配角会合情合理地误会』——主角的每一个无心之举，都恰好在物理位置或时间点上踩中了配角心中的最大秘密。",
-    "lexical_map": "- 主角视角用平常的生活词汇（落枕、困了、随手、懒得）；配角视角把同一件事翻译成高深的术语（布局、天机、大阵、深意）。\n- 配角的脑补必须基于他自己掌握的信息和秘密，用词贴合他的身份。",
+    "subtext_logic": "- 双轨制错位喜剧：写误会时，先严密写出『为什么配角会合情合理地误会』——主角的每一个无心之举，都恰好在物理位置或时间点上踩中了配角心中的最大秘密。",
+    "lexical_map": "- 主角视角用平常的生活词汇（落枕、困了、随手、懒得）；配角视角把同一件事翻译成高深的术语（布局、天机、大阵、深意）。\n- 配角脑补时，从他自己掌握的信息和秘密出发，用词贴合他的身份。",
     "kinetic_verbs_text": "- 主角的动作随意、懒散、出于生理需要；配角对同一动作的反应极度紧张、郑重、五体投地。\n- 关键在巧合：主角的动作恰好在时间或位置上碰中配角的秘密。",
     "somatosensory": "- 主角这边的松弛打哈欠声 vs 配角那边大气都不敢喘的极致紧绷感。",
     "syntax_rhythm": "- 主角段落短句、松弛、带点吐槽；配角段落长句、紧张、内心戏密集，可用省略号和感叹号。\n- 切换视角时另起一段或加标注，读者始终比配角知道得多。",
@@ -3163,7 +3193,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "conflicts_with": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "- 用极高密度的专业流程与硬核行话制造智商爽感：主角的魅力完全来自在高压读秒下零失误的专业判断，绝不靠喊口号赢。",
+    "subtext_logic": "- 用极高密度的专业流程与硬核行话制造智商爽感：主角的魅力完全来自在高压读秒下零失误的专业判断，多半不靠喊口号赢。",
     "lexical_map": "- 名词按行业精确：医疗的指标与剂量，律政的法条与程序，商战的财务指标与交易结构；术语后面紧跟一句通俗的结果。\n- 时间压力具体化：倒计时、截止日期、开庭时间、收盘时间。",
     "kinetic_verbs_text": "- 动作按专业流程推进：查体、下医嘱、交叉质询、提交证据、签字、下单，每一步都有标准做法。\n- 高手的动作稳而快，新手的动作犹豫出错，形成对照。",
     "somatosensory": "- 心电监护仪尖锐的报警滴声、手术刀划开皮肤的紧绷感、法庭木槌敲击的脆响、清晨六点写字楼冰冷的浓缩咖啡味。",
@@ -3865,11 +3895,11 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "blacklist_patterns": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "将人物委婉的心理权衡，直接翻译成底层讨生活的实在话，强化「命比纸薄、钱比命急」的现实压迫感。\n- 嘴硬心软的反差：保留甚至强化角色「嘴上骂骂咧咧或斤斤计较，手底下却顺手救人」的动作反差\n- 不要过度解释潜台词：关键的戏剧转折（如认出对方的真实身份）依然要靠动作和对话留白，不要替读者做阅读理解\n- 保持主角的冷硬底色：口语化和粗粝感主要体现在环境描写、老练配角（如铺主、匠人）以及主角的生理痛感与内心生存账本上，主角开口说话时依然要简短、克制、压得住场",
+    "subtext_logic": "将人物委婉的心理权衡，直接翻译成底层讨生活的实在话，强化「命比纸薄、钱比命急」的现实压迫感。\n- 嘴硬心软的反差：保留甚至强化角色「嘴上骂骂咧咧或斤斤计较，手底下却顺手救人」的动作反差。\n- 不要过度解释潜台词：关键的戏剧转折（如认出对方的真实身份）依然要靠动作和对话留白，不要替读者做阅读理解。\n- 保持主角的冷硬底色：口语化和粗粝感主要体现在环境描写、老练配角（如铺主、匠人）以及主角的生理痛感与内心生存账本上，主角开口说话时依然要简短、克制、压得住场。",
     "lexical_map": "将客观中立的书面名词，替换为带有角色主观嫌恶、职业习惯或市井气息的俗称与口语词，拉近读者与角色肉身的心理距离。",
-    "kinetic_verbs_text": "需要显出吃力时，才换用带有摩擦力、重量感与肢体爆发力的粗粝动词；拿、放、看、取、走照常写。\n- 慢动作与对峙加阻力感：表现肌肉紧绷与物理对抗",
+    "kinetic_verbs_text": "需要显出吃力时，才换用带有摩擦力、重量感与肢体爆发力的粗粝动词；拿、放、看、取、走照常写。\n- 慢动作与对峙加阻力感：表现肌肉紧绷与物理对抗。",
     "somatosensory": "拒绝直接写「他很痛苦」「她很害怕」等心理总结，情绪落在身体、手上的动作、心里那本账或一句实在话里，不必是疼。",
-    "syntax_rhythm": "在机械运动、金属碰撞与肉体交锋处，声音本身就是信息时才补拟声词；短句只放在呼吸真的断开的地方。\n- 补充硬质感拟声：使用「咔哒咔哒」「啪地」「当啷」「哐当乱响」强化铺面、铁器与工具的真实声场\n- 句尾落音要脆：多用「了」「着」「住」等短促收尾，避免冗长的定语从句",
+    "syntax_rhythm": "在机械运动、金属碰撞与肉体交锋处，声音本身就是信息时才补拟声词；短句只放在呼吸真的断开的地方。\n- 补充硬质感拟声：使用「咔哒咔哒」「啪地」「当啷」「哐当乱响」强化铺面、铁器与工具的真实声场。\n- 句尾落音要脆：多用「了」「着」「住」等短促收尾，避免冗长的定语从句。",
     "example_before": "他干了一整天搬运的活，膝盖也磕伤了，工钱还被克扣了一些。",
     "example_after": "最后一包水泥卸完，天已经黑透了。他把肩上的垫布扯下来，一拧，汗滴滴答答往下掉，左膝盖下午磕在跳板上，这会儿一跳一跳地疼。工头坐在板车上数钱，舔一下手指，数一张。「一百二。」「说好的一百五。」「湿了两包，扣三十。」他没吭声，扭头看了一眼墙根那两包水泥——是下午那场雨淋的。他伸手把钱拢过来，数了两遍，揣进裤兜，一瘸一拐地找吃的去了。",
     "overuse": "满嘴糙话、个个动作都在使劲，粗粝变成了吵闹，主角也跟着话多了。"
@@ -3918,10 +3948,10 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "conflicts_with": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "对话永远只说字面上的半句零碎生意经，真正的狠话和底牌用极其平淡的口吻抛出，留白由物理动作完成：",
-    "lexical_map": "台面上的利益博弈绝不涉及抽象的情绪或道德对错，而是将权力、威胁与妥协严丝合缝地锚定在**具体的物理凭据、钱数、字据与出货渠道**上。\n- 用外部的实体威胁作为隐形的绞索。",
-    "kinetic_verbs_text": "对话进行时，肢体动作与器物交互即是无声的交锋：\n- 进攻方动作：将钱或字据「拍」「压」「推」。",
-    "somatosensory": "不写“空气中充满火药味”，而是通过外部环境与微观细节的联动折射出压迫感：",
+    "subtext_logic": "对话多半只说字面上的半句零碎生意经，真正的狠话和底牌用极其平淡的口吻抛出，留白由物理动作完成。",
+    "lexical_map": "台面上的利益博弈多半不涉及抽象的情绪或道德对错，而是将权力、威胁与妥协严丝合缝地锚定在**具体的物理凭据、钱数、字据与出货渠道**上。\n- 用外部的实体威胁作为隐形的绞索。",
+    "kinetic_verbs_text": "对话进行时，肢体动作与器物交互即是无声的交锋：进攻的一方将钱或字据「拍」「压」「推」。",
+    "somatosensory": "不写“空气中充满火药味”，而是通过外部环境与微观细节的联动折射出压迫感。",
     "syntax_rhythm": "- 对话如击球，对白多半短，亮底牌的那一句可以长；少用长排比和解释性修饰。\n- 少用情绪形容词，胜负与妥协全凭谁先收回手、谁先拿回钱。",
     "example_before": "两个人在柜台前讨价还价，互相威胁，最后一方让步了。",
     "example_after": "他把那块表放在柜台上。掌柜没碰表，先看了一眼他的袖口：「修不了。」「上礼拜你说能修。」「上礼拜是上礼拜。」掌柜把表推回来，推到一半停住：「你哥最近没来？」「出门了。」「出门好。」掌柜低头拨了两下算盘，又把表拉了回去：「放这儿，三天。」他没走。掌柜抬起头，他还站着。「那就两天。」",
@@ -3969,7 +3999,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "conflicts_with": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "- 用最玩世不恭的冷面俏皮话（Wisecrack）包裹骨子里的正义底线；绝不相信任何人的眼泪，只相信物证和弹道。",
+    "subtext_logic": "- 用最玩世不恭的冷面俏皮话（Wisecrack）包裹骨子里的正义底线；不轻易相信任何人的眼泪，只相信物证和弹道。",
     "lexical_map": "- 名词锁定城市底层：事务所、百叶窗、酒吧、旅馆、停车场、警局、雨衣、左轮。\n- 比喻刻薄、夸张、出人意料，常把人比作破旧的物件；一段最多一两个，多了就成了抖机灵。",
     "kinetic_verbs_text": "- 动作老练、懒散：点烟、倒酒、靠在门框上、压低帽檐、翻抽屉、亮出执照。\n- 挨打是常事，写他被打倒后慢慢爬起来、摸摸下巴的狼狈。",
     "somatosensory": "- 潮湿的羊毛大衣味、劣质波本威士忌的灼烧感、百叶窗切割出的明暗条纹、手枪保险弹开的脆响。",
@@ -4034,7 +4064,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "sections": {
     "subtext_logic": "- 冰山原则：八分之七的情绪藏在水下，多半不解释角色为何沉默或手抖，由读者自行推导。\n- 信息多半只给到表面动作，推理大多留给读者完成；关键因果写到读者推得出来的程度。",
     "lexical_map": "- 部位精确到局部。\n- 器物精确到材质与功能。",
-    "kinetic_verbs_text": "- 砍掉动词前的一切程度副词（如「死死」「狠狠」「猛地」「飞快」），只保留干净的动作本体。\n- 人物互动不写态度，只写空间位移",
+    "kinetic_verbs_text": "- 砍掉动词前的一切程度副词（如「死死」「狠狠」「猛地」「飞快」），只保留干净的动作本体。\n- 人物互动不写态度，只写空间位移。",
     "somatosensory": "- 剥离一切主观痛觉与情绪形容词，仅记录客观物理位移、器物尺寸与光影方位。\n- 血液与伤势只写物理状态。\n- 紧张与脱力只写动作失误。",
     "syntax_rhythm": "- 少用比喻；用就用一个这一场在场的具体东西。\n- 对话极度精简，能省略主语和对话标签处直接独立成行。",
     "example_before": "他在战争中失去了战友，心里非常悲痛，但他什么都没说。",
@@ -4080,7 +4110,9 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    ],
    "aliases": [],
    "blacklist_patterns": [],
-   "conflicts_with": [],
+   "conflicts_with": [
+    "wei-jin-xuanxue-poetic"
+   ],
    "overrides": {},
    "sections": {
     "subtext_logic": "- 格斗胜负不靠数值碾压，靠捕捉力学间隙。",
@@ -4287,7 +4319,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "conflicts_with": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "- 永远不在表面力气上和怪物硬碰硬，而是像程序员Debug一样利用规则文字的歧义实现绝地翻盘。",
+    "subtext_logic": "- 多半不在表面力气上和怪物硬碰硬，而是像程序员Debug一样利用规则文字的歧义实现绝地翻盘。",
     "lexical_map": "- 名词贴近“游戏系统 + 怪谈”：副本、规则条目、判定、存活人数、提示音、身份牌、禁止事项。\n- 规则文本要经得起逐字推敲：措辞精确又留歧义，让角色和读者都能抓住字缝。",
     "kinetic_verbs_text": "- 动作都带实验性：先拿无关物品试触发条件，记录每次结果，对照规则逐条排除。\n- 关键动作卡在时间点上：「在第三声钟响前」「趁灯灭的五秒」。",
     "somatosensory": "- 倒计时读秒的滴答声、视野边缘猩红的系统警告字样、手心冷汗与极度冷静的大脑形成的反差。",
@@ -4565,7 +4597,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "sections": {
     "subtext_logic": "- 把荒谬绝伦的逻辑当成天经地义的日常公理来写：没有人对他大吼大叫，所有办事员都礼貌而疲惫，但他就是一步步被系统合理地推向毁灭。",
     "lexical_map": "- 名词集中在机构与文书：办事处、窗口、表格、印章、编号、档案、传票、等候室、副本。\n- 人物常没有名字，只有职位或代号（书记员、门房、第三科室的先生）。",
-    "kinetic_verbs_text": "- 动作永远是办手续：排队、填表、等候、敲门、递交材料、被告知改日再来。\n- 每个人都彬彬有礼地推诿，没有人发火，越礼貌越绝望。",
+    "kinetic_verbs_text": "- 动作多半是办手续：排队、填表、等候、敲门、递交材料、被告知改日再来。\n- 每个人都彬彬有礼地推诿，没有人发火，越礼貌越绝望。",
     "somatosensory": "- 不通风走廊里的陈年纸张霉味、永远擦不干净的灰尘、让人喘不上气的低矮天花板。",
     "syntax_rhythm": "- 长句冷静、条理分明，像在陈述一个合理的推论，内容却越来越荒谬；用分号串起一环扣一环的规定。\n- 对白客气、迂回，常常答非所问。",
     "example_before": "他去政府机构办事，被来回推诿，最后也没办成。",
@@ -5015,7 +5047,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "blacklist_patterns": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "- 绝不为了面子硬拼，没有十成把握绝不露底牌；打得过就挫骨扬灰不留后患，打不过当场远遁绝不回头放狠话。",
+    "subtext_logic": "- 多半不为了面子硬拼，没有十成把握不轻易露底牌；打得过就挫骨扬灰不留后患，打不过当场远遁，不回头放狠话。",
     "lexical_map": "- 名词围绕可计价的资源：灵石、丹药、符箓、阵旗、储物袋、功法残卷，每样东西都隐含价格和用途。\n- 对人对事的称呼带估值意味：「筑基中期，身上应有三件法器」「此人背后有宗门，惹不起」。",
     "kinetic_verbs_text": "- 动手前必有准备动作：布阵、放傀儡探路、换装易容、提前扣好遁符。\n- 收尾动作强调清理：毁尸灭迹、抹去神识印记、换个地方再清点战利品。",
     "somatosensory": "- 灵石温润的触感、丹炉开启时的药香、神识绷紧时的眉心刺痛、荒山夜雨里的阴冷杀机。",
@@ -5798,7 +5830,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "conflicts_with": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "- 绝不说“我很关心你”：邻居多塞的一把青菜、老板娘多卧的一个蛋、同伴默默帮他把背囊扶正，全在不言中。",
+    "subtext_logic": "- 多半不说“我很关心你”：邻居多塞的一把青菜、老板娘多卧的一个蛋、同伴默默帮他把背囊扶正，全在不言中。",
     "lexical_map": "- 将镜头对准能散发热量与香气的日常事物：「粗瓷大碗」「烘得微焦的馒头片」「洗得发白的棉布」「晒过太阳的旧被子」。",
     "kinetic_verbs_text": "- 动作褪去攻击性，变得舒缓、扎实：「掀开、盛满、端上、揣进、摩挲、烘热、舒展开」。",
     "somatosensory": "- 不写“心情变好了”，写「滚烫的米汤顺着食道滑下去」「紧绷了一宿的肩膀终于松了下来」。",
@@ -5849,7 +5881,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    "conflicts_with": [],
    "overrides": {},
    "sections": {
-    "subtext_logic": "- 90%留白的碎片化叙事：绝不完整交代前因后果，只通过一件遗物上的两行铭文和一句临终呢喃，拼凑出昔日辉煌帝国的陨落。",
+    "subtext_logic": "- 90%留白的碎片化叙事：多半不完整交代前因后果，只通过一件遗物上的两行铭文和一句临终呢喃，拼凑出昔日辉煌帝国的陨落。",
     "lexical_map": "- 名词多是遗物与废墟：残剑、褪色的旗帜、石像、王冠、灰烬、钟楼、无名墓碑；王国和神只留一个古旧的称号。\n- 物品描述像器物说明：一句来历、一句曾经的主人、一句意味深长的残言。",
     "kinetic_verbs_text": "- 角色的动作缓慢而执着：守门、跪拜、点燃篝火、擦拭遗物、在同一条路上来回巡逻。\n- 战斗写成沉重的往复：举剑、格挡、喘息、倒下又起身。",
     "somatosensory": "- 风吹过空旷大教堂的回音、余烬微弱的温热、古老金属的锈蚀感、漫长岁月的孤寂。",
@@ -6499,7 +6531,9 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
    ],
    "aliases": [],
    "blacklist_patterns": [],
-   "conflicts_with": [],
+   "conflicts_with": [
+    "high-kinetic-combat"
+   ],
    "overrides": {},
    "sections": {
     "subtext_logic": "- 最高明的神通不写毁天灭地的爆炸，只写『落叶停在眉前三寸，再不落下』。",
@@ -6685,43 +6719,116 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
 
 # 可迁移技法卡
 
-从参考作品里拆出来、要存档的一处写法，一处一张。只为回答作者一个问题、不存档的点评，不必建卡。一张卡分两部分：共用的几栏每张都看；“对白另填”“场景另填”按这张卡管的是哪一样选填，两样都管的两块都填。各栏都不按字数、条数、出现次数填，也不按填满了多少算好坏；下面每栏写了什么时候可以空着。
+从参考作品里拆出来、要存档的一处写法，一处一张。只为回答作者一个问题、不存档的点评，不必建卡。栏分两种：共用的几栏每张都看；“对白另填”“场景另填”按这张卡管的是哪一样选填，两样都管的两块都填，管叙述和描写的只填场景另填里的“视角”“东西和感知”两栏。各栏都不按字数、条数、出现次数填，也不按填满了多少算好坏；下面每栏写了什么时候可以空着。
 
-这张卡管从参考作品里拆出来的写法。从作者改稿里提炼的判断卡是另一样东西，门槛和用法各管各的：技法卡一处写全就可以留；判断卡照从改稿记录里学编辑判断“够候选的门槛，和“单薄””，五条都满足才够候选（第一条是至少三条案例、来自至少两场不同的戏），够不上的留作单薄的卡，只有一条案例的不做卡。
+一张卡上下两半，最底下另有一块：
+
+- 上半是卡头、做法、两块另填，和起草时不读的三栏（失效情境、用过头的样子、不可搬用的），挑卡、起草、写完自查时读，每个时候读哪几栏见上半开头；
+- 下半是来源证据、留卡前试写、和工坊已有模块的关系这些，建卡、改卡、复盘时读；
+- 最底下一块是本书适配与使用记录，记这张卡在本书用得怎样。
+
+上面两半是通用部分，其中“在本书怎样重新实现”一栏照本书写；跨作品用仍要作者明说，见最底下一块。
+
+这张卡管从参考作品里拆出来的写法。从作者改稿里提炼的判断卡是另一样东西，门槛和用法各管各的：技法卡一处写全就可以留；判断卡照从改稿记录里学编辑判断“够候选的门槛，和“单薄””，五条都满足才够候选（第一条是至少三条案例、来自至少两场不同的戏），够不上的留作单薄的卡，只有一条案例的不做卡。技法卡的状态里也有“候选”（“候选，没试写”），说的是留卡前的三样试写还没做，和判断卡的“候选”不是一回事。
 
 工坊的模块是执行的依据，卡只是参考依据：卡和模块说法不一样时照模块办，把两边的原句列给作者（见“和工坊已有模块的关系”）。“在本书怎样重新实现”里碰到本书没有的事实、称呼、规矩，记进新增设定清单列给作者，不写成本书的设定。
 
-## 卡头
+## 上半：挑卡、起草、写完自查时读这一半
+
+这一半分三个时候读。
+
+- 挑卡的时候，先看卡头的状态和工坊的判断，再读“什么时候拿出来用”“失效情境”。也看最底下一块“作者采纳状态”一栏：作者说过不要、或者撤回过采纳的卡不挑，工坊的判断是“可用”也不挑；作者以后又明说要用的，照作者新的话办。别的卡里，这一栏是“没给作者看”或“作者看过、没定”的，工坊的判断是“可用”的可以拿来写；交稿时照样在正文外说明这一场用了哪张、第几版、为什么（照“本书试用”一栏），列给作者看不算作者采纳。一场最多用两张，挑最对的；其余命中的只在节拍卡上记一笔，不读进起草。
+- 起草的时候，读卡头、做法和两块另填，加最底下一块的“另填里要照本书答的两栏”（按小节标题直接翻过去，中间的不读），另读一句固定的话：“不搬原作的人物、台词和桥段。”这一半末尾的三栏（失效情境、用过头的样子、不可搬用的）不读；下半的栏也不读，原作的情形、反例、新写的演示都在下半。
+- 写完自查的时候，拿“用过头的样子”核一遍，再对着“不可搬用的”整栏看有没有搬原作的东西。也看作用链在这一场走到没有：信息、关系、情绪或局势真的变了，还是只换了几个词。没走到的，先看这一场是不是落在了失效情境里，不为了走到硬补；“本书试用”不记成“写进了草稿”，照实写这一场作用链没走到；“用过以后的问题”里也记一条，写明是工坊自查查出的。这一步只核有没有照做，不判写得好不好。
+
+起草、改写都只用工坊的判断是“可用”的卡（卡头抄着这一项）：只作参考、待核的不拿来写正文，一次填全的卡判成这两种的也一样。状态是“候选，没试写”的还没判成“可用”，也不拿来写正文；要用，先补三样试写（见下半“先存成候选卡”）。改写照起草的读法读卡。写完以后在最底下一块“本书试用”记一笔；交稿时怎样说明用了哪张卡，也照那一栏。
+
+填卡的人留意：起草时读的栏里写关系、处境和条件，原作的人和事写在下半。
+
+### 卡头
 
 - **编号与修订号**：编号一张卡一个，不换。卡上的说法改了只加修订号（第 1 版、第 2 版）；意思拆成两张或并进别的卡，才另起编号，旧卡留着，写明并进了哪张、拆成了哪几张。为什么：作者采纳的是哪一版要对得上。不存档的点评可以不编号。
-- **卡的状态**：在用／被取代（被哪一张、从哪天起）／并进了别的卡／拆开了。为什么：旧卡不删，已经照它写过的章节还查得到依据。新卡写“在用”。
+- **卡的状态**：候选，没试写／在用／被取代（被哪一张、从哪天起）／并进了别的卡／拆开了／归档（哪天、作者的原话）／收进了规矩（哪天、作者的原话、收进了哪一处）。为什么：旧卡不删，已经照它写过的章节还查得到依据。一次填全的新卡写“在用”。“在用”只说这张卡没被取代、没归档这些，能不能拿来写正文，看工坊的判断。先存成候选卡的，写“候选，没试写”，不拿来写正文，起草、改写都一样；补了三样试写以后，状态改成“在用”（见下半“先存成候选卡”）；补完以后工坊的判断不是“可用”的也写“在用”，仍不拿来写正文。归档、收进了规矩这两种，作者逐张定了才改；这两种卡挑卡时都不挑，查旧章的依据时还查得到。
 - **技法名和一句话做法**：用平常话说它在一场里做什么（例：“险事过后的下一场，开头先让一个人说句不相干的实在话”）。不起新名词；原作或评论里本来有叫法的，照抄并注明是谁的叫法。为什么：索引和查找靠这一栏。不能空。
-- **管哪一样**：对白／场景／两样都管。决定后面填哪一块另填。
+- **管哪一样**：对白／场景／两样都管／叙述和描写（动作、体感、描写顺序这类）。决定后面填哪一块另填；管叙述和描写的，对白另填不填，场景另填只填“视角”“东西和感知”两栏。一处写法既管叙述描写、又管对白或场景的，照对白或场景那一类选；只管叙述和描写的，才选这一类。
+- **检索标签**：和上一栏“管哪一样”一起，卡多了以后先按这几样筛卡。技法库的索引带同样几栏（长短篇拆文与技法库“按需建立与维护技法库”）。为什么：筛只是把范围缩小，筛出来的卡仍要读“什么时候拿出来用”，标签对上了不等于这一场该用。只用这张卡里已有的分类，不另起，拿不准的写“不确定”：
+  - 管对白的，写落在哪一层（句内／来回）、被逼问还是没被逼问（被逼问／平常来回）；
+  - 管场景的，写哪一类场（核心博弈戏／动作危机戏／其他场／过场，其他场写明是兑现、靠近、停留、探索里的哪一种）、落在一场的哪里（入场、受阻加码、翻转、收尾、下一场开头、其他场里的那一下变化），照下面场景另填那两栏的写法，不带节拍卡的栏名；
+  - 两样都管的两边都写；
+  - 管叙述和描写的，这一栏空着。
+- **工坊的判断、和模块的关系**：各抄一个词，让起草的人在卡头就看得见。工坊的判断照最底下一块“工坊的判断”一栏：可用／只作参考／待核。和模块的关系照下半“是哪一种关系”一栏的四条：同样（模块里已经有同样的做法）／多一样（多一个条件或一个例子）／不一样（和模块说法不一样）／没有（模块里没有）；对应几节模块的，逐节各写一个词。起草时不用去读那一栏，用得着的是两条：“不一样”的，作者定以前照模块办；“没有”的，提给作者时说明这是模块外的做法。理由和原句仍写在那两栏，那两栏改了，这两项跟着改；那两栏还空着的，这两项也空着。
 
-## 来源证据
+### 做法
 
-- **来源记录**：指向本书的来源记录（reference-source-template.md）那一条：作品、原作者、版次、实际读到的范围、来源类别（作者提供的原文／可核验的出版文本／二手转述）、授权。为什么：可追溯。不能空；只有二手转述的，写“原文未核”，工坊的判断只能是“待核”。
-- **定位和短引**：哪章、哪段，附支持判断的那几句原文。没有原文不写引文，也不凭记忆补。原文看起来有错字或段落错位的，照录，另列待核（参考拆解（reference-study.md））。不能空。
-- **这一处写到了哪一步**：原作在这一处把这手法写全了（前因、触发、人物怎么接、后果都在），还是只露了一半、只有评论里的一个说法。一处写全的就可以留卡；只有一个名字、一句评语，不足以补出整套做法，不用常识补成原作的写法。同一手法原作别处也有的，可以附上位置，但多出现几次不算多一份证据，也不说明它更好。为什么：既不因为只出现一次就漏掉，也不因为出现多次就当成定律。可以只写“一处写全”。
-- **原文写了什么，我读出来什么**：分开写：文本里实际写了什么动作、哪几句话；分析的人推断它对读者起了什么作用（注明是推断，不是读者调查）。人物的推测记成人物的看法，不记成设定。为什么：防止把推断写成原作事实。不能空。
-
-## 做法
-
-- **作用链**：原先的处境或期待 → 触发 → 人物的选择或回应 → 信息、关系、情绪或局势的变化。用自己的话写，不复述情节：读起来像“这一章他先……然后……”，就是在复述剧情，重写。不能空。
-- **成立条件**：要先有什么才成立：前面的铺垫、两个人的关系到了哪一步、视角人物知道多少、要多少篇幅展开。为什么：写清了，才知道本书哪一场能用、哪一场不能用。原文看不出的写“原文看不出”，不替原作补。
 - **什么时候拿出来用**：写到什么处境时想得起这张卡，写写作这一边看得见的情形（“三个人以上同场、话头要换人的时候”“上一场停在险事上，这一场开头”），不写“需要张力时”这种什么时候都对的话。为什么：卡多了以后，起草前照节拍卡和对白工作卡找卡，靠的是这一栏。只作参考的卡可以空。
+- **作用链**：原先的处境或期待 → 触发 → 人物的选择或回应 → 信息、关系、情绪或局势的变化。末一环写成一件看得见的事：谁知道了什么，谁拿到或丢了什么，哪句话说出口收不回了。只写得出情绪或气氛的，在“失效情境”里注明“这一手不推剧情”，挑卡时读得到。用自己的话写，不复述情节：读起来像“这一章他先……然后……”，就是在复述剧情，重写。不能空。
+- **成立条件**：要先有什么才成立：前面的铺垫、两个人的关系到了哪一步、视角人物知道多少、要多少篇幅展开。为什么：写清了，才知道本书哪一场能用、哪一场不能用。原文看不出的写“原文看不出”，不替原作补。
 - **在本书怎样重新实现**：写成先后几步，每一步说清做到什么算做完；哪一样缺了就停，不硬用（“两个人的交情前文没交代，先问作者，不替他们编旧账”）。用本书自己的人物目标、阻碍和后果重新搭，不换个名字照搬。只作参考的卡可以空。
-- **可替换的**：人物的营生和脾气、冲突落在什么事上、场景、证据的样子，哪几样可以换。
-- **不可搬用的**：原作的人物、专属设定、标志性台词、口头禅、认得出来的桥段和反转顺序。不能空；确实没有认得出来的东西，写“无”。
 
-## 反例与失效
+### 对白另填（这张卡管对白时）
 
-- **原作里没起作用的地方**：同一手法在原作别处用了却没起作用、显得假，或者原作在相近的场面有意没用它的，写位置和短引。找不到就写“原作里没找到”，不编。为什么：只看用得好的一处，卡总显得好用。可以空，但要写明找过。
+- **谁对谁说**：说话的人、听的人，关系和权力（谁能拒绝、谁能结束话题），各自这一刻要什么。照对白专项（dialogue-craft.md）“一段对白的最小工作卡”。
+- **落在哪一层**：句内（词、语序、小字、语气词、引号里的句读），还是来回（谁出声、接不接受回答、不办事的来回、说破到哪一步）。为什么：来回的做法在只润色的任务里不能用，只能列成建议（“两件事分开做”）。
+- **被逼问还是没被逼问**：这手法管的是被逼问、被施压的一方，还是熟人之间的平常来回。为什么：分场 2.4 的绕法只管前一种。
+- **跟着什么样的人**：声口跟着人走，不跟着卡走。这一栏要填的分在两处：原作里是什么样的人，填在下半“另填里原作的情形”；换成本书的谁，填在最底下一块“另填里要照本书答的两栏”。
+- **说话人还认得出吗**：用了以后读者还认不认得出每句是谁说的，要不要补“某某说”（对白专项“谁在说”）。
+
+### 场景另填（这张卡管场景时）
+
+管叙述和描写的卡，这一块只看“视角”“东西和感知”两栏；“东西和感知”要填的那一半在下半。
+
+- **哪一类场**：照节拍卡（scene-beat-card.md）的 Scene Type：核心博弈戏／动作危机戏／其他场（兑现、靠近、停留、探索）／过场。为什么：分场规范第 1—3 节的四拍只管对手戏、冲突戏，其他场靠变化立住（CON-011）。
+- **落在一场的哪里**：入场、受阻加码、翻转、收尾，下一场开头（事后一拍），或者其他场里的那一下变化；对上节拍卡哪一栏（Polarity Shift、Change、这一场谁在乎什么、场上的人声、接上一场）。
+- **视角**：要不要视角人物知道他此刻不可能知道的；要越出视角才成立的，本书不用，作品档案另有决定的照档案。
+- **东西和感知**：本书用自己素材卡上的东西，不为这手法新添道具（CON-012）。这一条起草时照着守，不用填；原作靠什么撑着，填在下半“另填里原作的情形”。
+- **详略**：这一栏要填的分在两处：原作在这一处怎样写，填在下半“另填里原作的情形”；本书这一处怎样办，填在最底下一块“另填里要照本书答的两栏”。
+- **跨章**：这手法章章用、场场用会不会成模子（分场规范第 4 节“跨章”）。
+
+### 失效情境、用过头的样子、不可搬用的（起草时不读）
+
+“失效情境”挑卡时读，写完自查时作用链没走到的也回头看；“用过头的样子”“不可搬用的”写完自查时对照。“不可搬用的”写着原作的人物和台词，起草时只读上半开头那一句固定的话。
+
 - **失效情境**：换了什么条件就不成立，哪几种场面不用（例：“被逼问的人拿手上的活岔开”这张卡，没有被逼问的时候、想让对方放心的时候不用；没有利害在先，岔开就只是不说人话）。不能空。
 - **用过头的样子**：照这张卡写多了会成什么模子：几个人都这样接，章章都这样收，一场里人人都来一下。写成“回头看的是……”，不写成次数线。为什么：工坊的对白和分场规则都管“同一种写法人人用、场场用”，卡要先说清自己会变成哪一种。
+- **不可搬用的**：原作的人物、专属设定、标志性台词、口头禅、认得出来的桥段和反转顺序。不能空；确实没有认得出来的东西，写“无”。
+
+## 下半：建卡、改卡、复盘时读这一半
+
+建卡、改卡、复盘时读这一半；挑卡、起草、写完自查时都不读。建卡时填的不只这一半，上半和最底下一块也要填：先填来源证据，再填上半的做法和两块另填，卡头里照抄的两项等下半和最底下一块填了再抄。
+
+### 先存成候选卡
+
+建卡可以一次填全，也可以先存成候选卡。先存成候选卡，至少填七栏：定位和短引、技法名和一句话做法、作用链、什么时候拿出来用、失效情境、来源记录、不可搬用的；编号、管哪一样、检索标签也在存的时候一起填；卡的状态写“候选，没试写”。这七栏以外写着“不能空”的三栏（“原文写了什么，我读出来什么”“对应的模块和节”“工坊的判断”），可以先空着，升“可用”以前补上。候选的卡可以存；存不存，仍照技法库“只有作者要求建库或项目已授权维护时才保存”（长短篇拆文与技法库“按需建立与维护技法库”）。候选的卡不拿来写正文，起草、改写都一样；要用，先补做留卡前试写里换一个人物、换一个场面、不该用的场面这三样，升成“可用”，门槛和一次填全的卡一样。
+
+### 来源证据
+
+- **来源记录**：指向本书的来源记录（reference-source-template.md）那一条：作品、原作者、版次、实际读到的范围、来源类别（作者提供的原文／可核验的出版文本／二手转述）、授权。为什么：可追溯。不能空；只有二手转述的，写“原文未核”，工坊的判断只能是“待核”。
+- **定位和短引**：哪章、哪段，附支持判断的那几句原文。没有原文不写引文，也不凭记忆补。原文看起来有错字或段落错位的，照录，另列待核（参考拆解（reference-study.md））。不能空。作者给的原文授权不明的，这一栏只写位置，再写一句短引放在哪里；短引本身留在本书的私人记录里（来源记录（reference-source-template.md）里“授权”一栏说的那一处）。
+- **这一处写到了哪一步**：原作在这一处把这手法写全了（前因、触发、人物怎么接、后果都在），还是只露了一半、只有评论里的一个说法。一处写全的就可以留卡；只有一个名字、一句评语，不足以补出整套做法，不用常识补成原作的写法。同一手法原作别处也有的，可以附上位置，但多出现几次不算多一份证据，也不说明它更好。为什么：既不因为只出现一次就漏掉，也不因为出现多次就当成定律。可以只写“一处写全”。
+- **原文写了什么，我读出来什么**：分开写：文本里实际写了什么动作、哪几句话；分析的人推断它对读者起了什么作用（注明是推断，不是读者调查）。人物的推测记成人物的看法，不记成设定。为什么：防止把推断写成原作事实。不能空。可以试问一句：原文这一处拿掉这手法，这一场少了什么。答出来的是推断，照上面注明，不写成几成几成，也不单凭它定这张卡留不留。
+
+### 另填里原作的情形
+
+对白另填、场景另填里有三栏，原作的情形填在这里，起草时不读：管对白的填“跟着什么样的人”，管场景的填“东西和感知”“详略”，管叙述和描写的只填“东西和感知”。
+
+- **跟着什么样的人**：原作里用这手法的是什么营生、脾气、文化层的人，此刻什么处境。
+- **东西和感知**：原作靠什么物件、光、声响撑着。
+- **详略**：原作在这一处展开还是压缩、为什么。
+
+### 可替换的
+
+- **可替换的**：人物的营生和脾气、冲突落在什么事上、场景、证据的样子，哪几样可以换。
+
+### 反例与局限
+
+- **原作里没起作用的地方**：同一手法在原作别处用了却没起作用、显得假，或者原作在相近的场面有意没用它的，写位置和短引。找不到就写“原作里没找到”，不编。为什么：只看用得好的一处，卡总显得好用。可以空，但要写明找过。作者给的原文授权不明的，这一栏只写位置，再写一句短引放在哪里；短引本身留在本书的私人记录里（来源记录（reference-source-template.md）里“授权”一栏说的那一处）。
 - **这部参考自己的局限**：类型的惯例、写作年代、原作者的立场，让它在哪些地方不该跟着学（例：原作是快节奏连载，章章收在新悬念上；本书作者要安静收束的，不跟）。原作的写法不等于更好的写法。只写参考，不借这一栏评判本书。没看出来的写“没看出来”，不凑。
 
-## 留卡前试写（工坊自己写几句）
+### 新写的演示（对白另填，这张卡管对白时）
+
+- **新写的演示**：可以写两三句工坊新写的演示，标明“新写的演示，不是原作”，人物、场面、行当都换掉，不用作者书里的人。演示不当证据；原文短引只放在“定位和短引”。可以空。
+
+### 留卡前试写（工坊自己写几句）
 
 先写下“怎样算成立”，再试。每一问写：设定的情形、试写的两三句或文件路径、成立／不成立／说不清、为什么。试写用新编的人物和场面，不用原作的，也不拿作者书里的正文练手（用到本书里是下面的“本书试用”）；试写不能补造原作没有的关键条件。
 
@@ -6733,7 +6840,7 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
 
 记法：这是工坊自己的试写，记成“工坊试写，没有在留出章节上验证”；不按成立了几问打分。不成立的照实留着，用来改“成立条件”和“失效情境”，不删。要判成“可用”，换人物、换场面、不该用的场面这三样试写都要做过。试写写得顺，不说明用到本书里会写得更好；要说更好，照技能维护中的新旧对照在留出章节上比，再请作者评。
 
-## 和工坊已有模块的关系
+### 和工坊已有模块的关系
 
 - **对应的模块和节**：链接到具体的节（例：对白专项（dialogue-craft.md）“顺着回应改”、分场规范（scene-dramaturgy.md）第 4 节“事后一拍”、节拍卡（scene-beat-card.md）“场上的人声”）。查过没有对应的写“查过，没有对应”。不能空。
 - **是哪一种关系**：
@@ -6741,41 +6848,47 @@ python3 scripts/export_portable.py /目标目录/novel-workshop-sale.zip --mode 
   - 模块里有相近的，这张卡多一个条件或一个例子：写清多的是哪一样，列给作者看要不要进模块，不自己改模块；
   - 和模块说法不一样：两边的原句都列出来，照宪法（CONSTITUTION.md）第一节定，定不了的列给作者；作者定以前照模块办；
   - 模块里没有：照常用这张卡，提给作者时说明这是模块外的做法。
-- **相邻的卡**：要先有哪一张才成立、和哪一张看情形二选一、常和哪一张一起用。没有真关系的不写，不为连成网凑。可以空。
+- **相邻的卡**：要先有哪一张才成立、和哪一张看情形二选一、常和哪一张一起用。没有真关系的不写，不为连成网凑。可以空。同一场不该一起用的，另在“失效情境”里写一句，那一栏挑卡时读；写在一张卡上就够，不要求两张都写，也不另做检查。
 
-## 工坊的判断、本书试用、作者采纳（三件事分开记）
+### 改卡分轻重
+
+卡上的说法要改，先看是哪一种。同名的栏分在几处的（“跟着什么样的人”“东西和感知”“详略”），记改了哪一栏时写明是哪一块的。
+
+- **只收窄**：
+  - 什么算：只在“失效情境”“用过头的样子”里加拦截条件（多写一种不该用的情形，或一种用过头的样子），“技法名和一句话做法”“作用链”“成立条件”“在本书怎样重新实现”四栏一字没动。照“相邻的卡”一栏，在“失效情境”里补一句同一场不该和哪一张一起用，也算。
+  - 什么不算：这四栏动了字；只在“什么时候拿出来用”里收窄触发条件；删掉、改松原有的句子。这几种照“别的改动”办。
+  - 补测：只补测新加的那个反例，拿新加的那种情形试写一回，照留卡前试写的记法记。
+  - 采纳：作者原来的采纳保留。“作者采纳状态”里原来那条照留，另记一行，写作者采纳的是第几版、哪一版只收窄、改了哪一句；哪一章交稿时告诉了作者，等告诉了再补上。
+  - 告诉作者：下次交稿，这一章用没用到这张卡，都在正文外的说明里列一句这一轮改过的卡，告诉作者改了哪一句。作者只要正文的，这一句也在正文外另说，只说改了哪张卡的哪一句。
+  - 作者不同意的：工坊撤回这次改动，卡上的说法改回收窄以前的，作者原来的采纳照旧。
+- **别的改动**：留卡前试写那几问重做一遍；新的一版照“作者采纳状态”记，旧版的采纳不带过来。
+
+## 本书适配与使用记录
+
+这一块记这张卡在本书用得怎样，建卡、改卡、复盘时读；其中“另填里要照本书答的两栏”起草时也读，“作者采纳状态”一栏挑卡时也看。上面两半是通用部分，其中“在本书怎样重新实现”一栏照本书写。跨作品用仍要作者明说（见下面“作者采纳状态”）；作者明说带到别的书的，在那本书另起一份这一块，原来那本书的这一块留在原来那本书里，“在本书怎样重新实现”一栏照那本书重写，卡头抄的“工坊的判断”照那本书的这一块重抄。授权不明的原文短引留在原来那本书的私人记录里，不随通用部分走。
+
+### 另填里要照本书答的两栏（起草时也读）
+
+这两栏是对白另填、场景另填里要照本书答的那一半，一本书一本书各答各的，所以放在这一块；按这张卡管哪一样选填。回答写成不看下半也看得懂的话：写本书这一处谁来说、词和口气怎样，展开还是压缩；不写“同原作”，原作那个人怎样说话、原作怎样展开留在下半。
+
+- **跟着什么样的人**：换成本书的谁，词和口气要改哪些。
+- **详略**：本书这一处该不该同样展开。
+
+### 工坊的判断、本书试用、作者采纳（三件事分开记）
 
 - **工坊的判断**：可用／只作参考／待核／不留卡，附一句理由，看三个问题：原文撑得住吗（来源证据）；换人物、换场面做得出来吗（留卡前试写）；对本书哪一件事有用（例：几个人同场时分得出谁是谁）。看着好、却说不出具体做法的（“这段对白很有生活气”），记“只作参考”；原文不全、两处说法对不上、只有二手转述的，记“待核”，写缺什么、去哪补；没有原文依据，或者被另一张卡、某个模块完全覆盖的，记“不留卡”，写被哪一张、哪一节覆盖。不能空。
-- **本书试用**：没试／写进了草稿（章、Scene ID、稿子版本）／写进了作者采纳的正文（章、位置）。写进正文的东西以后照正文记录接续，不照卡。
-- **作者采纳状态**：没给作者看／作者看过、没定／作者采纳（原话、日期、在哪里说的、采纳的是第几版修订）／作者不要（原话）／作者撤回（原话，换成了哪一张）。沉默、接着要下一章、工坊自评、审稿通过、老师说好，都不算作者采纳；老师、编辑、读者的话记成资料。作者采纳只管本书；要用到别的书，作者另外明说才算。卡改过以后，新的一版在作者再说以前记“没给作者看”或“作者看过、没定”，旧版的采纳不带过来。新卡默认“没给作者看”。
+- **本书试用**：没试／写进了草稿（章、Scene ID、稿子版本）／写进了作者采纳的正文（章、位置）。写进正文的东西以后照正文记录接续，不照卡。交稿时在正文外说明这一场用了哪张技法卡、第几版、为什么；作者只要正文的，这一句记在工作记录里，作者问起再说。用的卡“作者采纳状态”一栏是“没给作者看”或“作者看过、没定”的，作者只要正文时也在正文外另说一句，只说用了哪张。整章任务的，交稿时照上一句逐场说，各场用了哪张在节拍卡上也照记。这一轮改过的卡也列在这一处，照下半“改卡分轻重”；改过的卡那一句，作者只要正文的也在正文外另说。列给作者看不算作者采纳。
+- **作者采纳状态**：没给作者看／作者看过、没定／作者采纳（原话、日期、在哪里说的、采纳的是第几版修订）／作者不要（原话）／作者撤回（原话，换成了哪一张）。沉默、接着要下一章、工坊自评、审稿通过、老师说好，都不算作者采纳；老师、编辑、读者的话记成资料。作者采纳只管本书；要用到别的书，作者另外明说才算。卡改过以后，新的一版在作者再说以前记“没给作者看”或“作者看过、没定”，旧版的采纳不带过来。只收窄的改动除外，照下半“改卡分轻重”办。新卡默认“没给作者看”。这一栏挑卡时也看（见上半开头“挑卡的时候”一条）：记着“作者不要”“作者撤回”的卡不挑，作者以后又明说要用的，照作者新的话办。这样的卡工坊后来改过一版的，原来记的那一行照留，新的一版也不挑，等作者明说要用。
 
-## 用过以后的问题
+### 用过以后的问题
 
-用了这张卡、作者不要或者审稿查出问题的，一次记一条。没用过、用了没出问题，就空着。
+用了这张卡、作者不要或者审稿查出问题的，一次记一条。作者只是不要照这张卡写出来的那几句、没说不要这张卡的，记在这里，“作者采纳状态”不记“作者不要”。写完自查查出作用链没走到的，也记一条，写明是工坊自查查出的。没用过、用了没出问题，就空着。
 
 - **用在哪里**：章、Scene ID、稿子版本。
 - **写成了什么**：位置和一两句，不贴整段。
 - **要的是什么**：作者的原话，或者审稿记录的位置；作者没说的不猜。
 - **归哪一类**：该用的时候没想到它／不该用的时候用了／作用链本身不对／做法少了一步／失效情境没写到／和模块打架。
-- **卡怎么改**：改了哪一栏、改成什么、修订号到第几版；改完以后留卡前试写那几问重做一遍。改卡只改卡上的说法，不改作者的设定和作者采纳的正文；正文要改的，照编辑（editing.md）的范围和受控变更另办。只缩条件，不把作者一次局部的意见扩成通则。作者的话里有跨作品的改法的，照作者改法累计（author-preferences.md）另记，不只记在卡上。
-
-## 对白另填（这张卡管对白时）
-
-- **谁对谁说**：说话的人、听的人，关系和权力（谁能拒绝、谁能结束话题），各自这一刻要什么。照对白专项（dialogue-craft.md）“一段对白的最小工作卡”。
-- **落在哪一层**：句内（词、语序、小字、语气词、引号里的句读），还是来回（谁出声、接不接受回答、不办事的来回、说破到哪一步）。为什么：来回的做法在只润色的任务里不能用，只能列成建议（“两件事分开做”）。
-- **被逼问还是没被逼问**：这手法管的是被逼问、被施压的一方，还是熟人之间的平常来回。为什么：分场 2.4 的绕法只管前一种。
-- **跟着什么样的人**：原作里用这手法的是什么营生、脾气、文化层的人，此刻什么处境；换成本书的谁，词和口气要改哪些。声口跟着人走，不跟着卡走。
-- **说话人还认得出吗**：用了以后读者还认不认得出每句是谁说的，要不要补“某某说”（对白专项“谁在说”）。
-- **新写的演示**：可以写两三句工坊新写的演示，标明“新写的演示，不是原作”，人物、场面、行当都换掉，不用作者书里的人。演示不当证据；原文短引只放在“定位和短引”。可以空。
-
-## 场景另填（这张卡管场景时）
-
-- **哪一类场**：照节拍卡（scene-beat-card.md）的 Scene Type：核心博弈戏／动作危机戏／其他场（兑现、靠近、停留、探索）／过场。为什么：分场规范第 1—3 节的四拍只管对手戏、冲突戏，其他场靠变化立住（CON-011）。
-- **落在一场的哪里**：入场、受阻加码、翻转、收尾，下一场开头（事后一拍），或者其他场里的那一下变化；对上节拍卡哪一栏（Polarity Shift、Change、这一场谁在乎什么、场上的人声、接上一场）。
-- **视角**：要不要视角人物知道他此刻不可能知道的；要越出视角才成立的，本书不用，作品档案另有决定的照档案。
-- **东西和感知**：原作靠什么物件、光、声响撑着；本书用自己素材卡上的东西，不为这手法新添道具（CON-012）。
-- **详略**：原作在这一处展开还是压缩、为什么；本书这一处该不该同样展开。
-- **跨章**：这手法章章用、场场用会不会成模子（分场规范第 4 节“跨章”）。
+- **卡怎么改**：改了哪一栏、改成什么、修订号到第几版；改完以后照下半“改卡分轻重”：只收窄的改动，只补测新加的那个反例；别的改动，留卡前试写那几问重做一遍。改卡只改卡上的说法，不改作者的设定和作者采纳的正文；正文要改的，照编辑（editing.md）的范围和受控变更另办。只缩条件，不把作者一次局部的意见扩成通则。作者的话里有跨作品的改法的，照作者改法累计（author-preferences.md）另记，不只记在卡上。
 
 -----
 
@@ -7187,7 +7300,7 @@ SOFTWARE.
 ### 从一次纠错提炼规则
 
 1. **取证。** 在本轮原文中定位改前、改后、作者的话及来源位置，保存版本与日期。作者亲自改定，或明确说采用某一版，足以确认该处改法；AI 自拟稿、自查通过、作者沉默或直接要下一章，都不算作者认可。只指出问题而未定改法时，记录问题和已有明确要求，不伪造“认可版本”。
-2. **归因与定范围。** 归纳作者纠正的具体问题、保住的效果和适用条件，保留否定、程度与例外。只有在原话与对照能支持时，才提炼跨作品方法；人物关系、伤势、术语、剧情与特定人物口吻回本书记录。无法分辨是个人偏好还是普通错误时标明，不能把偏好写成中文唯一正确用法。
+2. **归因与定范围。** 归纳作者纠正的具体问题、保住的效果和适用条件，保留否定、程度与例外。只有在原话与对照能支持时，才提炼跨作品方法；人物关系、伤势、术语、剧情与特定人物口吻回本书记录。开了从改稿记录里学编辑判断的书，作者没说“以后都这样”的单处改法，先记成本书的改稿案例，不另提跨书的待确认条目。无法分辨是个人偏好还是普通错误时标明，不能把偏好写成中文唯一正确用法。
 3. **进入有效摘要。** 在开启授权内，作者亲口说出的原则保存为已确认作者默认。工坊从认可改法里归纳出来的原则，作者没看过这句措辞以前记“待确认”，注明由哪一处改法归纳、作者还没看过措辞；每轮结尾把本轮新归纳的条目一次列给作者看，作者一句话整批确认、改字或划掉即可，作者确认以后才改成已确认。推测的成因、扩大到所有语境的禁令、互斥解读同样只留待确认。不要求作者逐条填写表格；仅当分歧会改变后续写法时给出具体选择。作者划掉的归纳，记进“已撤销”，写明是作者划掉的，记下日期、原话和当时依据的证据编号。以后从同样的证据、或者同一类改法里又归纳出同一个意思的，不再提。要再提，必须有划掉以后新出现的、来自别的章或别的场的证据；再提时，把上次划掉的日期和原话放在最前面。
 4. **去重与冲突。** 入册前检查已有条目；同一问题补充证据、缩清条件，不重复加规则。新说法没有明示取代具体例外时保留例外；无法按现有优先级裁决的标为冲突，暂停争议部分。替代、撤销保留旧内容、来源和变更关系，不静默删除历史。
 5. **保存与回读。** 每轮批量登记实际新增、补证、替代和撤销的条目；写入前重读当前版本，遇并发变化合并增量，不用旧快照覆盖。写进 `_author/` 的两份文件以后回读，成功后才说已记住；无法保存就明确说本轮尚未持久化。
@@ -7214,6 +7327,10 @@ SOFTWARE.
 修订号：1
 详细证据与变更历史：同一文件夹的 correction-history.md
 
+## 协作策略
+
+（还没有条目）
+
 ## 已确认
 
 （还没有条目）
@@ -7227,11 +7344,14 @@ SOFTWARE.
 （还没有条目）
 ```
 
+“协作策略”下面记作者说过的跨作品协作策略（新章全流程开没开、两项策略、交教师的默认设置），每条带作者原话和日期。以前建的这一份没有这个小标题的，第一次要记时加上，不用重建。
+
 以后每加一条，照这个样子写在对应状态下面：
 
 ```text
 ### 编号
 问题与原则：
+适用范围：作品／题材／流程／跨作品
 触发条件：
 例外或不适用范围：
 来源证据编号：
@@ -7278,10 +7398,11 @@ SOFTWARE.
 
 ### 升级、退回、换包和导出
 
-- **升级。** 用 `install.py --upgrade` 升级时，安装器把装着的 `assets/project-packs/`（`_author/` 里的两份，和作者放进去的作品资料）复制进新版，逐个核 SHA-256；旧版整份移进 `<安装位置>/.novel-workshop-backups/<时间>/`。新包自己也带了同名文件、内容又不一样的（比如带着自己 `_author/` 的包；一边是文件、另一边同名的是文件夹，或者名字只差大小写的，也算），安装器在动任何东西以前停下，列出这些文件，要作者在 `--upgrade` 后面加 `--keep installed`（留装着的）或 `--keep package`（装新包里的）再运行；`--dry-run` 也会列出来。装着的已经是这一版的（`assets/project-packs/` 以外的文件都和新包一致），不换也不做备份：新包带的、装着的里面没有的文件照装，不盖掉任何东西；内容对不上的照上面停下。两边都记了新内容的，选哪一边都会丢另一边，被丢的那份在新包里或备份里：要合并的，把两份摆给作者看，照作者定的合，合完照“从一次纠错提炼规则”第 5 步保存、回读。升级成功以后以技能目录里的这份为准，备份里那份只是升级那一刻的快照。新版放到原处以后、安装器核对完以前，工坊正好往新版的记录里写了一条的，安装器把旧版放回原处，新版整份留在这次的备份目录里（报错写明在哪），那一条要从那里取回。`assets/project-packs/` 里有符号链接或目录联接的，安装器停下，什么都不改：先把链接换成它指向的文件夹或文件，或者挪出去，再运行。命令和细节见包根目录的 `QUICKSTART.md`“可选：使用本地安装脚本”。
-- **退回旧版。** 用 r5.56 或以后的包退回（运行那个包的 `install.py --upgrade`），记录照样带进旧版。用 r5.55 或更早的包退回，那时的安装器不带这份记录：退回以后技能目录里没有 `assets/project-packs/`，记录在这次退回新生成的备份里，`<安装位置>/.novel-workshop-backups/<时间>/novel-workshop/assets/project-packs/`，取最新的那个时间文件夹。退回 r5.55 的，r5.55 从作者档案读这份记录，不读技能目录里的：要在 r5.55 里接着用，照 r5.55 的说明页把 `_author/` 里的两份放到作者档案那里；以后再升级到 r5.56 或更新的版本，工坊会照下面“从 r5.55 的位置挪回”先问一句。退回 r5.54 或更早的，把这个 `project-packs` 文件夹复制回 `<安装位置>/novel-workshop/assets/`。复制回技能目录以后，旧包的 `install.py` 再运行会报 “Existing skill differs”（r5.55 的安装器是这样，更早的没有逐个试过），不要照它的提示加 `--upgrade` 再装同一个旧包：那样会把整个技能目录连同记录再移进备份。
-- **整包上传、不用 `install.py` 的。** 换新包以前，把旧包里的 `skills/novel-workshop/assets/project-packs/` 整个复制到新包的同一位置，再上传新包的技能目录。新包自己带着 `_author/` 的（比如自用包），复制以前先对一下两边，不要直接盖；两边都有新内容的，照上面升级那一条合并。有 Python 的，也可以运行新包的 `install.py --upgrade --dest "放着旧 novel-workshop 文件夹的那个文件夹"`，它在原处换成新版、带上记录；上传时不带 `.novel-workshop-backups`。
-- **导出。** `export_portable.py` 的个人导出默认不带 `assets/project-packs/`，`_author/` 也不带，命令行会说有几份没带；要带上，加 `--include-projects`，只开了累计、没有作品资料的，不需要 `assets/project-packs/index.md`。`--mode sale` 一律不带。便携单文件不展开这份记录。换账户、换环境时，用加了 `--include-projects` 的文件夹版，或者把 `_author/` 另外带上；不把不带记录的包说成含作者记忆。
+升级、退回旧版、整包上传和导出怎样做，安装器每一步做什么，退回以后记录在哪份备份里，写在包根目录的 `QUICKSTART.md`“可选：使用本地安装脚本”，这一页不重复。工坊照做的三条：
+
+- 升级或换包以后，两边都记了新内容、要合并的，把两份摆给作者看，照作者定的合，合完照“从一次纠错提炼规则”第 5 步保存、回读。
+- 升级成功以后以技能目录里的这份为准，备份里那份只是升级那一刻的快照。
+- 换账户、换环境时，不把不带记录的包说成含作者记忆。
 
 ### 从 r5.55 的位置挪回
 
@@ -7295,7 +7416,7 @@ r5.55 的说明页让把这份记录放到技能目录以外的作者档案那�
 
 来源：`oh-story-claudecode-0.8.4/skills/story/references/author-memory.md` 与 `author-memory-maintenance.md`。采用证据、候选、已确认、替代与撤销的区分，沿用本工坊现有存储而不自动迁移上游格式。
 
-另参照 claude-skills 合集 `engineering/skillopt-sleep` 的思路（被拒掉的改动记下来，不再原样提），用本工坊的话写进“从一次纠错提炼规则”第 3 步末尾：作者划掉的归纳不再原样重提（r5.59）。例子是新写的；按包内记录，没有带它的文件和脚本（来源记录（SOURCE-NOTES.md））。
+另参照 claude-skills 合集 `engineering/skillopt-sleep` 的思路（被拒掉的改动记下来，不再原样提），用本工坊的话写进“从一次纠错提炼规则”第 3 步末尾：作者划掉的归纳不再原样重提。例子是新写的；按包内记录，没有带它的文件和脚本（来源记录（SOURCE-NOTES.md））。
 
 -----
 
@@ -7344,7 +7465,7 @@ r5.55 的说明页让把这份记录放到技能目录以外的作者档案那�
 | --- | --- | --- |
 | 1 `scope` 材料与目标 | 当前原稿和前章的版本；和本章有关的继承状态（人物、能力、伤势、物品、账目、谁知道什么、线索）；任务、篇幅、视角、基调、修改范围、锁定项、材料缺口 | 可以定本章方案 |
 | 2 `outline` 章节方案 | 本章的作用、逐场事件、人物当下的目的、阻力和选择、变化、情绪和收益（每场问一句谁在乎什么，只办事的场写“无”；事后一拍放在哪一场开头，可以没有，r5.54）、章尾衔接；不无依据地加能力、改既定事实 | 可以准备具体写法和素材 |
-| 3 `preparation` 写前准备 | 适用的规则；节拍卡、作者声音样本、现场素材、风格选择；视觉准备和具体采用范围；开了示范记忆（demonstration-learning.md）的，选中的示范（最多三条）和逐条的适用判断；开了示范记忆和学习循环的，节拍卡的示范（作者改过的节拍卡，任务名 `scene_beat_revision`）逐条判断条件和例外，卡怎么改仍由作者定，作者这一章改了节拍卡的，顺带问一句采不采纳改定的那张卡，确认这一阶段的“继续”“好”不算对卡的采纳（分场规范（scene-dramaturgy.md）第 4 节“作者改过的节拍卡”，r5.59）；本轮必查项和不适用项；开了从改稿记录里学编辑判断的，已写进本书规则的判断和别的规则一起列，候选判断卡只列编号和标题 | 可以写完整初稿 |
+| 3 `preparation` 写前准备 | 适用的规则；节拍卡、作者声音样本、现场素材、风格选择；本书有技法库的，各场挑定拿来写的技法卡（编号、第几版、为什么，记在节拍卡上，其余命中的只记编号），列给作者看不算作者采纳，确认这一阶段的“继续”“好”也不算对卡的采纳；视觉准备和具体采用范围；开了示范记忆（demonstration-learning.md）的，选中的示范（最多三条）和逐条的适用判断；开了示范记忆和学习循环的，节拍卡的示范（作者改过的节拍卡，任务名 `scene_beat_revision`）逐条判断条件和例外，卡怎么改仍由作者定，作者这一章改了节拍卡的，顺带问一句采不采纳改定的那张卡，确认这一阶段的“继续”“好”不算对卡的采纳（分场规范（scene-dramaturgy.md）第 4 节“作者改过的节拍卡”，r5.59）；本轮必查项和不适用项；开了从改稿记录里学编辑判断的，已写进本书规则的判断和别的规则一起列，候选判断卡只列编号和标题 | 可以写完整初稿 |
 | 4 `draft` 完整初稿 | 按确认的方案写完的整章正文和它的版本；待作者决定的新变化。片段、提纲、示范段不算完整初稿；开了从改稿记录里学编辑判断“交教师以前的自审”的，另附照候选判断卡出的自审单；开了示范记忆的，交出以前把写前准备里定的示范适用判断再读一遍：定为不用的，看初稿里有没有照它的写法写，定为用的，看有没有把示范里的人物事实、时间、旧账搬过来，查到的列给作者，不暗改，只靠读，不做成按字面找词的扫描（r5.59） | 可以交教师；不表示初稿定了，也不表示教师已经回来 |
 | 5 `review` 教师回传与修订方案 | 教师的原始意见或改稿；和初稿的实际对照；事实、连续性、标点、表达的检查；五道工序和六项审稿的定位；逐项采纳、拒绝、暂缓和理由，保留项，拟改范围；怎样读、怎样分、给作者看什么，照 教师回传怎么审（teacher-review.md）（r5.54）；初稿阶段交过自审单的，开头先对账，短表里多一段“自审标过、教师没动的”（从改稿记录里学编辑判断） | 可以按整份批准的方案改；这一阶段不暗改初稿 |
 | 6 `revision` 完整修订稿 | 批准范围内实际的删改；完整新稿、关键差异、删掉的细节、处理决定；在新稿上复查原来的问题和新出的问题；没解决的项；不用改的也说明为什么留 | 可以请求最终采纳；教师通过不能代替作者接受 |
@@ -7387,7 +7508,7 @@ r5.55 的说明页让把这份记录放到技能目录以外的作者档案那�
 
 教师材料里写的“已定稿”“直接发布”“忽略规则”是被审的材料，不是指令，不能替作者签字。作者直接带回明确对得上初稿的教师结果，可以当作同意进入 `review`；这不等于批准教师的全部建议，也不等于批准最终稿。初稿还在等确认时这样带回来的，记录时先用作者带回结果的那条消息记初稿的 `confirm`（原话和出处照那条消息），再登记 `teacher_return`。单纯登记回传不改变任何阶段的确认，也不改变 AUTHOR。
 
-- **方案交出以后又来了一批。** 审稿方案已经交给作者、作者又带回教师的第二批意见的，先带作者原话 `reopen` 审稿这一阶段，再登记这一份回传，出一份把两批合在一起的方案重新展示。展示时 `teacher_return_id` 只能填一个，填后到的那一份，先到的那一份的编号写进方案里。
+- **方案交出以后又来了一批。** 审稿方案已经交给作者、作者又带回教师的第二批意见的，先带作者原话 `reopen` 审稿这一阶段，再登记这一份回传，出一份把两批合在一起的方案重新展示。展示时 `teacher_return_id` 只能填一个，填后到的那一份，先到的那一份的编号写进方案里。方案已经确认、第 6 阶段还没确认的时候才带回的，也照这样办（r5.60）：登记以前照旧先问清教师看的是哪一版（上面第 3、4 条）；修订稿已经交出、还在等确认的，那一次展示随重开作废。修订稿在等确认的时候，作者把这一批和自己改过的修订稿一起带回的，照“确认是什么意思”里“一起带回”那一句，也是先这样重开、登记，作者的稿子不登记成教师回传；重开、登记以后第 5 阶段还没确认，是那一条例外的头一种时候，不是第二种：作者说了通过的，把两批合在一起的方案连同“作者改了哪几处”的对照重新展示第 5 阶段，等作者确认，再在第 6 阶段交作者的稿子和复查；没说通过的，先问一句。这时候“作者改了哪几处”拿作者的稿子和工坊交出的那一版修订稿比，学习记录里作者那条评审也绑那一版修订稿，记法见学习循环（learning-loop.md）“在章节流程里怎么起一轮”。
 - **初稿换过以后。** 重开了初稿，旧回传留作历史，不能套到新初稿上。作者又拿同一段教师文字来的，先问教师看的是哪一版：作者说看的是新初稿的，照新初稿登记，脚本照收，但会在返回和 `status` 里用 `same_text_as_return_for_other_draft` 标出旧回传的编号，第 5 阶段的短表写明教师看的是哪一版；作者说看的是旧初稿的，照上面第 4 条办，不登记到新初稿名下。
 - **中途改成交教师。** `teacher_handoff:"host"` 的章，作者中途决定这一章也交教师的，先记 `chapter_policy`，再登记回传。
 
@@ -7470,6 +7591,7 @@ python3 scripts/chapter_gate.py status 记录 --chapter-id 本章ID
 **确认**（`confirm`）。带 `chapter_id`、`stage`、`presentation_id`、`presentation_version`、`author_quote`、`source_ref`、`actor_role:"author"`、`mode:"human"`，必须对应当前待确认实例。
 
 - `source_ref` 写到具体哪一条消息（对话里第几条，或日期加时间），不只写“本次对话”或只写日期。同一条原话加同一个出处，已经确认过本章别的展示的，脚本照收，在返回里用 `same_words_as_confirmation_of` 标出先前那一次，`status` 里也列在 `repeated_confirmations`；见到了先核对作者是不是真对这一次展示回了话，作者真的又回了一句同样的话，出处写后面那一条。
+- 作者交回自己改过的稿子时随改稿说的“通过”，说的是他交回的那一版，不算对原来那一版的确认，不拿它给原来那一次展示记 `confirm`（r5.60）。初稿还在等确认、作者只交回改稿的，照“确认是什么意思”从第 4 阶段重开，把作者的稿子当新的一版初稿重新展示，等作者对这一次展示另回话。作者一起带回了对得上初稿的教师结果的，记初稿的确认凭的是把结果带回来这件事（“完整初稿以后”末段），也不是这句“通过”。把这句“通过”记成原来那一版初稿的确认，脚本照收，工坊自己审的章接着会被错当成例外办，这一处靠条文拦。
 - 最终阶段另传 `decision:"accept_final_version"`，并且作者原话整句是对当前稿的明确采纳才记，比如“定稿。”“采纳当前稿。”；前面带“不用改了”“好”“这一章”、后面带“开始下一章”的也算。“继续”等仅推进用语不足以表示采纳。推迟（“下午再定稿。”）、带条件（“第三场改完就采用。”）、疑问、否定、指别的版本（“定稿用前天那一版。”）或只指一部分（“开头一段采纳。”）的说法，以及脚本认不出来的说法，一律留在等待：含糊或暂缓时继续等待作者。脚本只认一小组整句说法，不声称能理解自然语言，“就这版吧”这类话也会多问一句。被挡时不替作者改写原话，问作者一句，作者回“定稿。”或“采纳当前稿。”即可。
 - 最后返回 `final_confirmation_recorded / record_existing_author_gate`，仍由既有流程记录实际 AUTHOR 与故事状态，不自动改正文。
 
@@ -7485,7 +7607,7 @@ python3 scripts/chapter_gate.py status 记录 --chapter-id 本章ID
 
 策略不允许时登记回传、不带视觉证据展示写前准备、不带回传展示审稿方案，报错会写明本章策略和 `chapter_policy` 这条出路。
 
-**脚本核得了什么，核不了什么。** 脚本只能核对记录关系：字段在不在、彼此对不对得上，不认证作者身份、原话真假或文学质量。手改 Markdown 记录时把作者原话、出处、身份一并编上去的，脚本看不出来；改已确认阶段的作者原话、把旧教师回传的绑定改成新初稿的、手工加一条 `chapter_policy`，也看不出来。Markdown 记录没有整文件校验；JSON 记录直接手改会被版本校验挡住，但用 `project_state.py commit` 整库写入不经过章节门的检查。脚本目前不拿确认记录去对照事件台账。所以写入只走 `learning_loop.py apply`，不手改，也不由手工整库覆盖。没有真实确认就保留等待；无法保存时说明未保存，不能虚构作者已通过。安装本流程本身不生成任何章节确认或作者定稿记录。
+**脚本核得了什么，核不了什么。** 脚本只能核对记录关系：字段在不在、彼此对不对得上，不认证作者身份、原话真假或文学质量。手改 Markdown 记录时把作者原话、出处、身份一并编上去的，脚本看不出来；改已确认阶段的作者原话、把旧教师回传的绑定改成新初稿的、手工加一条 `chapter_policy`，也看不出来。Markdown 记录没有整文件校验；JSON 记录直接手改会被版本校验挡住，但用 `project_state.py commit` 整库写入不经过章节门的检查。脚本目前不拿确认记录去对照事件台账。所以写入只走 `learning_loop.py apply`，不手改，也不由手工整库覆盖。登记的回传是不是教师的东西，脚本也分不出：把作者自己的稿子登记成 `teacher_return`，它照收，接着带这份回传展示审稿阶段也收；`reopen` 只要是已经到过的阶段都收。作者交回改稿的那几种时候（“确认是什么意思”），条文不让走的路脚本大多也收，要靠照条文做、照实记（r5.60 补记，只在合成材料上试过）。没有真实确认就保留等待；无法保存时说明未保存，不能虚构作者已通过。安装本流程本身不生成任何章节确认或作者定稿记录。
 
 ## 没有脚本时怎么记
 
@@ -7946,7 +8068,7 @@ r5.52 加的几个字段（都可以不写，不写就是默认）：`stacked_ma
 - `texts`：核对用的各章版本，`id` 到文件的相对路径，让每条证据的行号能复核。
 - `items`：每条一个 `id`，`kind` 是 `conflict`（两条规则打架）、`mismatch`（描述和正文对不上）、`collision`（新叫法撞上正文里的旧用法）、`stale`（同一份文件前后不一致）或 `exception`（登记过一次的例外，以后不再报）；`sides` 列两边：规则一边写 `source` 和 `where`（哪一节）、`quote`（原句），正文一边写 `text`、`line`、`quote`。`status` 是 `open`（待作者定，必须写 `ask` 和 `meanwhile`：定之前怎么办）、`decided`（写 `decided_by`：`who` 是 `author` 要有作者原话和出处，是 `workshop` 要写 `rule_applied` 是上面第 1 至 4 步的哪一步，第 5 步不能由工坊定）或 `closed`（写 `resolution`）。
 
-`python3 rule_register.py check rule-conflicts.json --texts-root <正文所在目录>` 核对结构、来源版本、规则一边的原句是否在那份文件里、正文一边的行号与原句，有问题就非零退出；`list --status open --markdown` 把待作者定的项列成核对单；`collide --texts-root <目录> --register rule-conflicts.json 提灯 行囊` 列出这些词在各章的已有用法（例词是随手写的）。程序核的是登记表自己说的话对不对得上，规则该不该留、作者怎么定，程序判断不了。
+`python3 scripts/rule_register.py check rule-conflicts.json --texts-root <正文所在目录>` 核对结构、来源版本、规则一边的原句是否在那份文件里、正文一边的行号与原句，有问题就非零退出；`list --status open --markdown` 把待作者定的项列成核对单；`collide --texts-root <目录> --register rule-conflicts.json 提灯 行囊` 列出这些词在各章的已有用法（例词是随手写的）。程序核的是登记表自己说的话对不对得上，规则该不该留、作者怎么定，程序判断不了。
 
 ## 衔接检查
 
@@ -8013,15 +8135,30 @@ r5.52 加的几个字段（都可以不写，不写就是默认）：`stacked_ma
 
 用账本记录时，单据和看法放在 `record.`、`belief.人物.` 开头的属性里，实际状态用不带前缀的属性。人物知道没知道某件事，记在那件事或那个物证上，属性写 `known_by.人物名`，值为 true、false 或“未知”；它和实际状态一样，要改成“知道”，需要正文写出他得知的那一刻（直接证据），或标为变化交作者裁定。账本可以单独成文件，也可以放进项目状态文件的 `data.facts`，模板见 事实账模板（fact-ledger-template.json）。
 
-**人物知情按故事时间核（r5.51）。** 故事时间和章节先后是两回事：倒叙、插叙的一场写在后面的章节里，故事时间却可能更早。比如第 2 章写甲十点才收到消息，第 3 章倒叙到九点，就不能拿第 2 章那一条说九点的甲已经知道。
+**人物知情按故事时间核。** 故事时间和章节先后是两回事：倒叙、插叙的一场写在后面的章节里，故事时间却可能更早。比如第 2 章写甲十点才收到消息，第 3 章倒叙到九点，就不能拿第 2 章那一条说九点的甲已经知道。
 
 - 怎么写时间：事实和主张都可以写 `time`（`"09:20"`，跨天写 `"D2 09:20"`）。一整章都在某段故事时间里的，账本的章节项可以写 `story_time`（`"D2"` 表示第二天一整天，或者 `{"from": "D2 08:00", "to": "D2 12:00"}`；D 是故事里的第几天，不是第几章，倒叙的一场写它发生的那天），没写 `time` 的事实就按它；本章自己的 `story_time` 写在 claims 文件顶层，或者写在账本里本章的章节项，给本章没写 `time` 的主张用（两处都写，以 claims 的为准；账本里本章登记的是另一版稿子（哈希和这一版对不上）或已废弃的稿子时，不沿用它的时间，要在 claims 里重写）。章级的 `story_time` 只在整章都在那段时间里时才写：没写自己 `time` 的一场一律按它算，章里有一场倒叙或插叙，那一场必须写自己的 `time`，否则它会被当成章级的时间来比（倒叙早于得知也会判一致）。故事跨了几天，每个 `time` 都写第几天（`D2 09:20`）：一边写 `D2 10:00`、一边只写 `09:00`，排不出先后，判待核；章节写了 `story_time: "D3"`、事实或主张的 `time` 却只写钟点，程序也不替它补第几天（章里可能有一场倒回别的日子），同样判待核。整本书都没写第几天，程序就当成同一天比，所以只有一天之内的故事可以不写。
-- `check` 怎样比 `known_by.人物`：证据仍只用当前章之前、已采纳、来源有效的事实；再按故事时间挑出这一场之前已经生效的那一条来比。最后一步把同一件事上已采纳的事实、本章自己写的变化（`change: true`、直接证据）和这一场，按写下的时间试所有排得出的先后（值只在写了变化的地方变；“这才知道”表示那之前还不知道，除非是同一刻讲了两遍；变成“未知”的不算变化）：怎么排都对不上，判冲突；有一种排法对得上，就不判冲突，至多待核；判一致还要求它依据的那条事实到这一场之间，排不进任何一次变成别的值的变化。已采纳的一条变化，前面已经是这个值（连写两次“忘了”，或者“还不知道”之后又写“忘了”），有两种读法：同一次讲了两遍，或者中间有一次反向的变化账上没记；两种读法都对不上才判冲突，只有那次没记下的变化讲得通的，判待核，最好请作者在账本里补上那次变化。事实太多、排序算不完的，也判待核。结论和账本、主张的书写顺序无关。这一场之后才生效的证据，不能支持“一致”。已采纳的那一条写的是得知的那一刻（`change: true`），这一场又早于它，判 `TIME_CONFLICT`：要改这一场，或者写出更早的获知、请作者改那一章。排不出先后的，判 `KNOWLEDGE_PENDING`（待核），交编辑或作者按正文判断：只知道章节先后；一边写了第几天、一边没写，或时间只写钟点、第几天不明；两段时间重叠，或同一时刻讲了两遍、分不清是不是同一次；这一场之前生效的几条谁在后排不出来、值又不同；证据只有晚于这一场的。补写或改准 `time`、`story_time` 后可以重跑；证据只有晚于这一场的，补了时间也还是待核，要编辑按正文判断。要让倒叙里更早的一场写他已经知道被报成冲突，账上要记得知的那一刻（`change: true`），或者记那之前他还不知道（值 `false`，写 `time`）；都没有，只能判待核。账本自查的事实链（`status`，以及 `check` 用的基线）对知情也按故事时间排：已采纳的倒叙章节写在后面、故事时间更早，写了故事时间的事实，和它之前最近的、也写了故事时间的那一条比，不算没标的改动；没写时间的事实仍按章节先后看。同一件事上已采纳的几条知情事实，怎么排先后都有一处值变了却没写变化（例如同一时刻写了知道又写不知道），报账本问题（`UNEXPLAINED_CHANGE`）。
+- `check` 怎样比 `known_by.人物`：证据仍只用当前章之前、已采纳、来源有效的事实；再按故事时间挑出这一场之前已经生效的那一条来比。最后一步把同一件事上已采纳的事实、本章自己写的变化（`change: true`、直接证据）和这一场，按写下的时间试所有排得出的先后（值只在写了变化的地方变；“这才知道”表示那之前还不知道，除非是同一刻讲了两遍；变成“未知”的不算变化）。结论和账本、主张的书写顺序无关。结果分四类：
+
+  | 结果 | 什么时候 | 怎么办 |
+  | --- | --- | --- |
+  | 冲突 | 怎么排都对不上。已采纳的那一条写的是得知的那一刻（`change: true`），这一场又早于它，判 `TIME_CONFLICT`。已采纳的一条变化，前面已经是这个值（连写两次“忘了”，或者“还不知道”之后又写“忘了”），有两种读法：同一次讲了两遍，或者中间有一次反向的变化账上没记；两种读法都对不上才判冲突 | 要改这一场，或者写出更早的获知、请作者改那一章 |
+  | 一致 | 有一种排法对得上，并且它依据的那条事实到这一场之间，排不进任何一次变成别的值的变化。这一场之后才生效的证据，不能支持“一致” | 不用处理 |
+  | 待核（`KNOWLEDGE_PENDING`） | 排不出先后的：只知道章节先后；一边写了第几天、一边没写，或时间只写钟点、第几天不明；两段时间重叠，或同一时刻讲了两遍、分不清是不是同一次；这一场之前生效的几条谁在后排不出来、值又不同；证据只有晚于这一场的。另有三种也判待核：有一种排法对得上、又够不上一致的；上面两种读法里只有那次没记下的变化讲得通的；事实太多、排序算不完的 | 交编辑或作者按正文判断。补写或改准 `time`、`story_time` 后可以重跑；证据只有晚于这一场的，补了时间也还是待核，要编辑按正文判断。只有那次没记下的变化讲得通的，最好请作者在账本里补上那次变化 |
+  | 账本问题（`UNEXPLAINED_CHANGE`） | 同一件事上已采纳的几条知情事实，怎么排先后都有一处值变了却没写变化（例如同一时刻写了知道又写不知道） | 先修账本，再重跑 |
+
+  要让倒叙里更早的一场写他已经知道被报成冲突，账上要记得知的那一刻（`change: true`），或者记那之前他还不知道（值 `false`，写 `time`）；都没有，只能判待核。
+- 账本自查的事实链（`status`，以及 `check` 用的基线）对知情也按故事时间排：已采纳的倒叙章节写在后面、故事时间更早，写了故事时间的事实，和它之前最近的、也写了故事时间的那一条比，不算没标的改动；没写时间的事实仍按章节先后看。
 - 同一章里：前面一场已经知道，后面一场才写他得知（`change: true`），判 `TIME_CONFLICT`，本章自相矛盾；本章写了他得知，后面一场又写回“还不知道”而没写变化，也一样。同一时刻讲两遍（换个视角再讲那一刻）不算。同一章的先后要各场各写各的 `time`；只写了本章的 `story_time`，排不出先后，判待核。本章自己写的得知还没有采纳，报告里只点名，不当证据；反过来，本章写的变化夹在这一场和一条已采纳的事实之间、能解释两者的出入（比如本章写他八点知道、九点喝药忘了，已采纳的前一章——故事时间更晚——写他十点重新得知），判待核，不判冲突；本章写的变化在已采纳的那一条之后、解释不了的，照样判冲突。
 - 不算他已经知道的：他的猜测、看法和误信（记在 `belief.人物.`），只有读者知道的（`known_by.读者`，它按阅读的先后算，不按故事时间），以及废稿、候选、摘要和计划里的事实。记在同一件事（同一个实体）上的这些，报告的 `notes` 会列出来，提醒不要拿来当证据；记在别的实体上的，程序不去找。照着误信行动不算矛盾：甲以为铜匣还在当铺，就去当铺，记他的看法，照常一致。
 - 提取主张时：人物在场不等于他知道；听人说了，不等于他信了，更不等于他知道真相；情绪、怀疑和打算不等于知道；“不知道”要正文写出来才记 `false`，正文没写就记“未知”。这几条参照 NarraWorld 论文给人物知识提取定的规则；那篇论文也把故事时间列为取用记忆的条件，但没有给出怎样比、也不讲倒叙，这里怎样比是工坊自己定的。
 - 程序只比提取出来的主张和写下的时间，并相信账本里每条事实写的层、章和来源。提取错了（把读者知道的记成人物知道，把听来的记成亲见，时间写错，跨天的故事没写第几天，有倒叙的章写了章级 `story_time` 而倒叙那一场没写自己的时间，把两件不同的事——知道铜匣被取走、知道是谁取走的——记在同一个实体和属性上，把只出现在废稿里的得知记成已采纳章节的事实），按时间的判断也会跟着错。
-- 这一版只改了知情。谁拿着东西、伤势、地点这类状态仍按章节先后比，倒叙里的同类问题还查不出来。
+- 按故事时间核的只有知情。谁拿着东西、伤势、地点这类状态仍按章节先后比，给它们写 `time` 程序也不看，倒叙里的同类问题还查不出来。倒叙章先这样记：
+  1. 倒叙部分里早于主线的持有、伤势、地点，不入主线的账：不提成这一章的主张；这一章采纳以后，也不写成这一章的事实，不为了过检查标 `change: true`。照原样提主张，程序拿它和主线上最新的状态比，报冲突，挡住交稿；标了变化入账，后面回到主线的章节会拿倒叙里的旧状态当基线，写对了反而报冲突；不标变化入账，报账本问题。
+  2. 在那一章记一句“倒叙，早于第几章，主线状态没变”，第几章填它倒回去的主线上那一章。记在账本里这一章的章节项（加一栏 `note`，程序不读这一栏）；不用账本文件的，记在这一章的章节记录里。
+  3. 冲突照这一句人工裁定。倒叙部分提到带持续状态的人和物，程序照旧弹持续状态提示（拿主线上的“骨裂”去问倒叙里那只还好好的手），裁定里写这一句，和倒叙部分对的是前面哪一章；已经提了主张、报了冲突的，不改正文，把倒叙部分那几条主张拿掉重跑，裁定照样写这一句。
+  4. 程序这时候不核倒叙部分。倒叙里的持有、伤势、地点和它那个时点的前文对不对得上，要人回到那几章对着读（上文“衔接检查”：先分开事件发生时间与章节呈现顺序）；没读的，照实写没核。倒叙部分的主张拿掉以后，这一章一条主张也不剩的，事实核对这一项是 `UNTESTED`（没比），照实这样记，不写成通过。
+  5. 倒叙里人物知不知道某件事不在此列，照上面按故事时间核。
 
 事实标成 `accepted`，其来源章也必须在 `chapters` 登记为 `accepted` 或 `author_confirmed`。来源章已废弃、尚未采纳或未登记时，程序报告 `LEDGER_PROBLEMS`，不会把该事实继续当基线；也不会退回同一属性的更早记录后给出“一致”。应先核对原文和作者决定，修正事实的层级或来源，再检查后文。
 
@@ -8068,7 +8205,7 @@ python3 scripts/fact_guard.py status /项目/facts.json --chapters-dir /项目/�
 
 有些状态一旦成立，会一直影响后面的场景，直到正文写出它改变：伤势、狭窄或封闭的地形、积水和火这类危险、谁拿着某件东西、谁知道某件事、东西怎样固定或坏到什么程度（缝死、焊死、锁住、摔裂）、还没处理的伏笔物件。续写和改稿时最容易丢的就是它们：上一章腿上中了刀，这一章跑得飞快；前面写吊桥只容一人通过，后面马车直接过了桥；前面写柜门的锁已经锈死，后面有人顺手拉开柜门。给东西写下一个状态词（锈死、焊死、锁住）之前，先往后找它还要被怎样用。
 
-人物的性别和叙述用的代词不标 persist；性别后来才揭晓的，揭晓那条写 `change: true` 并附原句，交作者定，这里的变化是记录从未知变成已知，不是人物变了（r5.49）。
+人物的性别和叙述用的代词不标 persist；性别后来才揭晓的，揭晓那条写 `change: true` 并附原句，交作者定，这里的变化是记录从未知变成已知，不是人物变了。
 
 在事实账里，把这类事实标为 `"persist": true`。之后 `fact_guard.py check` 核对新一章时，只要正文提到这个人物、地点或物件（按名字和别名），而本章的主张又没有回应这个状态，就会列出一条持续状态提示，交付门把它当作必须裁决的复核项：
 
@@ -8077,6 +8214,15 @@ python3 scripts/fact_guard.py status /项目/facts.json --chapters-dir /项目/�
 - 状态在本章确实变了（伤好了、水退了、东西交出去了）：把变化写成主张，附正文原句，交作者裁定。
 
 程序只按名字找，不判断这一章是否真的照顾到了状态，也找不到没用名字和别名提到的地方。
+
+“谁知道某件事”标 `persist` 以前，先看这几样代价（都是程序现在的做法）：
+
+- 提示挂在那件事或那样东西上，按它的名字和别名找，不看人物：正文一提到这样东西就弹一条要裁决的复核项，那个人物没出场也弹。
+- 名字按字面比：别名是单字或短词的，别的词里带着它也算提到（别名“信”，“相信”也命中）。
+- 本章有对同一个 `known_by.人物` 的主张才算回应；提了别的主张（比如谁拿着它）不算，提示照弹。
+- 知情的 `persist` 标上就一直有效：后来再记一条不带 `persist` 的知情事实（比如他已经知道了），提示也不停。伤势、持有这些只看最新的一条，最新一条没标就不再提示。
+
+所以“谁知道”只在这个人不知情是后面几场戏成立的前提时才标 `persist`；别的知情照常记事实、不标，靠提取主张时按故事时间核。
 
 **原创示例：**
 
@@ -8301,13 +8447,13 @@ python3 scripts/fact_guard.py status /项目/facts.json --chapters-dir /项目/�
 
 只有作者要求建库或项目已授权维护时才保存。正文、拆文报告、技法卡分别保存，原作材料不混入通用技能或跨作品偏好。
 
-先做轻量索引：卡片编号、机制名称、来源、适用场景、状态和实际路径。同一机制正文保留一个维护位置，索引只链接或定位，不复制多份。
+先做轻量索引：卡片编号、机制名称、来源、适用场景、管哪一样和检索标签（照技法卡模板（technique-card-template.md）卡头那两栏，拿不准的写“不确定”）、卡的状态（“候选，没试写”“在用”“归档”这些）和实际路径。索引里这几栏照卡头抄；卡头的技法名、管哪一样、检索标签或状态改了，同一次把索引那一行也改掉；两边对不上时以卡为准。按标签筛过以后，仍读卡上的“什么时候拿出来用”。同一机制正文保留一个维护位置，索引只链接或定位，不复制多份。
 
 跨文本归纳时先比较机制成立条件，再合并相近项；记录共同点与差异。多个榜单上的同一作品不算多个独立文本来源；跨文本重复出现也不证明市场效果或因果有效性。
 
-当前写作按场景检索少量有关卡片，无命中就继续原创。入库不自动生成新故事，也不把未采纳的应用升级成作者固定偏好。
+当前写作按场景检索少量有关卡片：先按索引的检索标签筛，再照卡上半开头写的读法挑卡、起草、写完自查；只用工坊的判断是“可用”的卡，状态是“候选，没试写”的、归档的、收进了规矩的不挑，作者说过不要、或者撤回过采纳的也不挑；一场最多用两张，挑最对的，其余命中的只在节拍卡上记一笔，不读进起草；无命中就继续原创。交稿时在正文外说明这一场用了哪张技法卡（编号、第几版）、为什么；作者只要正文的，这一句记在工作记录里，作者问起再说，用的卡作者还没看过、或者看过没定的，这时候也在正文外另说一句用了哪张；整章任务的，交稿时逐场说，各场用了哪张在节拍卡上照记。这一轮改过的卡也列在这里，照技法卡模板“改卡分轻重”；作者只要正文的，改过的卡那一句也在正文外另说，只说改了哪张卡的哪一句。列给作者看不算作者采纳。入库不自动生成新故事，也不把未采纳的应用升级成作者固定偏好。
 
-技法卡要写进对白专项（dialogue-craft.md）、分场规范（scene-dramaturgy.md）这些通用模块的，照技能维护（skill-evaluation.md）走新旧对照，例子另写，不带原作的人物、桥段和台词。技法卡和判断卡是两样东西，门槛各管各的：技法卡一处写全就可以留；判断卡照从改稿记录里学编辑判断“够候选的门槛，和“单薄””，五条都满足才够候选（第一条是至少三条案例、来自至少两场不同的戏），够不上的留作单薄的卡，只有一条案例的不做卡。
+技法卡要写进对白专项（dialogue-craft.md）、分场规范（scene-dramaturgy.md）这些通用模块的，照技能维护（skill-evaluation.md）走新旧对照，例子另写，不带原作的人物、桥段和台词。技法卡和判断卡是两样东西，门槛各管各的：技法卡一处写全就可以留；判断卡照从改稿记录里学编辑判断“够候选的门槛，和“单薄””，五条都满足才够候选（第一条是至少三条案例、来自至少两场不同的戏），够不上的留作单薄的卡，只有一条案例的不做卡。技法卡的状态里也有“候选”（“候选，没试写”），说的是留卡前的三样试写还没做，和判断卡的“候选”不是一回事。
 
 ## 进度、输出与降级
 
@@ -8362,16 +8508,17 @@ python3 scripts/fact_guard.py status /项目/facts.json --chapters-dir /项目/�
 | 字段 | 内容 |
 | --- | --- |
 | `id`、`project_id`、`group_id` | 稳定案例标识、当前作品分支标识、同一场景及近似改写的共同分组。 |
-| `task`、`tags` | 明确任务；字符串数组标注问题机制，如声源不清、机械删词、解释过度。章节流程里的一轮，`task` 统一写 `chapter_revision`，问题出在哪里写进标签；作者改过的节拍卡写 `scene_beat_revision`。学习循环的 `learn` 可以带 `tags`，替换这一轮起头时写的标签（r5.59）。 |
+| `task`、`tags` | 明确任务；字符串数组标注问题机制，如声源不清、机械删词、解释过度。章节流程里的一轮，`task` 统一写 `chapter_revision`，问题出在哪里写进标签；作者改过的节拍卡写 `scene_beat_revision`。学习循环的 `learn` 可以带 `tags`，替换这一轮起头时写的标签。 |
 | `status` | `candidate`、`teacher_approved`、`author_accepted`、`rejected`、`retired`。 |
 | `split` | `development`、`training`、`regression`、`holdout`、`evaluation`，用途明确分开。 |
 | `before`、`after` | 实际改前与改后全文；不以概括、虚构反例或整段杂糅日志冒充对照。 |
 | `decisions`、`why` | 取舍字符串数组，以及能对照正文检查的简短编辑依据。 |
 | `when`、`except` | 适用条件与例外字符串数组，保留限定、否定和不适用范围。 |
-| `source` | `{ref, version, reviewer, evidence}`：原始位置、实际版本、判断者与判断证据。可选 `reviewer_role`（writer/teacher/author）和 `reviewer_mode`（self_check/independent_agent/author_return/human），写明判断者的角色和评审方式；没有评审时填 `null`。学习循环登记的案例还带 `run_id`、`draft_sha256` 等绑定，还可能带 `after_by`（`author` 或 `writer`，改后文字是谁写的，宿主照实声明，脚本认证不了；r5.59）。 |
-| `author_acceptance` | 无作者接受依据时为 `null`；作者接受时为 `{quote, ref}`，保存原话和位置。带 `draft_sha256` 时写的是作者接受的那一版文字的哈希，必须等于 `hashes.after`。 |
+| `source` | `{ref, version, reviewer, evidence}`：原始位置、实际版本、判断者与判断证据。可选 `reviewer_role`（writer/teacher/author）和 `reviewer_mode`（self_check/independent_agent/author_return/human），写明判断者的角色和评审方式；没有评审时填 `null`。学习循环登记的案例还带 `run_id`、`draft_sha256` 等绑定，还可能带 `after_by`（`author` 或 `writer`，改后文字是谁写的，宿主照实声明，脚本认证不了）。 |
+| `author_acceptance` | 无作者接受依据时为 `null`；作者接受时为 `{quote, ref}`，保存原话和位置。带 `draft_sha256` 时写的是作者接受的那一版文字的哈希，必须等于 `hashes.after`。用学习循环 `case_accept` 补记的采纳，脚本另写两个键：`event_id` 指回那条补记事件，`check` 靠它核这次采纳，删掉它 `check` 报 `invalid`，案例不再被检索；`run_review_count` 记补记时那一轮已有几条评审，作者后来对这段文字提了否定意见，脚本靠它让先前的采纳作废。这两个键不用手填，整理或迁移案例时不要手工删改。 |
 | `hashes` | `{before, after}`：分别对两段实际 UTF-8 文字计算 SHA256，不手填或猜测。 |
-| `revision`（可选） | 一处改稿的经过：原稿句、提过的改法和去向、作者的话到哪一层、原句保留的依据、改错和纠回、最后的句子和复查；键照从改稿记录里学编辑判断和它的模板。没有这一段的案例照常有效，旧案例不用补；`check` 不核这一段的内容；学习循环 `learn` 生成的案例不带它。 |
+| `status_history`、`status_reason` | 脚本写的，不用手填，也不要手工删。`case_accept` 补记采纳时，把补记以前的状态追加进 `status_history`，每条是 `{status, replaced_by}`，`replaced_by` 是那条补记事件的编号；补记以前已经带着作者采纳的，那份 `author_acceptance` 一起留在这一条里。`case_status` 把案例记成 `rejected` 或 `retired` 时，理由写进 `status_reason`，不往 `status_history` 里加。模板是候选占位，不带这两个键。判断卡里也有一个 `status_history`，形状不同，不是这一个（从改稿记录里学编辑判断的模板）。 |
+| `revision`（可选） | 指到这一处改稿的经过。开了从改稿记录里学编辑判断的书，改稿的经过（原稿句、提过的改法和去向、作者的话到哪一层、原句保留的依据、改错和纠回、最后的句子和复查）只放判断卡文件那一份，以那一份为准；这里只写改稿案例的编号，写成 `{"case_ids": ["改稿案例的编号"]}`，一条示范对着几处改稿的都列上。没有这一段的案例照常有效，旧案例不用补；`check` 不核这一段的内容；学习循环 `learn` 生成的案例不带它，编号只记在判断卡文件那一头。以前把整段经过嵌在这里的案例照常有效；取用时要知道，`select` 会把嵌着的整段（提过的改法、作者的原话）一起交给写作者，不想这样的，把整段挪进判断卡文件，这里换成编号。 |
 
 `teacher_approved` 必须有教师实际判断及来源；它表示可参考的教师示范，不表示作者接受。教师可以是作者带回结果的那一位（`reviewer_mode` 为 `author_return`），可以是宿主自己调用的独立评审（`independent_agent`），也可以是真人直接给的意见（`human`）；三种都记成 `teacher_approved`，取用时看 `reviewer_mode` 分辨。`author_accepted` 必须有能指向当前案例及版本的作者原话；沉默、继续下一章、自评分或多数教师赞成都不算。哈希只核对内容一致性，不认证来源真实。
 
@@ -8396,19 +8543,20 @@ python3 scripts/fact_guard.py status /项目/facts.json --chapters-dir /项目/�
 4. 符合筛选的案例超过三条时，排在后面的不会无声无息：`index` 只给元数据，把符合筛选的案例全部列出来，各带适用条件和例外；`select` 和学习循环的 `context`、`start` 一次最多取三条，没取的编号列在返回的 `not_selected` 里，`eligible_count` 是总数。要看或要用其中某一条，先在 `index` 里读它的条件，再用 `--case-id` 点名，可以重复，一次仍不超过三条。`--limit`、`--case-id` 只给 `select` 用。
 5. 永远排除 `holdout`、`evaluation`，以及同项目中这些案例所属的整个 `group_id`；同组的其他版本即使标为训练或开发，也不能绕过隔离。评测时另排除本轮任务组。
 6. 阅读选中的改前、改后、取舍、依据、条件、例外和来源。重新判断它们与新语境的关系，再决定怎样写；不能机械复制句子、动作或删词办法。
-7. **选中的示范来自学习循环的，把作者的原话一起交给写作者（r5.59）。** 协调者用 `learning_loop.py show --run-id 那一轮 --brief`（那一轮是案例的 `source.run_id`），读出那一轮作者本人的评审问题，把作者的原话和对应的原句、改句一起交给写作者，作者的原话排在工坊整理的四栏前面。只带被选中那一条所在的那一轮，不带留出组。
+7. **选中的示范来自学习循环的，把作者的原话一起交给写作者。** 协调者用 `learning_loop.py show --run-id 那一轮 --brief`（那一轮是案例的 `source.run_id`），读出那一轮作者本人的评审问题，把作者的原话和对应的原句、改句一起交给写作者，作者的原话排在工坊整理的四栏前面。只带被选中那一条所在的那一轮，不带留出组。
 8. 不迁移示范中的人物、伤势、能力、道具、动机和剧情事实。保留作者锁定原句；必要时采用“原文无需修改”的示范，不为了学习案例强行动刀。
 
 在技能根目录运行只读工具，路径替换为真实项目状态；具体选项用 `--help` 核对：
 
 ```bash
 python3 scripts/demonstration_memory.py check /项目目录/story-state.json
-python3 scripts/demonstration_memory.py index /项目目录/story-state.json --project-id 本书分支 --task dialogue_revision --exclude-group 当前场景组
-python3 scripts/demonstration_memory.py select /项目目录/story-state.json --project-id 本书分支 --task dialogue_revision --limit 3
+# --task 写案例里存的任务名，逐字相同才取得到：章节流程里的一轮是 chapter_revision，作者改过的节拍卡是 scene_beat_revision。
+python3 scripts/demonstration_memory.py index /项目目录/story-state.json --project-id 本书分支 --task chapter_revision --exclude-group 当前场景组
+python3 scripts/demonstration_memory.py select /项目目录/story-state.json --project-id 本书分支 --task chapter_revision --limit 3
 # 点名取 not_selected 里的某一条；可重复传 --case-id，一次不超过三条。
-python3 scripts/demonstration_memory.py select /项目目录/story-state.json --project-id 本书分支 --task dialogue_revision --case-id 案例编号
+python3 scripts/demonstration_memory.py select /项目目录/story-state.json --project-id 本书分支 --task chapter_revision --case-id 案例编号
 # 评测必须排除当前任务组；可重复传 --exclude-group 排除多个相关组。
-python3 scripts/demonstration_memory.py select /项目目录/story-state.json --project-id 本书分支 --task dialogue_revision --evaluation --exclude-group 场景甲 --limit 3
+python3 scripts/demonstration_memory.py select /项目目录/story-state.json --project-id 本书分支 --task chapter_revision --evaluation --exclude-group 场景甲 --limit 3
 ```
 
 `check` 校验结构、内容哈希，以及上面“认可跟着文字走”的几项绑定，不证明文学有效或来源真实。`index` 只返回已过滤条目的标识、分组、任务、标签、状态、适用条件、例外和评审方式（有 `after_by` 的连同它），不返回原稿、成稿、依据或认可原话；`select` 再返回适用示范。两者过滤留出整组及其改前改后互相重复的文本，近似改写仍需人工核对。脚本不调用模型、不自动认定认可、不改正文、不写状态。索引不存在、未开启、无相关项或读取失败时照常完成可做的写作，内部记录“示范未加载”及原因；不假称已参考。只要正文时不向正文追加加载清单。
@@ -8417,12 +8565,12 @@ python3 scripts/demonstration_memory.py select /项目目录/story-state.json --
 
 - 在作者已有持续积累授权内，自动整理有价值的实际修改、取舍或明确认可；不每句都存，也不要求作者先填表。教师单独认可可登记为 `teacher_approved`；作者尚未选择时不得提升状态。
 - **先后顺序。** 作者对这一稿的明确采纳先到的，先记采纳再登记案例；先登记、作者后来才采纳的，用学习循环的 `case_accept` 给已有案例补记，带作者原话、出处和案例改后文字的哈希，旧状态留在案例的 `status_history` 里。作者在章节门作了最终采纳的，补记要求章节门那一关已经确认，并且绑的是同一份稿子。同一轮的终稿只登记一条案例；案例退役以后，可以从同一轮另登一条收窄的，旧的留在历史里（下面“示范被用错以后”）。操作见学习循环（learning-loop.md）第 8 步。
-- **示范被用错以后（r5.59）。**
+- **示范被用错以后。**
   1. 作者指出某条示范用错了的，在作者那条意见里写上示范编号，当时就回头看那条示范的条件和例外。
-  2. 要收窄的，先用 `case_status` 退役，理由写哪一轮哪一条意见。
-  3. 再从原来那一轮另登一条收窄的，新写的条件和例外在这一轮结尾列给作者看；旧的留在历史里。
-  4. 新案例的状态，照原来那一轮记着的作者采纳办：采纳记在那一轮上的（`author_accept`），新案例照脚本记成作者认可，因为作者认可的是那一稿文字，条件和例外本来就是工坊整理的（上文“最小案例契约”表下“案例的依据、条件、例外和取舍四栏”那一段）；采纳只记在旧案例上的（`case_accept`），新案例停在候选，等作者对新案例说了话，再用 `case_accept` 补记，不把旧案例上的原话搬过来。
-  5. 不因为一次用错就自动退役。
+  2. 先分清是哪一种：条件和例外本来写着、是取用时漏看了的，案例不动；条件或例外里确实缺了一条的，才收窄。不因为一次用错就自动退役。
+  3. 要收窄的，先用 `case_status` 退役，理由写哪一轮哪一条意见。
+  4. 再从原来那一轮另登一条收窄的，新写的条件和例外在这一轮结尾列给作者看；旧的留在历史里。
+  5. 新案例的状态由脚本照原来那一轮的记录定：采纳记在那一轮上的（`author_accept`），新案例照脚本记成作者认可，因为作者认可的是那一稿文字，条件和例外本来就是工坊整理的（上文“最小案例契约”表下“案例的依据、条件、例外和取舍四栏”那一段）；采纳只记在旧案例上的（`case_accept`），不把旧案例上的原话搬过来：那一轮有教师通过的，新案例是教师认可，照样进检索；那一轮只有自查的，新案例停在候选。这两种都等作者对新案例说了话，再用 `case_accept` 补记。
 - 已启用学习循环的项目，案例状态只经学习循环的事件改变（`learn`、`case_accept`、`case_status`）。整份提交只用于手工建档的案例，不用它把候选改成认可。
 - 缺少可读改前、改后或绑定版本的判断证据时，保留待补事项，不编造可检索示范。只指出问题而未决定改法时，保留问题，不虚构认可稿。
 - 原文无需改动时允许 `before == after`，记录保留决定和依据；不可人为制造差异。相似问题优先补充证据、条件与例外，避免重复灌入同一改法。
@@ -8907,11 +9055,23 @@ python3 scripts/dialogue_lint/run_lint.py apply 章稿.txt 请求.json 模型候
 
 连载长篇的工作卡另记三项：对手（人、组织或环境）此刻的目标与这一章的可见动作或反应；主角的主动选择和遇到的实际阻力；本章结束时局势、资源、关系或代价发生了什么变化。三项都写不出来时，先回看 连载规划（serial-production.md） 的“阶段推进回看”，再动笔。三项之后接 张力与代价 的五问：谁得到或失去了什么、哪个旧期待兑现了，主角在哪里两难，对手有没有脸，压力最高的一句在哪，留下哪个没答的问题；再看一眼谁在兜底——比主角强的人能不能替他办成这一章的关键目标，主角的本事和选择改不改变结果。
 
-**落笔前备料。** 写或重写一整章，正文起草前按 分场戏剧张力与正文具象化（scene-dramaturgy.md） 先填 分场节拍卡（scene-beat-card.md），对齐四步戏剧节拍与道具锚点，再生成正文（CON-011）。同时填一张 声音样本与现场素材卡：摘两三段作者自己的原文，挑和这一章场面相近的，看清句子多长、人物说话省掉什么又说出口什么、作者挑哪类细节；每个核心场列出现场看得见、摸得到的东西，作者给了参考图就照图里看得见的写，本书 灵感库（inspiration-library.md） 里挑中的条目也用上，没有图就从设定、大纲和前文里找本来就在场的东西（`visual_required` 按开着办的，没有图先停在写前准备，等作者定这一章怎么办，见 每章七阶段与作者确认）。前文借过图的人和地方，照前文和人物卡写，出处写前文，不说重新看过图（灵感库（inspiration-library.md）“采用以后：跨章接续”）。改作者的旧稿，原稿本身就是声音样本。这是宪法 CON-012“先备料，后落笔”：检查清单里声明 `voice_material`，交付门在开始时冻结这张卡，样本没有来源、核心场的素材没写出处都不过。备好料以后，按 风格卡（style-cards.md） 逐场识别一次：对得上就加载那几张的方向，对不上不加载，作者的原文和口吻表优先。
+**落笔前备料。** 写或重写一整章，正文起草前按 分场戏剧张力与正文具象化（scene-dramaturgy.md） 先填 分场节拍卡（scene-beat-card.md），对齐四步戏剧节拍与道具锚点，再生成正文（CON-011）。同时填一张 声音样本与现场素材卡：摘两三段作者自己的原文，挑和这一章场面相近的，看清句子多长、人物说话省掉什么又说出口什么、作者挑哪类细节；每个核心场列出现场看得见、摸得到的东西，作者给了参考图就照图里看得见的写，本书 灵感库（inspiration-library.md） 里挑中的条目也用上，没有图就从设定、大纲和前文里找本来就在场的东西（`visual_required` 按开着办的，没有图先停在写前准备，等作者定这一章怎么办，见 每章七阶段与作者确认）。前文借过图的人和地方，照前文和人物卡写，出处写前文，不说重新看过图（灵感库（inspiration-library.md）“采用以后：跨章接续”）。改作者的旧稿，原稿本身就是声音样本。这是宪法 CON-012“先备料，后落笔”：检查清单里声明 `voice_material`，交付门在开始时冻结这张卡，样本没有来源、核心场的素材没写出处都不过。备好料以后，按 风格卡（style-cards.md） 逐场识别一次：有作者原文样本或本书文风卡的，底色和整体文风两层默认不挑，只看场景层；对得上就加载那几张的方向，对不上不加载，作者的原文和口吻表优先。
+
+**用技法卡**（r5.60，本书有技法库时）：本书的项目资料里存着技法卡（长短篇拆文与技法库“按需建立与维护技法库”）才读这一段；没有的照常写，不为这一段建库。一张技法卡（technique-card-template.md）分三个时候读，各读哪几栏以卡上半开头写的为准：
+
+- 挑卡的时候（落笔前，照节拍卡和对白工作卡找）：先按索引上的“管哪一样”和检索标签筛，再看卡头的状态和工坊的判断，读“什么时候拿出来用”“失效情境”两栏。只挑工坊的判断是“可用”的卡；状态是“候选，没试写”、归档、收进了规矩的不挑。也看卡最底下一块“作者采纳状态”一栏：作者说过不要、或者撤回过采纳的卡不挑，工坊的判断是“可用”也不挑，作者以后又明说要用的，照作者新的话办；这一栏是“没给作者看”或“作者看过、没定”的，工坊的判断是“可用”的可以拿来写。一场最多用两张，挑最对的；其余命中的只在节拍卡“这一场用的技法卡”一栏记一笔，不读进起草（没有节拍卡的任务，记在工作记录里）。没有对得上的照常原创，不为用上卡去凑。
+- 起草的时候：只读卡上写明起草时读的那几栏（作用链、成立条件、在本书怎样重新实现这些），另读一句固定的话：“不搬原作的人物、台词和桥段。”反面的三栏（“失效情境”“用过头的样子”“不可搬用的”）不读，原作的情形、反例和新写的演示也不读。“在本书怎样重新实现”里写着哪一样缺了就停的，停下来先问作者，不硬用。照卡写时带出本书没有的事实、称呼、规矩的，也记进下文的新增设定清单，不写成本书的设定。
+- 写完自查的时候（交稿以前）：拿“用过头的样子”核一遍；对着“不可搬用的”整栏看有没有搬原作的东西；看作用链在这一场走到没有：信息、关系、情绪或局势真的变了，还是只换了几个词。没走到的，先看这一场是不是落在了失效情境里，不为了走到硬补；怎样记照卡上半开头“写完自查的时候”一条。这一步只核有没有照做，不判写得好不好。
+
+先后：参考来的写法只是候选方法，本书既有文风和作者这一轮的要求照旧在前（参考拆解（reference-study.md））；工坊的模块（对白专项（dialogue-craft.md）、分场规范（scene-dramaturgy.md）这些）在卡前面，卡和模块说法不一样时，把两边的原句列给作者，作者定以前照模块办；同一处做法上，作者采纳过的本书技法卡先于通用风格卡（style-cards.md）。一场已经挂了技法卡的，这一场的风格卡场景层最多一张。
+
+交稿时在正文外说明这一场用了哪张技法卡（编号、第几版）、为什么，整章逐场说，节拍卡上照记；挑定了、起草时停下没用的，照实说没用和为什么，冻结了的节拍卡不回头改。作者只要正文的，这一句记在工作记录里，作者问起再说。例外有两样：这一轮只收窄改过的卡（技法卡模板“改卡分轻重”），这一章用没用到它，都告诉作者改了哪张卡的哪一句，作者只要正文时也在正文外另说这一句；这一场用的卡，“作者采纳状态”一栏是“没给作者看”或“作者看过、没定”的，作者只要正文时也在正文外另说一句，只说用了哪张。列给作者看不算作者采纳。
+
+起草时不读反面的几栏，是怕反面的话写得越具体、越容易被勾着写出来；这一点在工坊里没有验证过，这一段的用法也没有在真实章节上用过。
 
 **起草时看着卡、样本和素材写。** 坚持晚进早出（Late in, Early out）；每场重头对手戏开场 300 字内建立感官与道具锚点；不写连续多段脱离物理动作的纯对话（Talking Heads）；场景和章末不写总结性陈词。没有在场阻力、也没有什么变化的，压成 100—200 字的过场；兑现、靠近、停留、探索这类场靠变化立住，可以展开写（CON-011）。这些是交稿时要做到的；写的时候顺着样本的口吻和素材里的东西写，不逐条对着清单凑。台词从说话的人嘴里出来（声口）：他是谁，此刻对谁说、为什么说、急不急；叙述用的词不进他的嘴（语域错位），对方看得见、刚说过的东西他常常不说全，自己的意思和那个动词留着；看得见的东西有的人也会说出口；他身份里本来就说的术语、行话照说。危险当口和刚脱险的时候，人先对眼前的人和事出声（喊人、问伤、骂、哄、道谢），钱、规矩、下一步往后放，只写会影响这一场的，可以有意不出声，场面紧时不往里塞话、该喊的照喊（r5.54 改），不为此往场里添话、添事；有新出场的人开口、三人以上同场、险事刚过或家常的场面，起草前先读 对白专项（dialogue-craft.md） 的“两件事分开做”“一段对白的最小工作卡”“这一刻会出什么声”“顺着回应改”“话里带着他此刻的态度”五节（r5.53 起读中间三节，r5.54 加前后两节）。两件事分开（r5.54，对白专项“两件事分开做”）。谁出声、有没有不办事的来回，照节拍卡“场上的人声”一栏写；卡上没有的人声起草时想加，先看它带没带出新的事实、规矩、数目、称呼，带出了就照下文登记、列给作者；卡不改，加的人声也记进那张清单（下文“新增设定清单”）。每句话出口以前过一遍句内：他此刻对这个人会怎么说。节拍、大纲里的“某某说了某事”是事，不是话，出口的那一句重新想。话多话少跟着人走，不立句数；台词量工坊不判。反过来，叙述可以贴着人物、带着他的口气写，只是别越出他的视角。
 
-**写完以后查改。** 按 修改的五道工序（revision-passes.md） 走五遍：先跑扫描、删冗余，再按人物分栏读台词、理动作段，最后朗读。分场结论、模板腔、标点和语感的检查都在这时做。作者开了新章全流程的，初稿先交作者，这五遍放到第 5、6 阶段：`review` 定位和计划，`revision` 做获准的删改和新稿复查（每章七阶段与作者确认，r5.53）。
+**写完以后查改。** 按 修改的五道工序（revision-passes.md） 走五遍：先跑扫描、删冗余，再按人物分栏读台词、理动作段，最后朗读。分场结论、模板腔、标点和语感的检查都在这时做。作者开了新章全流程的，初稿先交作者，这五遍放到第 5、6 阶段：`review` 定位和计划，`revision` 做获准的删改和新稿复查（每章七阶段与作者确认，r5.53）。挂了技法卡的场，交稿以前另照上文“用技法卡”里写完自查那一条核一遍（r5.60）。
 
 区分普通现场细节、会延续到后文的新事实、改变已定主线或能力边界的决定。第一类可直接创作；第二类写后在已授权的项目维护中登记为草稿增量（作者设下的人物，性别不算普通现场细节，见人物（characters.md）“性别和代词”；作者让工坊起的人物和路人，性别由工坊定，按这一类登记为候选）；第三类遵守作者既定决定，无法兼容时先处理不受影响部分。新能力、终极身世或新主线不得借章末钩子偷偷定案。
 
@@ -9191,9 +9351,10 @@ python3 scripts/dialogue_lint/run_lint.py apply 章稿.txt 请求.json 模型候
      ```
 
      只列碰到这几样的，别的改动用一句话说类型和大约几处；不打分；没有可列的，写“没有碰到这几样的改动”，再写依据（比如“只调了标点和两处语序”）。整章条目多时，先列必须保住的、新加的和拿掉的事实，其余写条数，完整清单留在工作记录；聊天里没有工作记录，就写明其余几条没有逐条列、要看可以再要，作者问起时对着原稿和修订稿逐条整理。不写流程用语（哈希、状态名、脚本名）。
+   - **用了哪张技法卡、这一轮改过的卡**（r5.60）：这一次改写照技法卡写的（怎样挑、怎样读照正文与场景“用技法卡”，改写照起草的读法读卡），写哪一场用了哪张（编号、第几版）、为什么，整章逐场说。这一轮只收窄改过的卡，这一次用没用到都列一句，写改了哪张卡的哪一句（照技法卡模板（technique-card-template.md）“改卡分轻重”）。列给作者看不算作者采纳。两样都没有的，不写这一项。
    - **没验证的**：没跑脚本（聊天环境里是人工对照），没读前后文，没看作者的文风样本，风格包没附，等等。扫描命中数不写成改好的证据；要提，只写“这些字面说法在修订稿里不在了”。
 
-   作者说“只要正文”时，只交正文，这几行留在工作记录里，作者问起再给；聊天里没有工作记录，作者过后问起，对着原稿和交出的正文重新整理，说明是事后整理的。作者没这样说时，附在正文后面：说明本身不超过十行，待判断的变化另起一块，一处一行。这份说明是写稿一方的自述，程序核不了它对不对，作者读原稿和修订稿定。
+   作者说“只要正文”时，只交正文，这几行留在工作记录里，作者问起再给；聊天里没有工作记录，作者过后问起，对着原稿和交出的正文重新整理，说明是事后整理的。例外有两样（r5.60）：这一轮有只收窄改过的技法卡的，作者只要正文时也在正文外另说一句，只说改了哪张卡的哪一句；这一次用的技法卡作者还没看过、或者看过没定的，也在正文外另说一句，只说用了哪张。两句都不插进正文；别的卡用了哪张那一句照旧留在工作记录里。作者没这样说时，附在正文后面：说明本身不超过十行，待判断的变化另起一块，一处一行。这份说明是写稿一方的自述，程序核不了它对不对，作者读原稿和修订稿定。
 
 **原创示例：治长段，不改出碎句。**
 
@@ -9271,7 +9432,8 @@ python3 scripts/dialogue_lint/run_lint.py apply 章稿.txt 请求.json 模型候
 ## 谁来开、记在哪
 
 - **开启**：作者明说要这本书从改稿记录里学，或者要照判断卡自审。只管这本书，记在作品档案“协作策略”一行，带作者原话和日期。作者没说的，不因为开了学习循环或示范记忆就开这一项。
-- **记在哪**：改稿案例、判断卡和命中账放在作品目录里单独一份文件（下面叫判断卡文件），照 模板（editorial-judgment-template.json） 建，PROJECT 里写明它在哪。模板里每样只画了一份的形状；文件里放两个按编号索引的对象：`cases` 放改稿案例，每条照模板的 `revision` 段填；`cards` 放判断卡，每张照 `judgment_card` 填，命中账在卡里。每一章的自审单另存一个文件，放在判断卡文件旁边，内容是一组照模板 `self_audit` 的 `finding` 填的项。案例当不当示范用，每条另写 `status`，取值和示范记忆（demonstration-learning.md）的案例一样，没有作者针对这一处的原话的写 `candidate`。判断卡文件跟着这本书的资料放，不放进作者改法累计的 `assets/project-packs/_author/`；通用包只带这一页和模板，不带哪本书的卡。
+- **记在哪**：改稿案例、判断卡和命中账放在作品目录里单独一份文件（下面叫判断卡文件），照 模板（editorial-judgment-template.json） 建，PROJECT 里写明它在哪。模板顶层就是这份文件存档的样子：`schema` 照留；`cases` 放改稿案例，`cards` 放判断卡，都按编号放，键就是那一条自己的 `id`，模板里各画了一条；命中账在卡里。模板里的 `note`、`values` 和 `self_audit` 是给填的人看的（`self_audit` 是自审和对账记进学习循环时多带的键，见“用现有的记录怎么记”），不是存档的内容，建档时可以删掉。案例当不当示范用，每条另写 `status`，取值和示范记忆（demonstration-learning.md）的案例一样，没有作者针对这一处的原话的写 `candidate`；它和 `final.status`（落稿那一版是作者定稿、候选还是待定）是两回事。判断卡文件跟着这本书的资料放，不放进作者改法累计的 `assets/project-packs/_author/`；通用包只带这一页和模板，不带哪本书的卡。
+- **自审单放在哪**：每一章的自审单另存一份文件，放在判断卡文件旁边。它是给作者看的单子（Markdown），栏目和分段照下文“交教师以前的自审”，不是一组 `finding`；学习记录里只存它的哈希和自审那条评审（见“用现有的记录怎么记”）。
 - **只管这本书**：卡从这本书的案例里来，只用在这本书上。作者要把哪一条用到别的书上，照 作者偏好（author-preferences.md）“作者改法累计”另记，不搬卡。
 - **停用**：作者说不要了就停。卡和案例留着当历史，不再自审，不再记账。
 
@@ -9291,11 +9453,11 @@ python3 scripts/dialogue_lint/run_lint.py apply 章稿.txt 请求.json 模型候
 
 改动的类别沿用 句式专项（sentence-craft.md）“语感：搭配、照应与叫法”做法第 1 条的四类：纯表达、消歧、补信息、改状态，不另立分类。
 
-不是每一句都记。只记下面三种容易丢的，和作者逐处表过态的。整理是工坊的事：定稿与记录阶段，从这一章的记录里按处整理，一条教师意见或一条自审项，加上它的取舍、落稿和复查，就是一条案例；不要作者填表。
+不是每一句都记。只记下面三种容易丢的，和作者逐处表过态的。作者逐处表过态、又不属于下面三种的，`kind` 标作者的去向：`adopted_change`（提的改法作者采纳了，全部或一部分）、`rejected_change`（作者拒绝了）、`undecided`（作者说了暂缓，或者看了还没定）。整理是工坊的事：定稿与记录阶段，从这一章的记录里按处整理，一条教师意见或一条自审项，加上它的取舍、落稿和复查，就是一条案例；不要作者填表。
 
 ## 三种容易丢的证据
 
-示范案例本来只有一组改前、改后，中间的东西没有地方放。下面三种，各在模板的 `revision` 段里多记一样东西。
+示范案例本来只有一组改前、改后，中间的东西没有地方放。下面三种，各在改稿案例里多记一样东西（模板 `cases` 里画的那一条）。
 
 - **看着顺，其实丢了东西**（`smooth_but_lossy`）。每条改法旁边记三样：多了什么，丢了什么，丢了东西是谁说的（带原话和出处）。“谁说的”单记：模型评判、模型读者、工坊自查、教师、作者，各是各的，不并成“都觉得”。没有人说过、只是两稿对读看出来的，写“对读”，不写成谁的判断。被否掉的改法也留着，标明去向，不删。
 - **作者要求原句保留**（`keep_original`）。存成一条改前等于改后的案例（示范记忆（demonstration-learning.md）本来就允许原文无需改动的案例），多记一个 `keep` 段：依据是哪一种，管多大范围，此后哪一版哪一行还在。依据分六种，不混在一起，只有头一种是作者逐处点名的：作者点名这一句；作者只说了整章的话；任务单里写着要保护（工坊没核实）；教师以外的审稿人建议不动、作者定了稿；工坊复核以后定的；检查工具报了、判断以后按例外留着。有人提过改法而没有改的，那条改法照样留在案例里。
@@ -9303,7 +9465,7 @@ python3 scripts/dialogue_lint/run_lint.py apply 章稿.txt 请求.json 模型候
 
 三种各有一条最低要求，达不到就不标成那一种：标“丢了东西”的，要写明丢了什么、谁说的；标“保留”的，要写明依据是哪一种、原句现在在哪；标“改错纠回”的，至少一条改错的记录写着错在哪、谁指出的，还要有改后的复查。
 
-案例要当作者认可的示范来用，照 示范记忆（demonstration-learning.md） 的规矩：要有指向这一处、这一版的作者原话。作者只对整章说过一句“定稿”的，作者的话记成对整章说的话，案例保持候选；整章定稿算不算对其中每一句的认可，作者没说以前按不算记。两种案例的口径不一样（r5.59）：学习循环（learning-loop.md）登记的案例管整章，整章“定稿”是对整章那份文字的采纳；这一页的改稿案例管一处，要作者针对这一处的话才算认可。同一处在两份记录里状态不同，是正常的。
+案例要当作者认可的示范来用，照 示范记忆（demonstration-learning.md） 的规矩：要有指向这一处、这一版的作者原话。作者只对整章说过一句“定稿”的，作者的话记成对整章说的话，案例保持候选；整章定稿算不算对其中每一句的认可，作者没说以前按不算记。两种案例的口径不一样：学习循环（learning-loop.md）登记的案例管整章，整章“定稿”是对整章那份文字的采纳；这一页的改稿案例管一处，要作者针对这一处的话才算认可。同一处在两份记录里状态不同，是正常的。
 
 ## 判断卡
 
@@ -9366,12 +9528,12 @@ python3 scripts/dialogue_lint/run_lint.py apply 章稿.txt 请求.json 模型候
 - **已写进本书规则**：工坊把认可的卡写进本书的规则文件，写进哪一份由作者定；规则条目里留卡的编号，卡里记规则的位置。从这时起它是本书规则，写稿时照它写；卡留着当出处和账本。
 
 作者认可了、还没写进本书规则的卡，照候选卡办：写稿时不照它写，只在自审时读。已写进本书规则的卡，自审时也读，用来接着记命中账。
-- **停用**：作者撤回，或者命中账显示它不对（见“命中账”），或者被新卡取代。记原因；规则文件里对应的条目一起撤，旧内容留在历史里。作者撤回而停用的卡，不换个编号重做同一个判断（r5.59）。有了停用以后新出现的、来自别的章或别的场的证据，可以再提，照作者偏好（author-preferences.md）“从一次纠错提炼规则”第 3 步那样，把上次停用的日期和作者原话放在最前面。
-- **作者收回某一章的采纳、或者否定某一稿以后（r5.59）**：工坊只做“命中账”里已经许可的那一步：按证据类别拿掉失效的依据，重算证据厚薄。“留下”一类出自那一稿的（定稿里原句留着），随整章采纳一起失效；“原话”一类（作者针对这一处的逐字原话）不因为收回整章采纳而失效，照留。拿掉以后够不上候选的，降回单薄；只剩一条案例或者一条不剩的，写“依据已失效，只留作历史”。命中账记一行，写明原因。卡的状态（作者认可、已写进本书规则、停用）工坊不自己动，列给作者，附上作者收回采纳的原话和受影响的案例编号；已写进本书规则的，规则文件里的条目等作者定了再动。
+- **停用**：作者撤回，或者命中账显示它不对（见“命中账”），或者被新卡取代。记原因；规则文件里对应的条目一起撤，旧内容留在历史里。作者撤回而停用的卡，不换个编号重做同一个判断。有了停用以后新出现的、来自别的章或别的场的证据，可以再提，照作者偏好（author-preferences.md）“从一次纠错提炼规则”第 3 步那样，把上次停用的日期和作者原话放在最前面。
+- **作者收回某一章的采纳、或者否定某一稿以后**：工坊只做“命中账”里已经许可的那一步：按证据类别拿掉失效的依据，重算证据厚薄。“留下”一类出自那一稿的（定稿里原句留着），随整章采纳一起失效；“原话”一类（作者针对这一处的逐字原话）不因为收回整章采纳而失效，照留。拿掉以后够不上候选的，降回单薄；只剩一条案例或者一条不剩的，写“依据已失效，只留作历史”。命中账记一行，写明原因。卡的状态（作者认可、已写进本书规则、停用）工坊不自己动，列给作者，附上作者收回采纳的原话和受影响的案例编号；已写进本书规则的，规则文件里的条目等作者定了再动。
 
-一步一步走，不能从候选直接写进规则。几张卡要一起回头看、交作者定合并、收窄还是停用的，照质量闭环（quality-loop.md）“整理一次：交作者定”；定稿说明末尾的判断卡请认单见那一页的“判断卡请认单（第 7 阶段）”（r5.59）。
+一步一步走，不能从候选直接写进规则。几张卡要一起回头看、交作者定合并、收窄还是停用的，照质量闭环（quality-loop.md）“整理一次：交作者定”；定稿说明末尾的判断卡请认单见那一页的“判断卡请认单（第 7 阶段）”。
 
-来源（r5.59）：“停用”里作者撤回的卡不换个编号重做，参照了 claude-skills 合集 `engineering/skillopt-sleep` 的思路（被拒掉的改动记下来，不再原样提），用本工坊的话写；按包内记录，没有带它的文件和脚本（来源记录（SOURCE-NOTES.md））。
+来源：“停用”里作者撤回的卡不换个编号重做，参照了 claude-skills 合集 `engineering/skillopt-sleep` 的思路（被拒掉的改动记下来，不再原样提），用本工坊的话写；按包内记录，没有带它的文件和脚本（来源记录（SOURCE-NOTES.md））。
 
 ## 交教师以前的自审
 
@@ -9443,7 +9605,7 @@ python3 scripts/dialogue_lint/run_lint.py apply 章稿.txt 请求.json 模型候
 - “对不上”和“漏了”的每一处，同时记一条改稿案例，挂到卡的反例里，当时就回头看卡的条件。
 - 账只记处数和出处，不算分。“对不上”累计到两处、又不少于“对上”的处数的，工坊提请作者看要不要停用这张卡，或者先把它降回单薄；升不升、停不停，作者看了定。降回单薄只改卡的证据厚薄；已写进本书规则的卡，规则文件里的条目等作者定了再动。
 - 卡写进本书规则以后，账接着记。
-- 专门做给作者看的对照上得出的结果，单独记一行，`comparison` 写 `true`，不和正式章节的行合计。这种对照这样做（r5.59）：
+- 专门做给作者看的对照上得出的结果，单独记一行，`comparison` 写 `true`，不和正式章节的行合计。这种对照这样做：
   1. 选两三章作者已采纳、而且没进过这张卡提炼的。
   2. 另起一个新的上下文，只给它卡和这几章正文，照“交教师以前的自审”出一份单子，不改稿。
   3. 卡对已采纳章节里作者没改过的句子拟了改法的，另记一类“标了已采纳章里没改过的句子”，照实列出原句和拟改法交作者看。整章采纳不等于作者对每一句都说过要留（见“三种容易丢的证据”末段）：作者针对这一处说了要留，才记“对不上”；作者没表态的，照上面那张表记“没人动”。
@@ -9456,13 +9618,29 @@ python3 scripts/dialogue_lint/run_lint.py apply 章稿.txt 请求.json 模型候
 
 不加脚本，现有的事件就装得下。下面几条在本包的脚本上用新编的中性文字试过，只说明记得下，不说明照卡自审有用。
 
-- **自审是一条评审。** 开了 学习循环（learning-loop.md） 的，这一轮 `draft` 以后先记自审：一条 `review`，评审人的 `role` 写 `writer`，`mode` 写 `self_check`，绑初稿的哈希，记在教师那条 `review` 前面。每个自审项是一条问题，`id`、`issue`、`evidence`、`scope` 照填，另带 `judgment_id`、`judgment_version`、`case_ids`、`disposition`、`conditions_checked`、`exceptions_checked`、`alternatives`。这条评审的 `verdict` 填 `revise`：只表示单子上有要作者看的项，不表示要改稿；填 `pass` 会被拒收，通过的评审不能带问题。自审单一处都没标的，不记这条评审。自查不算独立审稿，脚本也不许自查冒充教师。
+- **自审是一条评审。** 开了 学习循环（learning-loop.md） 的，这一轮 `draft` 以后先记自审：一条 `review`，评审人的 `role` 写 `writer`，`mode` 写 `self_check`，绑初稿的哈希，记在教师那条 `review` 前面。单子上标出来的每一处是一条问题（拟保留的也算；写“没有”的行不是），`id`、`issue`、`evidence`、`scope` 照填，另带 `judgment_id`、`judgment_version`、`case_ids`、`disposition`、`conditions_checked`、`exceptions_checked`、`alternatives`。这条评审的 `verdict` 填 `revise`：只表示单子上有标出来的项，拟保留的也算，不表示要改稿；填 `pass` 会被拒收，通过的评审不能带问题。自审单一处都没标的，不记这条评审。自查不算独立审稿，脚本也不许自查冒充教师。
 - **自审单封口。** 这一章的自审单文件定下以后，对文件的字节算哈希（sha256，和章节门用的是同一种），写进初稿阶段 `present` 的 `content`；后面学习循环里自审那条 `review` 的 `source_ref` 写这个文件的位置和这个哈希。章节门把 `content` 算进展示版本，教师回传又要绑这一版，所以展示以后自审单有没有改过，重算一次哈希就知道；自审单改过的，要重新展示初稿。核的时候由宿主重算哈希，对初稿展示的 `content`，再把自审那条评审的问题和单子逐项对上，对不上的照实记。脚本不拿这两样去比，也不查不许动的句子上拟的是不是只有“保留原句”。
 - **教师回传**照 教师回传怎么审（teacher-review.md）“回传、取舍与复查怎么记”记成另一条 `review`，`role` 写 `teacher`；每条问题可以多带 `self_audit_match`，写对上的自审项编号，没有就写 `null`。
 - **对账是对自审那条评审的 `decide`。** `adopt` 表示这一处最后动了，`decline` 表示留着，`defer` 表示待定；每条另带 `ledger`（`agreed` 对上、`disagreed` 对不上、`untouched` 没人动）和 `matched`（对上的那条教师意见的编号）。初稿由作者交教师的章节，作者确认审稿方案以前，脚本本来就不收 `decide`。这里的 `ledger` 只是审稿阶段作者确认方案时记的那一次：改稿以后那条评审成了历史，收尾以后这一轮也不再收取舍，脚本都不收对它的 `decide`。定稿阶段落定的结果、后来改的主意，记在判断卡文件的命中账里，旧的留痕，用 `links` 指回这一轮。
+
+  对拟保留的项，`decline` 说的是这一处最后没动，和自审的看法一致，不是不认这一项；学习循环（learning-loop.md）里别的评审，`decline` 是不采纳那条问题，两处意思不同。逐项照下表记，前三栏和“命中账”那张表的前八行一一对应：
+
+  | 自审的拟处置 | 教师 | 作者最后 | `decision` | `ledger` | `matched` |
+  | --- | --- | --- | --- | --- | --- |
+  | 保留原句 | 要改 | 没让改 | `decline` | `agreed` | 教师那条意见的编号 |
+  | 保留原句 | 要改 | 采纳了改动 | `adopt` | `disagreed` | 教师那条意见的编号 |
+  | 保留原句 | 没动 | 自己改了 | `adopt` | `disagreed` | `null` |
+  | 保留原句 | 没动 | 没表态 | `decline` | `untouched` | `null` |
+  | 列出候选改法，或只标出来 | 为同一个原因动了同一处 | 采纳了（教师的、工坊的，或者自己另写） | `adopt` | `agreed` | 教师那条意见的编号 |
+  | 列出候选改法，或只标出来 | 没动 | 看了说要改 | `adopt` | `agreed` | `null` |
+  | 列出候选改法，或只标出来 | 没动 | 明说原句要留 | `decline` | `disagreed` | `null` |
+  | 列出候选改法，或只标出来 | 没动 | 没表态 | `decline` | `untouched` | `null` |
+
+  作者还没定的记 `defer`；定了以后的结果，照上面说的记进判断卡文件的命中账。
+
 - **脚本顺带管住的两件事。** 两条评审都取舍完了才能 `revise`；改后的复查要在 `rechecks` 里把自审那条也列上，不然不能 `finish`，自审项全都留着也一样。
-- **案例放在哪。** `learn` 生成的案例不带 `revision` 段，事件里带了也不存；这些案例的 `revision` 段放在判断卡文件里，用 `links` 指回这一轮的编号、评审和问题的编号、章节门的 `teacher_return_id`、案例编号。手工建档的示范案例可以直接带 `revision` 段，`demonstration_memory.py check` 照常通过，它不核这一段的内容。
-- **只用章节门、没开学习循环的**：自审单和对账表分别放进初稿阶段、审稿阶段展示的 `content`，一样被版本绑住。
+- **案例放在哪。** 改稿案例只放判断卡文件这一份，以这一份为准。`learn` 生成的示范案例不带 `revision` 段，事件里带了也不存；判断卡文件里的改稿案例用 `links` 指回这一轮的编号、评审和问题的编号、章节门的 `teacher_return_id`、示范案例的编号。手工建档的示范案例也不嵌整段，只在 `revision` 里写改稿案例的编号（`{"case_ids": ["改稿案例的编号"]}`）。以前嵌了整段的示范案例照常有效，`demonstration_memory.py check` 照常通过，它不核这一段的内容；取用时要知道，`select` 会把嵌着的整段（提过的改法、作者的原话）一起交给写作者，不想这样的，把整段挪进判断卡文件，原处换成编号。
+- **只用章节门、没开学习循环的**：自审单文件的哈希照上面“自审单封口”写进初稿阶段展示的 `content`，对账表放进审稿阶段展示的 `content`，一样被版本绑住。
 - **不能跑脚本的**：自审单、对账表和命中账写在 每章七阶段与作者确认“没有脚本时怎么记”那份工作记录里，照实交代是人工记的。
 
 ## 边界
@@ -9541,7 +9719,7 @@ python3 scripts/dialogue_lint/run_lint.py apply 章稿.txt 请求.json 模型候
 }
 ```
 
-`python3 workflow_guard.py check checks.json` 返回逐条期望、实际结果及证据。`GREEN` 是声明条件全通过；`RED` 有条件失败；空清单是 `NOT_APPLICABLE`；声明了检查却没有实际比对任何内容（例如事实检查一条主张都没声明）是 `UNTESTED`。这两种情况在交付状态里都记作 MECHANICAL=UNTESTED，不能说跑过测试。未知检查、无效范围或读不到必需文件返回错误，不能按通过处理。没有 Python 时按同一要求人工核查，并明确核查方式。
+`python3 scripts/workflow_guard.py check checks.json` 返回逐条期望、实际结果及证据。`GREEN` 是声明条件全通过；`RED` 有条件失败；空清单是 `NOT_APPLICABLE`；声明了检查却没有实际比对任何内容（例如事实检查一条主张都没声明）是 `UNTESTED`。这两种情况在交付状态里都记作 MECHANICAL=UNTESTED，不能说跑过测试。未知检查、无效范围或读不到必需文件返回错误，不能按通过处理。没有 Python 时按同一要求人工核查，并明确核查方式。
 
 `checks.json` 加 `"mode": "strict"`，用于整章、多章或明确要求审稿的任务（SKILL.md 的 L1、L2 任务都用它）。严格模式在 `start`、`replan` 时都要求至少声明一项检查，而且声明的检查都必须实际运行；有一项是 UNTESTED，就不能记 PASS。审稿还要写全六个维度的结论（见下文“审稿的六个维度”）。审稿 PASS 需要引自候选稿的三处不同位置，覆盖候选稿的开头、中段和结尾。计数规则如下：
 
@@ -9562,15 +9740,15 @@ python3 scripts/dialogue_lint/run_lint.py apply 章稿.txt 请求.json 模型候
 
 这里的 `run-state.json` 只记录执行进度、证据和修订额度。人物表、设定与章节记录的权威状态另按 state-storage.md 读取版本并条件保存；执行日志的锁和事件去重不能替代项目状态的并发保护。
 
-需要跨会话修订或对轮数作程序限制时，使用下列命令；`workflow_guard.py` 替换为实际脚本路径：
+需要跨会话修订或对轮数作程序限制时，在技能根目录使用下列命令；不在技能根目录运行的，把 `scripts/workflow_guard.py` 换成实际脚本路径：
 
 ```bash
-python3 workflow_guard.py start run-state.json --task-id book-ch05-edit --spec checks.json --max-revisions 3
-python3 workflow_guard.py record run-state.json --event-id verify-0 --review review.json
-python3 workflow_guard.py reserve run-state.json --event-id repair-1
-python3 workflow_guard.py record run-state.json --event-id verify-1 --review review.json
-python3 workflow_guard.py status run-state.json --summary
-python3 workflow_guard.py accept run-state.json --event-id accept-1 --decision acceptance.json
+python3 scripts/workflow_guard.py start run-state.json --task-id book-ch05-edit --spec checks.json --max-revisions 3
+python3 scripts/workflow_guard.py record run-state.json --event-id verify-0 --review review.json
+python3 scripts/workflow_guard.py reserve run-state.json --event-id repair-1
+python3 scripts/workflow_guard.py record run-state.json --event-id verify-1 --review review.json
+python3 scripts/workflow_guard.py status run-state.json --summary
+python3 scripts/workflow_guard.py accept run-state.json --event-id accept-1 --decision acceptance.json
 ```
 
 先准备规格及全部来源。普通稿可 `start` 后形成初稿；若 `facts` 使用 `chapters_dir`，`start` 还要读取 claims 的 `chapter` 来确定原章范围，此时应先准备候选稿和绑定它的 claims，再 `start`。`record` 实际执行检查并记录裁决。需要返修时在改稿前 `reserve`，修后重新审稿并 `record`。已完成结果因稿件或工具更新变成 STALE 时，也可 `reserve` 申请复查；冻结来源变化则需要有依据的 `replan`；正文没变、作者要求再审的，见下文“同一正文再审”。初稿不占返修次数；复查和返修共用预算，不能靠重启清零。可在开始时加 `--max-seconds` 设置从创建任务起计算的时间上限。
@@ -9677,7 +9855,7 @@ python3 workflow_guard.py accept run-state.json --event-id accept-1 --decision a
 交付前用 `--deliverable` 核对要交出去的文件就是检查过的那一版：
 
 ```bash
-python3 workflow_guard.py status run-state.json --deliverable 第5章_交付.txt
+python3 scripts/workflow_guard.py status run-state.json --deliverable 第5章_交付.txt
 ```
 
 结果在 `gate.deliverable.matches`：`exact` 是同一版；`final_newline_only` 是正文相同、只差末尾换行（贴进聊天框常见），照实说明；`line_endings_or_bom_only` 是正文相同、只差换行符（CRLF／LF）或文件开头的 BOM（换了编辑器保存常见），同样照实说明；`no` 是另一版，或者还没有任何检查记录。是 `no` 时退出码为 1，状态行加 `DELIVERABLE=MISMATCH`，对这份文件“说机器检查通过”“说已审”“说是定本”都是 BLOCK：先交检查过的版本，或者对要交的文件重新检查、重新审读。
@@ -9687,7 +9865,7 @@ python3 workflow_guard.py status run-state.json --deliverable 第5章_交付.txt
 作者决定跳过审稿、直接采纳时（宪法第一节第 2 条），加 `--skip-review`：
 
 ```bash
-python3 workflow_guard.py accept run-state.json --event-id accept-1 --decision acceptance.json --skip-review
+python3 scripts/workflow_guard.py accept run-state.json --event-id accept-1 --decision acceptance.json --skip-review
 ```
 
 `source` 写作者跳过审稿、采纳这一版的原话。工具照样核对哈希就是当前文件，把这一版的哈希记进 `artifacts`（标 `review: skipped_by_author`），在 `human_approvals` 里记下 `review_skipped: true` 和采纳时的状态。MECHANICAL、EDITORIAL 不变（没做过就是 UNTESTED），AUTHOR 记 ACCEPTED，`status` 带警告“作者决定跳过审稿”，权限里“说已审”“说机器检查通过”仍是 BLOCK。已经 `record` 过审稿的版本不用这个参数，直接 `accept`，采纳时的审稿状态会照记。同一个事件标识不能先跳审、再改成普通采纳，反过来也不行。不要为了能采纳而补写一份 PASS 或 FAIL。
@@ -9717,11 +9895,11 @@ python3 workflow_guard.py accept run-state.json --event-id accept-1 --decision a
 ```
 
 ```bash
-python3 workflow_guard.py replan run-state.json --event-id replan-1 --spec checks.json --decision decision.json
-python3 workflow_guard.py reserve run-state.json --event-id repair-after-replan-1
+python3 scripts/workflow_guard.py replan run-state.json --event-id replan-1 --spec checks.json --decision decision.json
+python3 scripts/workflow_guard.py reserve run-state.json --event-id repair-after-replan-1
 # 在预留成功后，依据新要求修改 draft.md，并更新 review.json。
-python3 workflow_guard.py record run-state.json --event-id verify-after-replan-1 --review review.json
-python3 workflow_guard.py status run-state.json
+python3 scripts/workflow_guard.py record run-state.json --event-id verify-after-replan-1 --review review.json
+python3 scripts/workflow_guard.py status run-state.json
 ```
 
 `replan` 接受 `draft`、`repair`、`blocked` 或 `complete`，统一回到 `repair`；旧检查结果保留为历史，不能继续当作新版本已通过。之后必须先 `reserve` 再改稿、再 `record`。重规划本身不增加计数，也不送出免费改稿次数：它保留原 `max_revisions`、`revisions_used`、`max_seconds`、`started_at`、重试计数和所有既有事件。即使旧稿已经预留了一轮，该轮也不退还；重规划后的改稿仍须另有剩余额度。额度或时间用尽时返回 `BUDGET_EXHAUSTED`，不写入新状态；`stopped` 不可重新打开。
@@ -9749,10 +9927,10 @@ python3 workflow_guard.py status run-state.json
 2. 规格和来源没变，就用原来的 `checks.json`；作者给了要冻结进来的新依据（比如一份问题清单），先加进规格的来源。然后：
 
 ```bash
-python3 workflow_guard.py replan run-state.json --event-id replan-reread-1 --spec checks.json --decision decision.json
-python3 workflow_guard.py reserve run-state.json --event-id reserve-reread-1
-python3 workflow_guard.py record run-state.json --event-id verify-reread-1 --review review-reread.json
-python3 workflow_guard.py status run-state.json --summary
+python3 scripts/workflow_guard.py replan run-state.json --event-id replan-reread-1 --spec checks.json --decision decision.json
+python3 scripts/workflow_guard.py reserve run-state.json --event-id reserve-reread-1
+python3 scripts/workflow_guard.py record run-state.json --event-id verify-reread-1 --review review-reread.json
+python3 scripts/workflow_guard.py status run-state.json --summary
 ```
 
 `review-reread.json` 绑定同一个 `candidate_sha256`，`verdict` 写 `NEEDS_REVISION`，`issues` 逐条引这一版里的原句，写清应该是什么、读者会怎样读错；表达记录照常盖住约定范围。记下以后任务回到 `repair`，`status` 显示 `EDITORIAL=NEEDS_REVISION`。
@@ -10019,16 +10197,18 @@ python3 scripts/delivery_manifest.py /临时目录/新演练/delivery.json
 - **教师结果怎么记。** 作者带回的教师结果用 `review` 记：`role` 填 `teacher`，`mode` 填 `author_return`，可以带上章节门那条回传的 `teacher_return_id`。宿主自己调用的教师填 `independent_agent`，写作者自查填 `self_check`。
 - **初稿阶段交过自审单的。** 作者开了从改稿记录里学编辑判断的，这一轮 `draft` 以后先记自审：一条 `review`，`role` 填 `writer`，`mode` 填 `self_check`，绑同一份初稿，记在教师那条 `review` 前面；自审单一处都没标的不记。两条评审都取舍完了才能 `revise`；改后的复查要在 `rechecks` 里把自审那条也列上，不然不能 `finish`。
 - **章节重开以后。** 章节门重开了初稿或更早的阶段，绑旧初稿的这一轮用 `stop` 结束，原因写重开；新初稿确认以后另起一轮。初稿由作者交教师的章节里，脚本会拒绝旧一轮上的取舍和改稿；别的情形脚本不拦，也照这样做。
-- **作者在审稿阶段交回自己改过的稿子（r5.59）。** 作者在第 5 阶段交回自己改过的整份稿子、并且说了通过的，初稿不重开（每章七阶段与作者确认“确认是什么意思”里的例外），这一轮照下面记：
+- **作者在审稿阶段交回自己改过的稿子（r5.59）。** 第 4 阶段已经确认、第 5 阶段还没确认的时候（初稿由作者交教师的章节，还要已经登记了教师回传），作者交回自己改过的整份稿子、并且说了通过的，初稿不重开（每章七阶段与作者确认“确认是什么意思”里例外的头一种时候；算不算例外以那一条为准），这一轮照下面记：
   1. 作者动过的每一处，记成作者那条评审里的一条问题：一条 `review`，`role` 填 `author`，`mode` 填 `human`，绑这一轮的初稿，`verdict` 填 `revise`。每条问题的 `evidence` 写原句，`issue` 写作者说的理由（作者没说的写“作者没说理由”，不替作者编），另带 `replacement` 写作者的改句，连标点照原样。这些问题只能记 `adopt`（下文“取舍由谁定”第 4 条）。
   2. 作者的稿子用 `revise` 登记成修订稿：`text` 是作者交回的全文，一字不改；`actor` 带 `role:"author"`。这一稿上别的评审（教师意见、交教师以前的自审单）也要先逐条取舍完，作者的稿子已经改掉或者没动的，照实写理由。
   3. 作者说的“通过”，记成作者的第二条评审：`role` 填 `author`，`verdict` 填 `pass`，绑作者的稿子，`rechecks` 列上第 1 步那条（这一稿另有教师意见、自审单要复查的也列上），`source_ref` 写作者交回稿子、说通过的那一条消息。这是作者那条评审的结论，不是定稿采纳：凭它 `finish`，`completion` 记 `author_reviewed`；作者在定稿那一关采纳以前，`learn` 只出 `candidate`。
   4. 工坊在第 6 阶段的复查，写进那一阶段的展示，只标问题，不改作者的字；在这一轮里不另记成通过的评审，免得收尾时作者的通过被记成自查。复查标出了问题的，等作者在第 6 阶段说了再 `finish`：作者说不改的，照第 3 步收尾；要改的，照作者的话再记一条作者的评审。
   5. 作者在第 7 阶段采纳定稿以后，照下文“每次执行”第 8 步先 `author_accept` 再 `learn`，或者用 `case_accept` 补记。这样登记的案例，改前是初稿，改后是作者的稿子，`source.after_by` 是 `author`，下一章能按 `chapter_revision` 取到。
 
-  初稿由作者交教师的章节，第 1、2 步要等作者确认了第 5 阶段的方案再记：第 1 步的取舍和第 2 步的改稿，脚本要等第 5 阶段确认了才收（下文“取舍由谁定”第 3 条）；第 1 步的评审脚本不拦，也等确认以后再记。这一章还没登记教师回传、作者只带回自己的稿子的，不算例外，这一轮不起，章节门也不收第 5 阶段的展示：照“确认是什么意思”从第 4 阶段重开，作者的稿子当新的一版初稿交作者确认，作者要交教师的，交的就是这一版。作者同时带回了教师结果的，教师结果照上文另记一条 `role` 为 `teacher` 的评审，作者的稿子不登记成教师回传。这一段在合成材料上实际走过一遍章节门和学习循环（r5.59），没有在真实章节上走过。
+  初稿由作者交教师的章节，第 1、2 步要等作者确认了第 5 阶段的方案再记：第 1 步的取舍和第 2 步的改稿，脚本要等第 5 阶段确认了才收（下文“取舍由谁定”第 3 条）；第 1 步的评审脚本不拦，也等确认以后再记。这样的章节，教师回传还没登记、作者只带回自己的稿子的，不算例外，这一轮不起；没有登记回传，章节门不收第 5 阶段的展示，作者的稿子也不登记成教师回传（登记了脚本分不出，照收，靠条文拦）：照“确认是什么意思”从第 4 阶段重开，作者的稿子当新的一版初稿交作者确认，作者要交教师的，交的就是这一版。作者同时带回了教师结果的，教师结果照上文另记一条 `role` 为 `teacher` 的评审，作者的稿子不登记成教师回传。工坊自己审的章节没有教师回传要登记，不归上面那一句管，照“确认是什么意思”例外的两种时候办（r5.60）。这一段在合成材料上实际走过一遍章节门和学习循环（r5.59），没有在真实章节上走过。
 
-  作者在第 6 阶段交回自己改过的修订稿、并且说了通过的，同样算作者审过、改定（照上面这条的意思补的，r5.59）：作者动过的每一处照第 1 步记成作者那条评审里的问题，这条评审绑工坊交出的那一版修订稿；作者的稿子照第 2 步用 `revise` 登记；作者的通过照第 3 步记，凭它 `finish`，`completion` 记 `author_reviewed`。章节门重新展示第 6 阶段，绑作者的稿子，旧的展示记成被取代（`superseded`），前面的阶段不重开。这一段也只在合成材料上走过（r5.59）。
+  作者在第 6 阶段交回自己改过的修订稿、并且说了通过的，同样算作者审过、改定（照上面这条的意思补的，r5.59）：作者动过的每一处照第 1 步记成作者那条评审里的问题，这条评审绑工坊交出的那一版修订稿；作者的稿子照第 2 步用 `revise` 登记；作者的通过照第 3 步记，凭它 `finish`，`completion` 记 `author_reviewed`。章节门重新展示第 6 阶段，绑作者的稿子，旧的展示记成被取代（`superseded`），前面的阶段不重开。重新展示以后照旧停下等作者对这一次展示确认，随改稿说的“通过”不记成第 6 阶段的确认（r5.60）。这一段也只在合成材料上走过（r5.59）。
+
+  修订稿在等确认的时候，作者把晚到的一批教师意见和自己改过的修订稿一起带回、并且说了通过的（初稿由作者交教师的章节，r5.60）：章节门照每章七阶段与作者确认“完整初稿以后”里“方案交出以后又来了一批”先重开审稿阶段、登记这一批，两批合在一起的方案连同“作者改了哪几处”重新交作者确认；下面几步等这一次确认以后再记，取舍和改稿脚本也要等它确认了才收。晚到的这一批记成一条 `role` 为 `teacher`、`mode` 为 `author_return` 的评审，绑这一轮当前的稿子，也就是工坊交出的那一版修订稿：脚本只收绑当前这一稿的评审；章节门那条回传绑的是初稿，`teacher_return_id` 这时候带不上，带了会被拒，回传的编号和“教师看的是初稿”写进 `source_ref`。作者动过的每一处照上一段记，作者那条评审绑工坊交出的那一版修订稿，“作者改了哪几处”也拿这一版比；作者的稿子用 `revise` 登记，作者的通过在 `rechecks` 里把两批教师意见和作者那条评审都列上，凭它 `finish`，`completion` 记 `author_reviewed`。这样登记的案例，改前仍是初稿，改后是作者的稿子。这一段在合成材料上走过一遍章节门和学习循环（r5.60），没有在真实章节上走过。
 - **不走章节流程的改稿任务**不带 `chapter_id`，这一轮不和章节门核对。
 
 `start` 的返回里有 `chapter_link`，写着这一轮关联的章节 ID；没有关联时是 `not_linked`。
@@ -10080,7 +10260,7 @@ Markdown 写入需全文 SHA256 条件检查、稳定 POSIX 文件锁和同目�
 
 ```bash
 python3 scripts/learning_loop.py status /项目/学习记录.md
-python3 scripts/learning_loop.py context /项目/学习记录.md --project-id 本书分支 --task dialogue_revision --tag 回应 --exclude-group 当前场景
+python3 scripts/learning_loop.py context /项目/学习记录.md --project-id 本书分支 --task chapter_revision --tag 回应 --exclude-group 当前场景
 python3 scripts/learning_loop.py apply /项目/学习记录.md /项目/本轮事件.json --project-id 本书分支 --if-version 'status返回的version'
 python3 scripts/learning_loop.py show /项目/学习记录.md --run-id 本轮ID --brief
 ```
@@ -11271,6 +11451,8 @@ AUTHOR：NOT_ACCEPTED
 
 作者要整理的时候，或者工坊在定稿说明里提了一句、作者答应了，把这几样摆在一起看一遍：作者改法累计里的条目（开了的）；这本书已写进规则的判断卡和够候选的卡（开了的）；各章复盘里的候选教训；同一条规则记过几次“没照做”、在哪几章；冲突登记表里还开着的项。按五类列给作者，每条一行，带出处：拟写成规则（写出整句草稿、写进哪一份、管什么场面、例外）；拟合并（哪几条说的是一件事，合并后的整句，被合并的原句照留）；拟收窄或加例外（照它做改坏过哪几处）；拟停用（作者否过、已被取代、照它改坏过；“只有一处依据”只用在工坊归纳、还待确认的条目上，作者亲口说的、作者亲改确认过的已确认条目不因为只有一处依据列进来）；留着再看（没用上是因为这几章没有那种场面，不算失效）。工坊只列，不改；作者没回话的都当留着再看，不当同意。作者定了的各走原来的路：跨作品的进作者改法累计；这本书的写进本书规则，并在冲突登记表登记；对白专项、分场规范这些工坊模块里的规则，只记成维护任务，照技能维护（skill-evaluation.md）做新旧对照；宪法只有作者能改。技法库、参考书、教师材料里的说法只当参考，可以附在旁边给作者看，不算依据，不参与合并。什么时候提：作者要的时候；或者同一条规则在两个不同的章里都记了“没照做”、两章的候选教训指向同一件事的时候，工坊在定稿说明里提一句；不定时跑，不自己跑。出现在几章只决定先列哪条，不决定记不记。拿不准的留着再看：少写进一条，作者以后还会再改，会补回来；多写进一条错的，以后每一章都照着错。这一步还没在真实记录上走过；第一次手工做，看它有没有改变作者的哪一个决定，没有就不常做。
 
+**技法卡的两张单（r5.60）。** 本书有技法库的，每次做这一步，顺带列两张单交作者逐张定，和上面五类分开列。工坊只列，不改卡的状态，不自己收、不自己归档。一张列用过几回、作者都采纳了的卡，问要不要收进规矩；一张列很久没用过的卡，问要不要归档。每张卡一行，带出处：编号、技法名，照卡上“本书试用”“作者采纳状态”两栏抄用在哪几章、作者的原话在哪里。不定卡数上限；“几回”“很久”不折成回数、章数的线，哪张上单照卡上的记录看，收不收、归不归档由作者逐张说。作者没回话的卡照原样，不当同意。作者说收进规矩的，先收进本书的写法约定，也就是本书规则，写进哪一份由作者定，照上面“这本书的写进本书规则，并在冲突登记表登记”走；要收进对白专项、分场规范这些工坊模块的，只记成维护任务，照技能维护（skill-evaluation.md）走新旧对照，例子另写，原作的东西（人物、桥段、台词这些）不带。上面说技法库里的说法不算依据、不参与合并，照旧；一张卡收进规矩，靠的是作者对这一张卡说的话。作者定了的，照技法卡模板（technique-card-template.md）卡头“卡的状态”一栏改成“归档”或“收进了规矩”，写哪天、作者的原话，收进了规矩的另写收进哪一处；这两种卡以后挑卡时不挑，查旧章的依据时还查得到。这两张单没有在真实记录上列过。
+
 ### 判断卡请认单（第 7 阶段）
 
 开了从改稿记录里学编辑判断的，定稿说明末尾附一张判断卡请认单。只列至少在一次自审或一份专门做给作者看的对照上标过地方的候选卡，单薄的卡不列。每张写：一句话判断；它的条件和例外，或者写明卡在哪里；它标在哪一稿、哪几句上（原句、位置和当时的处置）；命中账。这一章新提炼的、刚改了版的卡，还没在稿子上标过，只写一行“还没在稿子上标过，下一章自审以后再请你看”。作者一句话认、改字或划掉；认的时候照“作者认可”那一条记下作者原话、出处、日期，和他看的是哪一份单子。没表态的照候选办，不催第二次。
@@ -11336,7 +11518,7 @@ AUTHOR：NOT_ACCEPTED
 
 ## 形成机制卡
 
-按 技法卡模板（technique-card-template.md） 留下来源、触发条件、作用链、失效情境、可替换因素和不可搬用的部分。素材很多时先做索引，只读当前场景相关的少数卡片；没有合适参考也能继续原创。每张卡写明工坊里对应的已有模块：已经写了同类做法的，执行以模块为准，卡片只补参考依据，不另立一条规则。
+按 技法卡模板（technique-card-template.md） 留下来源、触发条件、作用链、失效情境、可替换因素和不可搬用的部分。素材很多时先做索引，按检索标签筛出当前场景相关的少数卡片，照技法卡模板上半开头写的读法读，只用工坊的判断是“可用”的卡；没有合适参考也能继续原创。每张卡写明工坊里对应的已有模块：已经写了同类做法的，执行以模块为准，卡片只补参考依据，不另立一条规则。
 
 把机制迁移到本书自己的目标与阻碍。可以借鉴“请求失败后，代价从个人转到关系”的结构，但必须重新建立失败原因、人物选择和具体后果；换姓名、换皮道具、沿用同一组反转不算原创转换。原书人物、专属世界规则、标志性台词和可识别的桥段不能随卡搬入。
 
@@ -11362,7 +11544,7 @@ AUTHOR：NOT_ACCEPTED
 
 ## 第一遍：机械扫描（脚本）
 
-拿统计抓统计性的毛病。`prose_lint.py` 默认就跑四项语感扫描（模板腔复核（prose-audit.md）“可选只读检查器”），写完一章先跑一次：`python3 prose_lint.py 第NN章.txt --format text`。
+拿统计抓统计性的毛病。`prose_lint.py` 默认就跑四项语感扫描（模板腔复核（prose-audit.md）“可选只读检查器”），写完一章先跑一次：`python3 scripts/prose_lint.py 第NN章.txt --format text`。
 
 - `frequent-words`：同一个词全章用到 3 次以上，逐处列出。时间连接：随即、旋即、紧接着、与此同时；落点动词：落在、停驻、扫过；持续态：仍、依旧、依然；次序标注：依次、先后、逐一、挨个；突发：忽然、骤然、猛然、陡然；左右手：左手、右手、另一只手（脚本输出里这一族仍叫“手部报备”；持物、负重、先后要靠它说清的留，见第四遍）。
 - `negation-ending`：用“没有……”“没再……”收住的叙述段，全章 3 段以上，逐段列出（段尾的否定刹车）。
@@ -11496,6 +11678,7 @@ AUTHOR：NOT_ACCEPTED
   下一章填节拍卡以前，用 `demonstration_memory.py index --task scene_beat_revision` 看一遍，逐条判断条件和例外。卡怎么改仍是作者定，不按场型的字面套用。
 
   这样的案例，要有作者对改定那张卡的明确采纳原话，才进检索：`index` 只返回教师认可和作者认可的案例，作者认可要有指向这一条、这一版的原话（示范记忆（demonstration-learning.md）“最小案例契约”）。可以在第 3 阶段顺带问作者一句。作者确认第 3 阶段时回的“继续”“好”，只批准这一个阶段（每章七阶段与作者确认“确认是什么意思”），不当作对这张卡的采纳；没有采纳原话的，案例停在候选，下一章不用。
+- **这一场用的技法卡（r5.60）**：本书有技法库的，落笔前照节拍卡和对白工作卡找卡，挑定的记在节拍卡“这一场用的技法卡”一栏：拿来写的写编号、第几版、为什么，一场最多两张；其余命中的只记编号，不读进起草；没有对得上的写“无”，照常原创。怎样挑、起草和写完自查各读卡上哪几栏，照正文与场景“用技法卡”。交付门不核这一栏；它和卡上别的栏一起在任务开始时冻结，起草时停下没用的不回头改，交稿时照实说。卡只是参考依据：卡和本页说法不一样时，把两边的原句列给作者，作者定以前照本页办。一场已经挂了技法卡的，风格卡（style-cards.md）场景层最多一张。
 - **写完后**：按 修改的五道工序（revision-passes.md） 查改。`prose_lint.py` 默认就跑三项检测：`floating-dialogue`（连着 5 段以上只有台词和说话标签）、`tension-telling`（情绪、氛围、时间的直述词）、`weak-scene-ending`（全文和场景分隔符前最后两段里的泄气式收尾）。三项都是字面提示：叙述里的命中逐处改写，或者逐处写明这一处的理由保留（这一句是动作、不是替读者下结论；这几段快问快答有意连着走），审稿判断理由站不站得住；台词里的命中标 `in_quote`，是人物自己的口吻可以保留（模板腔复核（prose-audit.md）“可选只读检查器”）。没命中也不等于这一场落了地：五段光台词中间插一句“门外的雨下大了。”就不报，可景物不是人物在场里的动作。“嘴角扬起一抹笑”这类现成表情 r5.34 起归可选的 `stock-reaction`（作者要去 AI 味、精修、收紧或增强临场感时才开，见模板腔复核（prose-audit.md）“分场检测”）；规范列的“嘴角勾起一抹意味深长的”照样算直述词，下结论的是“意味深长”。
 - **2.1 怎样用（r5.48）**：2.1 照录的“必须改写为视野收缩、呼吸频率改变……”写的是身体反应这一类改法。它照样可以用，可不是唯一的改法，对手戏、冲突戏也一样：CON-011 写的是情绪直述、微动作和道具按这一场要做的事选用。直述词也可以落在台词、选择、注意力、处境或人物此刻的念头上，可以留白，或者有分寸地直说（模板腔复核（prose-audit.md）“情绪直述的改法”）。用身体反应时，写这个人在这个处境里、做这件事时才有的，接着影响他做的事：2.1 正确示范好在烟灰折断、残茶一口咽下这些这一场才有的东西，不在喉结；“喉结生硬地滚了一下”单拿出来，就是下面“跨章”要留意的那类现成反应。几个人物、几场戏不用同一种反应。现成反应出现一次也要看贴不贴人（模板腔复核（prose-audit.md）“现成身体反应：次数只是线索”）。照录原文没有改；对手戏、冲突戏也这样读，是 r5.49 修订方案第 2 条的建议（作者 2026-11-01 对整份方案回复“按照你的想法去做”，没有逐条回复这一条）。
 - **跨章**：留意同一种反应（攥拳、深呼吸、喉结滚动；话到嘴边咽回去、刚要开口被打断、没吭声，r5.53）、同一种物件操作（转杯子、摩挲袖口）、同一种四拍节奏章章出现；同一章里几个人物遇事都是同一种反应，也一样看。换个同义词不算改，换一种写法，或者这一场不用。这不是不许写身体反应，是不让每个人、每场都用同一种。
@@ -11524,7 +11707,7 @@ AUTHOR：NOT_ACCEPTED
 
   没有“他们后怕极了”，也没有回顾刚才多险；是一句不相干的实在话、半声笑和一个嗓门变了的人。接着就进这一场的事。
 
-来源：作者 2026-10-22 转来的实施规范《novel-workshop (r5.29 -> r5.30) 完整升级规范：中观分场戏剧张力与正文具象化模块》。第 1—3 节照录规范第三节的模块全文（例子是规范自带的）；第 4 节是工坊接线的说明。作者 10-22 选定按规范作为通用版的默认，并批准宪法 CON-011（NWC-1.3）。2026-10-23 作者按转来的对 r5.32 的审查报告批准 NWC-1.5：第 4 节加“哪些场按四拍”“跨章”两条，三项检测的命中可以逐处写理由保留；第 1—3 节的照录原文没有改。r5.35 按对 r5.34 的审查，把适用范围的说明在第 1 节之前再写一遍（原来只在开头一句和第 4 节），照录原文仍然没有改。r5.37 按作者 10-23 转来的反馈（工业设施的参考补齐了空间和走位，读者却难跟着人物经历最紧的几秒）在第 4 节加“关键瞬间的临场体验”：五问和不过度修正的几条，照录原文、宪法和审稿字段都没有改。第五问“新加的细节逐样核”一句是同一轮做规则对照试验以后补的：新旧两套规则的修订稿都在最紧的一拍里插进了只添声色的素材，按新规则那一版还加了可能和后文对不上的光和距离；这一句补上以后没有再试。r5.49（2026-11-01）：作者看过 r5.49 修订方案后回复“按照你的想法去做，然后出新版5.49”，照方案改了第 4 节和开头的范围说明：第 1—3 节的照录原文仍然没有改；“2.1 怎样用”写明身体反应照样可以用，但不是唯一的改法，对手戏、冲突戏也这样读；开头的范围说明、“哪些场按四拍”“跨章”和“和别的模块”里，情绪落点的清单换成和宪法 CON-011（NWC-1.7）一致的一张，并写明不同人物不套同一种反应；审稿分数 `prop_embodiment_score` 的含义放宽到道具、人物的动作和身体反应、他当场注意到和选择的东西，不按个数打分，字段名和低于 3 不能 PASS 不变。r5.54（2026-11-12）：作者说“关于如何让文字变得有感情；以及对白方面就是不要有电报体，就是很自然”，工坊提了每场一问、事后一拍、视角人物的念头三样，作者答“其他的都可以照你建议的来去试试，我权限都给足你”。同日晚些时候作者指定一章别人的作品当效果标尺（范围是去 AI 味和人物语言自然化）；“待作者认”的三句是工坊照它拟的，作者没有看过。第 1—3 节的照录原文没有改，宪法没有改。那份参考文本只在作者的私人材料里，本页没有引它的句子和人名。这几句都没有在留出的章节上验证过。r5.59（2026-11-19）：作者看过 r5.59 修订方案，要定的几条都回复照制作方的建议办，第三节的改动回复照做；照方案第三节第 8 条，第 4 节加“作者改过的节拍卡”一条，写作者改过的节拍卡怎样登记成示范、下一章怎样取。登记和检索在合成材料上走过一遍，没有在真实章节上走过。第 1—3 节的照录原文没有改，宪法没有改。
+来源：作者 2026-10-22 转来的实施规范《novel-workshop (r5.29 -> r5.30) 完整升级规范：中观分场戏剧张力与正文具象化模块》。第 1—3 节照录规范第三节的模块全文（例子是规范自带的）；第 4 节是工坊接线的说明。作者 10-22 选定按规范作为通用版的默认，并批准宪法 CON-011（NWC-1.3）。2026-10-23 作者按转来的对 r5.32 的审查报告批准 NWC-1.5：第 4 节加“哪些场按四拍”“跨章”两条，三项检测的命中可以逐处写理由保留；第 1—3 节的照录原文没有改。r5.35 按对 r5.34 的审查，把适用范围的说明在第 1 节之前再写一遍（原来只在开头一句和第 4 节），照录原文仍然没有改。r5.37 按作者 10-23 转来的反馈（工业设施的参考补齐了空间和走位，读者却难跟着人物经历最紧的几秒）在第 4 节加“关键瞬间的临场体验”：五问和不过度修正的几条，照录原文、宪法和审稿字段都没有改。第五问“新加的细节逐样核”一句是同一轮做规则对照试验以后补的：新旧两套规则的修订稿都在最紧的一拍里插进了只添声色的素材，按新规则那一版还加了可能和后文对不上的光和距离；这一句补上以后没有再试。r5.49（2026-11-01）：作者看过 r5.49 修订方案后回复“按照你的想法去做，然后出新版5.49”，照方案改了第 4 节和开头的范围说明：第 1—3 节的照录原文仍然没有改；“2.1 怎样用”写明身体反应照样可以用，但不是唯一的改法，对手戏、冲突戏也这样读；开头的范围说明、“哪些场按四拍”“跨章”和“和别的模块”里，情绪落点的清单换成和宪法 CON-011（NWC-1.7）一致的一张，并写明不同人物不套同一种反应；审稿分数 `prop_embodiment_score` 的含义放宽到道具、人物的动作和身体反应、他当场注意到和选择的东西，不按个数打分，字段名和低于 3 不能 PASS 不变。r5.54（2026-11-12）：作者说“关于如何让文字变得有感情；以及对白方面就是不要有电报体，就是很自然”，工坊提了每场一问、事后一拍、视角人物的念头三样，作者答“其他的都可以照你建议的来去试试，我权限都给足你”。同日晚些时候作者指定一章别人的作品当效果标尺（范围是去 AI 味和人物语言自然化）；“待作者认”的三句是工坊照它拟的，作者没有看过。第 1—3 节的照录原文没有改，宪法没有改。那份参考文本只在作者的私人材料里，本页没有引它的句子和人名。这几句都没有在留出的章节上验证过。r5.59（2026-11-19）：作者看过 r5.59 修订方案，要定的几条都回复照制作方的建议办，第三节的改动回复照做；照方案第三节第 8 条，第 4 节加“作者改过的节拍卡”一条，写作者改过的节拍卡怎样登记成示范、下一章怎样取。登记和检索在合成材料上走过一遍，没有在真实章节上走过。第 1—3 节的照录原文没有改，宪法没有改。r5.60（2026-11-20）：作者定了技法卡在写作流程里怎样用（一场最多用两张，其余命中的只在节拍卡上记一笔；一场已经挂了技法卡的，风格卡场景层最多一张），第 4 节加“这一场用的技法卡”一条，节拍卡加同名的一栏。交付门的脚本没有改，不核这一栏。第 1—3 节的照录原文没有改，宪法没有改。这一条没有在真实章节上用过。
 
 -----
 
@@ -12101,7 +12284,7 @@ python3 scripts/project_state.py commit /项目目录/story-state.json --if-vers
 
 # 风格卡：自动识别，只加载方向
 
-工坊附带一组风格卡（卡片库（cards.json）），每张写一种腔调：适合哪些场景，叙述怎样组织，名词、动作、感官往哪个方向挑，句子多长，几条示例和一段示范，写过头是什么样（过量信号），以及跟它相反的写法。卡分四层：base（世界观底色）、voice（整体文风）、device（视角与文体装置）、scene（场景功能）。写一场正文前识别一次：对得上，加载那几张的方向；对不上，不加载，照原来的写法写。
+工坊附带一组风格卡（卡片库（cards.json）），每张写一种腔调：适合哪些场景，叙述怎样组织，名词、动作、感官往哪个方向挑，句子多长，几条示例和一段示范，写过头是什么样（过量信号），以及跟它相反的写法。卡分四层：base（世界观底色）、voice（整体文风）、device（视角与文体装置）、scene（场景功能）；每张卡另标着题材（`domain`）。写一场正文前识别一次：对得上，加载那几张的方向；对不上，不加载，照原来的写法写。
 
 ## 什么时候识别
 
@@ -12112,23 +12295,32 @@ python3 scripts/project_state.py commit /项目目录/story-state.json --if-vers
 
 ## 怎样识别
 
-1. 先想清这一场要让读者经历什么（处境、感受、认识，还是一件事），这本书是什么题材、什么口吻。
-2. 看索引：`python3 scripts/style_cards.py index`（按层分组；`--layer scene` 只看一层）；没有 Python，就看卡片库里每张卡的 `name`、`layer` 和 `scene_triggers`。卡写的适用场景要对得上这一场要读者经历的东西，卡的题材也要对得上这本书。一本安静的现实小说写到宴会，也不加载打脸爽文的卡。
-3. 一层一层看，每层挑最合适的一张，或者不挑。卡组定了每层最多几张：base、voice、device 各 1 张，scene 2 张；这是上限，不是要凑满。两张都像，挑和这本书题材更近的；还分不出来，挑说得更具体的那张。scene 层管的是一种场面怎样写，放在哪种题材里都能用。
-4. 对不上就不加载。好像几张都沾一点，不算对上；不加载是常态，不是没做好。卡里标了不和哪张同用（`conflicts_with`）的，两张不一起用。
-5. `python3 scripts/style_cards.py match --text "这一场的任务" --file 前文.txt` 列出字面命中：卡的适用场景里的说法、本书配置的关键词，在文字里出现了哪些。只是线索：命中了不等于对得上，没命中也不等于对不上。本书没有配关键词时，多半没有字面命中，这是正常的，识别靠对照索引。
+1. 先看本书有没有作者的原文样本（声音样本）或写定的本书文风卡。有的，base（世界观底色）和 voice（整体文风）两层默认不挑，只看 scene 层；作者点名要哪张的照作者的。两样都没有的，各层都看。
+2. 再想清这一场要让读者经历什么（处境、感受、认识，还是一件事），这本书是什么题材、什么口吻。
+3. 看索引：`python3 scripts/style_cards.py index`（按层分组，每张卡印着题材；`--layer scene` 只看一层）；没有 Python，就看卡片库里每张卡的 `name`、`layer`、`domain` 和 `scene_triggers`。卡写的适用场景要对得上这一场要读者经历的东西，卡的题材也要对得上这本书。一本安静的现实小说写到宴会，也不加载打脸爽文的卡。
+4. 一层一层看，每层挑最合适的一张，或者不挑。卡组定了每层最多几张：base、voice、device 各 1 张，scene 2 张；这是上限，不是要凑满。这一场已经挂了技法卡的，scene 层最多一张。两张都像，挑和这本书题材更近的；还分不出来，挑说得更具体的那张。scene 层里题材标着 `functional-modes` 的 12 张管的是一种场面怎样写，不挑题材；其余 15 张带着题材（`female-romance`、`global-genre`、`acg-subculture`、`male-web-fiction`、`chinese-classical`），先过本书题材这一关（第 2 条想清的题材），题材对不上的不加载。
+5. 卡上写死了人称、文白或排版的（第一人称叙述、第二人称加选项、档案体、弹幕或论坛帖插进正文、文言短句这类），不靠识别加载：作者点名要用，或者这一场本身就是书里的档案、弹幕、帖子，才用。现在卡库里是这 10 张：`hardboiled-noir-chandler`、`murakami-urban-melancholy`（voice 层），`japanese-light-novel-tsukkomi`、`rashomon-confessional-pov`、`second-person-interactive-if`、`scp-clinical-containment`、`classical-zhiguai-liaozhai`、`chronicle-spring-autumn`、`bullet-screen-livestream`、`fourth-calamity-sandbox`（device 层）。
+6. 对不上就不加载。好像几张都沾一点，不算对上；不加载是常态，不是没做好。卡里标了不和哪张同用（`conflicts_with`）的，两张不一起用。
+7. `python3 scripts/style_cards.py match --text "这一场的任务" --file 前文.txt` 列出字面命中：卡的适用场景里的说法、本书配置的关键词，在文字里出现了哪些。只是线索：命中了不等于对得上，没命中也不等于对不上。本书没有配关键词时，多半没有字面命中，这是正常的，识别靠对照索引。
 
 ## 加载什么：只加载方向
 
-`python3 scripts/style_cards.py load 卡的id [另一张卡的id ...]` 输出挑中的几张（超过一层的上限、或者有两张不同用的，它会拒绝）；没有 Python，就直接读卡片库里这几张，照下面的办法用。
+`python3 scripts/style_cards.py load 卡的id [另一张卡的id ...]` 输出挑中的几张（超过一层的上限、或者有两张不同用的，它会拒绝）。分三个时候看：
+
+- 落笔前：`load` 默认只印方向，就是适用场景、叙述逻辑、名词、动作、感官、句子和相反的写法。“句子”一节开头另印两行固定的话，一行说分句大致几字只是这种腔调的大致样子，一行是下面“句子这一栏说的是叙述，台词另算”一条的要点，措辞比这一页短；“不为凑句长切句、并句”和断句原则那两句加载时不印，只在这一页。
+- 要看这种腔调大概什么样：加 `--examples`，再印腔调示例、动作示例和示范段。
+- 写完核对：用 `review` 印写过头是什么样（过量信号），见“写完以后”。
+
+没有 Python，就直接读卡片库里这几张，照同样的先后：落笔前读 `scene_triggers`、`syntax_metrics`、`blacklist` 和 `sections` 里的 `subtext_logic`、`lexical_map`、`kinetic_verbs_text`、`somatosensory`、`syntax_rhythm`；`lexical_shifts`、`kinetic_verbs` 和示范段要看腔调时再看；`overuse` 留到写完。各栏照下面的办法用：
 
 - **叙述逻辑**（`subtext_logic`）：这一场怎样组织、哪些不说破。主要照这一条写。
 - **名词、动作、感官**：往哪个方向挑。是可挑的料，这一场用得上的挑一两样，落在人的动作和感知里（CON-012）；不逐项写，不为用上它给人物添动作。卡里教怎样标说话人的说法（“少用‘某某说’、用动作标明说话人”之类）不压过对白专项（dialogue-craft.md）“谁在说”：要补说话人的，用“某某说／问”，或者恢复主语、承接这个人已有的动作；不为标明谁在说添动作，不按比例配动作（r5.50）。
-- **句子**（`syntax_metrics`、`syntax_rhythm`）：分句大致多长，常用哪些语气词、口头字眼、标点。是方向，不是要凑的数，不为凑句长切句、并句（CON-009）。卡里的句长、断句说法（“才切成读秒式短句”“短句与独立单行段落”之类）不压过工坊的断句原则：看读者跟不跟得上，不看长短；同一个人顺着同一股冲势连着做完的几下，可以一口气写完，换了人、受阻、转向、读者该停一拍的地方收句（句式专项（sentence-craft.md）“动作句”，中文标点（chinese-punctuation.md）“句号与逗号：按语义单位断句”里“一逗到底”一条）。加载时印的“分句（逗号、句号隔开的一小段）大致几字”是这种腔调的大致样子，不是要求；同一个人一股劲做完的几下，几个分句可以连成一句。分句长短和常用语气词这两样说的是叙述（r5.53）：台词的长短、语气词和称呼跟着说话的人、对谁说和此刻的处境走（口吻表、作者样本、对白专项（dialogue-craft.md））；卡上没列语气词，不等于台词不带“了、呢、吧”；语气词跟着说话的人和这一刻走，不为凑口语句句挂一个（对白专项（dialogue-craft.md）“声口和语域”，r5.54）。卡里专讲对白的说法（“对话如击球”“对话极度精简”“全在不言中”之类）只管这张卡对得上的那类场面，不带到同一章别的场面；“全在不言中”只是那张卡的一种写法：把关心说出口一样可以是温情的场面，不因为加载了卡就把已经说出口的关心改成动作（r5.54；这是工坊的读法，卡是作者给的，作者没有逐条看过：现在照这一句办，作者不认就拿掉）；和口吻表、作者样本对不上时按后者。加载时这几句也印在“句子”一节里。
-- **示例和示范**（`lexical_shifts`、`kinetic_verbs`、各节里的例句、改写前后的示范段）：示意这种腔调大概什么样，不往正文里搬，也不当替换表，把“甲”一律改成“乙”。卡多半借某位作家、某类作品的口吻；那些作品的标志性台词、专属道具和桥段同样不搬（文风提炼与迁移）。卡组自己也写明：示例里的专有名词、道具和整句不原样用进正文。
-- **过量信号**（`overuse`）：这种腔调写过头是什么样。写完照着看一遍。
+- **句子**（`syntax_metrics`、`syntax_rhythm`）：分句大致多长，常用哪些语气词、口头字眼、标点。是方向，不是要凑的数，不为凑句长切句、并句（CON-009）。卡里的句长、断句说法（“才切成读秒式短句”“短句与独立单行段落”之类）不压过工坊的断句原则：看读者跟不跟得上，不看长短；同一个人顺着同一股冲势连着做完的几下，可以一口气写完，换了人、受阻、转向、读者该停一拍的地方收句（句式专项（sentence-craft.md）“动作句”，中文标点（chinese-punctuation.md）“句号与逗号：按语义单位断句”里“一逗到底”一条）。加载时印的“分句（逗号、句号隔开的一小段）大致几字”是这种腔调的大致样子，不是要求；同一个人一股劲做完的几下，几个分句可以连成一句。
+- **句子这一栏说的是叙述，台词另算**：分句长短和常用语气词这两样说的是叙述；台词的长短、语气词和称呼跟着说话的人、对谁说和此刻的处境走（口吻表、作者样本、对白专项（dialogue-craft.md））；卡上没列语气词，不等于台词不带“了、呢、吧”；语气词跟着说话的人和这一刻走，不为凑口语句句挂一个（对白专项（dialogue-craft.md）“声口和语域”）。卡里专讲对白的说法（“对话如击球”“对话极度精简”“全在不言中”之类）只管这张卡对得上的那类场面，不带到同一章别的场面；“全在不言中”只是那张卡的一种写法：把关心说出口一样可以是温情的场面，不因为加载了卡就把已经说出口的关心改成动作；和口吻表、作者样本对不上时按后者。
+- **示例和示范**（`lexical_shifts`、`kinetic_verbs`、各节里的例句、改写前后的示范段）：加载时默认不印腔调示例、动作示例和示范段（各节里带引号的例句照印），要看加 `--examples`。示意这种腔调大概什么样，不往正文里搬，也不当替换表，把“甲”一律改成“乙”。卡多半借某位作家、某类作品的口吻；那些作品的标志性台词、专属道具和桥段同样不搬（文风提炼与迁移）。卡组自己也写明：示例里的专有名词、道具和整句不原样用进正文。
+- **过量信号**（`overuse`）：这种腔调写过头是什么样。加载时不印，起草时不读；写完用 `python3 scripts/style_cards.py review 卡的id [...]` 印出来，照着看一遍。
 - **相反的写法**（`blacklist`，和卡组全局的那一份）：这种腔调里少见的说法，写的时候心里有数。不是禁词表，不做字面扫描，不扣分；人物台词里该有的照有。有的卡放开了全局的某几样（`overrides`），加载时会写明。
-- **几张同用**：句长的大概数对不上时，照卡组定的先后取第一张写了的：device、voice、scene、base；同一层两张卡说法不一时，照这一场的动作写，不为凑数拆句或并句；先后只定句长的大概数，每张卡句子一节里随动作走的说法照样看。说明之间说法不一时（写不写过程、感官写不写主观感受），照这一场要读者看清什么来定，交代时说一句用了哪张的哪一条。一张卡的腔调示例、动作示例（`lexical_shifts`、`kinetic_verbs`）撞上另一张的相反写法（词或句式），加载时那一条后面标“待复核”（示范段和各节例句脚本不比，同用时自己对着看；没有 Python、直接读卡片库时，腔调示例和动作示例也自己拿去对另一张卡的 `blacklist` 和 `blacklist_patterns`，撞上的同样当待复核）：只是要回头再看的地方，不是判定；看这一场的处境、人物和动作合不合，再定用不用。卡片库的 `composition.rule` 写的也是这一条：推荐写法撞上其他已启用风格的相反写法（词或句式），标待复核，看这一场的处境、人物和动作合不合，再定用不用，不自动不用（r5.50 起）；它的“按 precedence 从左到右取第一个有定义的风格”，只取句长的大概数（r5.49）。
+- **几张同用**：句长的大概数对不上时，照卡组定的先后取第一张写了的：device、voice、scene、base；同一层两张卡说法不一时，照这一场的动作写，不为凑数拆句或并句；先后只定句长的大概数，每张卡句子一节里随动作走的说法照样看。说明之间说法不一时（写不写过程、感官写不写主观感受），照这一场要读者看清什么来定，交代时说一句用了哪张的哪一条。一张卡的腔调示例、动作示例（`lexical_shifts`、`kinetic_verbs`）撞上另一张的相反写法或卡组全局的相反写法（词或句式；全局的那一份先去掉这几张卡放开的几样），那一条标“待复核”：加 `--examples` 看例子时标在那一条后面，默认只印方向时只说有几条（示范段和各节例句脚本不比，同用时自己对着看；没有 Python、直接读卡片库时，腔调示例和动作示例也自己拿去对另一张卡的 `blacklist` 和 `blacklist_patterns`，撞上的同样当待复核）：只是要回头再看的地方，不是判定；看这一场的处境、人物和动作合不合，再定用不用。卡片库的 `composition.rule` 写的也是这一条：推荐写法撞上其他已启用风格的相反写法（词或句式），标待复核，看这一场的处境、人物和动作合不合，再定用不用，不自动不用（r5.50 起）；它的“按 precedence 从左到右取第一个有定义的风格”，只取句长的大概数（r5.49）。
 
 ## 和作者的写法谁先
 
@@ -12138,11 +12330,18 @@ python3 scripts/project_state.py commit /项目目录/story-state.json --if-vers
 - 本书的文风卡、口吻表写定的，照写定的；人物台词照口吻表。作者明确说过的写法要求（比如不规定每段都要有疼痛、呼吸、小动作，不把每场都写成慢动作，不为制造体验添伤势）也在卡前面。
 - 没有作者原文的，照实说这一次没有声音样本；加载了卡，卡的腔调也不是作者的口吻，交代时照实说。
 - 卡里写到人物是什么样的（零失误、一招制敌、嘴硬心软），说的是这种腔调里常见的人，不压过这一场人物的处境和能力边界：头一回独自上手的新人照样会慌、会抖，本书写定了要付代价的，照样付。
+- 卡上写的人称、文白和排版（第一人称、文言短句、档案分段、弹幕这类）不盖过本书已定的视角和语体：本书定了第三人称、白话的，照本书写，这张卡别的方向照用。加载时卡上的原话照印，不等于要照它改人称。
+- 和技法卡：同一处做法上，作者采纳过的本书技法卡（technique-card-template.md）先于通用风格卡，工坊的模块照旧在两者前面；一场已经挂了技法卡的，风格卡 scene 层最多一张（技法卡怎样挑、怎样读见正文与场景“用技法卡”）。
 - 风格卡不改已采纳的正文和设定，不添新设定，也不替代 修改的五道工序（revision-passes.md）。
 
 ## 写完以后
 
-照常查改（整章走 修改的五道工序（revision-passes.md）），再对着加载的卡的“过量信号”看一遍。加载了卡的，再跑一次 `python3 scripts/style_cards.py copied 卡的id [...] --file 稿子.txt`：卡里示例的原话（四个汉字以上）照搬进了正文的，列出来，改成这一场自己的说法，或者写明为什么保留。它只查字面，查不出腔调用得好不好，也查不出料是不是一项项排着，那要读。改已有稿件的，照 编辑（editing.md）“修订前后对照”核对有没有删了细节。
+照常查改（整章走 修改的五道工序（revision-passes.md））。加载了卡的，再做两件：
+
+- 跑 `python3 scripts/style_cards.py review 卡的id [...]`，印出这几张卡写过头是什么样（过量信号），对着这一场看一遍：只是自查用的对照，不是判定。
+- 跑 `python3 scripts/style_cards.py copied 卡的id [...] --file 稿子.txt`：卡里示例的原话（四个汉字以上）照搬进了正文的，列出来，改成这一场自己的说法，或者写明为什么保留。整段只是一句常用的四字说法的（“不动声色”“看了一眼”这类，脚本里有一张工坊列的表）不算照搬，只说有几处；卡里示例用过的三个字的专名（品牌、器物这类，也是工坊列的表）在正文里出现的，列成提示，不算照搬：是这本书自己的东西就留着，是顺手从卡里带来的就换掉。它只查字面，查不出腔调用得好不好，也查不出料是不是一项项排着，那要读；各节里没加引号的料它不比。
+
+改已有稿件的，照 编辑（editing.md）“修订前后对照”核对有没有删了细节。
 
 ## 交代
 
@@ -12160,6 +12359,7 @@ python3 scripts/project_state.py commit /项目目录/story-state.json --if-vers
  "keywords": {"卡的id": ["这本书里常出现、指向这张卡的词"]},
  "exclude": ["这本书不用的卡的id"],
  "default_card": null,
+ "fixed_base_card": null,
  "note": "这份配置的来历"
 }
 ```
@@ -12167,12 +12367,19 @@ python3 scripts/project_state.py commit /项目目录/story-state.json --if-vers
 - `keywords`：作者给的路由关键词，键写卡的 id（不写别名）。`match` 把字面出现的列在最前面，仍然只是线索。
 - `exclude`：这本书不用的卡，索引里不列，`load` 拒绝。
 - `default_card`：作者明确定了“对不上时默认加载哪张”才填，对照索引判断还是对不上时加载它（字面没命中不算对不上）；是 `null` 就是对不上不加载。
+- `fixed_base_card`：全书固定的底色卡，只能填 base 层的一张。作者明确说了全书用哪张底色卡、本书又还没有作者的正文样本时才填，工坊不自己填。填了以后，`load`、`review`、`copied` 没点名 base 层的卡时自动带上它，输出里写明；这一场不带它，加 `--no-fixed-base`（比如它和这一场要用的卡标了不同用）。本书有了作者的正文样本或写定了文风卡以后，底色照样本，每场加 `--no-fixed-base`，并问作者要不要把这一栏改回 `null`，工坊不自己改。是 `null` 就是没有固定的底色卡。
 
-`python3 scripts/style_cards.py check --project 配置文件` 核对卡片库和配置：指向的卡在不在库里、默认卡有没有被排除、同一个词有没有指向两张卡。
+`python3 scripts/style_cards.py check --project 配置文件` 核对卡片库和配置：指向的卡在不在库里、默认卡有没有被排除、固定的底色卡是不是 base 层的卡、同一个词有没有指向两张卡。
 
 ## 卡片库从哪里来
 
-随工坊提供，来自作者给的卡组（4.1.0 版）。收进来时清理过，以删为主：去掉了名作原句和某一部作品专属的名字、设定、套语，私人作品里的用语和情节，网络热梗，还有和私人词表撞上的普通词；整张建在单部作品专属设定上的卡不收。r5.48 起按作者的要求又删了一批换到哪本书都一样的套话示例和现成的身体反应，另有少数说明（42 处：r5.48 34 处，r5.49 8 处）把无条件的硬限制（句长上限、“必须”“严禁”“切成短句”这类）改写成了有条件的方向；r5.49 按作者保留身体反应这个选项的话，补回了有来由的一处（french-naturalism-clinical“饥饿”一例里的吞咽）。原文都记在清理记录里（只在自用版）。卡组的全局部分（示例规则、几张同用的上限和先后、全局的相反写法）一起收了，用法照上文（`composition.rule` 里推荐写法撞上别的卡的相反写法那一句，r5.50 改成了工坊的做法：标待复核，不自动不用，见“几张同用”一条；卡组的原话记在自用版的维护目录里）。增删、修改卡片改卡片库，再跑一次 `check`。
+随工坊提供，来自作者给的卡组（4.1.0 版）。收进来时清理过，以删为主：去掉了名作原句和某一部作品专属的名字、设定、套语，私人作品里的用语和情节，网络热梗，还有和私人词表撞上的普通词；整张建在单部作品专属设定上的卡不收。r5.48 起按作者的要求又删了一批换到哪本书都一样的套话示例和现成的身体反应，另有少数说明（42 处：r5.48 34 处，r5.49 8 处）把无条件的硬限制（句长上限、“必须”“严禁”“切成短句”这类）改写成了有条件的方向；r5.49 按作者保留身体反应这个选项的话，补回了有来由的一处（french-naturalism-clinical“饥饿”一例里的吞咽）。原文都记在清理记录里（只在自用版）。卡组的全局部分（示例规则、几张同用的上限和先后、全局的相反写法）一起收了，用法照上文（`composition.rule` 里推荐写法撞上别的卡的相反写法那一句，r5.50 改成了工坊的做法：标待复核，不自动不用，见“几张同用”一条；卡组的原话记在自用版的维护目录里）。r5.60 照作者认过的清单改了 17 张卡：补了 7 处句末标点，把停在冒号上的两句收完整，并了一处只剩一条的条目（换的几个字是工坊拟的）；把 16 处说明里无条件的“永远”“绝不”“必须”改写成了有条件的方向（拟改句是工坊起草、作者认过的）；两张赛博卡（`cyber-wasteland-industrial`、`cyberpunk-gibson-sprawl`）的适用场景改写过，挑卡时好分开（工坊起草、作者认过的）；补了一组不同用（`wei-jin-xuanxue-poetic` 和 `high-kinetic-combat`）。卡数没有变，还是 83 张。增删、修改卡片改卡片库，再跑一次 `check`。
+
+## 版本说明
+
+- r5.53：“句子这一栏说的是叙述，台词另算”一条里，分句长短和语气词说的是叙述那一句。
+- r5.54：同一条里“语气词跟着说话的人和这一刻走，不为凑口语句句挂一个”和“全在不言中”那一句。后一句是工坊的读法，卡是作者给的，作者没有逐条看过：现在照这一句办，作者不认就拿掉。
+- r5.60：照作者定的改了这几处。识别第一步先看有没有作者的原文样本或本书文风卡；scene 层只有题材标着 `functional-modes` 的不挑题材，索引印题材；写死人称、文白、排版的卡不靠识别加载，卡上的人称、文白、排版不盖过本书已定的视角和语体；`load` 默认只印方向，例子加 `--examples`，写过头是什么样改到 `review` 印；相反写法的比对把卡组全局的那一份算进去（卡片库 `composition.rule` 写着“含全局”，r5.59 以前脚本没有比）；`copied` 加了常用四字说法的表和三个字专名的提示；配置加了 `fixed_base_card`；写了和技法卡的先后。“句子”一条拆成了两条，原来夹在里面的版本说明挪到了这里。市井温情那张卡上“绝不说……”一句照作者认的改成了“多半不说……”；上面 r5.54 那句读法，作者还没有单独看过。
 
 -----
 
@@ -12602,12 +12809,14 @@ SOFTWARE.
 | 参考材料：作者转来的一份对 r5.32 的审查报告（2026-10-23，《小说工坊 r5.32：五点审查与图片接入建议》） | 逐点在 r5.33 上复现后处理：图片的采用记录和跨章接续、推荐 4—6 张候选并按局部挑选，补进 灵感库（inspiration-library.md）、`inspiration_library.py` 和几处入口；分场规则的适用范围和检测命中的保留（宪法 NWC-1.5 修订 CON-011，作者批准）、张力与代价 的兜底和收益（作者批准），条文和例子都是新写的；报告建议的有限文本对照等作者发图再做。 | 用户提供的内部维护材料，不随包分发。 |
 | 参考材料：作者转来的对 r5.34 的审查报告和维护交接包（2026-10-23，《小说工坊 r5.34 五点审查与项目对齐建议》、《小说视觉素材五项目接入 Claude 执行规划 V1》及规划图、《小说写作工坊项目初衷与完整思路》）以及作者同日对“声口”的说明 | 台词归属只认台词旁边写明的说话证据（dialogue_lines.py），叙述词提示可写人物照样说的设定名词和作者逐处的决定；修改的五道工序（revision-passes.md） 和 对白专项（dialogue-craft.md） 加声口、语域错位、作者腹语和自由间接引语的方向，左右手、删句、口语化按语境定；灵感库第 2 版和唯一的写库入口 `inspiration_write.py`；新写 视觉素材（visual-materials.md） 模块和 SearXNG、Openverse、Crawl4AI、ImageHash、OpenCLIP 的适配器（`visual_materials_cli.py`），接口按各项目的官方说明和源码核对，不带它们的代码和模型权重。条文和例子都是新写的，不带作者作品的原句。 | 用户提供的内部维护材料，不随包分发；五个外部项目的许可见包根目录的 LICENSE-NOTICES.md。 |
 | 参考材料：作者转来的一份外部分析（2026-10-25，另一个 AI 对本项目问题的分析，附一套风格卡和预处理代码），作者说想一起探讨后续方向 | 作者看过工坊的回复以后选了先做两件，程序和说明都是新写的：改稿以后列出原稿里有、修订稿里没了的细节和新出现的判断句、坐标，留不留作者定（detail_check.py 的 `compare`，编辑（editing.md）“修订前后对照”）；改写作规则以前先过作者认可的写作对照例（技能维护（skill-evaluation.md）“写作对照例”，通用的三例在维护扩展里）。风格卡、规则文本和代码没有收入，宪法没有改；作者自己的对照例只在自用版的维护记录里。 | 用户提供的内部维护材料，不随包分发。 |
-| 作者提供的风格卡（2026-10-26，卡组 4.1.0，83 张，作者说“这个是目前最全的”，要接进工坊、换掉之前那一套） | 收成 风格卡（style-cards.md） 的卡片库（cards.json）和 `style_cards.py`（索引、字面线索、按层加载、照搬检查、核对）。卡的字段、各节文字和卡组的全局部分（示例规则、几张同用的上限和先后、全局的相反写法）一起收了，清理以删为主：删掉了名作原句和近乎原句的改写、某一部作品专属的名字和套语、私人作品里的用语和情节、网络热梗，以及撞上私人词表的普通词；整张建在单部作品专属设定上的卡不收。另按作者的要求改写了两类文字：r5.48、r5.49 把说明里无条件的硬限制改成有条件的方向；r5.50 把全局 `composition.rule` 里“推荐写法一旦命中其他已启用风格的黑名单，以黑名单为准”一句改成工坊的做法（标待复核，看这一场合不合再定用不用）。改写前的原文记在清理记录里。卡名和说明里提到的作家、作品只用来描述腔调，包内不含这些作品的原文。r5.43 收过的那一套（卡组 3.0.0）不再用。 | 用户提供的材料；原件和逐条清理记录只在自用版的维护记录里，不随商业版分发。版权人 2026-11-13 确认 83 张风格卡由版权人本人所写或有权公开，按本包的 MIT 许可发布；这项许可不涉及卡里提到的作家、作品本身的任何权利。 |
+| 作者提供的风格卡（2026-10-26，卡组 4.1.0，83 张，作者说“这个是目前最全的”，要接进工坊、换掉之前那一套） | 收成 风格卡（style-cards.md） 的卡片库（cards.json）和 `style_cards.py`（索引、字面线索、按层加载、照搬检查、核对）。卡的字段、各节文字和卡组的全局部分（示例规则、几张同用的上限和先后、全局的相反写法）一起收了，清理以删为主：删掉了名作原句和近乎原句的改写、某一部作品专属的名字和套语、私人作品里的用语和情节、网络热梗，以及撞上私人词表的普通词；整张建在单部作品专属设定上的卡不收。另按作者的要求改写了两类文字：r5.48、r5.49 把说明里无条件的硬限制改成有条件的方向；r5.50 把全局 `composition.rule` 里“推荐写法一旦命中其他已启用风格的黑名单，以黑名单为准”一句改成工坊的做法（标待复核，看这一场合不合再定用不用）。改写前的原文记在清理记录里。r5.60 照作者认过的清单又改了 17 张卡：补句末标点、把停在冒号上的两句收完整、并了一处只剩一条的条目，把 16 处说明里无条件的“永远”“绝不”“必须”改成有条件的方向，改写了两张赛博卡的适用场景，补了一组不同用；其中换的字和拟改句是工坊起草、作者认过的，不是作者卡组里的原文。卡数没有变。卡名和说明里提到的作家、作品只用来描述腔调，包内不含这些作品的原文。r5.43 收过的那一套（卡组 3.0.0）不再用。 | 用户提供的材料；原件和逐条清理记录只在自用版的维护记录里，不随商业版分发。版权人 2026-11-13 确认 83 张风格卡由版权人本人所写或有权公开，按本包的 MIT 许可发布；这项许可不涉及卡里提到的作家、作品本身的任何权利。 |
 | 作者提供的两个风格包（2026-10-31：都市高武风格引擎库 v2.0、小说实感与去AI味引擎 v17.1；r5.46 修过几处放进自用版，r5.47 作者说商业版也可以用） | 收在 `assets/style-packs/`，按 风格包 的条件启用（作者点名或作品档案写明）。r5.46 修了几处确实有错的地方（各包 `docs/v2.0.1修订.md`、`docs/v17.1.1修订.md`）；r5.47 随商业版分发前，换掉或删去了五处出自作者私人作品的词和例子（`docs/v2.0.2修订.md`、`docs/v17.1.2修订.md`），版本升为 v2.0.2、v17.1.2，写法、规则和脚本没有改。包内的整理说明称两包由作者的原稿整理而来（引擎库：v1.1 加新写的 65—150 号和一份总控；实感引擎：v16、v17 的二百层），整理者没有署名。改动记录里提到几部作品，只是说明撞了哪部作品的设定、怎样改开，不含那些作品的原文。合并候选把两包的入口 `SKILL.md` 改名为 `ENGINE.md`（内容没变；改名的缘由合并候选没有记录）；r5.55 改了两包 README 里讲怎样安装的几句。 | 随工坊（含商业版）分发是作者 2026-10-31 同意的。版权人 2026-11-13 确认两套风格包由本人所写或有权公开，按本包的 MIT 许可发布；包里没有单独的许可文件，以本包的 LICENSE 为准。下面几项没有核过，照实留着：整理时用了什么工具或服务、它对输出有什么条款，没有记录；整理时按知名作品改过 9 处原型痕迹、2 处与《全球高武》撞设定的叫法，其余引擎有没有撞别的作品，没有系统排查；02 号引擎的英文标识带 kengan（漫画《拳愿阿修罗》原名里的词），没有改。 |
 | 版权人提供的章节门、学习循环、示范记忆（原是版权人另一套工作环境里加的扩展，合并候选 `2026-11-14-r5.54-merged-candidate` 并进本包） | `scripts/chapter_gate.py`、`scripts/learning_loop.py`、`scripts/demonstration_memory.py`，说明页 每章七阶段与作者确认、学习与自我纠错执行、示范记忆与改稿学习，模板 demonstration-case-template.json，以及技能目录 `tests/` 下的三份测试。只用 Python 标准库和同目录的脚本。r5.55 改了三个脚本的部分行为，见完整包根目录的 `CHANGELOG.md`。 | 由版权人提供，按本包的 MIT 许可。 |
 | 版权人提供的两段 Python 对白检测器、三类题材配置和两条叙述“先”字正则（2026-11-09） | 修成 对白声纹与反模式（dialogue-lint.md）（`scripts/dialogue_lint/`，r5.55 为 dialogue-lint 1.2.0）和 `prose_lint.py --hint xian`（narrative-xian 0.1.0），经过见下面“可选对白检测工具”一节。只用 Python 标准库和同目录的模块。 | 由版权人提供，按本包的 MIT 许可。 |
 | 参考材料：仓颉 Skill 2.5.0（作者 2026-11-19 转来的发布包，源码提交 `3adf9e61eec96edf34055432942f2952cfd7cfd9`） | 参考其中作者问题逐条交代下落、单独回原文找反例、一处写全可以留卡、做法写成先后几步并写清在哪里停、留卡前换人换场面试写、卡的修订号和用后问题几样思路，改写进长短篇拆文与技法库和技法卡模板；例子新写。没有带它的脚本、模板原文、schema 和安装到 `~/.claude/skills/` 的步骤。 | 上游按 MIT 许可发布，LICENSE 的版权行原文是 `Copyright (c) 2026`，只有年份，没有写权利人；这里照原样记，不替它补名字。本包没有收它的文件，借来的思路按本包的 MIT 许可。 |
 | 参考材料：claude-skills 合集（alirezarezvani/claude-skills 的 main 分支归档，CHANGELOG 最新一节 2.14.14，2026-11-17；作者 2026-11-19 转来）里的 `engineering/skill-retro`、`engineering/skills/agent-regression-evals`、`engineering/agent-memory`、`engineering/memory-engineering`、`engineering-team/self-improving-agent`、`engineering/skillopt-sleep` | 参考其中改规则以前先问现有规则管不管得着、验收材料该改和不该动各半、系统列出由人来定、被拒的改动不再原样提几样思路，用工坊已有的作者确认和适用条件重写，例子新写。没有引入它的钩子、会话记录抓取、自评分数文件、插件安装步骤和脚本。 | 合集根目录按 MIT，版权行 `Copyright (c) 2025 Alireza Rezvani`；`engineering-team/self-improving-agent` 自带的许可写 `Copyright (c) 2026 Reza Rezvani`；`engineering/skill-retro` 自带的许可有 `Denver Technologies, Inc.` 和 `Alireza Rezvani` 两行，借的那段判断标准，它的许可说明写明是沿用上游 warpdotdev/common-skills 的；`engineering/skillopt-sleep` 自带的许可写 `Copyright (c) 2026 Microsoft Corporation`。本包没有收这些目录的文件，借来的思路按本包的 MIT 许可。 |
+| 参考材料：作者转来的一份对 r5.59 技法卡模板的外部评估（2026-11-20，作者转交） | 逐条对照模板和现有规矩以后，作者定了的几条改进 技法卡模板（technique-card-template.md）和 长短篇拆文与技法库：卡分上下两半和最底下一块、卡头加检索标签、管哪一样加叙述和描写、可以先存成候选卡、改卡分轻重。句子都是工坊新写的，没有引评估的原话。 | 作者转交的评估文字，不随包分发。 |
+| 参考材料：作者转来的一份外部写作技法资料包（2026-11-20，作者上传；原包没有附许可文件，也没写是谁写的） | 只读文件对照，没有运行它的脚本。借了五处做法，用工坊自己的话写进技法卡模板和相关页：交稿时在正文外说明用了哪张技法卡；同一场不该一起用的卡写进“失效情境”；写完自查时看作用链走到没有；索引照卡头抄、对不上时以卡为准；拆参考作品时试问拿掉这手法少了什么。没有带它的原文、例子、模板和脚本，也没有带按字数、次数、比例定的门槛。 | 原包没有附许可文件，出处不明；原包不随本包分发，不推定任何授权。 |
 
 ## 分发范围
 
