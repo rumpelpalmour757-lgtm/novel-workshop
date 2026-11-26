@@ -1,6 +1,6 @@
 # 本地工作台与检查工具
 
-[← 返回首页](../README.md) · 适用版本 `2026-11-19-r5.59`
+[← 返回首页](../README.md) · 适用版本 `2026-11-26-r5.60`
 
 这些都是可选的。只在聊天里写作用不到它们；除维护用的 `darwin_eval.py`（在 `skills/darwin-novel-workshop/scripts/`）外，都在完整包的 `skills/novel-workshop/` 里；便携单文件里没有可运行的脚本。完整命令见包内 `USAGE.md` 第五节和 `skills/novel-workshop/references/local-workbench.md`。
 
@@ -68,7 +68,7 @@ r5.46 到 r5.58 的写作台有两个可选的侧栏：“改稿建议”（自�
 - 以前用过这两个侧栏的，电脑上留着的密钥和本机记录，工坊不碰；不再用的，可以自己删。它们都在本机用户配置目录里（Windows：`%APPDATA%\novel-workshop\`；macOS：`~/Library/Application Support/novel-workshop/`；Linux：`~/.config/novel-workshop/`）：“改稿建议”的是 `gemini.json`、`gemini-status.json`、`gemini-check-report.txt`；“Google AI”的是 `acp.json`、`acp-status.json`、`acp-events.jsonl` 这几样 `acp` 开头的文件。删了 `gemini.json`，Key 本身在 Google 那边照样有效；自己装的官方程序和它记着的登录不是工坊的，工坊不动。完整的清单见包内 `skills/novel-workshop/references/local-workbench.md`“r5.59 起没有 AI 侧栏”。
 - 同一个文件夹里的 `workbench.json` 是启动器记的作品目录，还在用。
 - 从 r5.58 升级时，删掉的 11 个文件随旧版进 `.novel-workshop-backups/<时间>/`；退回 r5.58，两个侧栏就回来。
-- 首页和[实际效果样例](../demo/README.md)里的工作台截图是 r5.59 的（2026-11-20 重拍）：工具栏上只有开始编辑、对比、行号、原文、预览；r5.58 及以前的工具栏上另有“改稿建议”“Google AI”两个按钮。
+- 首页和[实际效果样例](../demo/README.md)里的工作台截图是 r5.59 的（2026-11-20 重拍）：工具栏上只有开始编辑、对比、行号、原文、预览；r5.58 及以前的工具栏上另有“改稿建议”“Google AI”两个按钮。r5.60 没有改写作台（`scripts/oh-story/` 和 `assets/dashboard/` 两版逐字节相同），截图没有重拍。
 
 ## 检查与辅助工具
 
@@ -80,13 +80,13 @@ r5.46 到 r5.58 的写作台有两个可选的侧栏：“改稿建议”（自�
 | `prose_lint.py` | 语感扫描和分场检测（重复词、段尾否定、等长短句连排、三连排比等）；`--hint deai` 加去 AI 味的复核提示（r5.48），`--hint deai-extra` 再加四项（r5.49）；r5.54-merged 多一个 `--hint xian`：叙述里“先”字的复核，只定位和计数，默认不开，不随 `deai` 开 |
 | `dialogue_lines.py` | 台词按说话人分栏，标出书面词、叙述专用的词；`--exchanges` 按来回再列一遍（r5.53）；加 `--long-lines` 才列一口气很长的句子（r5.54）；r5.54-merged 修了跨段认说话人的一处：上一段以“没有说：”“本想说：”这类没说出口的话收尾，下一段的引语不再算成这个人说的 |
 | `detail_check.py` | `compare`：原稿里有、修订稿里没了的说法和动态补语；`changes`：逐句列出删了、加了、改了哪几句，`--keep` 核对指定要留的句子（r5.49）；`anchors`：维护时用的写作对照例，r5.59 起对照例可以带 `no_new_dialogue`，带了的核对时找出新加的台词，有就不通过（同一句拆成两句不算新加），没带的结果不变；只换格式、不动字句时怎样用 `changes` 加 `--keep` 对照、它核不到什么，见表下那一段（r5.57） |
-| `fact_guard.py` | 跨章事实主张比对、列出要回查的章节；按故事时间核人物知情（r5.51）；只核对已登记的主张 |
+| `fact_guard.py` | 跨章事实主张比对、列出要回查的章节；按故事时间核人物知情（r5.51）；只核对已登记的主张。谁拿着东西、伤势、地点仍按章节先后比，倒叙章里早于主线的这几样它查不了；r5.60 没有改这个脚本，只在说明页里补了倒叙章怎样记，见[详细用法](usage.md#长篇写到后面前后对不上) |
 | `rule_register.py` | 几份规则文件互相打架时，核对冲突登记表、列出待定项、查新叫法在各章的已有用法；新规则入册以后，已采纳的章不自动改，`collide` 能列出旧叫法在哪一章哪一行，工坊照这个列给你定（r5.58 写明，脚本没有改） |
 | `workflow_guard.py` | 交付门：冻结输入、审稿绑定具体版本、输出四项状态、记录你的采纳（也能照实记录跳过审稿）；核对交出去的文件是不是检查过的那一版（`status --deliverable`），跳过审稿采纳的那一版这样核对不上，“说定本”是 BLOCK；还没有收回采纳的命令：你收回采纳以后，同一版仍显示 `AUTHOR=ACCEPTED`，不能照它说已定稿（r5.57 照实写明，脚本没有改，见[详细用法](usage.md#交付状态)） |
 | `delivery_manifest.py` | 多章交付：核对约定章数、实际文件、漏章、空稿和旧审稿 |
 | `state_precheck.py` | 项目状态保存以前，列出候选要删、要改、要加的字段，只读（r5.49） |
 | `project_state.py` | 多人、多代理共用的项目状态文件，条件保存 |
-| `style_cards.py` | 风格卡：列索引（`index`）、字面线索（`match`）、加载选中的卡（`load`）、查有没有照搬卡里原话（`copied`）、核对卡库和本书配置（`check`） |
+| `style_cards.py` | 风格卡：列索引（`index`）、字面线索（`match`）、加载选中的卡（`load`）、写完印出写过头是什么样（`review`，r5.60 新加）、查有没有照搬卡里原话（`copied`）、核对卡库和本书配置（`check`）。r5.60 改了几处输出，见表下“风格卡脚本 r5.60 的变化”那一段 |
 | `inspiration_library.py` | 本书灵感库：核对记录、按章或按人物地方列出、出素材卡的素材块 |
 | `inspiration_write.py` | 写灵感库的唯一入口：迁移旧版、记下选择、回退、看历史，写前核修订号 |
 | `visual_materials_cli.py` | 可选的联网选图链路，见下文；r5.59 起读来源页和取图都守 robots.txt，同一站点的请求有间隔，另带一个只用标准库的自带读页（`visual_materials/static_reader.py`） |
@@ -94,7 +94,7 @@ r5.46 到 r5.58 的写作台有两个可选的侧栏：“改稿建议”（自�
 | `workflow_demo.py` | 虚构三章演练，审稿与采纳都是模拟的，只用来熟悉流程 |
 | `chapter_gate.py` | 章节门读进度（只有 `status` 一个子命令，只读）：这一章停在七个阶段的哪一步，等你确认还是等教师回传，按什么策略走（`workflow_policy`），记录里缺了什么（`record_problems`）；写入走 `learning_loop.py apply`。默认不开，见[四个可选模块](modules.md#章节门) |
 | `learning_loop.py` | 学习循环和章节门的记录入口：`status`、`context`、`show` 只读，`apply` 一次交一个事件（带版本的条件保存，同一事件重发不重记）；不调用模型，不写小说。r5.59 加了几个可选的写法：登记示范时可以重写标签（`tags`），一章几场的适用判断可以按场写（`scopes`），这一稿是谁写的可以记下来（`role`）；收尾凭的是你本人的通过时记 `author_reviewed`（r5.58 记 `self_checked`）；不带新写法的旧事件照旧能用，结果和以前一样。见[四个可选模块](modules.md#学习循环) |
-| `demonstration_memory.py` | 示范记忆的只读选择器：`check` 核结构、哈希和认可绑的文字，`index` 列出全部符合筛选的案例（只给编号、状态、适用条件和例外这类元数据），`select` 取最多三条认可过的示范。r5.59 起认可选的来源字段 `after_by`（改后的文字是谁写的），案例带了它的，`index` 连同它一起列出；来源字段写成列表、对象这类非字符串时，`check` 不再抛错停下，照未知值报出来。见[四个可选模块](modules.md#示范记忆) |
+| `demonstration_memory.py` | 示范记忆的只读选择器：`check` 核结构、哈希和认可绑的文字，`index` 列出全部符合筛选的案例（只给编号、状态、适用条件和例外这类元数据），`select` 取最多三条认可过的示范。r5.59 起认可选的来源字段 `after_by`（改后的文字是谁写的），案例带了它的，`index` 连同它一起列出；来源字段写成列表、对象这类非字符串时，`check` 不再抛错停下，照未知值报出来。r5.60 没有改这个脚本；包里说明页的命令示例和案例模板把任务名改成了 `chapter_revision`，`--task` 写案例里存的任务名，逐字相同才取得到。见[四个可选模块](modules.md#示范记忆) |
 | `dialogue_lint/run_lint.py` | 对白声纹与反模式检查（可选试用，r5.55 起为 1.2.0）：`scan` 只读扫描出报告，认“”「」『』，角色一栏只给数字，命中只标“复核”；`apply` 要带和 `scan` 相同的选项，重扫核对、校验候选改句以后写到新文件，不覆盖原稿。见[四个可选模块](modules.md#对白声纹与反模式检查) |
 | `oh-story/build_chapter_index.py` | 章节位置索引：章节范围、原文行号、字符数与内容哈希，不做文学分析 |
 | `oh-story/render_relation_chart.py` | 从已有的人物关系表生成 Mermaid 关系图，可选 PNG；不自行推断人物关系 |
@@ -102,6 +102,18 @@ r5.46 到 r5.58 的写作台有两个可选的侧栏：“改稿建议”（自�
 | `darwin_eval.py`（维护技能里） | 维护用：保存与汇总方法对照记录，不调用模型、不生成正文、不评分；r5.58 起，`blind` 打包以前先查两份产出里的版本线索（产出的路径、两份文件名不同时的文件名、两版技能目录的路径，加上用 `--identity-marker` 登记的），查到就以退出码 2 停下，什么文件都不写；中途出错时删掉这一次新建的文件，不留半截。查不到的线索（没登记的版本号、改写过的措辞、附件和图片）照旧要人工看一遍。r5.59 起，`freeze` 逐节核登记表里上锁的六节（`protected_sections`），改了又没有批准记录的，`summarize` 判 `BLOCKED_CONSTITUTION_CHANGE`；同一道题跑几次的可以用 `group` 合并再算；`blind` 的结果多 `packets`（两份匿名材料的 SHA-256），`verdict` 要求裁决带 `packets`，缺了、写坏了、和这个评估目录封存的 A／B 对不上的，以退出码 2 拒收 |
 
 **只换格式、不动字句时怎样对照（保真转换，r5.57）。** 用 `detail_check.py changes 原稿 转换稿` 逐句对照，再加 `--keep`（把原稿每个非空行照原样写成一行锁句）核一遍，每一行都要是“原样在”。包里用合成短文实际跑过，核不到的照 `references/editing.md`“先定范围”里的“保真转换”写：`changes` 对硬换行接起来的几句多半只报“几句并成了一句”、不逐字比，汉字之间多出来的空格不报，两段并成一段只在段数上看得出，两章换了先后只列一章；`--keep` 对接头处多出来的字、汉字之间的空格、两段并成一段、章节换了先后，照样报“原样在”，很短的一行在别处出现过也算原样在。再跑 `punctuation_lint.py 转换稿 --baseline 原稿`，它列出转换带进来的半角标点和多出来的空格，删掉一个标点、换成另一个全角标点它不报；`workflow_guard.py status --deliverable` 只认同一版、只差末尾换行、只差换行符或 BOM。这几样都只读 UTF-8 文本，Word、PDF 先取出文字再比。没有一样能单独证明逐字相同：`changes` 里除了标题行和硬换行接起来的那几处，没有删、加、改的句子；`--keep` 每一行都是“原样在”；“对不上”里列的和硬换行接起来的那几处逐字读过；段数和章节顺序核过；`punctuation_lint.py --baseline` 没有新出现的空格和半角标点。这几样都做到了，才写“去掉格式以后正文逐字相同”。交付门里没有专门核这一项的检查，MECHANICAL 是 GREEN 不说明保真核过。怎样交付见[详细用法](usage.md#只换格式不动字句保真转换)。
+
+**风格卡脚本 r5.60 的变化。** 这一版改的脚本只有 `style_cards.py`（卡库也照维护者认过的清单改了 17 张卡，卡数 83 不变）。下面几条在 r5.60 包的一份副本上实际跑过（2026-11-26，Linux，Python 3.13.17）。
+
+- `load` 默认只印方向：适用场景、叙述逻辑、名词、动作、感官、句子和相反的写法，顶部多一行“这一次只印方向……要看例子加 --examples”。腔调示例、动作示例和示范段加 `--examples` 才印；写过头是什么样（过量信号）`load` 不再印。同一条 `load hemingway-iceberg`，r5.59 印 68 行，r5.60 印 48 行，加 `--examples` 印 66 行。直接调脚本里的 `render(data, cards)` 照旧能调，输出少这四节。
+- 新命令 `review 卡的id [...]`：印出这几张卡“写过头是什么样”，写完对着这一场看一遍；只是自查用的对照，不是判定，不按出现几回算。`--format json` 给同样的内容。r5.59 没有这个命令。
+- 相反写法的比对把卡组全局的那一份也算进去：示例说法撞上全卡组相反写法的，单张加载也会标待复核（随包的 83 张卡没有一条带这个标记）；不加 `--examples` 时只在末尾说有几条。`load` 的输出里另多一行，说全卡组另有几条句式。
+- `copied`：整段只是一句常用四字说法的（“不动声色”“看了一眼”这类，脚本里有一张工坊列的表，93 条）不算照搬，只说有几处、是哪几个说法；卡里示例用过的三个字的专名（品牌、器物这类，16 张卡 21 个，也是工坊列的表）在正文里出现的，列成提示，不算照搬。json 里 `found` 不再含常用四字说法（归进 `exempt`），另多 `hints`。这两张表维护者没有逐条看过；它只查字面，查不出腔调用得好不好。
+- `index`：文字输出开头多一行说明，每行多一栏“题材：……”（json 每行多 `domain`），全部输出从 92 行变成 93 行；`match` 的 json 多 `fixed_base_card`。
+- 本书的风格卡配置多一个可选的 `fixed_base_card`（填 base 层一张卡的 id，或者 `null`）：全书固定的底色卡，只在你明确说了全书用哪张底色卡、本书又还没有你的正文样本时才填，工坊不自己填。填了以后，`load`、`review`、`copied` 点名的卡里没有 base 层的卡时自动带上它，各印一行“本书固定的底色卡……已经带上”；这一场不带它，加 `--no-fixed-base`。`check` 核它是不是库里 base 层的卡、有没有被同一份配置排除；填了别的层的卡，`check` 报问题、退出码 1。
+- 带着 `fixed_base_card` 的配置（填 `null` 也算）拿回 r5.59：`check` 报 `unknown fields: fixed_base_card`、退出码 1，`index`、`match`、`load`、`copied` 带 `--project` 时退出码 2（拿仓库里的 r5.59 包和一份合成配置试过，和包里的记录一样）。退回 r5.59 以前先删掉这一栏。
+
+怎样挑卡、几张同用怎样取舍，见[风格卡](style-cards.md)；包里的说明在 `references/style-cards.md`。这些只核字段和加载，不核腔调写得好不好。
 
 Node 一侧原来另有两个接通检查 `gemini-check.mjs` 和 `acp-check.mjs`，r5.59 随两个侧栏一起删了。
 
@@ -115,15 +127,19 @@ python3 scripts/prose_lint.py 正文/第05章-修订.md --hint deai --format tex
 python3 scripts/dialogue_lines.py 正文/第05章.md --names 甲,乙
 python3 scripts/detail_check.py compare 正文/第05章.md 正文/第05章-修订.md
 python3 scripts/style_cards.py index
+python3 scripts/style_cards.py load hemingway-iceberg tense-suspense-probe
+python3 scripts/style_cards.py load hemingway-iceberg tense-suspense-probe --examples
+python3 scripts/style_cards.py review hemingway-iceberg tense-suspense-probe
+python3 scripts/style_cards.py copied hemingway-iceberg tense-suspense-probe --file 稿子.txt
 python3 scripts/chapter_gate.py status 项目/学习记录.md --chapter-id 第05章
 python3 scripts/learning_loop.py status 项目/学习记录.md
-python3 scripts/demonstration_memory.py select 项目/学习记录.md --project-id 本书 --task dialogue_revision --limit 3
+python3 scripts/demonstration_memory.py select 项目/学习记录.md --project-id 本书 --task chapter_revision --limit 3
 python3 scripts/dialogue_lint/run_lint.py scan 正文/第05章.txt --config 本书配置.json --output 对白复核.json
 ```
 
-后四条属于默认不开的四个模块；事件文件怎么写、实际跑出来是什么样，见[四个可选模块](modules.md)。
+风格卡那五条里，`load` 默认只印方向，加 `--examples` 才印例子，`review` 是 r5.60 新加的。后四条属于默认不开的四个模块；事件文件怎么写、实际跑出来是什么样，见[四个可选模块](modules.md)。`--task` 写案例里存的任务名（r5.60 起包里的示例写 `chapter_revision`；四个可选模块一页的演示是早先按 `dialogue_revision` 存的，那一页的命令照旧写那个名字）。
 
-整包测试在交付包目录运行 `python tests/run_tests.py`。r5.59 一共 2,005 项，照包内 `VERIFICATION.md` 本版一节：在 Linux、Python 3.13 上跳过 5 项，其余 2,000 项全部通过；在 Linux、Python 3.9.25 上跳过 81 项（多跳的是没装 Pillow 的 63 项、没装 PyYAML 的 2 项和 Crawl4AI 要 3.10 以上的 11 项），其余 1,924 项全部通过。其中章节门的测试 45 项，学习循环 69 项，对白声纹的测试目录 120 项，这几组和 r5.55 到 r5.58 相同；示范记忆 19 项，r5.59 加了 3 项（`after_by` 和非字符串的来源字段）。r5.59 新加九个测试文件，一共 255 项：技法库 25 项（`tests/test_r559_technique_library.py`），自我纠错 42 项（`tests/test_r559_self_correction.py`），学习循环的新写法 19 项（`tests/test_r559_learning_loop.py`），维护 48 项（`tests/test_r559_maintenance.py`），裁决带 `packets` 11 项（`tests/test_r559_verdict_packets.py`），引句只有标点 11 项（`tests/test_r559_closing_notes.py`），取图的规矩 61 项（`tests/test_r559_collect_hygiene.py`），自带读页 25 项（`tests/test_r559_static_reader.py`），版本号和本版说明 13 项（`tests/test_r559_package.py`）。网络一律用本机的临时服务或注入的替身，Crawl4AI 一律用替身。只测两个侧栏的三个测试文件（`tests/test_r547_gemini.py`、`tests/test_r549_acp.py`、`tests/test_r550_acp.py`）和它们的两个辅助文件删了；写作台的 Node 检查（`node tests/workbench_check.mjs skills/novel-workshop`）从 32 项变成 12 项，全过。此前各版新加的测试文件照旧在：r5.56 三个（安装器和导出器 40 项、页面说法 21 项、版本号和本版说明 7 项），r5.57 两个（页面说法和脚本行为 27 项、版本号和本版说明 10 项），r5.58 五个（点名改一处 10 项、新规则入册 11 项、转来别人的话怎么记 17 项、匿名对照材料检查 17 项、版本号和本版说明 14 项）；其中几份钉着旧说法的跟着 r5.59 改过，测试里写了为什么改。这一页没有重跑全套。测试检查脚本行为，比如标点定位、事实比对、审稿版本绑定、回传绑错版拒收、升级带上记录、对不上时停下、取图前先问 robots.txt，不评价文学质量。
+整包测试在交付包目录运行 `python tests/run_tests.py`。r5.60 一共 2,118 项，照包内 `VERIFICATION.md` 本版一节：在 Linux、Python 3.13.17 上跳过 5 项，其余 2,113 项全部通过；在 Linux、Python 3.9.25 上跳过 81 项（多跳的是没装 Pillow 的 63 项、没装 PyYAML 的 2 项和 Crawl4AI 要 3.10 以上的 11 项），其余 2,037 项全部通过；两遍都在 Linux 上跑，原生 Windows、macOS 上没有跑。其中章节门的测试 45 项，学习循环 69 项，对白声纹的测试目录 120 项，这几组和 r5.55 到 r5.59 相同；示范记忆 19 项，项数和 r5.59 相同（案例模板的任务名改成了 `chapter_revision`，测试跟着核这一处）。r5.60 新加六个测试文件，一共 113 项：技法卡模板 20 项（`tests/test_r560_technique_card.py`），技法卡在写作流程里怎样用 18 项（`tests/test_r560_technique_pipeline.py`），风格卡 20 项（`tests/test_r560_style_cards.py`），四份记录 26 项（`tests/test_r560_records.py`），章节确认和学习循环补的那一种情形 14 项（`tests/test_r560_confirm.py`），版本号和本版说明 15 项（`tests/test_r560_package.py`）。此前各版新加的测试文件照旧在：r5.56 三个（安装器和导出器 40 项、页面说法 21 项、版本号和本版说明 7 项），r5.57 两个（页面说法和脚本行为 27 项、版本号和本版说明 10 项），r5.58 五个（点名改一处 10 项、新规则入册 11 项、转来别人的话怎么记 17 项、匿名对照材料检查 17 项、版本号和本版说明 14 项），r5.59 九个（技法库 25 项、自我纠错 42 项、学习循环的新写法 19 项、维护 48 项、裁决带 `packets` 11 项、引句只有标点 11 项、取图的规矩 61 项、自带读页 25 项、版本号和本版说明 13 项）；其中几份钉着旧说法的跟着 r5.60 改过，测试里写了为什么改。网络一律用本机的临时服务或注入的替身，Crawl4AI 一律用替身。写作台的 Node 检查（`node tests/workbench_check.mjs skills/novel-workshop`）r5.59 起是 12 项（r5.58 是 32 项）；r5.60 没有改写作台，包内 `VERIFICATION.md` 本版一节没有记这一项，这一页拿 r5.60 包的一份副本跑了一次（2026-11-26，Linux，Node.js 22.22.0），12 项全过。这一页没有重跑全套。测试检查脚本行为，比如标点定位、事实比对、审稿版本绑定、回传绑错版拒收、升级带上记录、对不上时停下、取图前先问 robots.txt，不评价文学质量；这一版的测试只说明条文在、脚本照写明的做法跑，不说明写得更好，也不说明技法卡、风格卡更好用。
 
 ## 可选视觉链路
 
